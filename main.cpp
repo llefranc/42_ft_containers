@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/04 17:00:23 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/05 00:04:14 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 #include <iostream>
 
+#include <vector>
+
 
 int main()
 {
-	ft::vector<int> vec(5, 100);
+	int nb = 100;
+	ft::vector<int> vec(5, nb);
+	// ft::vector<int> vec((unsigned long int)5, nb);
+	// std::vector<int> vec(5, 100);
 	
+	ft::vector<int> vec2;
 	
 	return (0);
 }

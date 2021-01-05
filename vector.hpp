@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/04 17:00:00 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/05 10:33:52 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define VECTOR_HPP
 
 #include <memory>
+#include <iostream>
 
 namespace ft
 {
@@ -41,13 +42,16 @@ namespace ft
 			// fill (2)
 			explicit vector(size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type());
+			// explicit vector(size_type n, size_type val,
+			// 				const allocator_type& alloc = allocator_type());
+							
 			// range (3)
-			template <class InputIterator>
-			vector(InputIterator first, InputIterator last,
-					const allocator_type& alloc = allocator_type());
+			// template <class InputIterator>
+			// vector(InputIterator first, InputIterator last,
+			// 		const allocator_type& alloc = allocator_type());
 					
-			// copy (4)
-			vector (const vector& x);
+			// // copy (4)
+			// vector (const vector& x);
 		
 		private:	
 		
@@ -66,7 +70,7 @@ namespace ft
 
 	template <typename T, class Alloc>
 	vector<T, Alloc>::vector(size_type n, const value_type& val, const allocator_type& alloc) :
-			_size(n), _alloc(alloc), _capacity(n)
+			_alloc(alloc), _size(n), _capacity(n)
 	{
 		_vector = _alloc.allocate(_size);
 		for (int i = 0; i < _size; ++i)
