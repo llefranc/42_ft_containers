@@ -31,6 +31,8 @@ last day of the CPP piscine.
 - [What's explicit keyword][5]
 - [Implemtenting iterators][6]
 - [Writing your own STL style container][7]
+- [Writing operator++ for iterator][8]
+- [Writing operator== for iterator][9]
 
 [1]: https://github.com/lucaslefrancq/42_CPP_piscine/blob/main/CPP08/cpp08.en.subject.pdf
 [2]: https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates
@@ -39,3 +41,5 @@ last day of the CPP piscine.
 [5]: https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean
 [6]: https://stackoverflow.com/questions/8054273/how-to-implement-an-stl-style-iterator-and-avoid-common-pitfalls
 [7]: https://stackoverflow.com/questions/7758580/writing-your-own-stl-container/7759622#7759622
+[8]: https://stackoverflow.com/questions/4329677/increment-operator-iterator-implementation
+[9]: https://stackoverflow.com/questions/12806657/writing-an-operator-function-for-an-iterator-in-c
