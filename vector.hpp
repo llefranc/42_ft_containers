@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/05 12:30:34 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/05 17:07:50 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ namespace ft
 	class vector
 	{
 		public:
+
 			/* -------- ALIASES -------- */
 			
 			typedef	T											value_type;
@@ -38,34 +39,25 @@ namespace ft
 			typedef	typename allocator_type::difference_type	difference_type;
 			typedef	typename allocator_type::size_type			size_type;
 
-			// class iterator
-			// {
-			// 	public:
-				
-			// 		typedef typename Alloc::difference_type difference_type;
-			// 		typedef typename Alloc::value_type value_type;
-			// 		typedef typename Alloc::reference reference;
-			// 		typedef typename Alloc::pointer pointer;
-			// 		typedef std::random_access_iterator_tag iterator_category;
-				
-			// 		iterator(value_type val) : _val(val) {}
-			// 		~iterator() {}
-
-			// 		reference operator*() { return (_val); }
-
-			// 	private:
-
-			// 		value_type	_val;
-			// };
 
 			/* -------- CONSTRUCTORS -------- */
 
 			// default (1)
-			explicit vector(const allocator_type& alloc = allocator_type());
+			explicit vector(const allocator_type& alloc = allocator_type()) :
+					_alloc(alloc), _size(0), _capacity(0)
+			{
+				_vector = _alloc.allocate(_size);
+			};
 
 			// fill (2)
 			explicit vector(size_type n, const value_type& val = value_type(),
-							const allocator_type& alloc = allocator_type());
+							const allocator_type& alloc = allocator_type()) :
+					_alloc(alloc), _size(n), _capacity(n)
+			{
+				_vector = _alloc.allocate(_size);
+				for (size_type i = 0; i < _size; ++i)
+					_vector[i] = val;
+			}
 							
 			// range (3)
 			// template <class InputIterator>
@@ -77,10 +69,9 @@ namespace ft
 
 			/* -------- METHODS -------- */
 			// typename vector<T, Alloc>::iterator begin () const;
-			iterator begin () const
-			{
-				return (iterator(*_vector));
-			}
+			iterator	begin() const		{ return (iterator(*_vector)); }
+			size_type	size() const		{ return (_size); }
+		
 		
 		private:	
 		
@@ -94,34 +85,30 @@ namespace ft
 	/* -------- CONSTRUCTORS -------- */
 
 	// default (1)
-	template <typename T, class Alloc>
-	vector<T, Alloc>::vector(const allocator_type& alloc) :
-			_alloc(alloc), _size(0), _capacity(0)
-	{
-		_vector = _alloc.allocate(_size);
-	}
-
-	// fill (2)
-	template <typename T, class Alloc>
-	vector<T, Alloc>::vector(size_type n, const value_type& val, const allocator_type& alloc) :
-			_alloc(alloc), _size(n), _capacity(n)
-	{
-		_vector = _alloc.allocate(_size);
-		for (size_type i = 0; i < _size; ++i)
-			_vector[i] = val;
-
-		for (size_type i = 0; i < _size; ++i)
-			std::cout << _vector[i] << "\n";
-	}
-
-	/* -------- METHODS -------- */
 	// template <typename T, class Alloc>
-	// typename vector<T, Alloc>::iterator vector<T, Alloc>::begin() const
+	// vector<T, Alloc>::vector(const allocator_type& alloc) :
+	// 		_alloc(alloc), _size(0), _capacity(0)
 	// {
-	// 	return (vector<T, Alloc>::iterator());
+	// 	_vector = _alloc.allocate(_size);
 	// }
+
+	// // fill (2)
 	// template <typename T, class Alloc>
-	// iterator vector<T, Alloc>::begin() const
+	// vector<T, Alloc>::vector(size_type n, const value_type& val, const allocator_type& alloc) :
+	// 		_alloc(alloc), _size(n), _capacity(n)
+	// {
+	// 	_vector = _alloc.allocate(_size);
+	// 	for (size_type i = 0; i < _size; ++i)
+	// 		_vector[i] = val;
+
+	// 	for (size_type i = 0; i < _size; ++i)
+	// 		std::cout << _vector[i] << "\n";
+	// }
+
+	// /* -------- METHODS -------- */
+	
+	// template <typename T, class Alloc>
+	// ft::random_iterator<T> vector<T, Alloc>::begin() const
 	// {
 	// 	return (iterator(*_vector));
 	// }

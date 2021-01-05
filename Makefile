@@ -6,7 +6,7 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/01/04 14:16:23 by llefranc         ###   ########.fr        #
+#    Updated: 2021/01/05 14:39:16 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			=	clang++
 FLAGS		=	-g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp 
-HEADER		=	Vector.hpp
+HEADER		=	vector.hpp random_access_iterator.hpp
 				
 OBJS		=	$(SRCS:.cpp=.o)
 
