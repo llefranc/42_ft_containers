@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/05 17:12:38 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/07 16:54:01 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,64 +16,50 @@
 #include <iterator>
 #include <memory>
 
+#include "bidirectional_iterator.hpp"
+
 namespace ft
 {
+
 	template<typename T, class Alloc = std::allocator<T> >
-	class random_iterator
+	class random_iterator : public ft::bidirec_iterator<T, Alloc>
 	{
 		public:
 
 			/* -------- ALIASES -------- */
 
-			typedef typename Alloc::difference_type difference_type;
-			typedef typename Alloc::value_type value_type;
-			typedef typename Alloc::reference reference;
-			typedef typename Alloc::pointer pointer;
-			typedef typename Alloc::size_type size_type;
+			typedef typename ft::bidirec_iterator<T, Alloc>::difference_type difference_type;
+			typedef typename ft::bidirec_iterator<T, Alloc>::value_type value_type;
+			typedef typename ft::bidirec_iterator<T, Alloc>::reference reference;
+			typedef typename ft::bidirec_iterator<T, Alloc>::pointer pointer;
+			typedef typename ft::bidirec_iterator<T, Alloc>::size_type size_type;
 			typedef std::random_access_iterator_tag iterator_category;
-
+			typedef typename ft::bidirec_iterator<T, Alloc> bidirec_iterator;
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			random_iterator() : _val() {}
-			random_iterator(value_type& val) : _val(&val) {}
-			random_iterator(const random_iterator& copy) : _val(copy._val) {};
+			random_iterator() : bidirec_iterator() {}
+			random_iterator(pointer val) : bidirec_iterator(val) {}
+			random_iterator(const random_iterator& copy) : bidirec_iterator(copy) {};
 			~random_iterator() {}
 
 			random_iterator& operator=(const random_iterator& assign)
 			{
-				if (this != &assign)
-					_val = assign._val;
+				using bidirec_iterator::operator=;
+
+				this = assign;
 				return (*this);
 			}
 
-
-			/* -------- OPERATORS -------- */
-
-			// INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
-
-			reference operator*()			{ return (*_val); }
-			pointer operator->() const		{ return (_val); }
-			
-			bool operator==(const random_iterator& it) const	{ return (it._val == _val); }
-			bool operator!=(const random_iterator& it) const	{ return (it._val != _val); }
-			bool operator<(const random_iterator& it) const		{ return (it._val > _val); }
-			bool operator>(const random_iterator& it) const		{ return (it._val < _val); }
-			bool operator<=(const random_iterator& it) const	{ return (it._val >= _val); }
-			bool operator>=(const random_iterator& it) const	{ return (it._val <= _val); }
-
-			random_iterator& operator++()		{ ++_val; return (*this); }
-			random_iterator operator++(int)		{ random_iterator res(*this); ++(*this); return (res); };
-			random_iterator& operator--()		{ --_val; return (*this); }
-			random_iterator operator--(int)		{ random_iterator res(*this); --(*this); return (res); };
-			
-			
-			// RANDOM ACCESS ITERATOR PART
+			bool operator<(const random_iterator& it) const		{ return (it._val > this->_val); }
+			bool operator>(const random_iterator& it) const		{ return (it._val < this->_val); }
+			bool operator<=(const random_iterator& it) const	{ return (it._val >= this->_val); }
+			bool operator>=(const random_iterator& it) const	{ return (it._val <= this->_val); }
 			
 			random_iterator& operator+=(size_type nb)
 			{
 				for (size_type i = 0; i < nb; i++)
-					++_val;
+					++this->_val;
 				return (*this);
 			}
 
@@ -89,7 +75,7 @@ namespace ft
 			random_iterator& operator-=(size_type nb)
 			{
 				for (size_type i = 0; i < nb; i++)
-					--_val;
+					--this->_val;
 				return (*this);
 			}
 
@@ -106,7 +92,7 @@ namespace ft
 			{
 				value_type* tmp;
 
-				tmp = _val;
+				tmp = this->_val;
 				for (size_type i = 0; i < nb; i++)
 					++tmp;
 				return (*tmp);
@@ -114,7 +100,7 @@ namespace ft
 
 			difference_type operator-(random_iterator it) const
 			{
-				return (_val - it._val);
+				return (this->_val - it._val);
 			}
 			
 
@@ -131,13 +117,8 @@ namespace ft
 				random_iterator newIt(it);
 				return (newIt -= nb);
 			}
-
-
-		private:
-
-			value_type*	_val;
 	};
-	
+
 } // namespace ft
 
 #endif
