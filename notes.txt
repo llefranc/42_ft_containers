@@ -85,3 +85,5 @@ utilisation des booleans
 - algortihm
 - explicit keyword / implicit conversion des arguments en argument de constructeur
 - nom dependant et typename
+- donnees et membres statiques
+- classes de traits

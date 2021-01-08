@@ -33,6 +33,8 @@ last day of the CPP piscine.
 - [Writing your own STL style container][7]
 - [Writing operator++ for iterator][8]
 - [Writing operator== for iterator][9]
+- [When use typename keyword][10]
+- [Cours sur les templates][11]
 
 [1]: https://github.com/lucaslefrancq/42_CPP_piscine/blob/main/CPP08/cpp08.en.subject.pdf
 [2]: https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates
@@ -43,3 +45,5 @@ last day of the CPP piscine.
 [7]: https://stackoverflow.com/questions/7758580/writing-your-own-stl-container/7759622#7759622
 [8]: https://stackoverflow.com/questions/4329677/increment-operator-iterator-implementation
 [9]: https://stackoverflow.com/questions/12806657/writing-an-operator-function-for-an-iterator-in-c
+[10]: https://stackoverflow.com/questions/7923369/when-is-the-typename-keyword-necessary
+[11]: https://cpp.developpez.com/cours/cpp/?page=page_14

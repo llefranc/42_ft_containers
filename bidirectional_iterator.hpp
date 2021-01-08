@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/07 17:02:20 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:33:30 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 #include <iterator>
 #include <memory>
 
+#include "const_or_not_const_templates.hpp"
+
 namespace ft
 {
-	template<typename T, class Alloc = std::allocator<T> >
+	template<typename T, bool B, class Alloc = std::allocator<T> >
 	class bidirec_iterator
 	{
 		public:
@@ -27,18 +29,21 @@ namespace ft
 
 			typedef typename Alloc::difference_type difference_type;
 			typedef typename Alloc::value_type value_type;
-			typedef typename Alloc::reference reference;
-			typedef typename Alloc::pointer pointer;
 			typedef typename Alloc::size_type size_type;
-			typedef std::bidirectional_iterator_tag iterator_category;
+			
+			typedef typename chooseConst<B, typename Alloc::reference, typename Alloc::const_reference>::type reference;
+			typedef typename chooseConst<B, typename Alloc::pointer, typename Alloc::const_pointer>::type pointer;
+			typedef typename Alloc::pointer nonConstPointer;
 
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			bidirec_iterator() : _val() {}
 			bidirec_iterator(pointer val) : _val(val) {}
-			bidirec_iterator(const bidirec_iterator& copy) : _val(copy._val) {};
+			bidirec_iterator(const bidirec_iterator<T, false, Alloc>& copy) { _val = copy.getNonCoinstPointer(); }
 			~bidirec_iterator() {}
+
+			nonConstPointer	getNonCoinstPointer() const		{ return _val; }
 
 			bidirec_iterator& operator=(const bidirec_iterator& assign)
 			{
@@ -54,7 +59,6 @@ namespace ft
 
 			reference operator*()			{ return (*_val); }
 			pointer operator->() const		{ return (_val); }
-			
 
 			bidirec_iterator& operator++()		{ ++_val; return (*this); }
 			bidirec_iterator operator++(int)		{ bidirec_iterator res(*this); ++(*this); return (res); };
@@ -66,7 +70,7 @@ namespace ft
 
 			protected:
 
-				pointer	_val;
+				nonConstPointer	_val;
 	};
 }
 

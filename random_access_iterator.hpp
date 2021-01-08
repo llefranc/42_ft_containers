@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/07 16:54:01 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:33:28 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,35 @@
 namespace ft
 {
 
-	template<typename T, class Alloc = std::allocator<T> >
-	class random_iterator : public ft::bidirec_iterator<T, Alloc>
+	template<typename T, bool B, class Alloc = std::allocator<T> >
+	class random_iterator : public ft::bidirec_iterator<T, B, Alloc>
 	{
 		public:
 
 			/* -------- ALIASES -------- */
 
-			typedef typename ft::bidirec_iterator<T, Alloc>::difference_type difference_type;
-			typedef typename ft::bidirec_iterator<T, Alloc>::value_type value_type;
-			typedef typename ft::bidirec_iterator<T, Alloc>::reference reference;
-			typedef typename ft::bidirec_iterator<T, Alloc>::pointer pointer;
-			typedef typename ft::bidirec_iterator<T, Alloc>::size_type size_type;
-			typedef std::random_access_iterator_tag iterator_category;
-			typedef typename ft::bidirec_iterator<T, Alloc> bidirec_iterator;
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::difference_type difference_type;
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::value_type value_type;
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::size_type size_type;
+			
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::reference reference;
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::pointer pointer;
+			typedef typename ft::bidirec_iterator<T, B, Alloc>::nonConstPointer nonConstPointer;
+
+			typedef typename ft::bidirec_iterator<T, B, Alloc> bidirec_iterator;
+			
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			random_iterator() : bidirec_iterator() {}
 			random_iterator(pointer val) : bidirec_iterator(val) {}
-			random_iterator(const random_iterator& copy) : bidirec_iterator(copy) {};
+			random_iterator(const random_iterator<T, false, Alloc>& copy) : bidirec_iterator(copy) {};
 			~random_iterator() {}
 
 			random_iterator& operator=(const random_iterator& assign)
 			{
-				using bidirec_iterator::operator=;
-
-				this = assign;
+				if (this != &assign)
+					bidirec_iterator::_val = assign._val;
 				return (*this);
 			}
 

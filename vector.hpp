@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/07 16:53:37 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:04:40 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ namespace ft
 			typedef	typename allocator_type::pointer			pointer;
 			typedef	typename allocator_type::const_pointer		const_pointer;
 			// !!!!! FAIRE LES TYPEDEF DES ITERATEURS
-			typedef typename ft::random_iterator<T>				iterator;
+			typedef typename ft::random_iterator<T, false, Alloc>	iterator;
+			typedef typename ft::random_iterator<T, true, Alloc>	const_iterator;
 			
 			typedef	typename allocator_type::difference_type	difference_type;
 			typedef	typename allocator_type::size_type			size_type;
@@ -95,9 +96,12 @@ namespace ft
 			}
 
 			/* -------- METHODS -------- */
-			iterator	begin() const		{ return (iterator(_vector)); }
-			iterator	end() const			{ return (iterator(_end)); }
-			size_type	size() const		{ return (_size); }
+			iterator		begin()				{ return (iterator(_vector)); }
+			const_iterator	begin() const		{ return (const_iterator(_vector)); }
+			iterator		end()				{ return (iterator(_end)); }
+			const_iterator	end() const			{ return (const_iterator(_end)); }
+
+			size_type		size() const		{ return (_size); }
 		
 			/* -------- HELENE PARTIE <3 -------- */
 
