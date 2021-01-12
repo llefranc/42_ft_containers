@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/08 17:33:30 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:21:57 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iterator>
 #include <memory>
 
-#include "const_or_not_const_templates.hpp"
+#include "../templates/type1_or_type2.hpp"
 
 namespace ft
 {

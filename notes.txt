@@ -87,3 +87,4 @@ utilisation des booleans
 - nom dependant et typename
 - donnees et membres statiques
 - classes de traits
+- SFINAE, enable_if

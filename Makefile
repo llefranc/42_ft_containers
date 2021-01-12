@@ -6,17 +6,23 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/01/08 16:54:50 by llefranc         ###   ########.fr        #
+#    Updated: 2021/01/12 16:09:59 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	containers
+NAME		=	cont.out
 CC			=	clang++
 FLAGS		=	-g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp 
-HEADER		=	vector.hpp random_access_iterator.hpp const_or_not_const_templates.hpp \
-				bidirectional_iterator.hpp
+
+HEADER_CON	=	vector.hpp
+HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp
+HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp
+
+PATH_CON	=	containers/
+PATH_TEM	=	templates/
+PATH_ITE	=	iterators/
 				
 OBJS		=	$(SRCS:.cpp=.o)
 
@@ -25,7 +31,8 @@ all		: 	$(NAME)
 $(NAME)	:	$(OBJS)
 			$(CC) -o $(NAME) $(FLAGS) $(OBJS)
 
-$(OBJS)	:	$(HEADER)
+$(OBJS)	:	$(addprefix $(PATH_CON), $(HEADER_CON)) $(addprefix $(PATH_TEM), $(HEADER_TEM)) \
+			$(addprefix $(PATH_ITE), $(HEADER_ITE))
 
 clean	:	
 				rm -rf $(OBJS)

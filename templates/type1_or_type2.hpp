@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   const_or_not_const_templates.hpp                   :+:      :+:    :+:   */
+/*   type1_or_type2.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 16:47:38 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/08 17:02:04 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:21:48 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONST_OR_NOT_CONST_TEMPLATES_HPP
-#define CONST_OR_NOT_CONST_TEMPLATES_HPP
+#ifndef TYPE1_OR_TYPE2_HPP
+#define TYPE1_OR_TYPE2_HPP
 
 namespace ft
 {
