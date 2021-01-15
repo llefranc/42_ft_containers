@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/12 16:10:15 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:17:37 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ namespace ft
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			random_iterator() : bidirec_iterator() {}
-			random_iterator(pointer val) : bidirec_iterator(val) {}
+			random_iterator(nonConstPointer val = 0) : bidirec_iterator(val) {}
 			random_iterator(const random_iterator<T, false, Alloc>& copy) : bidirec_iterator(copy) {};
 			~random_iterator() {}
 

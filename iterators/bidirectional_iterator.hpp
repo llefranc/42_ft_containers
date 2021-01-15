@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/12 15:21:57 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 16:17:42 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ namespace ft
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			bidirec_iterator() : _val() {}
-			bidirec_iterator(pointer val) : _val(val) {}
+			bidirec_iterator(nonConstPointer val = 0) : _val(val) {}
 			bidirec_iterator(const bidirec_iterator<T, false, Alloc>& copy) { _val = copy.getNonCoinstPointer(); }
 			~bidirec_iterator() {}
 

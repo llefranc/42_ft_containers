@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/12 18:11:45 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/13 15:32:19 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,67 @@ int main()
 	// 	vvv.push_back(1);
 	// }
 
-	int nbb = 5;
-	ft::enable_if<ft::random_iterator<int, true> >::type* ptr = &nbb;
+	// testing enable if and range constructor (with iterators)
+	// int nbb = 5;
+	// ft::enable_if<ft::random_iterator<int, true> >::type* ptr = &nbb;
 
-	*ptr =3;
-	std::cout << *ptr << "\n";
-	ft::vector<int> vec(5, 100);
+	// *ptr =3;
+	// std::cout << *ptr << "\n";
+
+	{
+		std::cout << "\n------------------- TEST vector -------------------\n";
+		ft::vector<int> my_vec(5, 100);
+		std::vector<int> std_vec(5, 100);
+
+
+		std::cout << "\n\t----- TEST operator[] -----\n";
+		
+		std::cout << "MINE: ";
+		for (size_t i = 0; i < my_vec.size(); ++i)
+			std::cout << my_vec[i] << " ";
+		std::cout << std::endl;
+		
+		std::cout << "TRUE: ";
+		for (size_t i = 0; i < std_vec.size(); ++i)
+			std::cout << std_vec[i] << " ";
+		std::cout << std::endl;
+		
+
+		std::cout << "\n\t----- TEST iterators -----\n";
+		
+		std::cout << "MINE: ";
+		for (ft::vector<int>::iterator it = my_vec.begin(); it != my_vec.end(); it++)
+			std::cout << *it << " ";
+		std::cout << std::endl;
+
+		std::cout << "TRUE: ";
+		for (std::vector<int>::iterator it = std_vec.begin(); it != std_vec.end(); it++)
+			std::cout << *it << " ";
+		std::cout << std::endl;
+	}
+
+	{
+		std::cout << "\n------------------- TEST const vector -------------------\n";
+		const ft::vector<int> my_vec(5, 100);
+		const std::vector<int> std_vec(5, 100);
+
+		std::cout << "\n\t----- TEST operator[] -----\n";
+
+		std::cout << "MINE: ";
+		for (size_t i = 0; i < my_vec.size(); ++i)
+			std::cout << my_vec[i] << " ";
+		std::cout << std::endl;
+
+		std::cout << "TRUE: ";
+		for (size_t i = 0; i < std_vec.size(); ++i)
+			std::cout << std_vec[i] << " ";
+		std::cout << std::endl;
+
+		// std::cout << "\n----- TEST iterators -----\n";
+		// for (ft::vector<int>::const_iterator it = vec.begin(); it != vec.end(); it++)
+		// 	std::cout << *it << " ";
+		// std::cout << std::endl;
+	}
 
 	// int *ptr1 = new int [5];
 	// int *ptr2 = ptr1 + 1;
@@ -57,14 +112,17 @@ int main()
 	// for (std::vector<int>::iterator it = tt2.begin(); it != tt2.end(); it++)
 	// 	std::cout << *it << " ";
 	// std::cout << "\n";
+	
+	
+	// ft::vector<int> vec(5, 100);
+	// ft::vector<int> tt(vec.begin(), vec.end());
 
+	// for (ft::vector<int>::iterator it = tt.begin(); it != tt.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << "\n";
 
-	ft::vector<int> tt(vec.begin(), vec.end());
-
-	for (ft::vector<int>::iterator it = tt.begin(); it != tt.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n";
-
+	// ft::vector<char> v1;
+	// std::cout << v1.capacity() << "\n";
 	/* ------------------------ VECTOR ITERATORS TEST ------------------------ */
 	
 	// // std::cout << ft::is_int<char>

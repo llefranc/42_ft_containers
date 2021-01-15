@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/12 17:03:45 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 14:55:51 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,6 @@ namespace ft
 	template <typename T>
 	struct enable_if<ft::random_iterator<T, false> > { typedef int type; };
 
-	/* ----------------------------- IS_ITERATOR ---------------------------- */
-	// template <typename T>
-	// struct is_int
-	// {
-	// 	char	take_type(int& x);
-	// 	double	take_type(...);
-
-	// 	T		type;
-	// 	// bool	value = (sizeof(char) == sizeof(take_type(type)));
-	// 	bool	value;
-	// };
-
-	// template <>
-	// struct is_int<T> { value = (sizeof(char) == sizeof(take_type(type))); }
-
-	// template <typename T>
-	// struct is_int { typedef 0 value; };
-	
-	// template <>
-	// struct is_int<int> { typedef 1 value; };
 } // namespace ft
 
 #endif

@@ -1,0 +1,187 @@
+
+-------------------------------
+------- TESTING VECTOR 1 ------
+-------------------------------
+		VECTOR TYPE: char
+
+test 1: operator[]: 
+test 2: size: 0
+test 3: capacity: 0
+test 4: empty: 1
+test 5: iterators: 
+
+-------------------------------
+------- TESTING VECTOR 2 ------
+-------------------------------
+		VECTOR TYPE: char
+
+test 6: operator[]: c c c c c c c c c c c c 
+test 7: size: 12
+test 8: capacity: 12
+test 9: empty: 0
+test 10: iterators: c c c c c c c c c c c c 
+
+-------------------------------
+------- TESTING VECTOR 3 ------
+-------------------------------
+		VECTOR TYPE: char
+
+test 11: operator[]: c c c c c c c c c c c c 
+test 12: size: 12
+test 13: capacity: 12
+test 14: empty: 0
+test 15: iterators: c c c c c c c c c c c c 
+
+-------------------------------
+------- TESTING VECTOR 4 ------
+-------------------------------
+		VECTOR TYPE: int
+
+test 16: operator[]: 100 100 100 100 100 
+test 17: size: 5
+test 18: capacity: 5
+test 19: empty: 0
+test 20: iterators: 100 100 100 100 100 
+
+-------------------------------
+------- TESTING VECTOR 5 ------
+-------------------------------
+		VECTOR TYPE: int
+
+test 21: operator[]: 
+test 22: size: 0
+test 23: capacity: 0
+test 24: empty: 1
+test 25: iterators: 
+
+-------------------------------
+------- TESTING VECTOR 6 ------
+-------------------------------
+		VECTOR TYPE: int
+
+test 26: operator[]: 89123891 
+test 27: size: 1
+test 28: capacity: 1
+test 29: empty: 0
+test 30: iterators: 89123891 
+
+-------------------------------
+------- TESTING VECTOR 7 ------
+-------------------------------
+		VECTOR TYPE: int
+
+test 31: operator[]: 100 100 100 100 100 
+test 32: size: 5
+test 33: capacity: 5
+test 34: empty: 0
+test 35: iterators: 100 100 100 100 100 
+
+-------------------------------
+------- TESTING VECTOR 8 ------
+-------------------------------
+		VECTOR TYPE: double*
+
+test 36: operator[]: 
+test 37: size: 0
+test 38: capacity: 0
+test 39: empty: 1
+test 40: iterators: 
+
+-------------------------------
+------- TESTING VECTOR 9 ------
+-------------------------------
+		VECTOR TYPE: double*
+
+test 41: operator[]: 0x7ffee04170e0 
+test 42: size: 1
+test 43: capacity: 1
+test 44: empty: 0
+test 45: iterators: 0x7ffee04170e0 
+
+-------------------------------
+------- TESTING VECTOR 10 ------
+-------------------------------
+		VECTOR TYPE: std::string
+
+test 46: operator[]: salut salut salut salut salut salut 
+test 47: size: 6
+test 48: capacity: 6
+test 49: empty: 0
+test 50: iterators: salut salut salut salut salut salut 
+
+-------------------------------
+------- TESTING VECTOR 11 ------
+-------------------------------
+		VECTOR TYPE: std::string
+
+test 51: operator[]: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut salut 
+test 52: size: 6
+test 53: capacity: 6
+test 54: empty: 0
+test 55: iterators: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut salut 
+
+-------------------------------
+------- TESTING VECTOR 12 ------
+-------------------------------
+		VECTOR TYPE: std::string
+
+test 56: operator[]:     
+test 57: size: 4
+test 58: capacity: 4
+test 59: empty: 0
+test 60: iterators:     
+
+-------------------------------
+------- TESTING VECTOR 13 ------
+-------------------------------
+		VECTOR TYPE: Class test
+
+test 61: operator[]: Class test printing Class test printing 
+test 62: size: 2
+test 63: capacity: 2
+test 64: empty: 0
+test 65: iterators: Class test printing Class test printing 
+
+-------------------------------
+------- TESTING VECTOR 14 ------
+-------------------------------
+		VECTOR TYPE: Class test
+
+test 66: operator[]: Class test printing Class test printing 
+test 67: size: 2
+test 68: capacity: 2
+test 69: empty: 0
+test 70: iterators: Class test printing Class test printing 
+
+-------------------------------
+------- TESTING VECTOR 15 ------
+-------------------------------
+		VECTOR TYPE: int
+
+test 71: operator[]: 100 100 100 100 100 
+test 72: size: 5
+test 73: capacity: 5
+test 74: empty: 0
+test 75: iterators: 100 100 100 100 100 
+
+-------------------------------
+------- TESTING VECTOR 16 ------
+-------------------------------
+		VECTOR TYPE: char
+
+test 76: operator[]: c c c c c c c c c c c c 
+test 77: size: 12
+test 78: capacity: 12
+test 79: empty: 0
+test 80: iterators: c c c c c c c c c c c c 
+
+-------------------------------
+------- TESTING VECTOR 17 ------
+-------------------------------
+		VECTOR TYPE: std::string
+
+test 81: operator[]: bonjour bonjour bonjour 
+test 82: size: 3
+test 83: capacity: 3
+test 84: empty: 0
+test 85: iterators: bonjour bonjour bonjour 
