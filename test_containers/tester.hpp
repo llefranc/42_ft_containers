@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_type.hpp                                     :+:      :+:    :+:   */
+/*   tester.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/15 14:32:08 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 17:26:57 by llefranc         ###   ########.fr       */
+/*   Created: 2021/01/15 17:27:13 by llefranc          #+#    #+#             */
+/*   Updated: 2021/01/15 17:28:22 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_TYPE
-#define PRINT_TYPE
+#ifndef TESTER_HPP
+#define TESTER_HPP
 
 #include <iostream>
-#include <string>
+#include <fstream>
+#include <vector>
 
+#include "../containers/vector.hpp"
+#include "../templates/stl_like.hpp"
+#include "vector_test.hpp"
 #include "Bob_test.hpp"
 
-template <typename T>
-void print_type() {}
-
-template <>
-void print_type<int>() { std::cout << "int\n\n"; }
-
-template <>
-void print_type<char>() { std::cout << "char\n\n"; }
-
-template <>
-void print_type<Bob>() { std::cout << "Class test\n\n"; }
-
-template <>
-void print_type<double*>() { std::cout << "double*\n\n"; }
-
-template <>
-void print_type<std::string>() { std::cout << "std::string\n\n"; }
+#define NOTCONST 0
+#define CONST 1
 
 #endif

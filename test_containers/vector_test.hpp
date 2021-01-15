@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 16:18:13 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:37:12 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,68 @@ void	testIterators(T& vec)
 }
 
 template <typename T>
+void	testAt(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "at: ";
+	
+	for (size_t i = 0; i < vec.size(); ++i)
+	{
+		try
+		{
+			std::cout << vec.at(i) << " ";
+		}
+		catch (std::out_of_range& e)
+		{
+			std::cout << e.what();
+		}
+	}
+	
+	// Throwing an exception
+	try
+	{
+		std::cout << vec.at(100000) << " ";
+	}
+	catch (std::out_of_range& e)
+	{
+		std::cout << e.what();
+	}
+	
+	std::cout << std::endl;
+}
+
+template <typename T>
+void	testFront(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "front: ";
+	
+	if (vec.size()) // To prevent overflow
+		std::cout << vec.front() << std::endl;
+}
+
+template <typename T>
+void	testBack(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "back: ";
+	
+	if (vec.size()) // To prevent overflow
+		std::cout << vec.back() << std::endl;
+}
+
+template <typename T>
+void	testPushBack(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "push_back: ";
+	
+	if (vec.size())
+		vec.push_back(*vec.begin());
+	std::cout << "new elem = " << vec.back();
+}
+
+template <typename T>
 void	executeAllVecTests(T& vec, int testNb)
 {
 	std::cout << "\n-------------------------------\n";
@@ -78,11 +140,40 @@ void	executeAllVecTests(T& vec, int testNb)
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
 	
+	// Tests for non-const vectors
 	testOperatorBracelet(vec);
 	testSize(vec);
 	testCapacity(vec);
 	testEmpty(vec);
 	testIterators(vec);
+	testAt(vec);
+	testFront(vec);
+	testBack(vec);
+	testPushBack(vec);
+}
+
+template <typename T>
+void	executeAllVecTests(T& vec, int testNb, bool isConst)
+{
+	std::cout << "\n-------------------------------\n";
+	std::cout << "------- TESTING VECTOR " << testNb << " ------\n";
+	std::cout << "-------------------------------\n";
+	
+	std::cout << "\t\tVECTOR TYPE: ";
+	print_type<typename T::value_type>();
+	
+	// Tests for const vectors
+	testOperatorBracelet(vec);
+	testSize(vec);
+	testCapacity(vec);
+	testEmpty(vec);
+	testIterators(vec);
+	testAt(vec);
+	testFront(vec);
+	testBack(vec);
+
+	if (!isConst)
+		return ;
 }
 
 #endif

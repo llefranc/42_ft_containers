@@ -6,18 +6,11 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 16:20:35 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 17:34:59 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-
-#include "../containers/vector.hpp"
-#include "../templates/stl_like.hpp"
-#include "vector_test.hpp"
-#include "Bob_test.hpp"
+#include "tester.hpp"
 
 void	printTestNumber(int *nb)
 {
@@ -56,6 +49,7 @@ int		testAllVectors()
 			vector<std::string> v9(6, "salut");
 			vector<std::string> v10(v9);
 			v10[0] = "jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf";
+			v10[5] = "jbhkfbhsj";
 			vector<std::string> v11(4);
 			vector<Bob> v12(2);
 			vector<Bob> v13(v12);
@@ -80,9 +74,9 @@ int		testAllVectors()
 			executeAllVecTests(v11, ++testNb);
 			executeAllVecTests(v12, ++testNb);
 			executeAllVecTests(v13, ++testNb);
-			executeAllVecTests(v14, ++testNb);
-			executeAllVecTests(v15, ++testNb);
-			executeAllVecTests(v16, ++testNb);
+			executeAllVecTests(v14, ++testNb, CONST);
+			executeAllVecTests(v15, ++testNb, CONST);
+			executeAllVecTests(v16, ++testNb, CONST);
 		}
 
 		// testing std::vector
@@ -106,6 +100,7 @@ int		testAllVectors()
 			vector<std::string> v9(6, "salut");
 			vector<std::string> v10(v9);
 			v10[0] = "jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf";
+			v10[5] = "jbhkfbhsj";
 			vector<std::string> v11(4);
 			vector<Bob> v12(2);
 			vector<Bob> v13(v12);
@@ -128,9 +123,9 @@ int		testAllVectors()
 			executeAllVecTests(v11, ++testNb);
 			executeAllVecTests(v12, ++testNb);
 			executeAllVecTests(v13, ++testNb);
-			executeAllVecTests(v14, ++testNb);
-			executeAllVecTests(v15, ++testNb);
-			executeAllVecTests(v16, ++testNb);
+			executeAllVecTests(v14, ++testNb, CONST);
+			executeAllVecTests(v15, ++testNb, CONST);
+			executeAllVecTests(v16, ++testNb, CONST);
 		}
 
 		std::cout.rdbuf(coutbuf); //reset to standard output again
@@ -140,9 +135,11 @@ int		testAllVectors()
 
 int main()
 {
-	{
-		testAllVectors();
-		#define testSTD
-		testAllVectors();
-	}
+
+	ft::vector<char> v1(12, 'c');
+
+	executeAllVecTests(v1, 0);
+
+	
+	// testAllVectors();
 }

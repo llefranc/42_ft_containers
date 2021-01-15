@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 16:15:14 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/15 18:10:36 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 // #include <memory>
 #include <iostream>
+#include <stdexcept>
 
 #include "../iterators/random_access_iterator.hpp"
 #include "../templates/stl_like.hpp"
+
+#include <cstdio>
 
 namespace ft
 {
@@ -137,6 +140,9 @@ namespace ft
 			/* ------------------------- OPERATOR= ------------------------- */
 			
 			// vector& operator= (const vector& x)
+			// {
+				
+			// }
 
 
 			/* ------------------------- ITERATORS ------------------------- */
@@ -160,12 +166,26 @@ namespace ft
 			/* ---------------------- ELEMENTS ACCESS ---------------------- */
 			reference operator[] (size_type n)				{ return _vector[n]; }
 			const_reference operator[] (size_type n) const	{ return _vector[n]; }
-			// reference at (size_type n);
-			// const_reference at (size_type n) const;
-			// reference front();
-			// const_reference front() const;
-			// reference back();
-			// const_reference back() const;
+			
+			reference at(size_type n)
+			{
+				if (!(n < _size))
+					throw std::out_of_range("vector");
+				return _vector[n];
+			}
+
+			const_reference at(size_type n) const
+			{
+				if (!(n < _size))
+					throw std::out_of_range("vector");
+				return _vector[n];
+			}
+			
+			reference front()								{ return _vector[0]; }
+			const_reference front() const					{ return _vector[0]; }
+			
+			reference back()								{ return _vector[_size - 1]; }
+			const_reference back() const					{ return _vector[_size - 1]; }
 
 
 			/* ------------------------- MODIFIERS ------------------------- */
@@ -174,7 +194,17 @@ namespace ft
 			// void assign (InputIterator first, InputIterator last);
 			// fill (2)	
 			// void assign (size_type n, const value_type& val);
-			// void push_back (const value_type& val);
+			void push_back (const value_type& val)
+			{
+				if (_size + 1 > _capacity)
+					_vector = reallocate();
+				std::cout << "size = " << _size << "\n";
+				printf("veccccc = %p\n", _vector);
+				_vector[_size] = val;
+				(void)val;
+				// ++_size;
+			}
+
 			// void pop_back();
 			// single element (1)	
 			// iterator insert (iterator position, const value_type& val);
@@ -218,6 +248,43 @@ namespace ft
 			pointer				_end;			// Pointer at the end of T values array
 			size_type			_size;			// Number of T values inside the vector
 			size_type			_capacity;		// Capacity allocated (can be greater than size)
+
+			pointer	reallocate()
+			{
+				size_type newCapacity;
+				
+				if (!_capacity)
+					newCapacity = _capacity + 1;
+				else
+					newCapacity = _capacity * 2;
+
+				pointer		tmp;
+				// tmp = _alloc.allocate(newCapacity);
+				tmp = new T[newCapacity];
+
+				std::cout << "new cap = " << newCapacity << "\n";
+				printf("%p\n", tmp);
+				printf("%p\n", _vector);
+
+				// std::cout << "tmp = " << &tmp << "\n";
+				// std::cout << " et _vecotr = " << _vector << "\n";
+				for (size_type i = 0; i < _size; ++i)
+					tmp[i] = _vector[i];
+
+				// this->~vector();
+				// for (iterator it = begin(); it != end(); ++it)
+				// 	_alloc.destroy(&(*it));
+				// _alloc.deallocate(_vector, _capacity);
+				delete [] _vector;
+
+				_capacity = newCapacity;
+				_vector = tmp;
+				std::cout << tmp[_size] << "\n";
+				std::cout << _vector[_size] << "\n";
+				printf("%p\n", tmp);
+				printf("%p\n", _vector);
+				return tmp;
+			}
 	};
 }
 
