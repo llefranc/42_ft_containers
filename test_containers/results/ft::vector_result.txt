@@ -1,0 +1,533 @@
+
+
+--------------------------------
+------	TESTING VECTOR 1 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 1:	operator[]: 
+test 2:	size: 0
+test 3:	capacity: 0
+test 4:	empty: 1
+test 5:	iterators: 
+test 6:	at: vector
+test 7:	front: 
+test 8:	back: 
+test 9:	push_back: 
+test 10:	pop_back: 
+test 11:	swap: size of tmp = 0 and size of vec = 0
+			size of tmp = 0 and size of vec = 0
+test 12:	resize: size of tmp = 0
+size of tmp after resize = 3
+test 13:	clear: size before clear: 0 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 2 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 14:	operator[]: c c c c c c c c c c c c 
+test 15:	size: 12
+test 16:	capacity: 12
+test 17:	empty: 0
+test 18:	iterators: c c c c c c c c c c c c 
+test 19:	at: c c c c c c c c c c c c vector
+test 20:	front: c
+test 21:	back: c
+test 22:	push_back: new elem = c
+test 23:	pop_back: new elem = c
+test 24:	swap: size of tmp = 13 and size of vec = 12
+			size of tmp = 12 and size of vec = 13
+test 25:	resize: size of tmp = 13
+new elem = csize of tmp after resize = 3
+test 26:	clear: size before clear: 13 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 3 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 27:	operator[]: c c c c c c c c c c c c 
+test 28:	size: 12
+test 29:	capacity: 12
+test 30:	empty: 0
+test 31:	iterators: c c c c c c c c c c c c 
+test 32:	at: c c c c c c c c c c c c vector
+test 33:	front: c
+test 34:	back: c
+test 35:	push_back: new elem = c
+test 36:	pop_back: new elem = c
+test 37:	swap: size of tmp = 13 and size of vec = 12
+			size of tmp = 12 and size of vec = 13
+test 38:	resize: size of tmp = 13
+new elem = csize of tmp after resize = 3
+test 39:	clear: size before clear: 13 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 4 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 40:	operator[]: a 
+test 41:	size: 1
+test 42:	capacity: 1
+test 43:	empty: 0
+test 44:	iterators: a 
+test 45:	at: a vector
+test 46:	front: a
+test 47:	back: a
+test 48:	push_back: new elem = a
+test 49:	pop_back: new elem = a
+test 50:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 51:	resize: size of tmp = 2
+new elem = asize of tmp after resize = 3
+test 52:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 5 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 53:	operator[]: a 
+test 54:	size: 1
+test 55:	capacity: 1
+test 56:	empty: 0
+test 57:	iterators: a 
+test 58:	at: a vector
+test 59:	front: a
+test 60:	back: a
+test 61:	push_back: new elem = a
+test 62:	pop_back: new elem = a
+test 63:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 64:	resize: size of tmp = 2
+new elem = asize of tmp after resize = 3
+test 65:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 6 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 66:	operator[]: 100 100 100 100 100 
+test 67:	size: 5
+test 68:	capacity: 5
+test 69:	empty: 0
+test 70:	iterators: 100 100 100 100 100 
+test 71:	at: 100 100 100 100 100 vector
+test 72:	front: 100
+test 73:	back: 100
+test 74:	push_back: new elem = 100
+test 75:	pop_back: new elem = 100
+test 76:	swap: size of tmp = 6 and size of vec = 5
+			size of tmp = 5 and size of vec = 6
+test 77:	resize: size of tmp = 6
+new elem = 100size of tmp after resize = 3
+test 78:	clear: size before clear: 6 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 7 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 79:	operator[]: 
+test 80:	size: 0
+test 81:	capacity: 0
+test 82:	empty: 1
+test 83:	iterators: 
+test 84:	at: vector
+test 85:	front: 
+test 86:	back: 
+test 87:	push_back: 
+test 88:	pop_back: 
+test 89:	swap: size of tmp = 0 and size of vec = 0
+			size of tmp = 0 and size of vec = 0
+test 90:	resize: size of tmp = 0
+size of tmp after resize = 3
+test 91:	clear: size before clear: 0 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 8 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 92:	operator[]: 89123891 
+test 93:	size: 1
+test 94:	capacity: 1
+test 95:	empty: 0
+test 96:	iterators: 89123891 
+test 97:	at: 89123891 vector
+test 98:	front: 89123891
+test 99:	back: 89123891
+test 100:	push_back: new elem = 89123891
+test 101:	pop_back: new elem = 89123891
+test 102:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 103:	resize: size of tmp = 2
+new elem = 89123891size of tmp after resize = 3
+test 104:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 9 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 105:	operator[]: 100 100 100 100 100 
+test 106:	size: 5
+test 107:	capacity: 5
+test 108:	empty: 0
+test 109:	iterators: 100 100 100 100 100 
+test 110:	at: 100 100 100 100 100 vector
+test 111:	front: 100
+test 112:	back: 100
+test 113:	push_back: new elem = 100
+test 114:	pop_back: new elem = 100
+test 115:	swap: size of tmp = 6 and size of vec = 5
+			size of tmp = 5 and size of vec = 6
+test 116:	resize: size of tmp = 6
+new elem = 100size of tmp after resize = 3
+test 117:	clear: size before clear: 6 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 10 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 118:	operator[]: 100 100 100 100 100 
+test 119:	size: 5
+test 120:	capacity: 5
+test 121:	empty: 0
+test 122:	iterators: 100 100 100 100 100 
+test 123:	at: 100 100 100 100 100 vector
+test 124:	front: 100
+test 125:	back: 100
+test 126:	push_back: new elem = 100
+test 127:	pop_back: new elem = 100
+test 128:	swap: size of tmp = 6 and size of vec = 5
+			size of tmp = 5 and size of vec = 6
+test 129:	resize: size of tmp = 6
+new elem = 100size of tmp after resize = 3
+test 130:	clear: size before clear: 6 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 11 ------
+--------------------------------
+		VECTOR TYPE: double*
+
+test 131:	operator[]: 
+test 132:	size: 0
+test 133:	capacity: 0
+test 134:	empty: 1
+test 135:	iterators: 
+test 136:	at: vector
+test 137:	front: 
+test 138:	back: 
+test 139:	push_back: 
+test 140:	pop_back: 
+test 141:	swap: size of tmp = 0 and size of vec = 0
+			size of tmp = 0 and size of vec = 0
+test 142:	resize: size of tmp = 0
+size of tmp after resize = 3
+test 143:	clear: size before clear: 0 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 12 ------
+--------------------------------
+		VECTOR TYPE: double*
+
+test 144:	operator[]: 0x7ffee3931a80 
+test 145:	size: 1
+test 146:	capacity: 1
+test 147:	empty: 0
+test 148:	iterators: 0x7ffee3931a80 
+test 149:	at: 0x7ffee3931a80 vector
+test 150:	front: 0x7ffee3931a80
+test 151:	back: 0x7ffee3931a80
+test 152:	push_back: new elem = 0x7ffee3931a80
+test 153:	pop_back: new elem = 0x7ffee3931a80
+test 154:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 155:	resize: size of tmp = 2
+new elem = 0x7ffee3931a80size of tmp after resize = 3
+test 156:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 13 ------
+--------------------------------
+		VECTOR TYPE: double*
+
+test 157:	operator[]: 0x7ffee3931a80 
+test 158:	size: 1
+test 159:	capacity: 1
+test 160:	empty: 0
+test 161:	iterators: 0x7ffee3931a80 
+test 162:	at: 0x7ffee3931a80 vector
+test 163:	front: 0x7ffee3931a80
+test 164:	back: 0x7ffee3931a80
+test 165:	push_back: new elem = 0x7ffee3931a80
+test 166:	pop_back: new elem = 0x7ffee3931a80
+test 167:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 168:	resize: size of tmp = 2
+new elem = 0x7ffee3931a80size of tmp after resize = 3
+test 169:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 14 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 170:	operator[]: salut salut salut salut salut salut 
+test 171:	size: 6
+test 172:	capacity: 6
+test 173:	empty: 0
+test 174:	iterators: salut salut salut salut salut salut 
+test 175:	at: salut salut salut salut salut salut vector
+test 176:	front: salut
+test 177:	back: salut
+test 178:	push_back: new elem = salut
+test 179:	pop_back: new elem = salut
+test 180:	swap: size of tmp = 7 and size of vec = 6
+			size of tmp = 6 and size of vec = 7
+test 181:	resize: size of tmp = 7
+new elem = salutsize of tmp after resize = 3
+test 182:	clear: size before clear: 7 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 15 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 183:	operator[]: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
+test 184:	size: 6
+test 185:	capacity: 6
+test 186:	empty: 0
+test 187:	iterators: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
+test 188:	at: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj vector
+test 189:	front: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 190:	back: jbhkfbhsj
+test 191:	push_back: new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 192:	pop_back: new elem = jbhkfbhsj
+test 193:	swap: size of tmp = 7 and size of vec = 6
+			size of tmp = 6 and size of vec = 7
+test 194:	resize: size of tmp = 7
+new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdfsize of tmp after resize = 3
+test 195:	clear: size before clear: 7 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 16 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 196:	operator[]:     
+test 197:	size: 4
+test 198:	capacity: 4
+test 199:	empty: 0
+test 200:	iterators:     
+test 201:	at:     vector
+test 202:	front: 
+test 203:	back: 
+test 204:	push_back: new elem = 
+test 205:	pop_back: new elem = 
+test 206:	swap: size of tmp = 5 and size of vec = 4
+			size of tmp = 4 and size of vec = 5
+test 207:	resize: size of tmp = 5
+new elem = size of tmp after resize = 3
+test 208:	clear: size before clear: 5 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 17 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 209:	operator[]: salut salut salut salut salut salut 
+test 210:	size: 6
+test 211:	capacity: 6
+test 212:	empty: 0
+test 213:	iterators: salut salut salut salut salut salut 
+test 214:	at: salut salut salut salut salut salut vector
+test 215:	front: salut
+test 216:	back: salut
+test 217:	push_back: new elem = salut
+test 218:	pop_back: new elem = salut
+test 219:	swap: size of tmp = 7 and size of vec = 6
+			size of tmp = 6 and size of vec = 7
+test 220:	resize: size of tmp = 7
+new elem = salutsize of tmp after resize = 3
+test 221:	clear: size before clear: 7 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 18 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 222:	operator[]: salut salut salut salut salut salut 
+test 223:	size: 6
+test 224:	capacity: 6
+test 225:	empty: 0
+test 226:	iterators: salut salut salut salut salut salut 
+test 227:	at: salut salut salut salut salut salut vector
+test 228:	front: salut
+test 229:	back: salut
+test 230:	push_back: new elem = salut
+test 231:	pop_back: new elem = salut
+test 232:	swap: size of tmp = 7 and size of vec = 6
+			size of tmp = 6 and size of vec = 7
+test 233:	resize: size of tmp = 7
+new elem = salutsize of tmp after resize = 3
+test 234:	clear: size before clear: 7 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 19 ------
+--------------------------------
+		VECTOR TYPE: Class test
+
+test 235:	operator[]: Class test printing Class test printing 
+test 236:	size: 2
+test 237:	capacity: 2
+test 238:	empty: 0
+test 239:	iterators: Class test printing Class test printing 
+test 240:	at: Class test printing Class test printing vector
+test 241:	front: Class test printing
+test 242:	back: Class test printing
+test 243:	push_back: new elem = Class test printing
+test 244:	pop_back: new elem = Class test printing
+test 245:	swap: size of tmp = 3 and size of vec = 2
+			size of tmp = 2 and size of vec = 3
+test 246:	resize: size of tmp = 3
+new elem = Class test printingsize of tmp after resize = 3
+test 247:	clear: size before clear: 3 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 20 ------
+--------------------------------
+		VECTOR TYPE: Class test
+
+test 248:	operator[]: Class test printing Class test printing 
+test 249:	size: 2
+test 250:	capacity: 2
+test 251:	empty: 0
+test 252:	iterators: Class test printing Class test printing 
+test 253:	at: Class test printing Class test printing vector
+test 254:	front: Class test printing
+test 255:	back: Class test printing
+test 256:	push_back: new elem = Class test printing
+test 257:	pop_back: new elem = Class test printing
+test 258:	swap: size of tmp = 3 and size of vec = 2
+			size of tmp = 2 and size of vec = 3
+test 259:	resize: size of tmp = 3
+new elem = Class test printingsize of tmp after resize = 3
+test 260:	clear: size before clear: 3 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 21 ------
+--------------------------------
+		VECTOR TYPE: Class test
+
+test 261:	operator[]: Class test printing 
+test 262:	size: 1
+test 263:	capacity: 1
+test 264:	empty: 0
+test 265:	iterators: Class test printing 
+test 266:	at: Class test printing vector
+test 267:	front: Class test printing
+test 268:	back: Class test printing
+test 269:	push_back: new elem = Class test printing
+test 270:	pop_back: new elem = Class test printing
+test 271:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 272:	resize: size of tmp = 2
+new elem = Class test printingsize of tmp after resize = 3
+test 273:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 22 ------
+--------------------------------
+		VECTOR TYPE: Class test
+
+test 274:	operator[]: Class test printing 
+test 275:	size: 1
+test 276:	capacity: 1
+test 277:	empty: 0
+test 278:	iterators: Class test printing 
+test 279:	at: Class test printing vector
+test 280:	front: Class test printing
+test 281:	back: Class test printing
+test 282:	push_back: new elem = Class test printing
+test 283:	pop_back: new elem = Class test printing
+test 284:	swap: size of tmp = 2 and size of vec = 1
+			size of tmp = 1 and size of vec = 2
+test 285:	resize: size of tmp = 2
+new elem = Class test printingsize of tmp after resize = 3
+test 286:	clear: size before clear: 2 | size after clear: 0
+
+--------------------------------
+------	TESTING VECTOR 23 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 287:	operator[]: 100 100 100 100 100 
+test 288:	size: 5
+test 289:	capacity: 5
+test 290:	empty: 0
+test 291:	iterators: 100 100 100 100 100 
+test 292:	at: 100 100 100 100 100 vector
+test 293:	front: 100
+test 294:	back: 100
+
+--------------------------------
+------	TESTING VECTOR 24 ------
+--------------------------------
+		VECTOR TYPE: int
+
+test 295:	operator[]: 
+test 296:	size: 0
+test 297:	capacity: 0
+test 298:	empty: 1
+test 299:	iterators: 
+test 300:	at: vector
+test 301:	front: 
+test 302:	back: 
+
+--------------------------------
+------	TESTING VECTOR 25 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 303:	operator[]: c c c c c c c c c c c c 
+test 304:	size: 12
+test 305:	capacity: 12
+test 306:	empty: 0
+test 307:	iterators: c c c c c c c c c c c c 
+test 308:	at: c c c c c c c c c c c c vector
+test 309:	front: c
+test 310:	back: c
+
+--------------------------------
+------	TESTING VECTOR 26 ------
+--------------------------------
+		VECTOR TYPE: char
+
+test 311:	operator[]: c c c c c c c c c c c c 
+test 312:	size: 12
+test 313:	capacity: 12
+test 314:	empty: 0
+test 315:	iterators: c c c c c c c c c c c c 
+test 316:	at: c c c c c c c c c c c c vector
+test 317:	front: c
+test 318:	back: c
+
+--------------------------------
+------	TESTING VECTOR 27 ------
+--------------------------------
+		VECTOR TYPE: std::string
+
+test 319:	operator[]: bonjour bonjour bonjour 
+test 320:	size: 3
+test 321:	capacity: 3
+test 322:	empty: 0
+test 323:	iterators: bonjour bonjour bonjour 
+test 324:	at: bonjour bonjour bonjour vector
+test 325:	front: bonjour
+test 326:	back: bonjour

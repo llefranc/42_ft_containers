@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 17:37:12 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/16 15:14:25 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	testOperatorBracelet(T& vec)
 	
 	for (size_t i = 0; i < vec.size(); ++i)
 		std::cout << vec[i] << " ";
-	std::cout << std::endl;
 }
 
 template <typename T>
@@ -36,7 +35,7 @@ void	testSize(T& vec)
 	printTestNumber(0);
 	std::cout << "size: ";
 	
-	std::cout << vec.size() << std::endl;
+	std::cout << vec.size();
 }
 
 template <typename T>
@@ -45,7 +44,7 @@ void	testCapacity(T& vec)
 	printTestNumber(0);
 	std::cout << "capacity: ";
 	
-	std::cout << vec.capacity() << std::endl;
+	std::cout << vec.capacity();
 }
 
 template <typename T>
@@ -54,7 +53,7 @@ void	testEmpty(T& vec)
 	printTestNumber(0);
 	std::cout << "empty: ";
 	
-	std::cout << vec.empty() << std::endl;
+	std::cout << vec.empty();
 }
 
 template <typename T>
@@ -65,7 +64,6 @@ void	testIterators(T& vec)
 	
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " ";
-	std::cout << std::endl;
 }
 
 template <typename T>
@@ -95,8 +93,6 @@ void	testAt(T& vec)
 	{
 		std::cout << e.what();
 	}
-	
-	std::cout << std::endl;
 }
 
 template <typename T>
@@ -106,7 +102,7 @@ void	testFront(T& vec)
 	std::cout << "front: ";
 	
 	if (vec.size()) // To prevent overflow
-		std::cout << vec.front() << std::endl;
+		std::cout << vec.front();
 }
 
 template <typename T>
@@ -116,7 +112,7 @@ void	testBack(T& vec)
 	std::cout << "back: ";
 	
 	if (vec.size()) // To prevent overflow
-		std::cout << vec.back() << std::endl;
+		std::cout << vec.back();
 }
 
 template <typename T>
@@ -126,16 +122,81 @@ void	testPushBack(T& vec)
 	std::cout << "push_back: ";
 	
 	if (vec.size())
-		vec.push_back(*vec.begin());
-	std::cout << "new elem = " << vec.back();
+	{
+		typename T::value_type x(vec[0]);
+		vec.push_back(x);
+		std::cout << "new elem = " << vec.back();
+	}
+}
+
+template <typename T>
+void	testPopBack(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "pop_back: ";
+	
+	if (vec.size())
+	{
+		vec.pop_back();
+		std::cout << "new elem = " << vec.back();
+	}
+}
+
+template <typename T>
+void	testClear(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "clear: ";
+	
+	std::cout << "size before clear: " << vec.size() << " | ";
+	vec.clear();
+	std::cout << "size after clear: " << vec.size();
+}
+
+template <typename T>
+void	testSwap(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "swap: ";
+
+	T tmp(vec);
+	if (vec.size())
+	{
+		typename T::value_type x = vec[0];
+		tmp.push_back(x);
+	}
+	std::cout << "size of tmp = " << tmp.size() << " and size of vec = " << vec.size() << "\n";
+	vec.swap(tmp);
+	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of vec = " << vec.size();
+}
+
+template <typename T>
+void	testResize(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "resize: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	if (tmp.size())
+	{
+		typename T::value_type x = vec[0];
+		tmp.resize(3, x);
+		std::cout << "new elem = " << vec.back();
+	}
+	else
+		tmp.resize(3);
+
+	std::cout << "\t\t\tsize of tmp after resize = " << tmp.size();
 }
 
 template <typename T>
 void	executeAllVecTests(T& vec, int testNb)
 {
-	std::cout << "\n-------------------------------\n";
-	std::cout << "------- TESTING VECTOR " << testNb << " ------\n";
-	std::cout << "-------------------------------\n";
+	std::cout << "\n\n--------------------------------\n";
+	std::cout << "------\tTESTING VECTOR " << testNb << " ------\n";
+	std::cout << "--------------------------------\n";
 	
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
@@ -150,14 +211,18 @@ void	executeAllVecTests(T& vec, int testNb)
 	testFront(vec);
 	testBack(vec);
 	testPushBack(vec);
+	testPopBack(vec);
+	testSwap(vec);
+	testResize(vec);
+	testClear(vec);
 }
 
 template <typename T>
 void	executeAllVecTests(T& vec, int testNb, bool isConst)
 {
-	std::cout << "\n-------------------------------\n";
-	std::cout << "------- TESTING VECTOR " << testNb << " ------\n";
-	std::cout << "-------------------------------\n";
+	std::cout << "\n\n--------------------------------\n";
+	std::cout << "------\tTESTING VECTOR " << testNb << " ------\n";
+	std::cout << "--------------------------------\n";
 	
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
