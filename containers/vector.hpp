@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/16 15:05:26 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/17 00:23:57 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ namespace ft
 					_alloc(x._alloc), _size(x._size), _capacity(x._capacity)
 			{
 				_vector = _alloc.allocate(_capacity);
-				
+				// for (size_type i = 0; i < _size; i++)
+				// 	_vector[i] = x._vector[i];
 				for (ft::pair<iterator, const_iterator> i(begin(), x.begin());
 						i.second != x.end(); ++i.first, ++i.second)
 					*i.first = *i.second;
@@ -206,8 +207,25 @@ namespace ft
 
 			/* ------------------------- MODIFIERS ------------------------- */
  			// range (1)	
-			// template <class InputIterator>
-			// void assign (InputIterator first, InputIterator last);
+			template <class InputIterator>
+			void assign (InputIterator first, InputIterator last)
+			{
+				vector tmp(first, last);
+				swap(tmp);
+				// clear();
+				// std::cout << "HELLO\n";
+				// _alloc.destroy(&_vector[0]);
+				// _vector[0] = *first;
+				// std::cout << static_cast<size_type>(last - first) << "\n";
+				// if (static_cast<size_type>(last - first) > _capacity)
+				// 	reallocateVec(static_cast<size_type>(last - first));
+				
+				// size_type i = 0;
+				// for (; first != last; ++i, ++first)
+				// 	_vector[i] = *first;
+				// _size = i;
+			}
+			
 			// fill (2)	
 			// void assign (size_type n, const value_type& val);
 			void push_back (const value_type& val)
@@ -277,19 +295,13 @@ namespace ft
 
 			void reallocateVec(size_type newCapacity)
 			{
-				// if (_size + 1 > _capacity)
-				// {
-					// size_type newCapacity;
-					// newCapacity = !_capacity ? _capacity + 1 : _capacity * 2;
+				pointer tmp = _alloc.allocate(newCapacity);
+				for (size_type i = 0; i < _size; ++i)
+					tmp[i] = _vector[i];
 
-					pointer tmp = _alloc.allocate(newCapacity);
-					for (size_type i = 0; i < _size; ++i)
-						tmp[i] = _vector[i];
-
-					this->~vector();
-					_capacity = newCapacity;
-					_vector = tmp;
-				// }
+				this->~vector();
+				_capacity = newCapacity;
+				_vector = tmp;
 			}
 
 			template <typename U>

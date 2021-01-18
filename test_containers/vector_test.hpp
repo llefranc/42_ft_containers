@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_test.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/16 15:14:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/16 22:22:26 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,32 @@ void	testResize(T& vec)
 }
 
 template <typename T>
+void	testAssign(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "assign: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	if (tmp.size())
+	{
+		typename T::value_type x = vec[0];
+		tmp.resize(3, x);
+		std::cout << "\t\t\tnew elem = " << vec.back();
+	}
+	else
+		tmp.resize(3);
+
+	T tmp2 = vec;
+	tmp2.assign(tmp.begin(), tmp.end());
+	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+
+	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
+		std::cout << *it << " | ";
+}
+
+template <typename T>
 void	executeAllVecTests(T& vec, int testNb)
 {
 	std::cout << "\n\n--------------------------------\n";
@@ -214,6 +240,7 @@ void	executeAllVecTests(T& vec, int testNb)
 	testPopBack(vec);
 	testSwap(vec);
 	testResize(vec);
+	testAssign(vec);
 	testClear(vec);
 }
 

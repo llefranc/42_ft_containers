@@ -18,7 +18,7 @@ test 10:	pop_back:
 test 11:	swap: size of tmp = 0 and size of vec = 0
 			size of tmp = 0 and size of vec = 0
 test 12:	resize: size of tmp = 0
-size of tmp after resize = 3
+			size of tmp after resize = 3
 test 13:	clear: size before clear: 0 | size after clear: 0
 
 --------------------------------
@@ -39,7 +39,7 @@ test 23:	pop_back: new elem = c
 test 24:	swap: size of tmp = 13 and size of vec = 12
 			size of tmp = 12 and size of vec = 13
 test 25:	resize: size of tmp = 13
-new elem = csize of tmp after resize = 3
+new elem = c			size of tmp after resize = 3
 test 26:	clear: size before clear: 13 | size after clear: 0
 
 --------------------------------
@@ -60,7 +60,7 @@ test 36:	pop_back: new elem = c
 test 37:	swap: size of tmp = 13 and size of vec = 12
 			size of tmp = 12 and size of vec = 13
 test 38:	resize: size of tmp = 13
-new elem = csize of tmp after resize = 3
+new elem = c			size of tmp after resize = 3
 test 39:	clear: size before clear: 13 | size after clear: 0
 
 --------------------------------
@@ -81,7 +81,7 @@ test 49:	pop_back: new elem = a
 test 50:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 51:	resize: size of tmp = 2
-new elem = asize of tmp after resize = 3
+new elem = a			size of tmp after resize = 3
 test 52:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -102,7 +102,7 @@ test 62:	pop_back: new elem = a
 test 63:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 64:	resize: size of tmp = 2
-new elem = asize of tmp after resize = 3
+new elem = a			size of tmp after resize = 3
 test 65:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -123,7 +123,7 @@ test 75:	pop_back: new elem = 100
 test 76:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
 test 77:	resize: size of tmp = 6
-new elem = 100size of tmp after resize = 3
+new elem = 100			size of tmp after resize = 3
 test 78:	clear: size before clear: 6 | size after clear: 0
 
 --------------------------------
@@ -144,7 +144,7 @@ test 88:	pop_back:
 test 89:	swap: size of tmp = 0 and size of vec = 0
 			size of tmp = 0 and size of vec = 0
 test 90:	resize: size of tmp = 0
-size of tmp after resize = 3
+			size of tmp after resize = 3
 test 91:	clear: size before clear: 0 | size after clear: 0
 
 --------------------------------
@@ -165,7 +165,7 @@ test 101:	pop_back: new elem = 89123891
 test 102:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 103:	resize: size of tmp = 2
-new elem = 89123891size of tmp after resize = 3
+new elem = 89123891			size of tmp after resize = 3
 test 104:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -186,7 +186,7 @@ test 114:	pop_back: new elem = 100
 test 115:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
 test 116:	resize: size of tmp = 6
-new elem = 100size of tmp after resize = 3
+new elem = 100			size of tmp after resize = 3
 test 117:	clear: size before clear: 6 | size after clear: 0
 
 --------------------------------
@@ -207,7 +207,7 @@ test 127:	pop_back: new elem = 100
 test 128:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
 test 129:	resize: size of tmp = 6
-new elem = 100size of tmp after resize = 3
+new elem = 100			size of tmp after resize = 3
 test 130:	clear: size before clear: 6 | size after clear: 0
 
 --------------------------------
@@ -228,7 +228,7 @@ test 140:	pop_back:
 test 141:	swap: size of tmp = 0 and size of vec = 0
 			size of tmp = 0 and size of vec = 0
 test 142:	resize: size of tmp = 0
-size of tmp after resize = 3
+			size of tmp after resize = 3
 test 143:	clear: size before clear: 0 | size after clear: 0
 
 --------------------------------
@@ -236,20 +236,20 @@ test 143:	clear: size before clear: 0 | size after clear: 0
 --------------------------------
 		VECTOR TYPE: double*
 
-test 144:	operator[]: 0x7ffee3931a80 
+test 144:	operator[]: 0x7ffee8217ac0 
 test 145:	size: 1
 test 146:	capacity: 1
 test 147:	empty: 0
-test 148:	iterators: 0x7ffee3931a80 
-test 149:	at: 0x7ffee3931a80 vector
-test 150:	front: 0x7ffee3931a80
-test 151:	back: 0x7ffee3931a80
-test 152:	push_back: new elem = 0x7ffee3931a80
-test 153:	pop_back: new elem = 0x7ffee3931a80
+test 148:	iterators: 0x7ffee8217ac0 
+test 149:	at: 0x7ffee8217ac0 vector
+test 150:	front: 0x7ffee8217ac0
+test 151:	back: 0x7ffee8217ac0
+test 152:	push_back: new elem = 0x7ffee8217ac0
+test 153:	pop_back: new elem = 0x7ffee8217ac0
 test 154:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 155:	resize: size of tmp = 2
-new elem = 0x7ffee3931a80size of tmp after resize = 3
+new elem = 0x7ffee8217ac0			size of tmp after resize = 3
 test 156:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -257,20 +257,20 @@ test 156:	clear: size before clear: 2 | size after clear: 0
 --------------------------------
 		VECTOR TYPE: double*
 
-test 157:	operator[]: 0x7ffee3931a80 
+test 157:	operator[]: 0x7ffee8217ac0 
 test 158:	size: 1
 test 159:	capacity: 1
 test 160:	empty: 0
-test 161:	iterators: 0x7ffee3931a80 
-test 162:	at: 0x7ffee3931a80 vector
-test 163:	front: 0x7ffee3931a80
-test 164:	back: 0x7ffee3931a80
-test 165:	push_back: new elem = 0x7ffee3931a80
-test 166:	pop_back: new elem = 0x7ffee3931a80
+test 161:	iterators: 0x7ffee8217ac0 
+test 162:	at: 0x7ffee8217ac0 vector
+test 163:	front: 0x7ffee8217ac0
+test 164:	back: 0x7ffee8217ac0
+test 165:	push_back: new elem = 0x7ffee8217ac0
+test 166:	pop_back: new elem = 0x7ffee8217ac0
 test 167:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 168:	resize: size of tmp = 2
-new elem = 0x7ffee3931a80size of tmp after resize = 3
+new elem = 0x7ffee8217ac0			size of tmp after resize = 3
 test 169:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -291,7 +291,7 @@ test 179:	pop_back: new elem = salut
 test 180:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
 test 181:	resize: size of tmp = 7
-new elem = salutsize of tmp after resize = 3
+new elem = salut			size of tmp after resize = 3
 test 182:	clear: size before clear: 7 | size after clear: 0
 
 --------------------------------
@@ -312,7 +312,7 @@ test 192:	pop_back: new elem = jbhkfbhsj
 test 193:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
 test 194:	resize: size of tmp = 7
-new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdfsize of tmp after resize = 3
+new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf			size of tmp after resize = 3
 test 195:	clear: size before clear: 7 | size after clear: 0
 
 --------------------------------
@@ -333,7 +333,7 @@ test 205:	pop_back: new elem =
 test 206:	swap: size of tmp = 5 and size of vec = 4
 			size of tmp = 4 and size of vec = 5
 test 207:	resize: size of tmp = 5
-new elem = size of tmp after resize = 3
+new elem = 			size of tmp after resize = 3
 test 208:	clear: size before clear: 5 | size after clear: 0
 
 --------------------------------
@@ -354,7 +354,7 @@ test 218:	pop_back: new elem = salut
 test 219:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
 test 220:	resize: size of tmp = 7
-new elem = salutsize of tmp after resize = 3
+new elem = salut			size of tmp after resize = 3
 test 221:	clear: size before clear: 7 | size after clear: 0
 
 --------------------------------
@@ -375,7 +375,7 @@ test 231:	pop_back: new elem = salut
 test 232:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
 test 233:	resize: size of tmp = 7
-new elem = salutsize of tmp after resize = 3
+new elem = salut			size of tmp after resize = 3
 test 234:	clear: size before clear: 7 | size after clear: 0
 
 --------------------------------
@@ -396,7 +396,7 @@ test 244:	pop_back: new elem = Class test printing
 test 245:	swap: size of tmp = 3 and size of vec = 2
 			size of tmp = 2 and size of vec = 3
 test 246:	resize: size of tmp = 3
-new elem = Class test printingsize of tmp after resize = 3
+new elem = Class test printing			size of tmp after resize = 3
 test 247:	clear: size before clear: 3 | size after clear: 0
 
 --------------------------------
@@ -417,7 +417,7 @@ test 257:	pop_back: new elem = Class test printing
 test 258:	swap: size of tmp = 3 and size of vec = 2
 			size of tmp = 2 and size of vec = 3
 test 259:	resize: size of tmp = 3
-new elem = Class test printingsize of tmp after resize = 3
+new elem = Class test printing			size of tmp after resize = 3
 test 260:	clear: size before clear: 3 | size after clear: 0
 
 --------------------------------
@@ -438,7 +438,7 @@ test 270:	pop_back: new elem = Class test printing
 test 271:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 272:	resize: size of tmp = 2
-new elem = Class test printingsize of tmp after resize = 3
+new elem = Class test printing			size of tmp after resize = 3
 test 273:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
@@ -459,7 +459,7 @@ test 283:	pop_back: new elem = Class test printing
 test 284:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
 test 285:	resize: size of tmp = 2
-new elem = Class test printingsize of tmp after resize = 3
+new elem = Class test printing			size of tmp after resize = 3
 test 286:	clear: size before clear: 2 | size after clear: 0
 
 --------------------------------
