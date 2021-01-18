@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/17 00:23:57 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/18 16:01:24 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ namespace ft
 				_vector = _alloc.allocate(_capacity);
 				
 				for (size_type i = 0; i < _size; ++i)
-					_vector[i] = val;
+					_alloc.construct(&_vector[i], val);
 			}
 							
 			/*
@@ -94,8 +94,8 @@ namespace ft
 				_capacity = _size;
 				_vector = _alloc.allocate(_capacity);
 
-				for (iterator it = begin(); first != last; ++first, ++it)
-					*it = *first;
+				for (int i = 0; first != last; ++first, ++i)
+					_alloc.construct(&_vector[i], *first);
 			}
 					
 			/*
@@ -108,11 +108,9 @@ namespace ft
 					_alloc(x._alloc), _size(x._size), _capacity(x._capacity)
 			{
 				_vector = _alloc.allocate(_capacity);
-				// for (size_type i = 0; i < _size; i++)
-				// 	_vector[i] = x._vector[i];
-				for (ft::pair<iterator, const_iterator> i(begin(), x.begin());
+				for (ft::pair<int, const_iterator> i(0, x.begin());
 						i.second != x.end(); ++i.first, ++i.second)
-					*i.first = *i.second;
+					_alloc.construct(&_vector[i.first], *i.second);
 			}
 
 			
@@ -210,29 +208,33 @@ namespace ft
 			template <class InputIterator>
 			void assign (InputIterator first, InputIterator last)
 			{
-				vector tmp(first, last);
-				swap(tmp);
-				// clear();
-				// std::cout << "HELLO\n";
-				// _alloc.destroy(&_vector[0]);
-				// _vector[0] = *first;
-				// std::cout << static_cast<size_type>(last - first) << "\n";
-				// if (static_cast<size_type>(last - first) > _capacity)
-				// 	reallocateVec(static_cast<size_type>(last - first));
+				// Allocating more storage only if actual capacity isn't enough
+				if (static_cast<size_type>(last - first) > _capacity)
+					reallocateVec(static_cast<size_type>(last - first));
 				
-				// size_type i = 0;
-				// for (; first != last; ++i, ++first)
-				// 	_vector[i] = *first;
-				// _size = i;
+				size_type i = 0;
+				for (; first != last; ++i, ++first)
+					_alloc.construct(&_vector[i], *first);
+				_size = i;
 			}
 			
 			// fill (2)	
-			// void assign (size_type n, const value_type& val);
+			void assign (size_type n, const value_type& val)
+			{
+				// Allocating more storage only if actual capacity isn't enough
+				if (n > _capacity)
+					reallocateVec(n);
+					
+				for (size_type i = 0; i < n; ++i)
+					_alloc.construct(&_vector[i], val);
+				_size = n;
+			}
+			
 			void push_back (const value_type& val)
 			{
 				if (_size + 1 > _capacity)
 					reallocateVec(!_capacity ? _capacity + 1 : _capacity * 2);
-				_vector[_size++] = val;
+				_alloc.construct(&_vector[_size++], val);
 			}
 
 			void pop_back()
@@ -240,10 +242,43 @@ namespace ft
 				if (_size)
 					_alloc.destroy(&_vector[_size-- - 1]);
 			}
+			
 			// single element (1)	
-			// iterator insert (iterator position, const value_type& val);
+			iterator insert (iterator position, const value_type& val)
+			{
+				// In case of a realloc, position will be invalited because _vector
+				// points to another allocated area so we need to save the index array
+				// where position iterator is pointing to create a new one after the reallocation
+				difference_type index = position - begin();
+				
+				insert(position, 1, val);
+				return iterator(&_vector[index]);
+			}
+			
 			// fill (2)	
-			// void insert (iterator position, size_type n, const value_type& val);
+			void insert (iterator position, size_type n, const value_type& val)
+			{
+				// In case of a realloc, position will be invalited because _vector
+				// points to another allocated area so we need to save the index array
+				// where position iterator is pointing to create a new one after the reallocation
+				difference_type index = position - begin();
+				
+				if (_size + n > _capacity)
+					reallocateVec(_capacity + n);
+				
+				// Creating a new iterator pointing to the correct allocated are (case a realloc occured previously)
+				iterator newPosition(&_vector[index]);
+				
+				// Moving at newPosition + n all elements after newPosition
+				if (newPosition != end())
+					moveElements(newPosition, n);
+				
+				// Constructing n new elements from val
+				for (size_type i = 0; i < n; ++i)
+					_alloc.construct(&(*newPosition++), val);
+				_size += n;
+			}
+
 			// range (3)	
 			// template <class InputIterator>
     		// void insert (iterator position, InputIterator first, InputIterator last);
@@ -297,7 +332,7 @@ namespace ft
 			{
 				pointer tmp = _alloc.allocate(newCapacity);
 				for (size_type i = 0; i < _size; ++i)
-					tmp[i] = _vector[i];
+					_alloc.construct(&tmp[i], _vector[i]);
 
 				this->~vector();
 				_capacity = newCapacity;
@@ -310,6 +345,17 @@ namespace ft
 				U tmp = a;
 				a = b;
 				b = tmp;
+			}
+			
+			// x0 x1 x2
+			void moveElements(iterator pos, size_type lenMov)
+			{
+				for (ft::pair<iterator, iterator> it(end() - 1, end());
+					it.second - 1 != pos; --it.first, --it.second)
+				{
+					_alloc.construct(&(*(it.second - 1 + lenMov)), *it.first);
+					_alloc.destroy(&(*it.first));
+				}
 			}
 	};
 }

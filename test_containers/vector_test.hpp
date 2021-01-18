@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_test.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/16 22:22:26 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/18 16:02:00 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,15 @@ void	testPushBack(T& vec)
 	printTestNumber(0);
 	std::cout << "push_back: ";
 	
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
 	if (vec.size())
-	{
-		typename T::value_type x(vec[0]);
-		vec.push_back(x);
-		std::cout << "new elem = " << vec.back();
-	}
+		*x = vec[0];
+
+	vec.push_back(*x);
+	std::cout << "new elem = " << vec.back();
+
+	delete x;
 }
 
 template <typename T>
@@ -138,7 +141,8 @@ void	testPopBack(T& vec)
 	if (vec.size())
 	{
 		vec.pop_back();
-		std::cout << "new elem = " << vec.back();
+		if (vec.size()) // To prevent overflow
+			std::cout << "new elem = " << vec.back();
 	}
 }
 
@@ -148,9 +152,20 @@ void	testClear(T& vec)
 	printTestNumber(0);
 	std::cout << "clear: ";
 	
-	std::cout << "size before clear: " << vec.size() << " | ";
-	vec.clear();
-	std::cout << "size after clear: " << vec.size();
+	T tmp = vec;
+	std::cout << "size before clear: " << tmp.size() << " | ";
+	tmp.clear();
+	std::cout << "size after clear: " << tmp.size();
+
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+		*x = vec[0];
+
+	tmp.push_back(*x);
+	std::cout << "new elem pushed after clear: " << tmp.back();
+
+	delete x;
 }
 
 template <typename T>
@@ -160,14 +175,19 @@ void	testSwap(T& vec)
 	std::cout << "swap: ";
 
 	T tmp(vec);
+
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
 	if (vec.size())
-	{
-		typename T::value_type x = vec[0];
-		tmp.push_back(x);
-	}
+		*x = vec[0];
+
+	tmp.push_back(*x);
+	
 	std::cout << "size of tmp = " << tmp.size() << " and size of vec = " << vec.size() << "\n";
 	vec.swap(tmp);
 	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of vec = " << vec.size();
+
+	delete x;
 }
 
 template <typename T>
@@ -179,42 +199,127 @@ void	testResize(T& vec)
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
 
-	if (tmp.size())
-	{
-		typename T::value_type x = vec[0];
-		tmp.resize(3, x);
-		std::cout << "new elem = " << vec.back();
-	}
-	else
-		tmp.resize(3);
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+		*x = vec[0];
 
+	tmp.resize(3, *x);
+	std::cout << "\t\t\tnew elem = " << vec.back();
 	std::cout << "\t\t\tsize of tmp after resize = " << tmp.size();
+	
+	delete x;
 }
 
 template <typename T>
-void	testAssign(T& vec)
+void	testAssign1(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "assign: ";
+	std::cout << "assign1: ";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
 
-	if (tmp.size())
-	{
-		typename T::value_type x = vec[0];
-		tmp.resize(3, x);
-		std::cout << "\t\t\tnew elem = " << vec.back();
-	}
-	else
-		tmp.resize(3);
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+		*x = vec[0];
+
+	tmp.resize(3, *x);
+	std::cout << "\t\t\tnew elem = " << tmp.back();
 
 	T tmp2 = vec;
 	tmp2.assign(tmp.begin(), tmp.end());
 	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
 
+	if (vec.size())
+		for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
+			std::cout << *it << " | ";
+
+	delete x;
+}
+
+template <typename T>
+void	testAssign2(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "assign2: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+		*x = vec[0];
+		
+	tmp.resize(3, *x);
+	std::cout << "\t\t\tnew elem = " << tmp.back();
+
+	T tmp2 = vec;
+	tmp2.assign(tmp.size(), tmp.front());
+	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+
 	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
 		std::cout << *it << " | ";
+		
+	delete x;
+}
+
+template <typename T>
+void	testInsert1(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "insert1: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+	{
+		*x = vec.front();
+		tmp.insert(tmp.begin() + 1, *x);
+	}
+	tmp.insert(tmp.begin(), *x);
+	tmp.insert(tmp.end(), *x);
+	
+	std::cout << "\t\t\t";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+
+	delete x;
+}
+
+template <typename T>
+void	testInsert2(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "insert2: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign vec[0])
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+	{
+		*x = vec.front();
+		std::cout << "salut\n";
+		tmp.insert(tmp.begin() + 1, 5, *x);
+		std::cout << "salut\n";
+	}
+	tmp.insert(tmp.begin(), 5, *x);
+	tmp.insert(tmp.end(), 5, *x);
+	
+	std::cout << "\t\t\t";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+
+	delete x;
 }
 
 template <typename T>
@@ -227,6 +332,8 @@ void	executeAllVecTests(T& vec, int testNb)
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
 	
+	(void)vec;
+
 	// Tests for non-const vectors
 	testOperatorBracelet(vec);
 	testSize(vec);
@@ -240,7 +347,10 @@ void	executeAllVecTests(T& vec, int testNb)
 	testPopBack(vec);
 	testSwap(vec);
 	testResize(vec);
-	testAssign(vec);
+	testAssign1(vec);
+	testAssign2(vec);
+	testInsert1(vec);
+	testInsert2(vec);
 	testClear(vec);
 }
 
@@ -254,6 +364,7 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
 	
+	(void)vec;
 	// Tests for const vectors
 	testOperatorBracelet(vec);
 	testSize(vec);
