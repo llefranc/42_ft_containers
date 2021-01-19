@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 16:15:05 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:10:12 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,29 @@
 
 namespace ft
 {
-	template<typename T, bool B, class Alloc = std::allocator<T> >
-	class rev_random_iterator : public ft::rev_bidirec_iterator<T, B, Alloc>
+	template<typename T, bool B>
+	class rev_random_iterator : public rev_bidirec_iterator<T, B>
 	{
 		public:
 
 			/* -------- ALIASES -------- */
 
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::difference_type	difference_type;
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::value_type		value_type;
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::size_type		size_type;
+			typedef typename ft::rev_bidirec_iterator<T, B>::difference_type	difference_type;
+			typedef typename ft::rev_bidirec_iterator<T, B>::value_type		value_type;
+			typedef typename ft::rev_bidirec_iterator<T, B>::size_type		size_type;
 			
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::reference		reference;
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::pointer			pointer;
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>::nonConstPointer nonConstPointer;
+			typedef typename ft::rev_bidirec_iterator<T, B>::reference		reference;
+			typedef typename ft::rev_bidirec_iterator<T, B>::pointer			pointer;
+			typedef typename ft::rev_bidirec_iterator<T, B>::nonConstPointer nonConstPointer;
 
-			typedef typename ft::rev_bidirec_iterator<T, B, Alloc>					rev_bidirec_iterator;
+			typedef typename ft::rev_bidirec_iterator<T, B>					rev_bidirec_iterator;
 			
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			rev_random_iterator(nonConstPointer val = 0) : rev_bidirec_iterator(val) {}
-			rev_random_iterator(const rev_random_iterator<T, false, Alloc>& copy) : rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
-			rev_random_iterator(const ft::random_iterator<T, false, Alloc>& copy) : rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
+			rev_random_iterator(const rev_random_iterator<T, false>& copy) : rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
+			rev_random_iterator(const random_iterator<T, false>& copy) : rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
 			~rev_random_iterator() {}
 
 			rev_random_iterator& operator=(const rev_random_iterator& assign)

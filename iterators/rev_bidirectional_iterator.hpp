@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 15:55:16 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:06:28 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,27 @@
 
 namespace ft
 {
-	template<typename T, bool B, class Alloc = std::allocator<T> >
+	template<typename T, bool B>
 	class rev_bidirec_iterator
 	{
 		public:
 
 			/* -------- ALIASES -------- */
-
-			typedef typename Alloc::difference_type		difference_type;
-			typedef typename Alloc::value_type			value_type;
-			typedef typename Alloc::size_type			size_type;
 			
-			typedef typename chooseConst<B, typename Alloc::reference, typename Alloc::const_reference>::type	reference;
-			typedef typename chooseConst<B, typename Alloc::pointer, typename Alloc::const_pointer>::type		pointer;
-			typedef typename Alloc::pointer 																	nonConstPointer;
+			typedef ptrdiff_t		difference_type;
+			typedef T			value_type;
+			typedef size_t			size_type;
+			
+			typedef typename chooseConst<B, T&, const T&>::type	reference;
+			typedef typename chooseConst<B, T*, const T*>::type		pointer;
+			typedef T*	nonConstPointer;
 
 
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			rev_bidirec_iterator(nonConstPointer val = 0) : _val(val) {}
-			rev_bidirec_iterator(const rev_bidirec_iterator<T, false, Alloc>& copy) { _val = copy.getNonCoinstPointer(); }
-			rev_bidirec_iterator(const ft::bidirec_iterator<T, false, Alloc>& copy) { _val = copy.getNonCoinstPointer(); }
+			rev_bidirec_iterator(const rev_bidirec_iterator<T, false>& copy) { _val = copy.getNonCoinstPointer(); }
+			rev_bidirec_iterator(const ft::bidirec_iterator<T, false>& copy) { _val = copy.getNonCoinstPointer(); }
 			~rev_bidirec_iterator() {}
 
 			nonConstPointer	getNonCoinstPointer() const		{ return _val; }

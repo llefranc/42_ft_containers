@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 16:09:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:26:47 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ int		testAllVectors()
 			executeAllVecTests(v42, ++testNb);
 			executeAllVecTests(v43, ++testNb);
 			
-			executeAllVecTests(v100, ++testNb, CONST);
-			executeAllVecTests(v101, ++testNb, CONST);
-			executeAllVecTests(v200, ++testNb, CONST);
-			executeAllVecTests(v201, ++testNb, CONST);
-			executeAllVecTests(v300, ++testNb, CONST);
+		// 	executeAllVecTests(v100, ++testNb, CONST);
+		// 	executeAllVecTests(v101, ++testNb, CONST);
+		// 	executeAllVecTests(v200, ++testNb, CONST);
+		// 	executeAllVecTests(v201, ++testNb, CONST);
+		// 	executeAllVecTests(v300, ++testNb, CONST);
 		}
 
 		// testing std::vector
@@ -193,11 +193,11 @@ int		testAllVectors()
 			executeAllVecTests(v42, ++testNb);
 			executeAllVecTests(v43, ++testNb);
 			
-			executeAllVecTests(v100, ++testNb, CONST);
-			executeAllVecTests(v101, ++testNb, CONST);
-			executeAllVecTests(v200, ++testNb, CONST);
-			executeAllVecTests(v201, ++testNb, CONST);
-			executeAllVecTests(v300, ++testNb, CONST);
+			// executeAllVecTests(v100, ++testNb, CONST);
+			// executeAllVecTests(v101, ++testNb, CONST);
+			// executeAllVecTests(v200, ++testNb, CONST);
+			// executeAllVecTests(v201, ++testNb, CONST);
+			// executeAllVecTests(v300, ++testNb, CONST);
 		}
 
 		std::cout.rdbuf(coutbuf); //reset to standard output again
@@ -212,11 +212,11 @@ int		testAllVectors()
 int main()
 {
 	// std::vector<char> v0(11, 'b');
-	std::vector<char> v1(12, 'c');
+	// ft::vector<char> v1(12, 'c');
 
 	// char c = v1.front()
 
-	std::vector<char>::reverse_iterator it(v1.begin());
+	// ft::vector<char>::const_reverse_iterator it(v1.begin());
 	// ft::vector<char> v2(v0);
 	
 

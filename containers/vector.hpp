@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 15:43:58 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:17:21 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ namespace ft
 			typedef	T*													pointer;
 			typedef	const T*											const_pointer;
 			
-			typedef typename ft::random_iterator<T, false, Alloc>		iterator;
-			typedef typename ft::random_iterator<T, true, Alloc>		const_iterator;
+			typedef typename ft::random_iterator<T, false>		iterator;
+			typedef typename ft::random_iterator<T, true>		const_iterator;
 
-			typedef typename ft::rev_random_iterator<T, false, Alloc>	reverse_iterator;
-			typedef typename ft::rev_random_iterator<T, true, Alloc>	reverse_const_iterator;
+			typedef typename ft::rev_random_iterator<T, false>	reverse_iterator;
+			typedef typename ft::rev_random_iterator<T, true>	const_reverse_iterator;
 
 
 			/* ------------------------ CONSTRUCTORS ----------------------- */
