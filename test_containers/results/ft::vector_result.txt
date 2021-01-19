@@ -26,6 +26,9 @@ test 14:	assign2: size of tmp = 13
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
 test 15:	insert1: size of tmp = 13
+			return value: c
+			return value: c
+			return value: c
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 16
 test 16:	insert2: size of tmp = 13
@@ -34,794 +37,1352 @@ test 16:	insert2: size of tmp = 13
 test 17:	insert3: size of tmp = 13
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 52
-test 18:	clear: size before clear: 13 | size after clear: 0new elem pushed after clear: c
+test 18:	erase1: size of tmp = 13
+			size of tmp = 0
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 13
+			new elem after erase: c
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 12
+			size of tmp = 13
+			c | 
+			size of tmp = 1
+test 19:	erase2: size of tmp = 13
+			new elem after erase: c
+			size of tmp = 12
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 12
+			size of tmp = 13
+			c | 
+			size of tmp = 12
+test 20:	clear: size before clear: 13 | size after clear: 0new elem pushed after clear: c
+test 21:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 2 ------
 --------------------------------
 		VECTOR TYPE: char
 
-test 19:	operator[]: c c c c c c c c c c c c 
-test 20:	size: 12
-test 21:	capacity: 12
-test 22:	empty: 0
-test 23:	iterators: c c c c c c c c c c c c 
-test 24:	at: c c c c c c c c c c c c vector
-test 25:	front: c
-test 26:	back: c
-test 27:	push_back: new elem = c
-test 28:	pop_back: new elem = c
-test 29:	swap: size of tmp = 13 and size of vec = 12
+test 22:	operator[]: c c c c c c c c c c c c 
+test 23:	size: 12
+test 24:	capacity: 12
+test 25:	empty: 0
+test 26:	iterators: c c c c c c c c c c c c 
+test 27:	at: c c c c c c c c c c c c vector
+test 28:	front: c
+test 29:	back: c
+test 30:	push_back: new elem = c
+test 31:	pop_back: new elem = c
+test 32:	swap: size of tmp = 13 and size of vec = 12
 			size of tmp = 12 and size of vec = 13
-test 30:	resize: size of tmp = 13
+test 33:	resize: size of tmp = 13
 			new elem = c			size of tmp after resize = 3
-test 31:	assign1: size of tmp = 13
+test 34:	assign1: size of tmp = 13
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
-test 32:	assign2: size of tmp = 13
+test 35:	assign2: size of tmp = 13
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
-test 33:	insert1: size of tmp = 13
+test 36:	insert1: size of tmp = 13
+			return value: c
+			return value: c
+			return value: c
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 16
-test 34:	insert2: size of tmp = 13
+test 37:	insert2: size of tmp = 13
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 28
-test 35:	insert3: size of tmp = 13
+test 38:	insert3: size of tmp = 13
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 52
-test 36:	clear: size before clear: 13 | size after clear: 0new elem pushed after clear: c
+test 39:	erase1: size of tmp = 13
+			size of tmp = 0
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 13
+			new elem after erase: c
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 12
+			size of tmp = 13
+			c | 
+			size of tmp = 1
+test 40:	erase2: size of tmp = 13
+			new elem after erase: c
+			size of tmp = 12
+			size of tmp = 13
+			c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 12
+			size of tmp = 13
+			c | 
+			size of tmp = 12
+test 41:	clear: size before clear: 13 | size after clear: 0new elem pushed after clear: c
+test 42:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 3 ------
 --------------------------------
 		VECTOR TYPE: char
 
-test 37:	operator[]: a 
-test 38:	size: 1
-test 39:	capacity: 1
-test 40:	empty: 0
-test 41:	iterators: a 
-test 42:	at: a vector
-test 43:	front: a
-test 44:	back: a
-test 45:	push_back: new elem = a
-test 46:	pop_back: new elem = a
-test 47:	swap: size of tmp = 2 and size of vec = 1
+test 43:	operator[]: a 
+test 44:	size: 1
+test 45:	capacity: 1
+test 46:	empty: 0
+test 47:	iterators: a 
+test 48:	at: a vector
+test 49:	front: a
+test 50:	back: a
+test 51:	push_back: new elem = a
+test 52:	pop_back: new elem = a
+test 53:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 48:	resize: size of tmp = 2
+test 54:	resize: size of tmp = 2
 			new elem = a			size of tmp after resize = 3
-test 49:	assign1: size of tmp = 2
+test 55:	assign1: size of tmp = 2
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
-test 50:	assign2: size of tmp = 2
+test 56:	assign2: size of tmp = 2
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
-test 51:	insert1: size of tmp = 2
+test 57:	insert1: size of tmp = 2
+			return value: a
+			return value: a
+			return value: a
 			a | a | a | a | a | 
 			size of tmp = 5
-test 52:	insert2: size of tmp = 2
+test 58:	insert2: size of tmp = 2
 			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 17
-test 53:	insert3: size of tmp = 2
+test 59:	insert3: size of tmp = 2
 			a | a | a | a | a | a | a | a | 
 			size of tmp = 8
-test 54:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: a
+test 60:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			a | a | 
+			size of tmp = 2
+			new elem after erase: a
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+test 61:	erase2: size of tmp = 2
+			new elem after erase: a
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+test 62:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: a
+test 63:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 4 ------
 --------------------------------
 		VECTOR TYPE: char
 
-test 55:	operator[]: a 
-test 56:	size: 1
-test 57:	capacity: 1
-test 58:	empty: 0
-test 59:	iterators: a 
-test 60:	at: a vector
-test 61:	front: a
-test 62:	back: a
-test 63:	push_back: new elem = a
-test 64:	pop_back: new elem = a
-test 65:	swap: size of tmp = 2 and size of vec = 1
+test 64:	operator[]: a 
+test 65:	size: 1
+test 66:	capacity: 1
+test 67:	empty: 0
+test 68:	iterators: a 
+test 69:	at: a vector
+test 70:	front: a
+test 71:	back: a
+test 72:	push_back: new elem = a
+test 73:	pop_back: new elem = a
+test 74:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 66:	resize: size of tmp = 2
+test 75:	resize: size of tmp = 2
 			new elem = a			size of tmp after resize = 3
-test 67:	assign1: size of tmp = 2
+test 76:	assign1: size of tmp = 2
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
-test 68:	assign2: size of tmp = 2
+test 77:	assign2: size of tmp = 2
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
-test 69:	insert1: size of tmp = 2
+test 78:	insert1: size of tmp = 2
+			return value: a
+			return value: a
+			return value: a
 			a | a | a | a | a | 
 			size of tmp = 5
-test 70:	insert2: size of tmp = 2
+test 79:	insert2: size of tmp = 2
 			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 17
-test 71:	insert3: size of tmp = 2
+test 80:	insert3: size of tmp = 2
 			a | a | a | a | a | a | a | a | 
 			size of tmp = 8
-test 72:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: a
+test 81:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			a | a | 
+			size of tmp = 2
+			new elem after erase: a
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+test 82:	erase2: size of tmp = 2
+			new elem after erase: a
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+			size of tmp = 2
+			a | 
+			size of tmp = 1
+test 83:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: a
+test 84:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 5 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 73:	operator[]: 100 100 100 100 100 
-test 74:	size: 5
-test 75:	capacity: 5
-test 76:	empty: 0
-test 77:	iterators: 100 100 100 100 100 
-test 78:	at: 100 100 100 100 100 vector
-test 79:	front: 100
-test 80:	back: 100
-test 81:	push_back: new elem = 100
-test 82:	pop_back: new elem = 100
-test 83:	swap: size of tmp = 6 and size of vec = 5
+test 85:	operator[]: 100 100 100 100 100 
+test 86:	size: 5
+test 87:	capacity: 5
+test 88:	empty: 0
+test 89:	iterators: 100 100 100 100 100 
+test 90:	at: 100 100 100 100 100 vector
+test 91:	front: 100
+test 92:	back: 100
+test 93:	push_back: new elem = 100
+test 94:	pop_back: new elem = 100
+test 95:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
-test 84:	resize: size of tmp = 6
+test 96:	resize: size of tmp = 6
 			new elem = 100			size of tmp after resize = 3
-test 85:	assign1: size of tmp = 6
+test 97:	assign1: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 86:	assign2: size of tmp = 6
+test 98:	assign2: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 87:	insert1: size of tmp = 6
+test 99:	insert1: size of tmp = 6
+			return value: 100
+			return value: 100
+			return value: 100
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 9
-test 88:	insert2: size of tmp = 6
+test 100:	insert2: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 21
-test 89:	insert3: size of tmp = 6
+test 101:	insert3: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 24
-test 90:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 102:	erase1: size of tmp = 6
+			size of tmp = 0
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 1
+test 103:	erase2: size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 5
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 5
+test 104:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 105:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 6 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 91:	operator[]: 
-test 92:	size: 0
-test 93:	capacity: 0
-test 94:	empty: 1
-test 95:	iterators: 
-test 96:	at: vector
-test 97:	front: 
-test 98:	back: 
-test 99:	push_back: new elem = 0
-test 100:	pop_back: 
-test 101:	swap: size of tmp = 1 and size of vec = 0
+test 106:	operator[]: 
+test 107:	size: 0
+test 108:	capacity: 0
+test 109:	empty: 1
+test 110:	iterators: 
+test 111:	at: vector
+test 112:	front: 
+test 113:	back: 
+test 114:	push_back: new elem = 0
+test 115:	pop_back: 
+test 116:	swap: size of tmp = 1 and size of vec = 0
 			size of tmp = 0 and size of vec = 1
-test 102:	resize: size of tmp = 1
+test 117:	resize: size of tmp = 1
 			new elem = 0			size of tmp after resize = 3
-test 103:	assign1: size of tmp = 1
+test 118:	assign1: size of tmp = 1
 			new elem = 0			size after assign = 3and content is:
 			0 | 0 | 0 | 
-test 104:	assign2: size of tmp = 1
+test 119:	assign2: size of tmp = 1
 			new elem = 0			size after assign = 3and content is:
 			0 | 0 | 0 | 
-test 105:	insert1: size of tmp = 1
+test 120:	insert1: size of tmp = 1
+			return value: 0
+			return value: 0
+			return value: 0
 			0 | 0 | 0 | 0 | 
 			size of tmp = 4
-test 106:	insert2: size of tmp = 1
+test 121:	insert2: size of tmp = 1
 			0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
 			size of tmp = 16
-test 107:	insert3: size of tmp = 1
+test 122:	insert3: size of tmp = 1
 			0 | 0 | 0 | 0 | 
 			size of tmp = 4
-test 108:	clear: size before clear: 1 | size after clear: 0new elem pushed after clear: 0
+test 123:	erase1: size of tmp = 1
+			size of tmp = 0
+			size of tmp = 1
+			0 | 
+			size of tmp = 1
+			new elem after erase: 0
+			size of tmp = 1
+			
+			size of tmp = 0
+			size of tmp = 1
+			0 | 
+			size of tmp = 1
+test 124:	erase2: size of tmp = 1
+			size of tmp = 0
+			size of tmp = 1
+			
+			size of tmp = 0
+			
+test 125:	clear: size before clear: 1 | size after clear: 0new elem pushed after clear: 0
+test 126:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 7 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 109:	operator[]: 89123891 
-test 110:	size: 1
-test 111:	capacity: 1
-test 112:	empty: 0
-test 113:	iterators: 89123891 
-test 114:	at: 89123891 vector
-test 115:	front: 89123891
-test 116:	back: 89123891
-test 117:	push_back: new elem = 89123891
-test 118:	pop_back: new elem = 89123891
-test 119:	swap: size of tmp = 2 and size of vec = 1
+test 127:	operator[]: 89123891 
+test 128:	size: 1
+test 129:	capacity: 1
+test 130:	empty: 0
+test 131:	iterators: 89123891 
+test 132:	at: 89123891 vector
+test 133:	front: 89123891
+test 134:	back: 89123891
+test 135:	push_back: new elem = 89123891
+test 136:	pop_back: new elem = 89123891
+test 137:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 120:	resize: size of tmp = 2
+test 138:	resize: size of tmp = 2
 			new elem = 89123891			size of tmp after resize = 3
-test 121:	assign1: size of tmp = 2
+test 139:	assign1: size of tmp = 2
 			new elem = 89123891			size after assign = 3and content is:
 			89123891 | 89123891 | 89123891 | 
-test 122:	assign2: size of tmp = 2
+test 140:	assign2: size of tmp = 2
 			new elem = 89123891			size after assign = 3and content is:
 			89123891 | 89123891 | 89123891 | 
-test 123:	insert1: size of tmp = 2
+test 141:	insert1: size of tmp = 2
+			return value: 89123891
+			return value: 89123891
+			return value: 89123891
 			89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 5
-test 124:	insert2: size of tmp = 2
+test 142:	insert2: size of tmp = 2
 			89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 17
-test 125:	insert3: size of tmp = 2
+test 143:	insert3: size of tmp = 2
 			89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 8
-test 126:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 89123891
+test 144:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			89123891 | 89123891 | 
+			size of tmp = 2
+			new elem after erase: 89123891
+			size of tmp = 2
+			89123891 | 
+			size of tmp = 1
+			size of tmp = 2
+			89123891 | 
+			size of tmp = 1
+test 145:	erase2: size of tmp = 2
+			new elem after erase: 89123891
+			size of tmp = 1
+			size of tmp = 2
+			89123891 | 
+			size of tmp = 1
+			size of tmp = 2
+			89123891 | 
+			size of tmp = 1
+test 146:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 89123891
+test 147:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 8 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 127:	operator[]: 100 100 100 100 100 
-test 128:	size: 5
-test 129:	capacity: 5
-test 130:	empty: 0
-test 131:	iterators: 100 100 100 100 100 
-test 132:	at: 100 100 100 100 100 vector
-test 133:	front: 100
-test 134:	back: 100
-test 135:	push_back: new elem = 100
-test 136:	pop_back: new elem = 100
-test 137:	swap: size of tmp = 6 and size of vec = 5
+test 148:	operator[]: 100 100 100 100 100 
+test 149:	size: 5
+test 150:	capacity: 5
+test 151:	empty: 0
+test 152:	iterators: 100 100 100 100 100 
+test 153:	at: 100 100 100 100 100 vector
+test 154:	front: 100
+test 155:	back: 100
+test 156:	push_back: new elem = 100
+test 157:	pop_back: new elem = 100
+test 158:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
-test 138:	resize: size of tmp = 6
+test 159:	resize: size of tmp = 6
 			new elem = 100			size of tmp after resize = 3
-test 139:	assign1: size of tmp = 6
+test 160:	assign1: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 140:	assign2: size of tmp = 6
+test 161:	assign2: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 141:	insert1: size of tmp = 6
+test 162:	insert1: size of tmp = 6
+			return value: 100
+			return value: 100
+			return value: 100
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 9
-test 142:	insert2: size of tmp = 6
+test 163:	insert2: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 21
-test 143:	insert3: size of tmp = 6
+test 164:	insert3: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 24
-test 144:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 165:	erase1: size of tmp = 6
+			size of tmp = 0
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 1
+test 166:	erase2: size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 5
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 5
+test 167:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 168:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 9 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 145:	operator[]: 100 100 100 100 100 
-test 146:	size: 5
-test 147:	capacity: 5
-test 148:	empty: 0
-test 149:	iterators: 100 100 100 100 100 
-test 150:	at: 100 100 100 100 100 vector
-test 151:	front: 100
-test 152:	back: 100
-test 153:	push_back: new elem = 100
-test 154:	pop_back: new elem = 100
-test 155:	swap: size of tmp = 6 and size of vec = 5
+test 169:	operator[]: 100 100 100 100 100 
+test 170:	size: 5
+test 171:	capacity: 5
+test 172:	empty: 0
+test 173:	iterators: 100 100 100 100 100 
+test 174:	at: 100 100 100 100 100 vector
+test 175:	front: 100
+test 176:	back: 100
+test 177:	push_back: new elem = 100
+test 178:	pop_back: new elem = 100
+test 179:	swap: size of tmp = 6 and size of vec = 5
 			size of tmp = 5 and size of vec = 6
-test 156:	resize: size of tmp = 6
+test 180:	resize: size of tmp = 6
 			new elem = 100			size of tmp after resize = 3
-test 157:	assign1: size of tmp = 6
+test 181:	assign1: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 158:	assign2: size of tmp = 6
+test 182:	assign2: size of tmp = 6
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
-test 159:	insert1: size of tmp = 6
+test 183:	insert1: size of tmp = 6
+			return value: 100
+			return value: 100
+			return value: 100
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 9
-test 160:	insert2: size of tmp = 6
+test 184:	insert2: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 21
-test 161:	insert3: size of tmp = 6
+test 185:	insert3: size of tmp = 6
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 24
-test 162:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 186:	erase1: size of tmp = 6
+			size of tmp = 0
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 1
+test 187:	erase2: size of tmp = 6
+			new elem after erase: 100
+			size of tmp = 5
+			size of tmp = 6
+			100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 5
+			size of tmp = 6
+			100 | 
+			size of tmp = 5
+test 188:	clear: size before clear: 6 | size after clear: 0new elem pushed after clear: 100
+test 189:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 10 ------
 --------------------------------
 		VECTOR TYPE: double*
 
-test 163:	operator[]: 
-test 164:	size: 0
-test 165:	capacity: 0
-test 166:	empty: 1
-test 167:	iterators: 
-test 168:	at: vector
-test 169:	front: 
-test 170:	back: 
-test 171:	push_back: new elem = 0x0
-test 172:	pop_back: 
-test 173:	swap: size of tmp = 1 and size of vec = 0
+test 190:	operator[]: 
+test 191:	size: 0
+test 192:	capacity: 0
+test 193:	empty: 1
+test 194:	iterators: 
+test 195:	at: vector
+test 196:	front: 
+test 197:	back: 
+test 198:	push_back: new elem = 0x0
+test 199:	pop_back: 
+test 200:	swap: size of tmp = 1 and size of vec = 0
 			size of tmp = 0 and size of vec = 1
-test 174:	resize: size of tmp = 1
+test 201:	resize: size of tmp = 1
 			new elem = 0x0			size of tmp after resize = 3
-test 175:	assign1: size of tmp = 1
+test 202:	assign1: size of tmp = 1
 			new elem = 0x0			size after assign = 3and content is:
 			0x0 | 0x0 | 0x0 | 
-test 176:	assign2: size of tmp = 1
+test 203:	assign2: size of tmp = 1
 			new elem = 0x0			size after assign = 3and content is:
 			0x0 | 0x0 | 0x0 | 
-test 177:	insert1: size of tmp = 1
+test 204:	insert1: size of tmp = 1
+			return value: 0x0
+			return value: 0x0
+			return value: 0x0
 			0x0 | 0x0 | 0x0 | 0x0 | 
 			size of tmp = 4
-test 178:	insert2: size of tmp = 1
+test 205:	insert2: size of tmp = 1
 			0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 
 			size of tmp = 16
-test 179:	insert3: size of tmp = 1
+test 206:	insert3: size of tmp = 1
 			0x0 | 0x0 | 0x0 | 0x0 | 
 			size of tmp = 4
-test 180:	clear: size before clear: 1 | size after clear: 0new elem pushed after clear: 0x0
+test 207:	erase1: size of tmp = 1
+			size of tmp = 0
+			size of tmp = 1
+			0x0 | 
+			size of tmp = 1
+			new elem after erase: 0x0
+			size of tmp = 1
+			
+			size of tmp = 0
+			size of tmp = 1
+			0x0 | 
+			size of tmp = 1
+test 208:	erase2: size of tmp = 1
+			size of tmp = 0
+			size of tmp = 1
+			
+			size of tmp = 0
+			
+test 209:	clear: size before clear: 1 | size after clear: 0new elem pushed after clear: 0x0
+test 210:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 11 ------
 --------------------------------
 		VECTOR TYPE: double*
 
-test 181:	operator[]: 0x7ffee841fae0 
-test 182:	size: 1
-test 183:	capacity: 1
-test 184:	empty: 0
-test 185:	iterators: 0x7ffee841fae0 
-test 186:	at: 0x7ffee841fae0 vector
-test 187:	front: 0x7ffee841fae0
-test 188:	back: 0x7ffee841fae0
-test 189:	push_back: new elem = 0x7ffee841fae0
-test 190:	pop_back: new elem = 0x7ffee841fae0
-test 191:	swap: size of tmp = 2 and size of vec = 1
+test 211:	operator[]: 0x7ffeef33bae0 
+test 212:	size: 1
+test 213:	capacity: 1
+test 214:	empty: 0
+test 215:	iterators: 0x7ffeef33bae0 
+test 216:	at: 0x7ffeef33bae0 vector
+test 217:	front: 0x7ffeef33bae0
+test 218:	back: 0x7ffeef33bae0
+test 219:	push_back: new elem = 0x7ffeef33bae0
+test 220:	pop_back: new elem = 0x7ffeef33bae0
+test 221:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 192:	resize: size of tmp = 2
-			new elem = 0x7ffee841fae0			size of tmp after resize = 3
-test 193:	assign1: size of tmp = 2
-			new elem = 0x7ffee841fae0			size after assign = 3and content is:
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
-test 194:	assign2: size of tmp = 2
-			new elem = 0x7ffee841fae0			size after assign = 3and content is:
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
-test 195:	insert1: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 222:	resize: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size of tmp after resize = 3
+test 223:	assign1: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size after assign = 3and content is:
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+test 224:	assign2: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size after assign = 3and content is:
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+test 225:	insert1: size of tmp = 2
+			return value: 0x7ffeef33bae0
+			return value: 0x7ffeef33bae0
+			return value: 0x7ffeef33bae0
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 5
-test 196:	insert2: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 226:	insert2: size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 17
-test 197:	insert3: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 227:	insert3: size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 8
-test 198:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 0x7ffee841fae0
+test 228:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+			size of tmp = 2
+			new elem after erase: 0x7ffeef33bae0
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+test 229:	erase2: size of tmp = 2
+			new elem after erase: 0x7ffeef33bae0
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+test 230:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 0x7ffeef33bae0
+test 231:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 12 ------
 --------------------------------
 		VECTOR TYPE: double*
 
-test 199:	operator[]: 0x7ffee841fae0 
-test 200:	size: 1
-test 201:	capacity: 1
-test 202:	empty: 0
-test 203:	iterators: 0x7ffee841fae0 
-test 204:	at: 0x7ffee841fae0 vector
-test 205:	front: 0x7ffee841fae0
-test 206:	back: 0x7ffee841fae0
-test 207:	push_back: new elem = 0x7ffee841fae0
-test 208:	pop_back: new elem = 0x7ffee841fae0
-test 209:	swap: size of tmp = 2 and size of vec = 1
+test 232:	operator[]: 0x7ffeef33bae0 
+test 233:	size: 1
+test 234:	capacity: 1
+test 235:	empty: 0
+test 236:	iterators: 0x7ffeef33bae0 
+test 237:	at: 0x7ffeef33bae0 vector
+test 238:	front: 0x7ffeef33bae0
+test 239:	back: 0x7ffeef33bae0
+test 240:	push_back: new elem = 0x7ffeef33bae0
+test 241:	pop_back: new elem = 0x7ffeef33bae0
+test 242:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 210:	resize: size of tmp = 2
-			new elem = 0x7ffee841fae0			size of tmp after resize = 3
-test 211:	assign1: size of tmp = 2
-			new elem = 0x7ffee841fae0			size after assign = 3and content is:
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
-test 212:	assign2: size of tmp = 2
-			new elem = 0x7ffee841fae0			size after assign = 3and content is:
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
-test 213:	insert1: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 243:	resize: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size of tmp after resize = 3
+test 244:	assign1: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size after assign = 3and content is:
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+test 245:	assign2: size of tmp = 2
+			new elem = 0x7ffeef33bae0			size after assign = 3and content is:
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+test 246:	insert1: size of tmp = 2
+			return value: 0x7ffeef33bae0
+			return value: 0x7ffeef33bae0
+			return value: 0x7ffeef33bae0
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 5
-test 214:	insert2: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 247:	insert2: size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 17
-test 215:	insert3: size of tmp = 2
-			0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 0x7ffee841fae0 | 
+test 248:	insert3: size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 0x7ffeef33bae0 | 
 			size of tmp = 8
-test 216:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 0x7ffee841fae0
+test 249:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			0x7ffeef33bae0 | 0x7ffeef33bae0 | 
+			size of tmp = 2
+			new elem after erase: 0x7ffeef33bae0
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+test 250:	erase2: size of tmp = 2
+			new elem after erase: 0x7ffeef33bae0
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+			size of tmp = 2
+			0x7ffeef33bae0 | 
+			size of tmp = 1
+test 251:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: 0x7ffeef33bae0
+test 252:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 13 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 217:	operator[]: salut salut salut salut salut salut 
-test 218:	size: 6
-test 219:	capacity: 6
-test 220:	empty: 0
-test 221:	iterators: salut salut salut salut salut salut 
-test 222:	at: salut salut salut salut salut salut vector
-test 223:	front: salut
-test 224:	back: salut
-test 225:	push_back: new elem = salut
-test 226:	pop_back: new elem = salut
-test 227:	swap: size of tmp = 7 and size of vec = 6
+test 253:	operator[]: salut salut salut salut salut salut 
+test 254:	size: 6
+test 255:	capacity: 6
+test 256:	empty: 0
+test 257:	iterators: salut salut salut salut salut salut 
+test 258:	at: salut salut salut salut salut salut vector
+test 259:	front: salut
+test 260:	back: salut
+test 261:	push_back: new elem = salut
+test 262:	pop_back: new elem = salut
+test 263:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
-test 228:	resize: size of tmp = 7
+test 264:	resize: size of tmp = 7
 			new elem = salut			size of tmp after resize = 3
-test 229:	assign1: size of tmp = 7
+test 265:	assign1: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 230:	assign2: size of tmp = 7
+test 266:	assign2: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 231:	insert1: size of tmp = 7
+test 267:	insert1: size of tmp = 7
+			return value: salut
+			return value: salut
+			return value: salut
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 10
-test 232:	insert2: size of tmp = 7
+test 268:	insert2: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 22
-test 233:	insert3: size of tmp = 7
+test 269:	insert3: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 28
-test 234:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 270:	erase1: size of tmp = 7
+			size of tmp = 0
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 1
+test 271:	erase2: size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 6
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 6
+test 272:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 273:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 14 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 235:	operator[]: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
-test 236:	size: 6
-test 237:	capacity: 6
-test 238:	empty: 0
-test 239:	iterators: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
-test 240:	at: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj vector
-test 241:	front: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
-test 242:	back: jbhkfbhsj
-test 243:	push_back: new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
-test 244:	pop_back: new elem = jbhkfbhsj
-test 245:	swap: size of tmp = 7 and size of vec = 6
+test 274:	operator[]: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
+test 275:	size: 6
+test 276:	capacity: 6
+test 277:	empty: 0
+test 278:	iterators: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
+test 279:	at: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj vector
+test 280:	front: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 281:	back: jbhkfbhsj
+test 282:	push_back: new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 283:	pop_back: new elem = jbhkfbhsj
+test 284:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
-test 246:	resize: size of tmp = 7
+test 285:	resize: size of tmp = 7
 			new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf			size of tmp after resize = 3
-test 247:	assign1: size of tmp = 7
+test 286:	assign1: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | 
-test 248:	assign2: size of tmp = 7
+test 287:	assign2: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
-test 249:	insert1: size of tmp = 7
+test 288:	insert1: size of tmp = 7
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 10
-test 250:	insert2: size of tmp = 7
+test 289:	insert2: size of tmp = 7
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 22
-test 251:	insert3: size of tmp = 7
+test 290:	insert3: size of tmp = 7
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 28
-test 252:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 291:	erase1: size of tmp = 7
+			size of tmp = 0
+			size of tmp = 7
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			size of tmp = 7
+			new elem after erase: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			size of tmp = 7
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			size of tmp = 6
+			size of tmp = 7
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			size of tmp = 1
+test 292:	erase2: size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 6
+			size of tmp = 7
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			size of tmp = 6
+			size of tmp = 7
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			size of tmp = 6
+test 293:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+test 294:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 15 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 253:	operator[]:     
-test 254:	size: 4
-test 255:	capacity: 4
-test 256:	empty: 0
-test 257:	iterators:     
-test 258:	at:     vector
-test 259:	front: 
-test 260:	back: 
-test 261:	push_back: new elem = 
-test 262:	pop_back: new elem = 
-test 263:	swap: size of tmp = 5 and size of vec = 4
+test 295:	operator[]:     
+test 296:	size: 4
+test 297:	capacity: 4
+test 298:	empty: 0
+test 299:	iterators:     
+test 300:	at:     vector
+test 301:	front: 
+test 302:	back: 
+test 303:	push_back: new elem = 
+test 304:	pop_back: new elem = 
+test 305:	swap: size of tmp = 5 and size of vec = 4
 			size of tmp = 4 and size of vec = 5
-test 264:	resize: size of tmp = 5
+test 306:	resize: size of tmp = 5
 			new elem = 			size of tmp after resize = 3
-test 265:	assign1: size of tmp = 5
+test 307:	assign1: size of tmp = 5
 			new elem = 			size after assign = 3and content is:
 			 |  |  | 
-test 266:	assign2: size of tmp = 5
+test 308:	assign2: size of tmp = 5
 			new elem = 			size after assign = 3and content is:
 			 |  |  | 
-test 267:	insert1: size of tmp = 5
+test 309:	insert1: size of tmp = 5
+			return value: 
+			return value: 
+			return value: 
 			 |  |  |  |  |  |  |  | 
 			size of tmp = 8
-test 268:	insert2: size of tmp = 5
+test 310:	insert2: size of tmp = 5
 			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 20
-test 269:	insert3: size of tmp = 5
+test 311:	insert3: size of tmp = 5
 			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 20
-test 270:	clear: size before clear: 5 | size after clear: 0new elem pushed after clear: 
+test 312:	erase1: size of tmp = 5
+			size of tmp = 0
+			size of tmp = 5
+			 |  |  |  |  | 
+			size of tmp = 5
+			new elem after erase: 
+			size of tmp = 5
+			 |  |  |  | 
+			size of tmp = 4
+			size of tmp = 5
+			 | 
+			size of tmp = 1
+test 313:	erase2: size of tmp = 5
+			new elem after erase: 
+			size of tmp = 4
+			size of tmp = 5
+			 |  |  |  | 
+			size of tmp = 4
+			size of tmp = 5
+			 | 
+			size of tmp = 4
+test 314:	clear: size before clear: 5 | size after clear: 0new elem pushed after clear: 
+test 315:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 16 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 271:	operator[]: salut salut salut salut salut salut 
-test 272:	size: 6
-test 273:	capacity: 6
-test 274:	empty: 0
-test 275:	iterators: salut salut salut salut salut salut 
-test 276:	at: salut salut salut salut salut salut vector
-test 277:	front: salut
-test 278:	back: salut
-test 279:	push_back: new elem = salut
-test 280:	pop_back: new elem = salut
-test 281:	swap: size of tmp = 7 and size of vec = 6
+test 316:	operator[]: salut salut salut salut salut salut 
+test 317:	size: 6
+test 318:	capacity: 6
+test 319:	empty: 0
+test 320:	iterators: salut salut salut salut salut salut 
+test 321:	at: salut salut salut salut salut salut vector
+test 322:	front: salut
+test 323:	back: salut
+test 324:	push_back: new elem = salut
+test 325:	pop_back: new elem = salut
+test 326:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
-test 282:	resize: size of tmp = 7
+test 327:	resize: size of tmp = 7
 			new elem = salut			size of tmp after resize = 3
-test 283:	assign1: size of tmp = 7
+test 328:	assign1: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 284:	assign2: size of tmp = 7
+test 329:	assign2: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 285:	insert1: size of tmp = 7
+test 330:	insert1: size of tmp = 7
+			return value: salut
+			return value: salut
+			return value: salut
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 10
-test 286:	insert2: size of tmp = 7
+test 331:	insert2: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 22
-test 287:	insert3: size of tmp = 7
+test 332:	insert3: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 28
-test 288:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 333:	erase1: size of tmp = 7
+			size of tmp = 0
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 1
+test 334:	erase2: size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 6
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 6
+test 335:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 336:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 17 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 289:	operator[]: salut salut salut salut salut salut 
-test 290:	size: 6
-test 291:	capacity: 6
-test 292:	empty: 0
-test 293:	iterators: salut salut salut salut salut salut 
-test 294:	at: salut salut salut salut salut salut vector
-test 295:	front: salut
-test 296:	back: salut
-test 297:	push_back: new elem = salut
-test 298:	pop_back: new elem = salut
-test 299:	swap: size of tmp = 7 and size of vec = 6
+test 337:	operator[]: salut salut salut salut salut salut 
+test 338:	size: 6
+test 339:	capacity: 6
+test 340:	empty: 0
+test 341:	iterators: salut salut salut salut salut salut 
+test 342:	at: salut salut salut salut salut salut vector
+test 343:	front: salut
+test 344:	back: salut
+test 345:	push_back: new elem = salut
+test 346:	pop_back: new elem = salut
+test 347:	swap: size of tmp = 7 and size of vec = 6
 			size of tmp = 6 and size of vec = 7
-test 300:	resize: size of tmp = 7
+test 348:	resize: size of tmp = 7
 			new elem = salut			size of tmp after resize = 3
-test 301:	assign1: size of tmp = 7
+test 349:	assign1: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 302:	assign2: size of tmp = 7
+test 350:	assign2: size of tmp = 7
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
-test 303:	insert1: size of tmp = 7
+test 351:	insert1: size of tmp = 7
+			return value: salut
+			return value: salut
+			return value: salut
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 10
-test 304:	insert2: size of tmp = 7
+test 352:	insert2: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 22
-test 305:	insert3: size of tmp = 7
+test 353:	insert3: size of tmp = 7
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 28
-test 306:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 354:	erase1: size of tmp = 7
+			size of tmp = 0
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 1
+test 355:	erase2: size of tmp = 7
+			new elem after erase: salut
+			size of tmp = 6
+			size of tmp = 7
+			salut | salut | salut | salut | salut | salut | 
+			size of tmp = 6
+			size of tmp = 7
+			salut | 
+			size of tmp = 6
+test 356:	clear: size before clear: 7 | size after clear: 0new elem pushed after clear: salut
+test 357:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 18 ------
 --------------------------------
 		VECTOR TYPE: Class test
 
-test 307:	operator[]: Class test printing Class test printing 
-test 308:	size: 2
-test 309:	capacity: 2
-test 310:	empty: 0
-test 311:	iterators: Class test printing Class test printing 
-test 312:	at: Class test printing Class test printing vector
-test 313:	front: Class test printing
-test 314:	back: Class test printing
-test 315:	push_back: new elem = Class test printing
-test 316:	pop_back: new elem = Class test printing
-test 317:	swap: size of tmp = 3 and size of vec = 2
+test 358:	operator[]: Class test printing Class test printing 
+test 359:	size: 2
+test 360:	capacity: 2
+test 361:	empty: 0
+test 362:	iterators: Class test printing Class test printing 
+test 363:	at: Class test printing Class test printing vector
+test 364:	front: Class test printing
+test 365:	back: Class test printing
+test 366:	push_back: new elem = Class test printing
+test 367:	pop_back: new elem = Class test printing
+test 368:	swap: size of tmp = 3 and size of vec = 2
 			size of tmp = 2 and size of vec = 3
-test 318:	resize: size of tmp = 3
+test 369:	resize: size of tmp = 3
 			new elem = Class test printing			size of tmp after resize = 3
-test 319:	assign1: size of tmp = 3
+test 370:	assign1: size of tmp = 3
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 320:	assign2: size of tmp = 3
+test 371:	assign2: size of tmp = 3
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 321:	insert1: size of tmp = 3
+test 372:	insert1: size of tmp = 3
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 6
-test 322:	insert2: size of tmp = 3
+test 373:	insert2: size of tmp = 3
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 18
-test 323:	insert3: size of tmp = 3
+test 374:	insert3: size of tmp = 3
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 12
-test 324:	clear: size before clear: 3 | size after clear: 0new elem pushed after clear: Class test printing
+test 375:	erase1: size of tmp = 3
+			size of tmp = 0
+			size of tmp = 3
+			Class test printing | Class test printing | Class test printing | 
+			size of tmp = 3
+			new elem after erase: Class test printing
+			size of tmp = 3
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | 
+			size of tmp = 1
+test 376:	erase2: size of tmp = 3
+			new elem after erase: Class test printing
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | 
+			size of tmp = 2
+test 377:	clear: size before clear: 3 | size after clear: 0new elem pushed after clear: Class test printing
+test 378:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 19 ------
 --------------------------------
 		VECTOR TYPE: Class test
 
-test 325:	operator[]: Class test printing Class test printing 
-test 326:	size: 2
-test 327:	capacity: 2
-test 328:	empty: 0
-test 329:	iterators: Class test printing Class test printing 
-test 330:	at: Class test printing Class test printing vector
-test 331:	front: Class test printing
-test 332:	back: Class test printing
-test 333:	push_back: new elem = Class test printing
-test 334:	pop_back: new elem = Class test printing
-test 335:	swap: size of tmp = 3 and size of vec = 2
+test 379:	operator[]: Class test printing Class test printing 
+test 380:	size: 2
+test 381:	capacity: 2
+test 382:	empty: 0
+test 383:	iterators: Class test printing Class test printing 
+test 384:	at: Class test printing Class test printing vector
+test 385:	front: Class test printing
+test 386:	back: Class test printing
+test 387:	push_back: new elem = Class test printing
+test 388:	pop_back: new elem = Class test printing
+test 389:	swap: size of tmp = 3 and size of vec = 2
 			size of tmp = 2 and size of vec = 3
-test 336:	resize: size of tmp = 3
+test 390:	resize: size of tmp = 3
 			new elem = Class test printing			size of tmp after resize = 3
-test 337:	assign1: size of tmp = 3
+test 391:	assign1: size of tmp = 3
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 338:	assign2: size of tmp = 3
+test 392:	assign2: size of tmp = 3
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 339:	insert1: size of tmp = 3
+test 393:	insert1: size of tmp = 3
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 6
-test 340:	insert2: size of tmp = 3
+test 394:	insert2: size of tmp = 3
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 18
-test 341:	insert3: size of tmp = 3
+test 395:	insert3: size of tmp = 3
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 12
-test 342:	clear: size before clear: 3 | size after clear: 0new elem pushed after clear: Class test printing
+test 396:	erase1: size of tmp = 3
+			size of tmp = 0
+			size of tmp = 3
+			Class test printing | Class test printing | Class test printing | 
+			size of tmp = 3
+			new elem after erase: Class test printing
+			size of tmp = 3
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | 
+			size of tmp = 1
+test 397:	erase2: size of tmp = 3
+			new elem after erase: Class test printing
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			size of tmp = 3
+			Class test printing | 
+			size of tmp = 2
+test 398:	clear: size before clear: 3 | size after clear: 0new elem pushed after clear: Class test printing
+test 399:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 20 ------
 --------------------------------
 		VECTOR TYPE: Class test
 
-test 343:	operator[]: Class test printing 
-test 344:	size: 1
-test 345:	capacity: 1
-test 346:	empty: 0
-test 347:	iterators: Class test printing 
-test 348:	at: Class test printing vector
-test 349:	front: Class test printing
-test 350:	back: Class test printing
-test 351:	push_back: new elem = Class test printing
-test 352:	pop_back: new elem = Class test printing
-test 353:	swap: size of tmp = 2 and size of vec = 1
+test 400:	operator[]: Class test printing 
+test 401:	size: 1
+test 402:	capacity: 1
+test 403:	empty: 0
+test 404:	iterators: Class test printing 
+test 405:	at: Class test printing vector
+test 406:	front: Class test printing
+test 407:	back: Class test printing
+test 408:	push_back: new elem = Class test printing
+test 409:	pop_back: new elem = Class test printing
+test 410:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 354:	resize: size of tmp = 2
+test 411:	resize: size of tmp = 2
 			new elem = Class test printing			size of tmp after resize = 3
-test 355:	assign1: size of tmp = 2
+test 412:	assign1: size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 356:	assign2: size of tmp = 2
+test 413:	assign2: size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 357:	insert1: size of tmp = 2
+test 414:	insert1: size of tmp = 2
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
-test 358:	insert2: size of tmp = 2
+test 415:	insert2: size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
-test 359:	insert3: size of tmp = 2
+test 416:	insert3: size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
-test 360:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
+test 417:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			new elem after erase: Class test printing
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+test 418:	erase2: size of tmp = 2
+			new elem after erase: Class test printing
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+test 419:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
+test 420:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 21 ------
 --------------------------------
 		VECTOR TYPE: Class test
 
-test 361:	operator[]: Class test printing 
-test 362:	size: 1
-test 363:	capacity: 1
-test 364:	empty: 0
-test 365:	iterators: Class test printing 
-test 366:	at: Class test printing vector
-test 367:	front: Class test printing
-test 368:	back: Class test printing
-test 369:	push_back: new elem = Class test printing
-test 370:	pop_back: new elem = Class test printing
-test 371:	swap: size of tmp = 2 and size of vec = 1
+test 421:	operator[]: Class test printing 
+test 422:	size: 1
+test 423:	capacity: 1
+test 424:	empty: 0
+test 425:	iterators: Class test printing 
+test 426:	at: Class test printing vector
+test 427:	front: Class test printing
+test 428:	back: Class test printing
+test 429:	push_back: new elem = Class test printing
+test 430:	pop_back: new elem = Class test printing
+test 431:	swap: size of tmp = 2 and size of vec = 1
 			size of tmp = 1 and size of vec = 2
-test 372:	resize: size of tmp = 2
+test 432:	resize: size of tmp = 2
 			new elem = Class test printing			size of tmp after resize = 3
-test 373:	assign1: size of tmp = 2
+test 433:	assign1: size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 374:	assign2: size of tmp = 2
+test 434:	assign2: size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
-test 375:	insert1: size of tmp = 2
+test 435:	insert1: size of tmp = 2
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
-test 376:	insert2: size of tmp = 2
+test 436:	insert2: size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
-test 377:	insert3: size of tmp = 2
+test 437:	insert3: size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
-test 378:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
+test 438:	erase1: size of tmp = 2
+			size of tmp = 0
+			size of tmp = 2
+			Class test printing | Class test printing | 
+			size of tmp = 2
+			new elem after erase: Class test printing
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+test 439:	erase2: size of tmp = 2
+			new elem after erase: Class test printing
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+			size of tmp = 2
+			Class test printing | 
+			size of tmp = 1
+test 440:	clear: size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
+test 441:	operator=: tmp == vec (should be true): 1
+			tmp == vec (should be false): 0
+			
 
 --------------------------------
 ------	TESTING VECTOR 22 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 379:	operator[]: 100 100 100 100 100 
-test 380:	size: 5
-test 381:	capacity: 5
-test 382:	empty: 0
-test 383:	iterators: 100 100 100 100 100 
-test 384:	at: 100 100 100 100 100 vector
-test 385:	front: 100
-test 386:	back: 100
+test 442:	operator[]: 100 100 100 100 100 
+test 443:	size: 5
+test 444:	capacity: 5
+test 445:	empty: 0
+test 446:	iterators: 100 100 100 100 100 
+test 447:	at: 100 100 100 100 100 vector
+test 448:	front: 100
+test 449:	back: 100
 
 --------------------------------
 ------	TESTING VECTOR 23 ------
 --------------------------------
 		VECTOR TYPE: int
 
-test 387:	operator[]: 
-test 388:	size: 0
-test 389:	capacity: 0
-test 390:	empty: 1
-test 391:	iterators: 
-test 392:	at: vector
-test 393:	front: 
-test 394:	back: 
+test 450:	operator[]: 
+test 451:	size: 0
+test 452:	capacity: 0
+test 453:	empty: 1
+test 454:	iterators: 
+test 455:	at: vector
+test 456:	front: 
+test 457:	back: 
 
 --------------------------------
 ------	TESTING VECTOR 24 ------
 --------------------------------
 		VECTOR TYPE: char
 
-test 395:	operator[]: c c c c c c c c c c c c 
-test 396:	size: 12
-test 397:	capacity: 12
-test 398:	empty: 0
-test 399:	iterators: c c c c c c c c c c c c 
-test 400:	at: c c c c c c c c c c c c vector
-test 401:	front: c
-test 402:	back: c
+test 458:	operator[]: c c c c c c c c c c c c 
+test 459:	size: 12
+test 460:	capacity: 12
+test 461:	empty: 0
+test 462:	iterators: c c c c c c c c c c c c 
+test 463:	at: c c c c c c c c c c c c vector
+test 464:	front: c
+test 465:	back: c
 
 --------------------------------
 ------	TESTING VECTOR 25 ------
 --------------------------------
 		VECTOR TYPE: char
 
-test 403:	operator[]: c c c c c c c c c c c c 
-test 404:	size: 12
-test 405:	capacity: 12
-test 406:	empty: 0
-test 407:	iterators: c c c c c c c c c c c c 
-test 408:	at: c c c c c c c c c c c c vector
-test 409:	front: c
-test 410:	back: c
+test 466:	operator[]: c c c c c c c c c c c c 
+test 467:	size: 12
+test 468:	capacity: 12
+test 469:	empty: 0
+test 470:	iterators: c c c c c c c c c c c c 
+test 471:	at: c c c c c c c c c c c c vector
+test 472:	front: c
+test 473:	back: c
 
 --------------------------------
 ------	TESTING VECTOR 26 ------
 --------------------------------
 		VECTOR TYPE: std::string
 
-test 411:	operator[]: bonjour bonjour bonjour 
-test 412:	size: 3
-test 413:	capacity: 3
-test 414:	empty: 0
-test 415:	iterators: bonjour bonjour bonjour 
-test 416:	at: bonjour bonjour bonjour vector
-test 417:	front: bonjour
-test 418:	back: bonjour
+test 474:	operator[]: bonjour bonjour bonjour 
+test 475:	size: 3
+test 476:	capacity: 3
+test 477:	empty: 0
+test 478:	iterators: bonjour bonjour bonjour 
+test 479:	at: bonjour bonjour bonjour vector
+test 480:	front: bonjour
+test 481:	back: bonjour

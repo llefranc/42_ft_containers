@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 11:05:03 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 14:29:42 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ namespace ft
 				
 				// Moving at newPosition + n all elements after newPosition
 				if (newPosition != end())
-					moveElements(newPosition, n);
+					moveElementsToTheRight(newPosition, n);
 				
 				// Constructing n new elements from val
 				for (size_type i = 0; i < n; ++i)
@@ -319,7 +319,7 @@ namespace ft
 				
 				// Moving at newPosition + n all elements after newPosition
 				if (newPosition != end())
-					moveElements(newPosition, n);
+					moveElementsToTheRight(newPosition, n);
 
 				// Constructing n new elements from the iterator's range
 				for (size_type i = 0; i < n; ++i)
@@ -327,9 +327,37 @@ namespace ft
 				_size += n;
 			}
 
+			iterator erase (iterator position)
+			{
+				return erase(position, position + 1);
+			}
 			
-			// iterator erase (iterator position);
-			// iterator erase (iterator first, iterator last);
+			iterator erase (iterator first, iterator last)
+			{
+				if (first == end())
+					return end();
+				
+				// In case of a realloc, iterators will be invalited because _vector
+				// points to another allocated area so we need to save the index array
+				// where first is pointing to create a new iterator after the reallocation
+				difference_type index = first - begin();
+				
+				// If there is elements after the iterators range, we need to move them at first position
+				if (last < end() - 1)
+				{
+					moveElementsToTheLeft(first, last);
+					_size -= static_cast<size_type>(last - first);
+				}
+				else
+				{
+					size_type newSize = _size - static_cast<size_type>(last - first);
+					while (_size != newSize)
+						pop_back();
+				}
+
+				reallocateVec(_size);
+				return iterator(&_vector[index]);
+			}
 
 			/*
 			** Swaps a vector with the content of this one.
@@ -350,28 +378,26 @@ namespace ft
 					pop_back();
 			}
 
+			friend bool operator==(const vector& lhs, const vector& rhs)
+			{
+				if (lhs.size() != rhs.size())
+					return false;
+
+				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
+						it.first != lhs.end(); ++it.first, ++it.second)
+					if (*(it.first) != *(it.second))
+						return false;
+				return true;
+			}
+
+			// friend bool operator!=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
 			
-			/* --------------- NON MEMBER FUNCTION OVERLOADS --------------- */
-			// (1)	
-			// template <class T, class Alloc>
-			// bool operator== (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// (2)	
-			// template <class T, class Alloc>
-			// bool operator!= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// (3)	
-			// template <class T, class Alloc>
-			// bool operator<  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// (4)	
-			// template <class T, class Alloc>
-			// bool operator<= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// (5)	
-			// template <class T, class Alloc>
-			// bool operator>  (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// (6)	
-			// template <class T, class Alloc>
-			// bool operator>= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs);
-			// template <class T, class Alloc>
-			// void swap (vector<T,Alloc>& x, vector<T,Alloc>& y);
+
+			// friend bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+			// friend bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+			// friend bool operator>(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+			// friend bool operator>=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+			// friend void swap (vector<T, Alloc>& x, vector<T, Alloc>& y);
 			
 		private:	
 		
@@ -419,7 +445,7 @@ namespace ft
 			** @param pos		Indicates first element to move. All elements at his right will be moved too.
 			** @param lenMov	The len of the movement for each element.
 			*/
-			void moveElements(iterator pos, size_type lenMov)
+			void moveElementsToTheRight(iterator pos, size_type lenMov)
 			{
 				// Starting from the end, until it meets pos iterator
 				for (ft::pair<iterator, iterator> it(end() - 1, end());
@@ -429,7 +455,54 @@ namespace ft
 					_alloc.destroy(&(*it.first));
 				}
 			}
+
+
+			// x x x x a a x x
+			void moveElementsToTheLeft(iterator first, iterator last)
+			{
+				iterator posCopy(last);
+				
+				for (; first != last; ++first, ++posCopy)
+				{
+					_alloc.construct(&(*(first)), *posCopy);
+					_alloc.destroy(&(*posCopy));
+				}
+			}
 	};
-}
+
+	/* --------------- NON MEMBER FUNCTION OVERLOADS --------------- */
+	// (1)	
+	// template <class T, class Alloc>
+	// bool operator==(const ft::vector<T, Alloc>& lhs, const ft::vector<T, Alloc>& rhs)
+	// {
+	// 	if (lhs.size() != rhs.size())
+	// 		return false;
+
+	// 	for (ft::pair<typename ft::vector<T>::iterator, typename ft::vector<T>::iterator> it(lhs.begin(), rhs.begin());
+	// 			it.first != lhs.end(), it.second != rhs.begin(); ++it.first, ++it.second)
+	// 		if (it.first != it.second)
+	// 			return false;
+	// 	return true;
+	// }
+
+	// (2)	
+	// template <class T, class Alloc>
+	// bool operator!= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+	// (3)	
+	// template <class T, class Alloc>
+	// bool operator<  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+	// (4)	
+	// template <class T, class Alloc>
+	// bool operator<= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+	// (5)	
+	// template <class T, class Alloc>
+	// bool operator>  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+	// (6)	
+	// template <class T, class Alloc>
+	// bool operator>= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
+	// template <class T, class Alloc>
+	// void swap (vector<T, Alloc>& x, vector<T, Alloc>& y);
+
+} // namespace ft
 
 #endif

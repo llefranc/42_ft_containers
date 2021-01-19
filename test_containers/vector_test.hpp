@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 11:10:11 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 13:12:39 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,10 +280,10 @@ void	testInsert1(T& vec)
 	if (vec.size())
 	{
 		*x = vec.front();
-		tmp.insert(tmp.begin() + 1, *x);
+		std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.begin() + 1, *x) << "\n";
 	}
-	tmp.insert(tmp.begin(), *x);
-	tmp.insert(tmp.end(), *x);
+	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.begin(), *x) << "\n";
+	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.end(), *x) << "\n";
 	
 	std::cout << "\t\t\t";
 	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
@@ -332,11 +332,142 @@ void	testInsert3(T& vec)
 	tmp.insert(tmp.begin(), vec.begin(), vec.end());
 	tmp.insert(tmp.begin() + 1, vec.begin(), vec.end());
 	tmp.insert(tmp.end(), vec.begin(), vec.end());
+	tmp.insert(tmp.end(), vec.begin(), vec.begin());
 	
 	std::cout << "\t\t\t";
 	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
 		std::cout << *it << " | ";
 	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+}
+
+template <typename T>
+void	testErase1(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "erase1: ";
+
+	// Erase everything
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.begin(), tmp.end());
+		if (tmp.size())
+			std::cout << "new elem after erase: " << *iter << "\n\t\t\t";
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+	}
+
+	// Erase nothing
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.end(), tmp.end());
+		
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+
+		iter = tmp.erase(tmp.begin(), tmp.begin());
+		if (tmp.size())
+			std::cout << "\n\t\t\tnew elem after erase: " << *iter << "\n\t\t\t";
+	}
+	
+	// Erase last elem
+	if (vec.size())
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.end() - 1, tmp.end());
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "\n\t\t\tsize of tmp = " << tmp.size() << "\n\t\t\t";
+	}
+
+	// Erase everything except first elem
+	if (vec.size())
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.begin() + 1, tmp.end());
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+	}
+}
+
+template <typename T>
+void	testErase2(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "erase2: ";
+
+	// Erase first elem
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.begin());
+		if (tmp.size())
+			std::cout << "new elem after erase: " << *iter << "\n\t\t\t";
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+	}
+
+	// Erase last elem
+	if (vec.size())
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.end() - 1);
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "\n\t\t\tsize of tmp = " << tmp.size() << "\n\t\t\t";
+	}
+
+	// Erase one elem
+	if (vec.size() > 1)
+	{
+		T tmp = vec;
+		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
+
+		typename T::iterator iter = tmp.erase(tmp.begin() + 1);
+
+		for (typename T::iterator it = tmp.begin(); it != iter; ++it)
+			std::cout << *it << " | ";
+		std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+	}
+}
+
+template <typename T>
+void	testOperatorEqual(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "operator=: ";
+
+	T tmp = vec;
+
+	std::cout << "tmp == vec (should be true): " << (tmp == vec) << "\n\t\t\t";
+	
+	typename T::value_type* x = new typename T::value_type ();
+	if (vec.size())
+		*x = vec[0];
+	
+	tmp.push_back(*x);
+	std::cout << "tmp == vec (should be false): " << (tmp == vec) << "\n\t\t\t";
+
+	delete x;
 }
 
 template <typename T>
@@ -369,7 +500,10 @@ void	executeAllVecTests(T& vec, int testNb)
 	testInsert1(vec);
 	testInsert2(vec);
 	testInsert3(vec);
+	testErase1(vec);
+	testErase2(vec);
 	testClear(vec);
+	testOperatorEqual(vec);
 }
 
 template <typename T>
@@ -382,7 +516,6 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
 	
-	(void)vec;
 	// Tests for const vectors
 	testOperatorBracelet(vec);
 	testSize(vec);
@@ -392,7 +525,8 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	testAt(vec);
 	testFront(vec);
 	testBack(vec);
-
+	// testOperatorEqual(vec);
+	
 	if (!isConst)
 		return ;
 }

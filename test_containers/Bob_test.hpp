@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:43:13 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 14:33:50 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 14:26:30 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ std::ostream& operator<<(std::ostream& flux, const Bob& print)
 	flux << "Class test printing";
 	return (flux);
 }
+
+bool operator==(const Bob& lhs, const Bob& rhs) { (void)lhs; (void)rhs; return true; }
+bool operator!=(const Bob& lhs, const Bob& rhs) { (void)lhs; (void)rhs; return false; }
 
 #endif

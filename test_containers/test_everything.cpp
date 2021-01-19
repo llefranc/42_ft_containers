@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 10:48:18 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 14:26:45 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,5 +211,30 @@ int		testAllVectors()
 
 int main()
 {
+	// ft::vector<char> v0(12, 'c');
+	// ft::vector<char> v1(12, 'c');
+	// ft::vector<char> v2(v0);
+	
+
+	// std::cout << (v0 == v1);
+	// std::cout << (v2 == v0);
+	
+	// v0.erase(v0.end());
+
+	// ft::vector<char>::iterator it = v0.erase(v0.begin(), v0.begin());
+	// std::cout << "it = " << *it << "\n";
+	// v0.erase(v0.begin(), v0.end());
+
+	// std::vector<char> vec(12, 'c');
+	// vec.erase(vec.end());
+	// std::vector<char>::iterator iter = vec.erase(vec.end());
+
+	// for (std::vector<char>::iterator it = vec.begin(); it != iter; ++it)
+	// 		std::cout << *it << " | ";
+	// std::cout << "it = " << *it << "\n";
+	
+	// for (std::vector<char>::iterator it2 = vec.begin(); it2 != it; ++it2)
+	// 	std::cout << *it2 << "|";
+
 	testAllVectors();
 }
