@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_everything.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 16:04:59 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/18 19:05:10 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,46 +211,5 @@ int		testAllVectors()
 
 int main()
 {
-	// ft::vector<std::string> v31;
-
-	// v31.push_back("3");
-	// v31.push_back("2");
-	// v31.push_back("1");
-	
-	// v31.insert(v31.begin(), "yo");
-	// v31.insert(v31.begin() + 2, "yo");
-	// v31.insert(v31.end(), "yo");
-
-	// for (ft::vector<std::string>::iterator i = v31.begin(); i != v31.end(); ++i)
-	// 	std::cout << *i << " | ";
-	// std::cout <<"\n";
-	
-	// std::vector<std::string> v;
-
-	// v.push_back("3");
-	// v.push_back("2");
-	// v.push_back("1");
-	
-	// v.insert(v.begin(), "yo");
-	// v.insert(v.begin() + 2, "yo");
-	// v.insert(v.end(), "yo");
-
-	// for (std::vector<std::string>::iterator i = v.begin(); i != v.end(); ++i)
-	// 	std::cout << *i << " | ";
-	// std::cout <<"\n";
-	// ft::vector<char> v0(1, 'c');
-
-	// v0.insert(v0.begin() + 1, 5, 'a');
-	// v0.insert(v0.begin(), 5, 'b');
-	// v0.insert(v0.end(), 5, 'c');
-	
-	// for (ft::vector<char>::iterator it = v0.begin(); it != v0.end(); it++)
-	// 	std::cout << *it << " | ";
-	ft::vector<std::string> v30(6, "salut");
-
-	v30[0] = "a";
-
-	executeAllVecTests(v30, 0);
-
 	testAllVectors();
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 16:01:24 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/18 19:05:48 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,8 @@ namespace ft
 			}
 			
 			// fill (2)	
+			
+			// 0 1 2
 			void insert (iterator position, size_type n, const value_type& val)
 			{
 				// In case of a realloc, position will be invalited because _vector
@@ -346,14 +348,13 @@ namespace ft
 				a = b;
 				b = tmp;
 			}
-			
-			// x0 x1 x2
+
 			void moveElements(iterator pos, size_type lenMov)
 			{
 				for (ft::pair<iterator, iterator> it(end() - 1, end());
-					it.second - 1 != pos; --it.first, --it.second)
+					it.second != pos; --it.first, --it.second)
 				{
-					_alloc.construct(&(*(it.second - 1 + lenMov)), *it.first);
+					_alloc.construct(&(*(it.first + lenMov)), *it.first);
 					_alloc.destroy(&(*it.first));
 				}
 			}

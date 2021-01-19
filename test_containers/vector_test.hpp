@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_test.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 16:02:00 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/18 19:02:44 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,9 +307,7 @@ void	testInsert2(T& vec)
 	if (vec.size())
 	{
 		*x = vec.front();
-		std::cout << "salut\n";
 		tmp.insert(tmp.begin() + 1, 5, *x);
-		std::cout << "salut\n";
 	}
 	tmp.insert(tmp.begin(), 5, *x);
 	tmp.insert(tmp.end(), 5, *x);
