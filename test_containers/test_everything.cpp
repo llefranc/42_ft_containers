@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 15:04:18 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:09:22 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,11 @@ int		testAllVectors()
 int main()
 {
 	// std::vector<char> v0(11, 'b');
-	// std::vector<char> v1(12, 'c');
+	std::vector<char> v1(12, 'c');
+
+	// char c = v1.front()
+
+	std::vector<char>::reverse_iterator it(v1.begin());
 	// ft::vector<char> v2(v0);
 	
 

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 16:17:37 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:57:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include <memory>
 
 #include "bidirectional_iterator.hpp"
+// #include "rev_random_access_iterator.hpp"
 
 namespace ft
 {
-
 	template<typename T, bool B, class Alloc = std::allocator<T> >
 	class random_iterator : public ft::bidirec_iterator<T, B, Alloc>
 	{
@@ -42,7 +42,8 @@ namespace ft
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			random_iterator(nonConstPointer val = 0) : bidirec_iterator(val) {}
-			random_iterator(const random_iterator<T, false, Alloc>& copy) : bidirec_iterator(copy) {};
+			random_iterator(const random_iterator<T, false, Alloc>& copy) : bidirec_iterator(copy.getNonCoinstPointer()) {};
+			// random_iterator(const ft::rev_random_iterator<T, false, Alloc>& copy) : bidirec_iterator(copy.getNonCoinstPointer()) {};
 			~random_iterator() {}
 
 			random_iterator& operator=(const random_iterator& assign)

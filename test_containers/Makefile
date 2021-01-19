@@ -6,7 +6,7 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/01/15 14:35:37 by llefranc         ###   ########.fr        #
+#    Updated: 2021/01/19 16:05:35 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS		=	test_everything.cpp
 
 HEADER_CON	=	vector.hpp
 HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp
-HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp
+HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp \
+				rev_bidirectional_iterator.hpp rev_random_access_iterator.hpp
 HEADER_TEST	=	vector_test.hpp Bob_test.hpp print_type.hpp
 
 PATH_CON	=	../containers/

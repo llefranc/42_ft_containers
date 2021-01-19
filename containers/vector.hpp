@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 15:24:54 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:43:58 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cmath>
 
 #include "../iterators/random_access_iterator.hpp"
+#include "../iterators/rev_random_access_iterator.hpp"
 #include "../templates/stl_like.hpp"
 
 #include <cstdio>
@@ -31,18 +32,21 @@ namespace ft
 
 			/* -------------------------- ALIASES -------------------------- */
 			
-			typedef	T												value_type;
-			typedef	Alloc											allocator_type;
-			typedef	ptrdiff_t										difference_type;
-			typedef	size_t											size_type;
+			typedef	T													value_type;
+			typedef	Alloc												allocator_type;
+			typedef	ptrdiff_t											difference_type;
+			typedef	size_t												size_type;
 
-			typedef	T&												reference;
-			typedef	const T&										const_reference;
-			typedef	T*												pointer;
-			typedef	const T*										const_pointer;
+			typedef	T&													reference;
+			typedef	const T&											const_reference;
+			typedef	T*													pointer;
+			typedef	const T*											const_pointer;
 			
-			typedef typename ft::random_iterator<T, false, Alloc>	iterator;
-			typedef typename ft::random_iterator<T, true, Alloc>	const_iterator;
+			typedef typename ft::random_iterator<T, false, Alloc>		iterator;
+			typedef typename ft::random_iterator<T, true, Alloc>		const_iterator;
+
+			typedef typename ft::rev_random_iterator<T, false, Alloc>	reverse_iterator;
+			typedef typename ft::rev_random_iterator<T, true, Alloc>	reverse_const_iterator;
 
 
 			/* ------------------------ CONSTRUCTORS ----------------------- */
