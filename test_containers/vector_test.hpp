@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 13:12:39 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:17:59 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ template <typename T>
 void	testOperatorBracelet(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "operator[]: ";
+	std::cout << "operator[]: \n\t\t\t";
 	
 	for (size_t i = 0; i < vec.size(); ++i)
 		std::cout << vec[i] << " ";
@@ -33,7 +33,7 @@ template <typename T>
 void	testSize(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "size: ";
+	std::cout << "size: \n\t\t\t";
 	
 	std::cout << vec.size();
 }
@@ -42,7 +42,7 @@ template <typename T>
 void	testCapacity(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "capacity: ";
+	std::cout << "capacity: \n\t\t\t";
 	
 	std::cout << vec.capacity();
 }
@@ -51,7 +51,7 @@ template <typename T>
 void	testEmpty(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "empty: ";
+	std::cout << "empty: \n\t\t\t";
 	
 	std::cout << vec.empty();
 }
@@ -60,7 +60,7 @@ template <typename T>
 void	testIterators(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "iterators: ";
+	std::cout << "iterators: \n\t\t\t";
 	
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " ";
@@ -70,7 +70,7 @@ template <typename T>
 void	testAt(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "at: ";
+	std::cout << "at: \n\t\t\t";
 	
 	for (size_t i = 0; i < vec.size(); ++i)
 	{
@@ -99,7 +99,7 @@ template <typename T>
 void	testFront(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "front: ";
+	std::cout << "front: \n\t\t\t";
 	
 	if (vec.size()) // To prevent overflow
 		std::cout << vec.front();
@@ -109,7 +109,7 @@ template <typename T>
 void	testBack(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "back: ";
+	std::cout << "back: \n\t\t\t";
 	
 	if (vec.size()) // To prevent overflow
 		std::cout << vec.back();
@@ -119,7 +119,7 @@ template <typename T>
 void	testPushBack(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "push_back: ";
+	std::cout << "push_back: \n\t\t\t";
 	
 	// Allows to value initialize (case size is 0, we can't assign vec[0])
 	typename T::value_type* x = new typename T::value_type ();
@@ -136,7 +136,7 @@ template <typename T>
 void	testPopBack(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "pop_back: ";
+	std::cout << "pop_back: \n\t\t\t";
 	
 	if (vec.size())
 	{
@@ -150,7 +150,7 @@ template <typename T>
 void	testClear(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "clear: ";
+	std::cout << "clear: \n\t\t\t";
 	
 	T tmp = vec;
 	std::cout << "size before clear: " << tmp.size() << " | ";
@@ -172,9 +172,10 @@ template <typename T>
 void	testSwap(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "swap: ";
+	std::cout << "swap member and non member: \n\t\t\t";
 
 	T tmp(vec);
+	T tmp2(vec);
 
 	// Allows to value initialize (case size is 0, we can't assign vec[0])
 	typename T::value_type* x = new typename T::value_type ();
@@ -183,9 +184,12 @@ void	testSwap(T& vec)
 
 	tmp.push_back(*x);
 	
-	std::cout << "size of tmp = " << tmp.size() << " and size of vec = " << vec.size() << "\n";
-	vec.swap(tmp);
-	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of vec = " << vec.size();
+	std::cout << "size of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size() << "\n";
+	tmp2.swap(tmp);
+	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size();
+
+	swap(tmp2, tmp);
+	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size();
 
 	delete x;
 }
@@ -194,7 +198,7 @@ template <typename T>
 void	testResize(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "resize: ";
+	std::cout << "resize: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
@@ -205,7 +209,7 @@ void	testResize(T& vec)
 		*x = vec[0];
 
 	tmp.resize(3, *x);
-	std::cout << "\t\t\tnew elem = " << vec.back();
+	std::cout << "\t\t\tnew elem = " << tmp.back();
 	std::cout << "\t\t\tsize of tmp after resize = " << tmp.size();
 	
 	delete x;
@@ -215,7 +219,7 @@ template <typename T>
 void	testAssign1(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "assign1: ";
+	std::cout << "assign1: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
@@ -243,7 +247,7 @@ template <typename T>
 void	testAssign2(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "assign2: ";
+	std::cout << "assign2: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
@@ -270,7 +274,7 @@ template <typename T>
 void	testInsert1(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "insert1: ";
+	std::cout << "insert1: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
@@ -297,7 +301,7 @@ template <typename T>
 void	testInsert2(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "insert2: ";
+	std::cout << "insert2: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
@@ -324,13 +328,14 @@ template <typename T>
 void	testInsert3(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "insert3: ";
+	std::cout << "insert3: \n\t\t\t";
 
 	T tmp = vec;
 	std::cout << "size of tmp = " << tmp.size() << "\n";
 
 	tmp.insert(tmp.begin(), vec.begin(), vec.end());
-	tmp.insert(tmp.begin() + 1, vec.begin(), vec.end());
+	if (tmp.size())
+		tmp.insert(tmp.begin() + 1, vec.begin(), vec.end());
 	tmp.insert(tmp.end(), vec.begin(), vec.end());
 	tmp.insert(tmp.end(), vec.begin(), vec.begin());
 	
@@ -344,7 +349,7 @@ template <typename T>
 void	testErase1(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "erase1: ";
+	std::cout << "erase1: \n\t\t\t";
 
 	// Erase everything
 	{
@@ -407,9 +412,10 @@ template <typename T>
 void	testErase2(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "erase2: ";
+	std::cout << "erase2: \n\t\t\t";
 
 	// Erase first elem
+	if (vec.size())
 	{
 		T tmp = vec;
 		std::cout << "size of tmp = " << tmp.size() << "\n\t\t\t";
@@ -451,14 +457,15 @@ void	testErase2(T& vec)
 }
 
 template <typename T>
-void	testOperatorEqual(T& vec)
+void	testOperatorEqualNotEqual(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "operator=: ";
+	std::cout << "operator==/!=: \n\t\t\t";
 
 	T tmp = vec;
 
 	std::cout << "tmp == vec (should be true): " << (tmp == vec) << "\n\t\t\t";
+	std::cout << "tmp != vec (should be false): " << (tmp != vec) << "\n\t\t\t";
 	
 	typename T::value_type* x = new typename T::value_type ();
 	if (vec.size())
@@ -466,9 +473,68 @@ void	testOperatorEqual(T& vec)
 	
 	tmp.push_back(*x);
 	std::cout << "tmp == vec (should be false): " << (tmp == vec) << "\n\t\t\t";
+	std::cout << "tmp != vec (should be true): " << (tmp != vec) << "\n\t\t\t";
+
+	T tmp2 = tmp;
+	tmp.clear();
+	std::cout << "tmp == vec (should be false): " << (tmp2 == tmp) << "\n\t\t\t";
+	std::cout << "tmp2 != tmp (should be true): " << (tmp2 != tmp) << "\n\t\t\t";
+
+	tmp2.clear();
+	std::cout << "tmp == vec (should be true): " << (tmp2 == tmp) << "\n\t\t\t";
+	std::cout << "tmp2 != tmp (should be false): " << (tmp2 != tmp);
 
 	delete x;
 }
+
+template <typename T>
+void	testOperatorLessAndMore(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "operator</>/<=/>=: \n\t\t\t";
+
+	T tmp = vec;
+	typename T::value_type* x = new typename T::value_type ();
+
+	std::cout << "tmp < vec: " << (tmp < vec) << "\n\t\t\t";
+	std::cout << "tmp > vec: " << (tmp > vec) << "\n\t\t\t";
+	std::cout << "tmp <= vec: " << (tmp <= vec) << "\n\t\t\t";
+	std::cout << "tmp >= vec: " << (tmp >= vec) << "\n\t\t\t";
+	
+	if (vec.size())
+		*x = vec.front();
+	tmp.push_back(*x);
+	
+	std::cout << "vec < tmp: " << (vec < tmp) << "\n\t\t\t";
+	std::cout << "vec > tmp: " << (vec > tmp) << "\n\t\t\t";
+	std::cout << "vec <= tmp: " << (vec <= tmp) << "\n\t\t\t";
+	std::cout << "vec >= tmp: " << (vec >= tmp) << "\n\t\t\t";
+
+	T tmp2 = tmp;
+	if (vec.size())
+		*x = vec.back();
+	tmp2.push_back(*x);
+	
+	std::cout << "tmp2 < tmp: " << (tmp2 < tmp) << "\n\t\t\t";
+	std::cout << "tmp2 > tmp: " << (tmp2 > tmp) << "\n\t\t\t";
+	std::cout << "tmp2 <= tmp: " << (tmp2 <= tmp) << "\n\t\t\t";
+	std::cout << "tmp2 >= tmp: " << (tmp2 >= tmp) << "\n\t\t\t";
+
+	tmp.clear();
+	std::cout << "tmp2 < tmp: " << (tmp2 < tmp) << "\n\t\t\t";
+	std::cout << "tmp2 > tmp: " << (tmp2 > tmp) << "\n\t\t\t";
+	std::cout << "tmp2 <= tmp: " << (tmp2 <= tmp) << "\n\t\t\t";
+	std::cout << "tmp2 >= tmp: " << (tmp2 >= tmp) << "\n\t\t\t";
+
+	tmp2.clear();
+	std::cout << "tmp2 < tmp: " << (tmp2 < tmp) << "\n\t\t\t";
+	std::cout << "tmp2 > tmp: " << (tmp2 > tmp) << "\n\t\t\t";
+	std::cout << "tmp2 <= tmp: " << (tmp2 <= tmp) << "\n\t\t\t";
+	std::cout << "tmp2 >= tmp: " << (tmp2 >= tmp);
+
+	delete x;
+}
+
 
 template <typename T>
 void	executeAllVecTests(T& vec, int testNb)
@@ -503,7 +569,8 @@ void	executeAllVecTests(T& vec, int testNb)
 	testErase1(vec);
 	testErase2(vec);
 	testClear(vec);
-	testOperatorEqual(vec);
+	testOperatorEqualNotEqual(vec);
+	testOperatorLessAndMore(vec);
 }
 
 template <typename T>
@@ -525,7 +592,6 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	testAt(vec);
 	testFront(vec);
 	testBack(vec);
-	// testOperatorEqual(vec);
 	
 	if (!isConst)
 		return ;

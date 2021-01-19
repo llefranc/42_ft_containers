@@ -6,14 +6,13 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 14:29:42 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:24:54 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-// #include <memory>
 #include <iostream>
 #include <stdexcept>
 #include <cmath>
@@ -117,7 +116,7 @@ namespace ft
 			/* ------------------------- DESTRUCTOR ------------------------ */
 
 			/*
-			** Destructor, destroy all the vector's elements and then deallocates vector's
+			** Destructor, destroys all the vector's elements and then deallocates vector's
 			** ressources.
 			*/
 			~vector()
@@ -390,14 +389,21 @@ namespace ft
 				return true;
 			}
 
-			// friend bool operator!=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-			
+			friend bool operator<(const vector& lhs, const vector& rhs)
+			{
+				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
+						it.first != lhs.end() && it.second != rhs.end(); ++it.first, ++it.second)
+					if (*(it.first) < *(it.second))
+						return true;
+				return (lhs.size() < rhs.size());
+			}
 
-			// friend bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-			// friend bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-			// friend bool operator>(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-			// friend bool operator>=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-			// friend void swap (vector<T, Alloc>& x, vector<T, Alloc>& y);
+			friend bool operator!=(const vector& lhs, const vector& rhs)	{ return !(lhs == rhs); }
+			friend bool operator>(const vector& lhs, const vector& rhs)		{ return rhs < lhs; }
+			friend bool operator<=(const vector& lhs, const vector& rhs)	{ return !(rhs < lhs); }
+			friend bool operator>=(const vector& lhs, const vector& rhs)	{ return !(lhs < rhs); }
+
+			friend void swap (vector& x, vector& y)							{ x.swap(y); }
 			
 		private:	
 		

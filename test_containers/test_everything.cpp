@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 14:26:45 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:04:18 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	printTestNumber(int *nb)
 	if (nb)
 		i = *nb;
 	else
-		std::cout << "\ntest " <<++i << ":\t";
+		std::cout << "\n---------------------\ntest " <<++i << ":\t";
 }
 
 int		testAllVectors()
@@ -211,12 +211,12 @@ int		testAllVectors()
 
 int main()
 {
-	// ft::vector<char> v0(12, 'c');
-	// ft::vector<char> v1(12, 'c');
+	// std::vector<char> v0(11, 'b');
+	// std::vector<char> v1(12, 'c');
 	// ft::vector<char> v2(v0);
 	
 
-	// std::cout << (v0 == v1);
+	// std::cout << (v0 < v1);
 	// std::cout << (v2 == v0);
 	
 	// v0.erase(v0.end());
