@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_test.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 19:02:44 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/19 11:10:11 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,6 +321,25 @@ void	testInsert2(T& vec)
 }
 
 template <typename T>
+void	testInsert3(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "insert3: ";
+
+	T tmp = vec;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	tmp.insert(tmp.begin(), vec.begin(), vec.end());
+	tmp.insert(tmp.begin() + 1, vec.begin(), vec.end());
+	tmp.insert(tmp.end(), vec.begin(), vec.end());
+	
+	std::cout << "\t\t\t";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+}
+
+template <typename T>
 void	executeAllVecTests(T& vec, int testNb)
 {
 	std::cout << "\n\n--------------------------------\n";
@@ -349,6 +368,7 @@ void	executeAllVecTests(T& vec, int testNb)
 	testAssign2(vec);
 	testInsert1(vec);
 	testInsert2(vec);
+	testInsert3(vec);
 	testClear(vec);
 }
 

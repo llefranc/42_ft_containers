@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/18 19:05:48 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/19 11:05:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,15 @@ namespace ft
 					_alloc.destroy(&_vector[_size-- - 1]);
 			}
 			
-			// single element (1)	
+			/*
+			** Inserts 1 elements with a value of val at a position, and increases the vector' size.
+			** A reallocation will occured only if vector's capacity isn't enough.
+			**
+			** @param position	The element will be inserted just before this position. All elements
+			**					after this position will be moved of a len of 1.
+			** @param val		Value of the element inserted.
+			** @return			An iterator on the newly element inserted.
+			*/
 			iterator insert (iterator position, const value_type& val)
 			{
 				// In case of a realloc, position will be invalited because _vector
@@ -255,9 +263,15 @@ namespace ft
 				return iterator(&_vector[index]);
 			}
 			
-			// fill (2)	
-			
-			// 0 1 2
+			/*
+			** Inserts n elements with a value of val at a position, and increases the vector' size.
+			** A reallocation will occured only if vector's capacity isn't enough.
+			**
+			** @param position	Elements will be inserted just before this position. All elements
+			**					after this position will be moved of a len of n.
+			** @param n			Number of elements to be inserted.
+			** @param val		Value of the elements inserted.
+			*/
 			void insert (iterator position, size_type n, const value_type& val)
 			{
 				// In case of a realloc, position will be invalited because _vector
@@ -282,10 +296,46 @@ namespace ft
 			}
 
 			// range (3)	
-			// template <class InputIterator>
-    		// void insert (iterator position, InputIterator first, InputIterator last);
+			template <class InputIterator>
+    		void insert (iterator position, InputIterator first, InputIterator last, 
+						typename ft::enable_if<InputIterator>::type* = 0)
+			{
+				// Counting number of elements to add
+				size_type n = 0;
+				InputIterator tmp(first);
+				while (tmp++ != last)
+					++n;
+				
+				// In case of a realloc, position will be invalited because _vector
+				// points to another allocated area so we need to save the index array
+				// where position iterator is pointing to create a new one after the reallocation
+				difference_type index = position - begin();
+				
+				if (_size + n > _capacity)
+					reallocateVec(_capacity + n);
+
+				// Creating a new iterator pointing to the correct allocated are (case a realloc occured previously)
+				iterator newPosition(&_vector[index]);
+				
+				// Moving at newPosition + n all elements after newPosition
+				if (newPosition != end())
+					moveElements(newPosition, n);
+
+				// Constructing n new elements from the iterator's range
+				for (size_type i = 0; i < n; ++i)
+					_alloc.construct(&(*newPosition++), *first++);
+				_size += n;
+			}
+
+			
 			// iterator erase (iterator position);
 			// iterator erase (iterator first, iterator last);
+
+			/*
+			** Swaps a vector with the content of this one.
+			**
+			** @param x		The vector to be swapped.
+			*/
 			void swap (vector& x)
 			{
 				swap(_alloc, x._alloc);
@@ -330,6 +380,12 @@ namespace ft
 			size_type			_size;			// Number of T values inside the vector
 			size_type			_capacity;		// Capacity allocated (can be greater than size)
 
+			/*
+			** Reallocates a vector with a new capacity, and copy/construct the previous
+			** one using the allocator. Then call destruct the previous one with the destructor.
+			**
+			** @param newCapacity		The new that will be allocated by the allocator.
+			*/
 			void reallocateVec(size_type newCapacity)
 			{
 				pointer tmp = _alloc.allocate(newCapacity);
@@ -341,6 +397,12 @@ namespace ft
 				_vector = tmp;
 			}
 
+			/*
+			** Swaps two variables.
+			**
+			** @param a		Will be swap with b.
+			** @param b		Will be swap with a.
+			*/
 			template <typename U>
 			void swap(U& a, U&b)
 			{
@@ -349,8 +411,17 @@ namespace ft
 				b = tmp;
 			}
 
+			/*
+			** Move to the right on an array all elements (from a position until the end
+			** of the array). Each element will be constructed/copied to his new position,
+			** then destructed at his previous position.
+			**
+			** @param pos		Indicates first element to move. All elements at his right will be moved too.
+			** @param lenMov	The len of the movement for each element.
+			*/
 			void moveElements(iterator pos, size_type lenMov)
 			{
+				// Starting from the end, until it meets pos iterator
 				for (ft::pair<iterator, iterator> it(end() - 1, end());
 					it.second != pos; --it.first, --it.second)
 				{
