@@ -6,7 +6,7 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/01/12 16:09:59 by llefranc         ###   ########.fr        #
+#    Updated: 2021/01/20 17:23:35 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS		=	-g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp 
 
-HEADER_CON	=	vector.hpp
+HEADER_CON	=	vector.hpp list.hpp
 HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp
 HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp
 
