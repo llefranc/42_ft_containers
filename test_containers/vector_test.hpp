@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 17:25:51 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 11:08:08 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ template <typename T>
 void	testIterators(T& vec)
 {
 	printTestNumber(0);
-	std::cout << "iterators: \n\t\t\t";
 	
+	std::cout << "iterators: \n\t\t\t";
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " ";
-	for (typename T::const_reverse_iterator it = typename T::reverse_iterator(vec.end());
-			it != typename T::reverse_iterator(vec.begin()); ++it)
+
+	std::cout << "reverse iterators: \n\t\t\t";
+	for (typename T::const_reverse_iterator it = vec.rbegin();
+			it != vec.rend(); ++it)
 		std::cout << *it << " ";
 }
 

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 17:26:47 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 11:06:52 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,11 @@ int		testAllVectors()
 			executeAllVecTests(v42, ++testNb);
 			executeAllVecTests(v43, ++testNb);
 			
-		// 	executeAllVecTests(v100, ++testNb, CONST);
-		// 	executeAllVecTests(v101, ++testNb, CONST);
-		// 	executeAllVecTests(v200, ++testNb, CONST);
-		// 	executeAllVecTests(v201, ++testNb, CONST);
-		// 	executeAllVecTests(v300, ++testNb, CONST);
+			executeAllVecTests(v100, ++testNb, CONST);
+			executeAllVecTests(v101, ++testNb, CONST);
+			executeAllVecTests(v200, ++testNb, CONST);
+			executeAllVecTests(v201, ++testNb, CONST);
+			executeAllVecTests(v300, ++testNb, CONST);
 		}
 
 		// testing std::vector
@@ -193,11 +193,11 @@ int		testAllVectors()
 			executeAllVecTests(v42, ++testNb);
 			executeAllVecTests(v43, ++testNb);
 			
-			// executeAllVecTests(v100, ++testNb, CONST);
-			// executeAllVecTests(v101, ++testNb, CONST);
-			// executeAllVecTests(v200, ++testNb, CONST);
-			// executeAllVecTests(v201, ++testNb, CONST);
-			// executeAllVecTests(v300, ++testNb, CONST);
+			executeAllVecTests(v100, ++testNb, CONST);
+			executeAllVecTests(v101, ++testNb, CONST);
+			executeAllVecTests(v200, ++testNb, CONST);
+			executeAllVecTests(v201, ++testNb, CONST);
+			executeAllVecTests(v300, ++testNb, CONST);
 		}
 
 		std::cout.rdbuf(coutbuf); //reset to standard output again
@@ -205,40 +205,15 @@ int		testAllVectors()
 		return 0;
 }
 
-#include <cmath>
-
-#include <memory>
-
 int main()
 {
-	// std::vector<char> v0(11, 'b');
-	// ft::vector<char> v1(12, 'c');
+	// std::vector<int> vec;
 
-	// char c = v1.front()
+	// vec.push_back(0);
+	// vec.push_back(1);
 
-	// ft::vector<char>::const_reverse_iterator it(v1.begin());
-	// ft::vector<char> v2(v0);
+	// for (std::vector<int>::reverse_iterator it = vec.rbegin(); it != vec.rend(); ++it)
+	// 	std::cout << *it << "|";
 	
-
-	// std::cout << (v0 < v1);
-	// std::cout << (v2 == v0);
-	
-	// v0.erase(v0.end());
-
-	// ft::vector<char>::iterator it = v0.erase(v0.begin(), v0.begin());
-	// std::cout << "it = " << *it << "\n";
-	// v0.erase(v0.begin(), v0.end());
-
-	// std::vector<char> vec(12, 'c');
-	// vec.erase(vec.end());
-	// std::vector<char>::iterator iter = vec.erase(vec.end());
-
-	// for (std::vector<char>::iterator it = vec.begin(); it != iter; ++it)
-	// 		std::cout << *it << " | ";
-	// std::cout << "it = " << *it << "\n";
-	
-	// for (std::vector<char>::iterator it2 = vec.begin(); it2 != it; ++it2)
-	// 	std::cout << *it2 << "|";
-
 	testAllVectors();
 }

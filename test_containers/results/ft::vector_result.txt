@@ -19,6 +19,7 @@ test 4:	empty:
 			0
 ---------------------
 test 5:	iterators: 
+			c c c c c c c c c c c c reverse iterators: 
 			c c c c c c c c c c c c 
 ---------------------
 test 6:	at: 
@@ -151,6 +152,7 @@ test 26:	empty:
 			0
 ---------------------
 test 27:	iterators: 
+			c c c c c c c c c c c c reverse iterators: 
 			c c c c c c c c c c c c 
 ---------------------
 test 28:	at: 
@@ -283,6 +285,7 @@ test 48:	empty:
 			0
 ---------------------
 test 49:	iterators: 
+			a reverse iterators: 
 			a 
 ---------------------
 test 50:	at: 
@@ -412,6 +415,7 @@ test 70:	empty:
 			0
 ---------------------
 test 71:	iterators: 
+			a reverse iterators: 
 			a 
 ---------------------
 test 72:	at: 
@@ -541,6 +545,7 @@ test 92:	empty:
 			0
 ---------------------
 test 93:	iterators: 
+			100 100 100 100 100 reverse iterators: 
 			100 100 100 100 100 
 ---------------------
 test 94:	at: 
@@ -673,6 +678,7 @@ test 114:	empty:
 			1
 ---------------------
 test 115:	iterators: 
+			reverse iterators: 
 			
 ---------------------
 test 116:	at: 
@@ -789,6 +795,7 @@ test 136:	empty:
 			0
 ---------------------
 test 137:	iterators: 
+			89123891 reverse iterators: 
 			89123891 
 ---------------------
 test 138:	at: 
@@ -918,6 +925,7 @@ test 158:	empty:
 			0
 ---------------------
 test 159:	iterators: 
+			100 100 100 100 100 reverse iterators: 
 			100 100 100 100 100 
 ---------------------
 test 160:	at: 
@@ -1050,6 +1058,7 @@ test 180:	empty:
 			0
 ---------------------
 test 181:	iterators: 
+			100 100 100 100 100 reverse iterators: 
 			100 100 100 100 100 
 ---------------------
 test 182:	at: 
@@ -1182,6 +1191,7 @@ test 202:	empty:
 			1
 ---------------------
 test 203:	iterators: 
+			reverse iterators: 
 			
 ---------------------
 test 204:	at: 
@@ -1286,7 +1296,7 @@ test 220:	operator</>/<=/>=:
 
 ---------------------
 test 221:	operator[]: 
-			0x7ffeed12f940 
+			0x7ffeee7f0a80 
 ---------------------
 test 222:	size: 
 			1
@@ -1298,22 +1308,23 @@ test 224:	empty:
 			0
 ---------------------
 test 225:	iterators: 
-			0x7ffeed12f940 
+			0x7ffeee7f0a80 reverse iterators: 
+			0x7ffeee7f0a80 
 ---------------------
 test 226:	at: 
-			0x7ffeed12f940 vector
+			0x7ffeee7f0a80 vector
 ---------------------
 test 227:	front: 
-			0x7ffeed12f940
+			0x7ffeee7f0a80
 ---------------------
 test 228:	back: 
-			0x7ffeed12f940
+			0x7ffeee7f0a80
 ---------------------
 test 229:	push_back: 
-			new elem = 0x7ffeed12f940
+			new elem = 0x7ffeee7f0a80
 ---------------------
 test 230:	pop_back: 
-			new elem = 0x7ffeed12f940
+			new elem = 0x7ffeee7f0a80
 ---------------------
 test 231:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
@@ -1321,48 +1332,48 @@ test 231:	swap member and non member:
 ---------------------
 test 232:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size of tmp after resize = 3
+			new elem = 0x7ffeee7f0a80			size of tmp after resize = 3
 ---------------------
 test 233:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size after assign = 3and content is:
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			new elem = 0x7ffeee7f0a80			size after assign = 3and content is:
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 ---------------------
 test 234:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size after assign = 3and content is:
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			new elem = 0x7ffeee7f0a80			size after assign = 3and content is:
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 ---------------------
 test 235:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffeed12f940
-			return value: 0x7ffeed12f940
-			return value: 0x7ffeed12f940
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			return value: 0x7ffeee7f0a80
+			return value: 0x7ffeee7f0a80
+			return value: 0x7ffeee7f0a80
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 4
 ---------------------
 test 236:	insert2: 
 			size of tmp = 1
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 16
 ---------------------
 test 237:	insert3: 
 			size of tmp = 1
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 4
 ---------------------
 test 238:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffeed12f940
+			new elem after erase: 0x7ffeee7f0a80
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 
 			size of tmp = 1
 ---------------------
 test 239:	erase2: 
@@ -1374,7 +1385,7 @@ test 239:	erase2:
 			
 ---------------------
 test 240:	clear: 
-			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeed12f940
+			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeee7f0a80
 ---------------------
 test 241:	operator==/!=: 
 			tmp == vec (should be true): 1
@@ -1415,7 +1426,7 @@ test 242:	operator</>/<=/>=:
 
 ---------------------
 test 243:	operator[]: 
-			0x7ffeed12f940 
+			0x7ffeee7f0a80 
 ---------------------
 test 244:	size: 
 			1
@@ -1427,22 +1438,23 @@ test 246:	empty:
 			0
 ---------------------
 test 247:	iterators: 
-			0x7ffeed12f940 
+			0x7ffeee7f0a80 reverse iterators: 
+			0x7ffeee7f0a80 
 ---------------------
 test 248:	at: 
-			0x7ffeed12f940 vector
+			0x7ffeee7f0a80 vector
 ---------------------
 test 249:	front: 
-			0x7ffeed12f940
+			0x7ffeee7f0a80
 ---------------------
 test 250:	back: 
-			0x7ffeed12f940
+			0x7ffeee7f0a80
 ---------------------
 test 251:	push_back: 
-			new elem = 0x7ffeed12f940
+			new elem = 0x7ffeee7f0a80
 ---------------------
 test 252:	pop_back: 
-			new elem = 0x7ffeed12f940
+			new elem = 0x7ffeee7f0a80
 ---------------------
 test 253:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
@@ -1450,48 +1462,48 @@ test 253:	swap member and non member:
 ---------------------
 test 254:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size of tmp after resize = 3
+			new elem = 0x7ffeee7f0a80			size of tmp after resize = 3
 ---------------------
 test 255:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size after assign = 3and content is:
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			new elem = 0x7ffeee7f0a80			size after assign = 3and content is:
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 ---------------------
 test 256:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffeed12f940			size after assign = 3and content is:
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			new elem = 0x7ffeee7f0a80			size after assign = 3and content is:
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 ---------------------
 test 257:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffeed12f940
-			return value: 0x7ffeed12f940
-			return value: 0x7ffeed12f940
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			return value: 0x7ffeee7f0a80
+			return value: 0x7ffeee7f0a80
+			return value: 0x7ffeee7f0a80
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 4
 ---------------------
 test 258:	insert2: 
 			size of tmp = 1
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 16
 ---------------------
 test 259:	insert3: 
 			size of tmp = 1
-			0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 0x7ffeee7f0a80 | 
 			size of tmp = 4
 ---------------------
 test 260:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffeed12f940
+			new elem after erase: 0x7ffeee7f0a80
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffeed12f940 | 
+			0x7ffeee7f0a80 | 
 			size of tmp = 1
 ---------------------
 test 261:	erase2: 
@@ -1503,7 +1515,7 @@ test 261:	erase2:
 			
 ---------------------
 test 262:	clear: 
-			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeed12f940
+			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeee7f0a80
 ---------------------
 test 263:	operator==/!=: 
 			tmp == vec (should be true): 1
@@ -1556,6 +1568,7 @@ test 268:	empty:
 			0
 ---------------------
 test 269:	iterators: 
+			salut salut salut salut salut salut reverse iterators: 
 			salut salut salut salut salut salut 
 ---------------------
 test 270:	at: 
@@ -1688,7 +1701,8 @@ test 290:	empty:
 			0
 ---------------------
 test 291:	iterators: 
-			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj reverse iterators: 
+			jbhkfbhsj salut salut salut salut jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf 
 ---------------------
 test 292:	at: 
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj vector
@@ -1820,6 +1834,7 @@ test 312:	empty:
 			0
 ---------------------
 test 313:	iterators: 
+			    reverse iterators: 
 			    
 ---------------------
 test 314:	at: 
@@ -1952,6 +1967,7 @@ test 334:	empty:
 			0
 ---------------------
 test 335:	iterators: 
+			salut salut salut salut salut salut reverse iterators: 
 			salut salut salut salut salut salut 
 ---------------------
 test 336:	at: 
@@ -2084,6 +2100,7 @@ test 356:	empty:
 			0
 ---------------------
 test 357:	iterators: 
+			salut salut salut salut salut salut reverse iterators: 
 			salut salut salut salut salut salut 
 ---------------------
 test 358:	at: 
@@ -2216,6 +2233,7 @@ test 378:	empty:
 			0
 ---------------------
 test 379:	iterators: 
+			Class test printing Class test printing reverse iterators: 
 			Class test printing Class test printing 
 ---------------------
 test 380:	at: 
@@ -2348,6 +2366,7 @@ test 400:	empty:
 			0
 ---------------------
 test 401:	iterators: 
+			Class test printing Class test printing reverse iterators: 
 			Class test printing Class test printing 
 ---------------------
 test 402:	at: 
@@ -2480,6 +2499,7 @@ test 422:	empty:
 			0
 ---------------------
 test 423:	iterators: 
+			Class test printing reverse iterators: 
 			Class test printing 
 ---------------------
 test 424:	at: 
@@ -2609,6 +2629,7 @@ test 444:	empty:
 			0
 ---------------------
 test 445:	iterators: 
+			Class test printing reverse iterators: 
 			Class test printing 
 ---------------------
 test 446:	at: 
@@ -2738,6 +2759,7 @@ test 466:	empty:
 			0
 ---------------------
 test 467:	iterators: 
+			100 100 100 100 100 reverse iterators: 
 			100 100 100 100 100 
 ---------------------
 test 468:	at: 
@@ -2768,6 +2790,7 @@ test 474:	empty:
 			1
 ---------------------
 test 475:	iterators: 
+			reverse iterators: 
 			
 ---------------------
 test 476:	at: 
@@ -2798,6 +2821,7 @@ test 482:	empty:
 			0
 ---------------------
 test 483:	iterators: 
+			c c c c c c c c c c c c reverse iterators: 
 			c c c c c c c c c c c c 
 ---------------------
 test 484:	at: 
@@ -2828,6 +2852,7 @@ test 490:	empty:
 			0
 ---------------------
 test 491:	iterators: 
+			c c c c c c c c c c c c reverse iterators: 
 			c c c c c c c c c c c c 
 ---------------------
 test 492:	at: 
@@ -2858,6 +2883,7 @@ test 498:	empty:
 			0
 ---------------------
 test 499:	iterators: 
+			bonjour bonjour bonjour reverse iterators: 
 			bonjour bonjour bonjour 
 ---------------------
 test 500:	at: 

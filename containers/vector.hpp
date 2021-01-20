@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 17:17:21 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 12:16:30 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ namespace ft
 
 			/* -------------------------- ALIASES -------------------------- */
 			
-			typedef	T													value_type;
-			typedef	Alloc												allocator_type;
-			typedef	ptrdiff_t											difference_type;
-			typedef	size_t												size_type;
+			typedef	T											value_type;
+			typedef	Alloc										allocator_type;
+			typedef	ptrdiff_t									difference_type;
+			typedef	size_t										size_type;
 
-			typedef	T&													reference;
-			typedef	const T&											const_reference;
-			typedef	T*													pointer;
-			typedef	const T*											const_pointer;
+			typedef	T&											reference;
+			typedef	const T&									const_reference;
+			typedef	T*											pointer;
+			typedef	const T*									const_pointer;
 			
 			typedef typename ft::random_iterator<T, false>		iterator;
 			typedef typename ft::random_iterator<T, true>		const_iterator;
@@ -102,15 +102,16 @@ namespace ft
 			}
 					
 			/*
-			** Copy constructor, creates a vector with a size equal vector x size and copy
-			** all x values to the new elements created.
+			** Copy constructor, creates a vector with the same size and copy/construct
+			** all x values to the new area allocated.
 			**
-			** @param x			The vector that will be copied.
+			** @param x		The vector that will be copied.
 			*/
 			vector(const vector& x) :
 					_alloc(x._alloc), _size(x._size), _capacity(x._capacity)
 			{
 				_vector = _alloc.allocate(_capacity);
+				
 				for (ft::pair<int, const_iterator> i(0, x.begin());
 						i.second != x.end(); ++i.first, ++i.second)
 					_alloc.construct(&_vector[i.first], *i.second);
@@ -133,6 +134,12 @@ namespace ft
 
 			/* ------------------------- OPERATOR= ------------------------- */
 			
+			/*
+			** Assigns a vector to this vector. Calls the copy constructor to do the
+			** assignment(copy and swap idiom).
+			**
+			** @param x		The vector that will be assigned.
+			*/
 			vector& operator= (const vector& x)
 			{
 				vector tmp(x);
@@ -143,12 +150,81 @@ namespace ft
 
 			/* ------------------------- ITERATORS ------------------------- */
 			
-			iterator		begin()				{ return iterator(_vector); }
-			const_iterator	begin() const		{ return const_iterator(_vector); }
-			iterator		end()				{ return iterator(_vector + _size); }
-			const_iterator	end() const			{ return const_iterator(_vector + _size); }
+			// Returns an iterator pointing at the first element of the vector.
+			iterator		begin()					{ return iterator(_vector); }
+			
+			// Returns a const_iterator pointing at the first element of the vector.
+			const_iterator	begin() const			{ return const_iterator(_vector); }
+			
+			// Returns an iterator pointing after the last element of the vector. Access this
+			// iterator will result in undefined behavior.
+			iterator		end()					{ return iterator(_vector + _size); }
+
+			// Returns a const_iterator pointing after the last element of the vector. Access this
+			// iterator will result in undefined behavior.
+			const_iterator	end() const				{ return const_iterator(_vector + _size); }
+
+			// Returns a reverse_iterator pointing at the last element of the vector.
+			reverse_iterator rbegin()				{ return reverse_iterator(_vector + _size - 1); }
+
+			// Returns a const_reverse_iterator pointing at the last element of the vector.
+			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_vector + _size - 1); }
+			
+			// Returns a reverse_iterator pointing before the first element of the vector. Access this
+			// iterator will result in undefined behavior.
+			reverse_iterator rend()					{ return reverse_iterator(_vector - 1); }
+			
+			// Returns a const_reverse_iterator pointing before the first element of the vector. Access
+			// this iterator will result in undefined behavior.
+			const_reverse_iterator rend() const		{ return const_reverse_iterator(_vector - 1); }
 
 
+			/* ------------------------- ITERATORS ------------------------- */
+			
+			/*
+			** @return		An iterator pointing at the first element of the vector.
+			*/
+			iterator		begin()					{ return iterator(_vector); }
+			
+			/*
+			** @return		A const_iterator pointing at the first element of the vector.
+			*/
+			const_iterator	begin() const			{ return const_iterator(_vector); }
+			
+			/*
+			** @return		An iterator pointing after the last element of the vector. Access this
+			**				iterator will result in undefined behavior.
+			*/
+			iterator		end()					{ return iterator(_vector + _size); }
+
+			/*
+			** @return		A const_iterator pointing after the last element of the vector. Access this
+			**				iterator will result in undefined behavior.
+			*/
+			const_iterator	end() const				{ return const_iterator(_vector + _size); }
+
+			/*
+			** @return		A reverse_iterator pointing at the last element of the vector.
+			*/
+			reverse_iterator rbegin()				{ return reverse_iterator(_vector + _size - 1); }
+
+			/*
+			** @return		A const_reverse_iterator pointing at the last element of the vector.
+			*/
+			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_vector + _size - 1); }
+			
+			/*
+			** @return		A reverse_iterator pointing before the first element of the vector. Access this
+			**				iterator will result in undefined behavior.
+			*/
+			reverse_iterator rend()					{ return reverse_iterator(_vector - 1); }
+			
+			/*
+			** @return		A const_reverse_iterator pointing before the first element of the vector. Access
+			**				this iterator will result in undefined behavior.
+			*/
+			const_reverse_iterator rend() const		{ return const_reverse_iterator(_vector - 1); }
+		
 			/* -------------------------- CAPACITY ------------------------- */
 			
 			size_type		size() const		{ return _size; }
@@ -479,39 +555,6 @@ namespace ft
 				}
 			}
 	};
-
-	/* --------------- NON MEMBER FUNCTION OVERLOADS --------------- */
-	// (1)	
-	// template <class T, class Alloc>
-	// bool operator==(const ft::vector<T, Alloc>& lhs, const ft::vector<T, Alloc>& rhs)
-	// {
-	// 	if (lhs.size() != rhs.size())
-	// 		return false;
-
-	// 	for (ft::pair<typename ft::vector<T>::iterator, typename ft::vector<T>::iterator> it(lhs.begin(), rhs.begin());
-	// 			it.first != lhs.end(), it.second != rhs.begin(); ++it.first, ++it.second)
-	// 		if (it.first != it.second)
-	// 			return false;
-	// 	return true;
-	// }
-
-	// (2)	
-	// template <class T, class Alloc>
-	// bool operator!= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-	// (3)	
-	// template <class T, class Alloc>
-	// bool operator<  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-	// (4)	
-	// template <class T, class Alloc>
-	// bool operator<= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-	// (5)	
-	// template <class T, class Alloc>
-	// bool operator>  (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-	// (6)	
-	// template <class T, class Alloc>
-	// bool operator>= (const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs);
-	// template <class T, class Alloc>
-	// void swap (vector<T, Alloc>& x, vector<T, Alloc>& y);
 
 } // namespace ft
 
