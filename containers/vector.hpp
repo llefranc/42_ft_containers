@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 12:16:30 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 12:25:35 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ namespace ft
 
 			/* ------------------------ CONSTRUCTORS ----------------------- */
 
-			/*
-			** Default constructor, creates a vector with a size of 0
-			**
-			** @param alloc		The template param used for the allocation
+			/**
+			*	Default constructor, creates a vector with a size of 0.
+			*
+			*	@param alloc	The template param used for the allocation
 			*/
 			explicit vector(const allocator_type& alloc = allocator_type()) :
 					_alloc(alloc), _size(0), _capacity(0)
@@ -62,13 +62,13 @@ namespace ft
 				_vector = _alloc.allocate(_capacity);
 			};
 
-			/*
-			** Fill constructor, creates a vector with a size of n and initialized the 
-			** values.
-			**
-			** @param n			The number of elements that will be created
-			** @param val		The value used for initialization (value initialized by default)
-			** @param alloc		The template param used for the allocation
+			/**
+			*	Fill constructor, creates a vector with a size of n and initialized the 
+			*	values.
+			*
+			*	@param n		The number of elements that will be created
+			*	@param val		The value used for initialization (value initialized by default)
+			*	@param alloc	The template param used for the allocation
 			*/
 			explicit vector(size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type()) :
@@ -80,13 +80,13 @@ namespace ft
 					_alloc.construct(&_vector[i], val);
 			}
 							
-			/*
-			** Range constructor, creates a vector with a size equal to the range between two
-			** iterators and copy the values of this range to the new elements created.
-			**
-			** @param first		An iterator representing first element of the range
-			** @param last		An iterator indicating end of the range (will be excluded and not copied)
-			** @param alloc		The template param used for the allocation
+			/**
+			*	Range constructor, creates a vector with a size equal to the range between two
+			*	iterators and copy the values of this range to the new elements created.
+			*
+			*	@param first	An iterator representing first element of the range
+			*	@param last		An iterator indicating end of the range (will be excluded and not copied)
+			*	@param alloc	The template param used for the allocation
 			*/
 			template <class InputIterator>
 			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
@@ -101,11 +101,11 @@ namespace ft
 					_alloc.construct(&_vector[i], *first);
 			}
 					
-			/*
-			** Copy constructor, creates a vector with the same size and copy/construct
-			** all x values to the new area allocated.
-			**
-			** @param x		The vector that will be copied.
+			/**
+			*	Copy constructor, creates a vector with the same size and copy/construct
+			*	all x values to the new area allocated.
+			*	
+			*	@param x		The vector that will be copied.
 			*/
 			vector(const vector& x) :
 					_alloc(x._alloc), _size(x._size), _capacity(x._capacity)
@@ -120,9 +120,9 @@ namespace ft
 			
 			/* ------------------------- DESTRUCTOR ------------------------ */
 
-			/*
-			** Destructor, destroys all the vector's elements and then deallocates vector's
-			** ressources.
+			/**
+			*	Destructor, destroys all the vector's elements and then deallocates vector's
+			*	ressources.
 			*/
 			~vector()
 			{
@@ -134,11 +134,11 @@ namespace ft
 
 			/* ------------------------- OPERATOR= ------------------------- */
 			
-			/*
-			** Assigns a vector to this vector. Calls the copy constructor to do the
-			** assignment(copy and swap idiom).
-			**
-			** @param x		The vector that will be assigned.
+			/**
+			*	Assigns a vector to this vector. Calls the copy constructor to do the
+			*	assignment(copy and swap idiom).
+			*	
+			*	@param x		The vector that will be assigned.
 			*/
 			vector& operator= (const vector& x)
 			{
@@ -150,81 +150,51 @@ namespace ft
 
 			/* ------------------------- ITERATORS ------------------------- */
 			
-			// Returns an iterator pointing at the first element of the vector.
-			iterator		begin()					{ return iterator(_vector); }
-			
-			// Returns a const_iterator pointing at the first element of the vector.
-			const_iterator	begin() const			{ return const_iterator(_vector); }
-			
-			// Returns an iterator pointing after the last element of the vector. Access this
-			// iterator will result in undefined behavior.
-			iterator		end()					{ return iterator(_vector + _size); }
-
-			// Returns a const_iterator pointing after the last element of the vector. Access this
-			// iterator will result in undefined behavior.
-			const_iterator	end() const				{ return const_iterator(_vector + _size); }
-
-			// Returns a reverse_iterator pointing at the last element of the vector.
-			reverse_iterator rbegin()				{ return reverse_iterator(_vector + _size - 1); }
-
-			// Returns a const_reverse_iterator pointing at the last element of the vector.
-			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_vector + _size - 1); }
-			
-			// Returns a reverse_iterator pointing before the first element of the vector. Access this
-			// iterator will result in undefined behavior.
-			reverse_iterator rend()					{ return reverse_iterator(_vector - 1); }
-			
-			// Returns a const_reverse_iterator pointing before the first element of the vector. Access
-			// this iterator will result in undefined behavior.
-			const_reverse_iterator rend() const		{ return const_reverse_iterator(_vector - 1); }
-
-
-			/* ------------------------- ITERATORS ------------------------- */
-			
-			/*
-			** @return		An iterator pointing at the first element of the vector.
+			/**
+			*	@return		An iterator pointing at the first element of the vector.
 			*/
 			iterator		begin()					{ return iterator(_vector); }
 			
-			/*
-			** @return		A const_iterator pointing at the first element of the vector.
+			/**
+			*	@return		A const_iterator pointing at the first element of the vector.
 			*/
 			const_iterator	begin() const			{ return const_iterator(_vector); }
 			
-			/*
-			** @return		An iterator pointing after the last element of the vector. Access this
-			**				iterator will result in undefined behavior.
+			/**
+			*	@return		An iterator pointing after the last element of the vector. Access this
+			*				iterator will result in undefined behavior.
 			*/
 			iterator		end()					{ return iterator(_vector + _size); }
 
-			/*
-			** @return		A const_iterator pointing after the last element of the vector. Access this
-			**				iterator will result in undefined behavior.
+			/**
+			*	@return		A const_iterator pointing after the last element of the vector. Access this
+			*				iterator will result in undefined behavior.
 			*/
 			const_iterator	end() const				{ return const_iterator(_vector + _size); }
 
-			/*
-			** @return		A reverse_iterator pointing at the last element of the vector.
+			/**
+			*	@return		A reverse_iterator pointing at the last element of the vector.
 			*/
 			reverse_iterator rbegin()				{ return reverse_iterator(_vector + _size - 1); }
 
-			/*
-			** @return		A const_reverse_iterator pointing at the last element of the vector.
+			/**
+			*	@return		A const_reverse_iterator pointing at the last element of the vector.
 			*/
 			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_vector + _size - 1); }
 			
-			/*
-			** @return		A reverse_iterator pointing before the first element of the vector. Access this
-			**				iterator will result in undefined behavior.
+			/**
+			*	@return		A reverse_iterator pointing before the first element of the vector. Access this
+			*				iterator will result in undefined behavior.
 			*/
 			reverse_iterator rend()					{ return reverse_iterator(_vector - 1); }
 			
-			/*
-			** @return		A const_reverse_iterator pointing before the first element of the vector. Access
-			**				this iterator will result in undefined behavior.
+			/**
+			*	@return		A const_reverse_iterator pointing before the first element of the vector. Access
+			*				this iterator will result in undefined behavior.
 			*/
 			const_reverse_iterator rend() const		{ return const_reverse_iterator(_vector - 1); }
 		
+
 			/* -------------------------- CAPACITY ------------------------- */
 			
 			size_type		size() const		{ return _size; }
