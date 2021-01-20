@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 11:06:52 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 16:26:39 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,13 +207,41 @@ int		testAllVectors()
 
 int main()
 {
-	// std::vector<int> vec;
+	// ft::vector<int>	vec(1, 1);
+	// vec.push_back(2);
+	// vec.push_back(3);
 
-	// vec.push_back(0);
-	// vec.push_back(1);
+	// ft::vector<int>::iterator it = vec.begin();
+	// ft::vector<int>::iterator it2;
+	// it2 = it;
 
-	// for (std::vector<int>::reverse_iterator it = vec.rbegin(); it != vec.rend(); ++it)
-	// 	std::cout << *it << "|";
+	// ft::vector<int>::iterator it3 = it;
 	
+	// std::cout << *it << "\n";
+	// std::cout << *it2 << "\n";
+	// std::cout << *it3 << "\n";
+	// // testAllVectors();
+
+	// ft::vector<int>::const_iterator it4 = vec.begin();
+	// ft::vector<int>::const_iterator it5;
+	// it5 = it4;
+
+	// ft::vector<int>::const_iterator it6 = it4;
+
+	// std::cout << *it4 << "\n";
+	// std::cout << *it5 << "\n";
+	// std::cout << *it6 << "\n";
+
+	// ft::vector<int>::const_iterator it7 = it;
+	// ft::vector<int>::const_iterator it8;
+	// it8 = it;
+
+	// std::cout << *it7 << "\n";
+	// std::cout << *it8 << "\n";
+
+
+	// ft::vector<int>::reverse_iterator it10 = vec.rbegin();
+	// std::cout << it10[2] << "\n";
+	// std::cout << *it10;
 	testAllVectors();
 }

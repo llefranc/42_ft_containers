@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 11:08:08 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 16:36:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,26 @@ void	testIterators(T& vec)
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " ";
 
-	std::cout << "reverse iterators: \n\t\t\t";
+	if (vec.size())
+	{
+		std::cout << "\n\t\t\ttesting operator[] and operator+/-: ";
+		typename T::const_iterator it = vec.begin();
+		std::cout << it[0]	<< " ";
+		std::cout << *(it + vec.size() - 1)	<< " ";
+	}
+
+	std::cout << "\n\t\treverse iterators: \n\t\t\t";
 	for (typename T::const_reverse_iterator it = vec.rbegin();
 			it != vec.rend(); ++it)
 		std::cout << *it << " ";
+
+	if (vec.size())
+	{
+		std::cout << "\n\t\t\ttesting operator[] and operator+/-: ";
+		typename T::const_reverse_iterator it = vec.rbegin();
+		std::cout << it[0]	<< " ";
+		std::cout << *(it + vec.size() - 1)	<< " ";
+	}
 }
 
 template <typename T>

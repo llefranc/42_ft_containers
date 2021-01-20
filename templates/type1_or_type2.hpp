@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 16:47:38 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 12:31:56 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:02:02 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 
 namespace ft
 {
-	// Typedef type 1 or type 2 using a boolean
+	/**
+	*	Use a boolean to typedef either type 1 or type 2.
+	*/
 	template <bool isConst, typename isFalse, typename isTrue>
 	struct chooseConst {};
 
-	// Typedef const
+	/**
+	*	Typedef: const pointer, const ref...
+	*/
 	template <typename isFalse, typename isTrue>
 	struct chooseConst<true, isFalse, isTrue>
 	{
 		typedef isTrue type;
 	};
 
-	// Typedef non_const
+	/**
+	*	Typedef: pointer, ref...
+	*/
 	template <typename isFalse, typename isTrue>
 	struct chooseConst<false, isFalse, isTrue>
 	{

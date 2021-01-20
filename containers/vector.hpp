@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 14:50:32 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:27:14 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,18 @@ namespace ft
 	* ------------------------------------------------------------- *
 	* ------------------------ FT::VECTOR ------------------------- *
 	*
+	* - Coplien form:
 	* (constructor):		Construct vector
 	* (destructor):			Vector destructor
 	* operator=:			Assign content
 	*
-	* Iterators:
+	* - Iterators:
 	* begin:				Return iterator to beginning
 	* end:					Return iterator to end
 	* rbegin:				Return reverse iterator to reverse beginning
 	* rend:					Return reverse iterator to reverse end
 	*
-	* Capacity:
+	* - Capacity:
 	* size:					Return size
 	* max_size:				Return maximum size
 	* resize:				Change size
@@ -47,13 +48,13 @@ namespace ft
 	* empty:				Test whether vector is empty
 	* reserve:				Request a change in capacity
 	*
-	* Element access:
+	* - Element access:
 	* operator[]:			Access element
 	* at:					Access element
 	* front:				Access first element
 	* back:					Access last element
 	*
-	* Modifiers:
+	* - Modifiers:
 	* assign:				Assign vector content
 	* push_back:			Add element at the end
 	* pop_back:				Delete last element
@@ -62,9 +63,10 @@ namespace ft
 	* swap:					Swap content
 	* clear:				Clear content
 	*
-	* Non-member function overloads
-	* relational operators:	Relational operators for vector (function template )
-	* swap:					Exchange contents of vectors (function template )
+	* - Non-member function overloads:
+	* relational operators:	Relational operators for vector
+	* swap:					Exchange contents of vectors
+	* ------------------------------------------------------------- *
 	*/
 	
 	template <typename T, class Alloc = std::allocator<T> >
@@ -93,7 +95,7 @@ namespace ft
 
 
 			/* ------------------------------------------------------------- */
-			/* ------------------------ CONSTRUCTORS ----------------------- */
+			/* ------------------------ COPLIEN FORM ----------------------- */
 
 			/**
 			*	Default constructor, creates a vector with a size of 0.
@@ -161,10 +163,6 @@ namespace ft
 					_alloc.construct(&_vector[i.first], *i.second);
 			}
 
-			
-			/* ------------------------------------------------------------- */
-			/* ------------------------- DESTRUCTOR ------------------------ */
-
 			/**
 			*	Destructor, destroys all the vector's elements and then deallocates vector's
 			*	ressources.
@@ -175,10 +173,6 @@ namespace ft
 					_alloc.destroy(&(*it));
 				_alloc.deallocate(_vector, _capacity);
 			}
-			
-
-			/* ------------------------------------------------------------- */
-			/* ------------------------- OPERATOR= ------------------------- */
 			
 			/**
 			*	Assigns a vector to this vector. Calls the copy constructor to do the
@@ -747,7 +741,7 @@ namespace ft
 			}
 
 			/**
-			*	Move to the left all elements from a certain position until the end
+			*	Move to the left all elements from a certain position until the end 
 			*	of the array. Each element will be constructed/copied to his new position,
 			*	then destructed at his previous position.
 			*

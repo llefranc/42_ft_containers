@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 14:55:51 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:25:27 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,57 @@
 
 namespace ft
 {
-	/* ----------------------------- STD::PAIR ----------------------------- */
-	
+	/**
+	* ------------------------------------------------------------- *
+	* ------------------------- FT::PAIR -------------------------- *
+	*
+	* Coplien form:
+	* (constructor):		Construct pair
+	* (destructor):			Pair destructor
+	* operator=:			Assign content
+	*
+	* Public member variables:
+	* T1:					First pair's member variable.
+	* T2:					Second pair's member variable.
+	* ------------------------------------------------------------- *
+	*/
+
 	template <typename T1, typename T2>
 	class pair
 	{
 		public:
-
+			
+			/* ------------------------------------------------------------- */
+			/* ------------------------ COPLIEN FORM ----------------------- */
+			
+			/**
+			*	Default constructor, value initialized first and second.
+			*/
 			pair() : first(), second() {};
+			
+			/**
+			*	Initialization constructor.
+			*
+			*	@param a	Will initialize first.
+			*	@param b	Will initialize second.
+			*/
 			pair(const T1& a, const T2& b) : first(a), second(b) {};
-			pair(const pair<T1, T2>& copy) : first(copy.first), second(copy.second) {};
+			
+			/**
+			*	Copy constructor, creates a pair with the same member variables.
+			*
+			*	@param copy		The pair that will be copied.
+			*/
+			pair(const pair& copy) : first(copy.first), second(copy.second) {};
+			
 			~pair() {};
 		
-			pair& operator=(const pair<T1, T2>& assign)
+			/**
+			*	Assigns a pair to this pair.
+			*	
+			*	@param assign	The pair that will be assigned.
+			*/
+			pair& operator=(const pair& assign)
 			{
 				if (this != &assign)
 				{
@@ -39,6 +77,10 @@ namespace ft
 				return (*this);
 			}
 
+
+			/* ------------------------------------------------------------- */
+			/* ------------------ PUBLIC MEMBER VARIABLES ------------------ */
+			
 			T1 first;
 			T2 second;
 	};
@@ -46,6 +88,9 @@ namespace ft
 
 	/* --------------------------- STD::ENABLE_IF -------------------------- */
 
+	/**
+	*	Typedef an int into type only if T matches one of the templates specialization.
+	*/
 	template <typename T>
 	struct enable_if {};
 
