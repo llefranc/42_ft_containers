@@ -36,7 +36,7 @@ last day of the CPP piscine.
 - [When use typename keyword][10]
 - [Cours sur les templates][11]
 - [Understanding SFINAE (used in enable_if)][12]
-- [How use the allocator][13]
+- [How to use the allocator][13]
 
 [1]: https://github.com/lucaslefrancq/42_CPP_piscine/blob/main/CPP08/cpp08.en.subject.pdf
 [2]: https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates
