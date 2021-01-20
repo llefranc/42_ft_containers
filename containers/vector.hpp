@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 14:43:52 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/20 14:50:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -728,8 +728,8 @@ namespace ft
 			}
 
 			/**
-			*	Move on an array to the right all elements (from a certain position until the end
-			*	of the array). Each element will be constructed/copied to his new position,
+			*	Move to the right all elements from a certain position until the end
+			*	of the array. Each element will be constructed/copied to his new position,
 			*	then destructed at his previous position.
 			*
 			*	@param pos		Indicates first element to move. All elements at his right will be moved too.
@@ -747,8 +747,8 @@ namespace ft
 			}
 
 			/**
-			*	Move on an array to the left all elements (from a certain position until the end
-			*	of the array). Each element will be constructed/copied to his new position,
+			*	Move to the left all elements from a certain position until the end
+			*	of the array. Each element will be constructed/copied to his new position,
 			*	then destructed at his previous position.
 			*
 			*	@param first	Iterator pointing to the range's beginning (will be include).
