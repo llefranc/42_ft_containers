@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 15:25:27 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 17:30:00 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,50 @@ namespace ft
 	/**
 	*	Typedef an int into type only if T matches one of the templates specialization.
 	*/
-	template <typename T>
+	// template <typename T>
+	// struct enable_if {};
+
+	// template <typename T>
+	// struct enable_if<ft::random_iterator<T, true> > { typedef int type; };
+	
+	// template <typename T>
+	// struct enable_if<ft::random_iterator<T, false> > { typedef int type; };
+
+	template <bool B>
 	struct enable_if {};
 
-	template <typename T>
-	struct enable_if<ft::random_iterator<T, true> > { typedef int type; };
+	template <>
+	struct enable_if<true> { typedef int type; };
 	
+	template <>
+	struct enable_if<false> { typedef int type; };
+
+	
+	/* --------------------------- STD::IS_INTEGRAL -------------------------- */
+
+	/**
+	*	Value will be true if T is an integral, false otherwise.
+	*/
 	template <typename T>
-	struct enable_if<ft::random_iterator<T, false> > { typedef int type; };
+	struct is_integral { static const bool value = false; };
+
+	template <>
+	struct is_integral<bool> { static const bool value = true; };
+	
+	template <>
+	struct is_integral<char> { static const bool value = true; };
+
+	template <>
+	struct is_integral<short> { static const bool value = true; };
+
+	template <>
+	struct is_integral<int> { static const bool value = true; };
+
+	template <>
+	struct is_integral<long> { static const bool value = true; };
+
+	template <>
+	struct is_integral<long long> { static const bool value = true; };
 
 } // namespace ft
 

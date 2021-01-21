@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:43:13 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 17:21:49 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:49:58 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class Bob
 {
 	public:
-	// Bob() {}
-	// Bob(const Bob& copy) { (void)copy; }
-	// ~Bob() {}
-	// Bob& operator=(const Bob& assign) { (void)assign; return *this; }
-	Bob() { std::cout << "Class test constructed\n"; }
-	Bob(const Bob& copy) { (void)copy; std::cout << "Class test copied\n"; }
-	~Bob() { std::cout << "Class test destructed\n"; }
-	Bob& operator=(const Bob& assign) { (void)assign; std::cout << "Class test assigned\n"; return *this; }
+	Bob() {}
+	Bob(const Bob& copy) { (void)copy; }
+	~Bob() {}
+	Bob& operator=(const Bob& assign) { (void)assign; return *this; }
+	// Bob() { std::cout << "Class test constructed\n"; }
+	// Bob(const Bob& copy) { (void)copy; std::cout << "Class test copied\n"; }
+	// ~Bob() { std::cout << "Class test destructed\n"; }
+	// Bob& operator=(const Bob& assign) { (void)assign; std::cout << "Class test assigned\n"; return *this; }
 };
 
 std::ostream& operator<<(std::ostream& flux, const Bob& print)

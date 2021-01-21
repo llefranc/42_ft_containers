@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:39:19 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 16:53:18 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 17:16:54 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,88 @@ int		testAllVectors()
 		return 0;
 }
 
+
 int main()
 {
+	// const std::vector<int> vec;
+	// vec.push_back(1);
+	// vec.push_back(2);
+	// vec.push_back(3);
+	// vec.push_back(4);
+	// vec.push_back(5);
+
+	// //rit	
+	// //it	
+	// //		a 0 1 2 b
+
+	// std::vector<int>::const_reverse_iterator it1(vec.begin() + 1);
+
+	// std::vector<int>::reverse_iterator it2(vec.end() - 1);
+
+	// std::cout << "std:" << (it1 - it2) << "\n";
+	
+	// std::cout << "beg: " << *(vec.begin() + 1) << " end: " << *(vec.end() - 1) << "\n";
+	// std::cout << "it1 =" << *it1; 
+	// std::cout << " it2: " << *it2 << "\n";
+
+	// std::cout << "-----------------------------------\n";
+
+	// ftvec.push_back(1);
+	// ftvec.push_back(2);
+	// ftvec.push_back(3);
+	// ftvec.push_back(4);
+	// ftvec.push_back(5);
+
+	// const ft::vector<int> ftvec(4, 3);
+	// ft::vector<int>::const_reverse_iterator ftit2(ftvec.rbegin());
+	// // ftit2;
+	// ft::vector<int>::const_reverse_iterator ff(ftit2);
+	// std::cout << *ftit2;
+
+	// ft::vector<int> ft(4,3);
+	// ft::vector<int>::reverse_iterator i(ft.rbegin());
+	// // ft::vector<int>::reverse_iterator f2(i);
+	// std::cout << *i;
+	
+
+	// std::cout << "ftstd:" << (ftit - ftit2) << "\n";
+
+	// std::cout << "beg: " << *(ftvec.begin() + 1) << " end: " << *(ftvec.end() - 1) << "\n";
+	// std::cout << "ftit1 =" << *ftit; 
+	// std::cout << " ftit2: " << *ftit2 << "\n";
+
+
+	// std::vector<int> vec;
+	// vec.push_back(0);
+	// vec.push_back(1);
+	// vec.push_back(2);
+
+	// // std::vector<int>::reverse_iterator it = vec.begin();
+	// std::vector<int>::iterator it(vec.begin());
+	// std::vector<int>::iterator it2(vec.rbegin());
+
+	// std::cout << "it1 =" << *it; 
+	// std::cout << " it2: " << *it2 << "\n";
+	
+	// ft::vector<int> vec2;
+	// vec2.push_back(0);
+	// vec2.push_back(1);
+	// vec2.push_back(2);
+
+	// // ft::vector<int>::reverse_iterator it = vec2.begin();
+	// ft::vector<int>::reverse_iterator it3(vec2.begin());
+	// ft::vector<int>::reverse_iterator it4(vec2.rbegin());
+
+	// std::cout << "ft:" << (it3 - it4) << "\n";
+	// std::cout << "it1 =" << *it3 << " it2: " << *it4 << "\n";
+
+	// const ft::vector<int> ftvec(4, 3);
+
+
+	// ft::vector<int>::const_reverse_iterator ftit(ftvec.rbegin() + 1);
+	// ft::vector<int>::const_reverse_iterator it;
+
+	// it = ftit;
+
 	testAllVectors();
 }

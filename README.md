@@ -29,6 +29,7 @@ last day of the CPP piscine.
 - [Lvalus and rvalues][3]
 - [Dependant names in C++][4]
 - [What's explicit keyword][5]
+- [Explicit call to a constructor][15]
 - [Implemtenting iterators][6]
 - [Writing your own STL style container][7]
 - [Writing operator++ for iterator][8]
@@ -37,6 +38,7 @@ last day of the CPP piscine.
 - [Cours sur les templates][11]
 - [Understanding SFINAE (used in enable_if)][12]
 - [How to use the allocator][13]
+- [Difference between explicit and implicit copy constructor][14]
 
 [1]: https://github.com/lucaslefrancq/42_CPP_piscine/blob/main/CPP08/cpp08.en.subject.pdf
 [2]: https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates
@@ -51,3 +53,5 @@ last day of the CPP piscine.
 [11]: https://cpp.developpez.com/cours/cpp/?page=page_14
 [12]: https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/SFINAE
 [13]: https://stackoverflow.com/questions/59539057/c-does-it-lead-to-double-free-when-destroy-element-in-allocatorstring
+[14]: https://stackoverflow.com/questions/1051379/is-there-a-difference-between-copy-initialization-and-direct-initialization
+[15]: https://stackoverflow.com/questions/12036037/explicit-call-to-a-constructor

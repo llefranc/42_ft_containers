@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 16:38:50 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 17:19:02 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 #include "rev_bidirectional_iterator.hpp"
 #include "random_access_iterator.hpp"
+#include "../templates/stl_like.hpp"
 
 namespace ft
 {
@@ -78,16 +79,17 @@ namespace ft
 			*	@param copy		The rev_random_iterator that will be copied.
 			*/
 			rev_random_iterator(const rev_random_iterator<T, false>& copy) :
-				rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
+				rev_bidirec_iterator(copy.getNonCoinstPointer()) {}
 
 			/**
 			*	Convert constructor : creates a rev_random_iterator from a const / not const 
-			*	random_iterator, pointing to the same T element.
+			*	random_iterator, pointing to the previous T element. This is necessary so 
+			*	begin() == rend(), and end == rbegin().
 			*	
 			*	@param copy		The random_iterator that will be converted.
 			*/
-			rev_random_iterator(const random_iterator<T, false>& copy) :
-				rev_bidirec_iterator(copy.getNonCoinstPointer()) {};
+			explicit rev_random_iterator(const random_iterator<T, false>& copy) :
+				rev_bidirec_iterator(copy.getNonCoinstPointer() - 1) {}
 
 			~rev_random_iterator() {}
 
@@ -120,44 +122,64 @@ namespace ft
 			/**
 			*	Increment 1 time random_iterator position.
 			*/
-			rev_random_iterator& operator+=(size_type nb)
+			rev_random_iterator& operator+=(int nb)
 			{
-				for (size_type i = 0; i < nb; i++)
-					--this->_val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						--this->_val;
+				else
+					for (int i = 0; i > nb; --i)
+						++this->_val;
+
 				return (*this);
 			}
 
 			/**
 			*	Increment nb times random_iterator position.
 			*/
-			rev_random_iterator operator+(size_type nb) const
+			rev_random_iterator operator+(int nb) const
 			{
 				rev_random_iterator it(*this);
 				
-				for (size_type i = 0; i < nb; i++)
-					--it._val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						--it._val;
+				else
+					for (int i = 0; i > nb; --i)
+						++it._val;
+						
 				return (it);
 			}
 			
 			/**
 			*	Decrement 1 time random_iterator position.
 			*/
-			rev_random_iterator& operator-=(size_type nb)
+			rev_random_iterator& operator-=(int nb)
 			{
-				for (size_type i = 0; i < nb; i++)
-					++this->_val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						++this->_val;
+				else
+					for (int i = 0; i > nb; --i)
+						--this->_val;
+						
 				return (*this);
 			}
 
 			/**
 			*	Decrement nb times random_iterator position.
 			*/
-			rev_random_iterator operator-(size_type nb) const
+			rev_random_iterator operator-(int nb) const
 			{
 				rev_random_iterator it(*this);
 				
-				for (size_type i = 0; i < nb; i++)
-					++it._val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						++it._val;
+				else
+					for (int i = 0; i > nb; --i)
+						--it._val;
+						
 				return (it);
 			}
 
@@ -165,34 +187,43 @@ namespace ft
 			*	@return		A reference to rev_random_iterator + nb. Undefined behavior if the 
 			*				reference returned is out of container's range.
 			*/
-			reference operator[](size_type nb) const
+			reference operator[](int nb) const
 			{
 				value_type* tmp;
 
 				tmp = this->_val;
-				for (size_type i = 0; i < nb; i++)
-					--tmp;
+
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						--tmp;
+				else
+					for (int i = 0; i > nb; --i)
+						++tmp;
+				
 				return (*tmp);
 			}
 
 			/**
+			*	Do a difference between 2 reverse iterators (in the opposite way than normal 
+			*	iterators, so that it1 - it2 == rev_it1 - rev_it2).
+			*
 			*	@return		The range's lenght between this rev_random_iterator and another one.
 			*/
 			difference_type operator-(rev_random_iterator it) const
 			{
-				return (this->_val - it._val);
+				return (it._val - this->_val);
 			}
 			
 
 			/* -------- FRIEND OPERATORS -------- */		
 			
-			friend rev_random_iterator operator+(size_type nb, const rev_random_iterator& it)
+			friend rev_random_iterator operator+(int nb, const rev_random_iterator& it)
 			{
 				rev_random_iterator newIt(it);
 				return (newIt += nb);
 			}
 
-			friend rev_random_iterator operator-(size_type nb, const rev_random_iterator& it)
+			friend rev_random_iterator operator-(int nb, const rev_random_iterator& it)
 			{
 				rev_random_iterator newIt(it);
 				return (newIt -= nb);

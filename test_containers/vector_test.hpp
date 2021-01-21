@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 16:36:03 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:15:04 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,26 @@ void	testIterators(T& vec)
 		std::cout << it[0]	<< " ";
 		std::cout << *(it + vec.size() - 1)	<< " ";
 	}
+
+	// Testing end() = rbegin() and begin() = rend()
+	// if (vec.size() >= 2)
+	// {
+	// 	typename T::const_reverse_iterator = it1(vec.begin() + 1);
+	// 	typename T::const_reverse_iterator = it2(vec.end() - 1);
+
+	// 	std::cout << "std:" << (it1 - it2) << "\n";
+		
+	// 	std::cout << "beg: " << *(vec.begin() + 1) << " end: " << *(vec.end() - 1) << "\n";
+	// 	std::cout << "it1 =" << *it1; 
+	// 	std::cout << " it2: " << *it2 << "\n";
+	// }
 }
+
+// template <typename T>
+// void	testIterators2(T& vec)
+// {
+
+// }
 
 template <typename T>
 void	testAt(T& vec)

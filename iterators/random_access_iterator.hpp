@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/20 16:38:58 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:42:30 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,6 @@ namespace ft
 			random_iterator(const random_iterator<T, false>& copy) :
 					bidirec_iterator(copy.getNonCoinstPointer()) {};
 
-			/**
-			*	Convert constructor : creates a random_iterator from a const / not const 
-			*	rev_random_iterator, pointing to the same T element.
-			*	
-			*	@param copy		The rev_random_iterator that will be converted.
-			*/
-			random_iterator(const rev_random_iterator<T, false>& copy) :
-					bidirec_iterator(copy.getNonCoinstPointer()) {};
-
 			~random_iterator() {}
 
 			/**
@@ -123,44 +114,64 @@ namespace ft
 			/**
 			*	Increment 1 time random_iterator position.
 			*/
-			random_iterator& operator+=(size_type nb)
+			random_iterator& operator+=(int nb)
 			{
-				for (size_type i = 0; i < nb; i++)
-					++this->_val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						++this->_val;
+				else
+					for (int i = 0; i > nb; --i)
+						--this->_val;
+
 				return (*this);
 			}
 
 			/**
 			*	Increment nb times random_iterator position.
 			*/
-			random_iterator operator+(size_type nb) const
+			random_iterator operator+(int nb) const
 			{
 				random_iterator it(*this);
 				
-				for (size_type i = 0; i < nb; i++)
-					++it._val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						++it._val;
+				else
+					for (int i = 0; i > nb; --i)
+						--it._val;
+						
 				return (it);
 			}
 			
 			/**
 			*	Decrement 1 time random_iterator position.
 			*/
-			random_iterator& operator-=(size_type nb)
+			random_iterator& operator-=(int nb)
 			{
-				for (size_type i = 0; i < nb; i++)
-					--this->_val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						--this->_val;
+				else
+					for (int i = 0; i > nb; --i)
+						++this->_val;
+
 				return (*this);
 			}
 
 			/**
 			*	Decrement nb times random_iterator position.
 			*/
-			random_iterator operator-(size_type nb) const
+			random_iterator operator-(int nb) const
 			{
 				random_iterator it(*this);
 				
-				for (size_type i = 0; i < nb; i++)
-					--it._val;
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						--it._val;
+				else
+					for (int i = 0; i > nb; --i)
+						++it._val;
+
 				return (it);
 			}
 
@@ -168,13 +179,19 @@ namespace ft
 			*	@return		A reference to random_iterator + nb. Undefined behavior if the reference
 			*				returned is out of container's range.
 			*/
-			reference operator[](size_type nb) const
+			reference operator[](int nb) const
 			{
 				value_type* tmp;
 
 				tmp = this->_val;
-				for (size_type i = 0; i < nb; i++)
-					++tmp;
+
+				if (nb > 0)
+					for (int i = 0; i < nb; ++i)
+						++tmp;
+				else
+					for (int i = 0; i > nb; --i)
+						--tmp;
+				
 				return (*tmp);
 			}
 
@@ -190,13 +207,13 @@ namespace ft
 			/* ------------------------------------------------------------- */
 			/* --------------- NON-MEMBER OPERATOR OVERLOADS --------------- */	
 			
-			friend random_iterator operator+(size_type nb, const random_iterator& it)
+			friend random_iterator operator+(int nb, const random_iterator& it)
 			{
 				random_iterator newIt(it);
 				return (newIt += nb);
 			}
 
-			friend random_iterator operator-(size_type nb, const random_iterator& it)
+			friend random_iterator operator-(int nb, const random_iterator& it)
 			{
 				random_iterator newIt(it);
 				return (newIt -= nb);
