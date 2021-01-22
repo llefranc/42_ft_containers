@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/21 17:30:00 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 11:35:01 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,8 @@ namespace ft
 	/* --------------------------- STD::ENABLE_IF -------------------------- */
 
 	/**
-	*	Typedef an int into type only if T matches one of the templates specialization.
+	*	Typedef an int into type only if B is true.
 	*/
-	// template <typename T>
-	// struct enable_if {};
-
-	// template <typename T>
-	// struct enable_if<ft::random_iterator<T, true> > { typedef int type; };
-	
-	// template <typename T>
-	// struct enable_if<ft::random_iterator<T, false> > { typedef int type; };
 
 	template <bool B>
 	struct enable_if {};
@@ -106,9 +98,6 @@ namespace ft
 	template <>
 	struct enable_if<true> { typedef int type; };
 	
-	template <>
-	struct enable_if<false> { typedef int type; };
-
 	
 	/* --------------------------- STD::IS_INTEGRAL -------------------------- */
 
@@ -136,6 +125,20 @@ namespace ft
 	template <>
 	struct is_integral<long long> { static const bool value = true; };
 
+	template <>
+	struct is_integral<unsigned char> { static const bool value = true; };
+
+	template <>
+	struct is_integral<unsigned short> { static const bool value = true; };
+
+	template <>
+	struct is_integral<unsigned int> { static const bool value = true; };
+
+	template <>
+	struct is_integral<unsigned long> { static const bool value = true; };
+
+	template <>
+	struct is_integral<unsigned long long> { static const bool value = true; };
 } // namespace ft
 
 #endif

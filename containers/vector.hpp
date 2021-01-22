@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/21 17:30:17 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 11:33:48 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -388,7 +388,7 @@ namespace ft
 			*/
 			template <class InputIterator>
 			void assign (InputIterator first, InputIterator last,
-						typename ft::enable_if<InputIterator>::type* = 0)
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
 			{
 				// Allocating more storage only if actual capacity isn't enough
 				if (static_cast<size_type>(last - first) > _capacity)
@@ -504,7 +504,7 @@ namespace ft
 			*/	
 			template <class InputIterator>
     		void insert (iterator position, InputIterator first, InputIterator last, 
-						typename ft::enable_if<InputIterator>::type* = 0)
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
 			{
 				// Counting number of elements to add
 				size_type n = 0;

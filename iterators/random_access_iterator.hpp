@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/21 16:42:30 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 11:55:23 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,24 @@ namespace ft
 				random_iterator newIt(it);
 				return (newIt -= nb);
 			}
+
+			// private:
+
+			// 	void	incPtr(nonConstPointer val, long nb)
+			// 	{
+			// 		if (nb < 0)
+			// 			nb *= -1;
+			// 		for (nb > 0; --nb)
+			// 			++val;
+			// 	}
+
+			// 	void	decPtr(nonConstPointer val, long nb)
+			// 	{
+			// 		if (nb < 0)
+			// 			nb *= -1;
+			// 		for (nb > 0; --nb)
+			// 			--val;
+			// 	}
 	};
 
 } // namespace ft
