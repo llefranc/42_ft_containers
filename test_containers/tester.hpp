@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:27:13 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/15 17:28:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:23:14 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 #include <fstream>
 #include <vector>
 
+// Include the containers to test
 #include "../containers/vector.hpp"
+
+// Needed for testing
 #include "../templates/stl_like.hpp"
 #include "vector_test.hpp"
-#include "Bob_test.hpp"
 
 #define NOTCONST 0
 #define CONST 1

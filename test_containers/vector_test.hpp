@@ -6,15 +6,14 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 13:44:45 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:14:25 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_TEST_HPP
 #define VECTOR_TEST_HPP
 
-#include "../containers/vector.hpp"
-#include "../templates/stl_like.hpp"
+#include "tester.hpp"
 #include "print_type.hpp"
 
 void	printTestNumber(int *nb);
@@ -63,6 +62,10 @@ void	testIterators(T& vec)
 	std::cout << "iterators: \n";
 	
 	std::cout << "\t\t\toperator++: ";
+	for (typename T::const_iterator it = vec.begin(); it != vec.end(); it++)
+		std::cout << *it << " | ";
+
+	std::cout << "\t\t\t++operator: ";
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " | ";
 

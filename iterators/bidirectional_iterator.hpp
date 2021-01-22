@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 13:50:04 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 15:46:00 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include <memory>
 
 #include "../templates/type1_or_type2.hpp"
-
-#define ADD 1
-#define SUBSTRACT 0
 
 namespace ft
 {

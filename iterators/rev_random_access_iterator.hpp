@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 13:49:27 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 14:11:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 #include "rev_bidirectional_iterator.hpp"
 #include "random_access_iterator.hpp"
 #include "../templates/stl_like.hpp"
+
+// Used in movePtr function
+#define ADD 1
+#define SUBSTRACT 0
 
 namespace ft
 {
