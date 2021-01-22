@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 11:55:23 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:48:58 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,7 @@ namespace ft
 			*/
 			random_iterator& operator+=(int nb)
 			{
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						++this->_val;
-				else
-					for (int i = 0; i > nb; --i)
-						--this->_val;
-
+				movePtr(this->_val, nb, ADD);
 				return (*this);
 			}
 
@@ -133,13 +127,7 @@ namespace ft
 			{
 				random_iterator it(*this);
 				
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						++it._val;
-				else
-					for (int i = 0; i > nb; --i)
-						--it._val;
-						
+				movePtr(it._val, nb, ADD);
 				return (it);
 			}
 			
@@ -148,13 +136,7 @@ namespace ft
 			*/
 			random_iterator& operator-=(int nb)
 			{
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						--this->_val;
-				else
-					for (int i = 0; i > nb; --i)
-						++this->_val;
-
+				movePtr(this->_val, nb, SUBSTRACT);
 				return (*this);
 			}
 
@@ -165,13 +147,7 @@ namespace ft
 			{
 				random_iterator it(*this);
 				
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						--it._val;
-				else
-					for (int i = 0; i > nb; --i)
-						++it._val;
-
+				movePtr(it._val, nb, SUBSTRACT);
 				return (it);
 			}
 
@@ -181,17 +157,9 @@ namespace ft
 			*/
 			reference operator[](int nb) const
 			{
-				value_type* tmp;
+				value_type* tmp(this->_val);
 
-				tmp = this->_val;
-
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						++tmp;
-				else
-					for (int i = 0; i > nb; --i)
-						--tmp;
-				
+				movePtr(tmp, nb, ADD);
 				return (*tmp);
 			}
 
@@ -219,23 +187,31 @@ namespace ft
 				return (newIt -= nb);
 			}
 
-			// private:
+			private:
 
-			// 	void	incPtr(nonConstPointer val, long nb)
-			// 	{
-			// 		if (nb < 0)
-			// 			nb *= -1;
-			// 		for (nb > 0; --nb)
-			// 			++val;
-			// 	}
+				/**
+				*	Moves random_acces_iterator's pointer. Adapt between addition / substraction
+				*	operation. 
+				*
+				*	@param val	The pointer to move.
+				*	@param nb	Number of time the pointer will be increased / decreased.
+				*	@param sign	Indicate if it's an addition or a substraction.
+				*/
+				void movePtr(nonConstPointer& val, long nb, bool sign) const
+				{
+					int mov;
 
-			// 	void	decPtr(nonConstPointer val, long nb)
-			// 	{
-			// 		if (nb < 0)
-			// 			nb *= -1;
-			// 		for (nb > 0; --nb)
-			// 			--val;
-			// 	}
+					// If addtion, mov will be positive. If substraction, negative.
+					if (sign == ADD)
+						mov = nb > 0 ? mov = 1: mov = -1;
+					else
+						mov = nb > 0 ? mov = -1: mov = 1;
+
+					if (nb < 0)
+						nb *= -1;
+					for (; nb > 0; --nb)
+						val += mov;
+				}
 	};
 
 } // namespace ft

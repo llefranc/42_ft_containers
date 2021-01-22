@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/21 17:19:02 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:49:27 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,7 @@ namespace ft
 			*/
 			rev_random_iterator& operator+=(int nb)
 			{
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						--this->_val;
-				else
-					for (int i = 0; i > nb; --i)
-						++this->_val;
-
+				movePtr(this->_val, nb, ADD);
 				return (*this);
 			}
 
@@ -140,14 +134,8 @@ namespace ft
 			rev_random_iterator operator+(int nb) const
 			{
 				rev_random_iterator it(*this);
-				
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						--it._val;
-				else
-					for (int i = 0; i > nb; --i)
-						++it._val;
 						
+				movePtr(it._val, nb, ADD);
 				return (it);
 			}
 			
@@ -155,14 +143,8 @@ namespace ft
 			*	Decrement 1 time random_iterator position.
 			*/
 			rev_random_iterator& operator-=(int nb)
-			{
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						++this->_val;
-				else
-					for (int i = 0; i > nb; --i)
-						--this->_val;
-						
+			{						
+				movePtr(this->_val, nb, SUBSTRACT);
 				return (*this);
 			}
 
@@ -173,13 +155,7 @@ namespace ft
 			{
 				rev_random_iterator it(*this);
 				
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						++it._val;
-				else
-					for (int i = 0; i > nb; --i)
-						--it._val;
-						
+				movePtr(it._val, nb, SUBSTRACT);
 				return (it);
 			}
 
@@ -189,17 +165,9 @@ namespace ft
 			*/
 			reference operator[](int nb) const
 			{
-				value_type* tmp;
+				value_type* tmp(this->_val);
 
-				tmp = this->_val;
-
-				if (nb > 0)
-					for (int i = 0; i < nb; ++i)
-						--tmp;
-				else
-					for (int i = 0; i > nb; --i)
-						++tmp;
-				
+				movePtr(tmp, nb, ADD);
 				return (*tmp);
 			}
 
@@ -228,6 +196,32 @@ namespace ft
 				rev_random_iterator newIt(it);
 				return (newIt -= nb);
 			}
+
+			private:
+
+				/**
+				*	Moves rev_random_acces_iterator's pointer. Adapt between addition / substraction
+				*	operation. 
+				*
+				*	@param val	The pointer to move.
+				*	@param nb	Number of time the pointer will be increased / decreased.
+				*	@param sign	Indicate if it's an addition or a substraction.
+				*/
+				void movePtr(nonConstPointer& val, long nb, bool sign) const
+				{
+					int mov;
+
+					// If addtion, mov will be negative. If substraction, positive.
+					if (sign == ADD)
+						mov = nb > 0 ? mov = -1: mov = 1;
+					else
+						mov = nb > 0 ? mov = 1: mov = -1;
+
+					if (nb < 0)
+						nb *= -1;
+					for (; nb > 0; --nb)
+						val += mov;
+				}
 	};
 
 } // namespace ft

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/19 17:06:28 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:42:13 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 #include "../templates/type1_or_type2.hpp"
 #include "bidirectional_iterator.hpp"
+
+#define SUBSTRACT 0
+#define ADD 1
 
 namespace ft
 {

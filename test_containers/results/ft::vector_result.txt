@@ -19,46 +19,55 @@ test 4:	empty:
 			0
 ---------------------
 test 5:	iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
-		reverse iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 6:	at: 
+test 6:	reverse iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
+---------------------
+test 7:	at: 
 			c c c c c c c c c c c c vector
 ---------------------
-test 7:	front: 
+test 8:	front: 
 			c
 ---------------------
-test 8:	back: 
+test 9:	back: 
 			c
 ---------------------
-test 9:	push_back: 
+test 10:	push_back: 
 			new elem = c
 ---------------------
-test 10:	pop_back: 
+test 11:	pop_back: 
 			new elem = c
 ---------------------
-test 11:	swap member and non member: 
+test 12:	swap member and non member: 
 			size of tmp = 13 and size of tmp2 = 12
 			size of tmp = 12 and size of tmp2 = 13			size of tmp = 13 and size of tmp2 = 12
 ---------------------
-test 12:	resize: 
+test 13:	resize: 
 			size of tmp = 12
 			new elem = c			size of tmp after resize = 3
 ---------------------
-test 13:	assign1: 
+test 14:	assign1: 
 			size of tmp = 12
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
 ---------------------
-test 14:	assign2: 
+test 15:	assign2: 
 			size of tmp = 12
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
 ---------------------
-test 15:	insert1: 
+test 16:	insert1: 
 			size of tmp = 12
 			return value: c
 			return value: c
@@ -66,17 +75,17 @@ test 15:	insert1:
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 15
 ---------------------
-test 16:	insert2: 
+test 17:	insert2: 
 			size of tmp = 12
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 27
 ---------------------
-test 17:	insert3: 
+test 18:	insert3: 
 			size of tmp = 12
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 48
 ---------------------
-test 18:	erase1: 
+test 19:	erase1: 
 			size of tmp = 12
 			size of tmp = 0
 			size of tmp = 12
@@ -90,7 +99,7 @@ test 18:	erase1:
 			c | 
 			size of tmp = 1
 ---------------------
-test 19:	erase2: 
+test 20:	erase2: 
 			size of tmp = 12
 			new elem after erase: c
 			size of tmp = 11
@@ -101,10 +110,10 @@ test 19:	erase2:
 			c | 
 			size of tmp = 11
 ---------------------
-test 20:	clear: 
+test 21:	clear: 
 			size before clear: 12 | size after clear: 0new elem pushed after clear: c
 ---------------------
-test 21:	operator==/!=: 
+test 22:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -114,7 +123,7 @@ test 21:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 22:	operator</>/<=/>=: 
+test 23:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -142,59 +151,68 @@ test 22:	operator</>/<=/>=:
 		VECTOR TYPE: char
 
 ---------------------
-test 23:	operator[]: 
+test 24:	operator[]: 
 			c c c c c c c c c c c c 
 ---------------------
-test 24:	size: 
+test 25:	size: 
 			12
 ---------------------
-test 25:	capacity: 
+test 26:	capacity: 
 			12
 ---------------------
-test 26:	empty: 
+test 27:	empty: 
 			0
 ---------------------
-test 27:	iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
-		reverse iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
+test 28:	iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 28:	at: 
+test 29:	reverse iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
+---------------------
+test 30:	at: 
 			c c c c c c c c c c c c vector
 ---------------------
-test 29:	front: 
+test 31:	front: 
 			c
 ---------------------
-test 30:	back: 
+test 32:	back: 
 			c
 ---------------------
-test 31:	push_back: 
+test 33:	push_back: 
 			new elem = c
 ---------------------
-test 32:	pop_back: 
+test 34:	pop_back: 
 			new elem = c
 ---------------------
-test 33:	swap member and non member: 
+test 35:	swap member and non member: 
 			size of tmp = 13 and size of tmp2 = 12
 			size of tmp = 12 and size of tmp2 = 13			size of tmp = 13 and size of tmp2 = 12
 ---------------------
-test 34:	resize: 
+test 36:	resize: 
 			size of tmp = 12
 			new elem = c			size of tmp after resize = 3
 ---------------------
-test 35:	assign1: 
+test 37:	assign1: 
 			size of tmp = 12
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
 ---------------------
-test 36:	assign2: 
+test 38:	assign2: 
 			size of tmp = 12
 			new elem = c			size after assign = 3and content is:
 			c | c | c | 
 ---------------------
-test 37:	insert1: 
+test 39:	insert1: 
 			size of tmp = 12
 			return value: c
 			return value: c
@@ -202,17 +220,17 @@ test 37:	insert1:
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 15
 ---------------------
-test 38:	insert2: 
+test 40:	insert2: 
 			size of tmp = 12
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 27
 ---------------------
-test 39:	insert3: 
+test 41:	insert3: 
 			size of tmp = 12
 			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 48
 ---------------------
-test 40:	erase1: 
+test 42:	erase1: 
 			size of tmp = 12
 			size of tmp = 0
 			size of tmp = 12
@@ -226,7 +244,7 @@ test 40:	erase1:
 			c | 
 			size of tmp = 1
 ---------------------
-test 41:	erase2: 
+test 43:	erase2: 
 			size of tmp = 12
 			new elem after erase: c
 			size of tmp = 11
@@ -237,10 +255,10 @@ test 41:	erase2:
 			c | 
 			size of tmp = 11
 ---------------------
-test 42:	clear: 
+test 44:	clear: 
 			size before clear: 12 | size after clear: 0new elem pushed after clear: c
 ---------------------
-test 43:	operator==/!=: 
+test 45:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -250,7 +268,7 @@ test 43:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 44:	operator</>/<=/>=: 
+test 46:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -278,59 +296,68 @@ test 44:	operator</>/<=/>=:
 		VECTOR TYPE: char
 
 ---------------------
-test 45:	operator[]: 
+test 47:	operator[]: 
 			a 
 ---------------------
-test 46:	size: 
+test 48:	size: 
 			1
 ---------------------
-test 47:	capacity: 
+test 49:	capacity: 
 			1
 ---------------------
-test 48:	empty: 
+test 50:	empty: 
 			0
 ---------------------
-test 49:	iterators: 
-			a 
-			testing operator[] and operator+/-: a a 
-		reverse iterators: 
-			a 
-			testing operator[] and operator+/-: a a 
+test 51:	iterators: 
+			operator++: a | 
+			operator+=: a | 
+			operator+: a | 
+			operator-=: a | 
+			operator-: a | 
+			operator[]: a | 
 ---------------------
-test 50:	at: 
+test 52:	reverse iterators: 
+			operator++: a | 
+			operator+=: a | 
+			operator+: a | 
+			operator-=: a | 
+			operator-: a | 
+			operator[]: a | 
+---------------------
+test 53:	at: 
 			a vector
 ---------------------
-test 51:	front: 
+test 54:	front: 
 			a
 ---------------------
-test 52:	back: 
+test 55:	back: 
 			a
 ---------------------
-test 53:	push_back: 
+test 56:	push_back: 
 			new elem = a
 ---------------------
-test 54:	pop_back: 
+test 57:	pop_back: 
 			new elem = a
 ---------------------
-test 55:	swap member and non member: 
+test 58:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 56:	resize: 
+test 59:	resize: 
 			size of tmp = 1
 			new elem = a			size of tmp after resize = 3
 ---------------------
-test 57:	assign1: 
+test 60:	assign1: 
 			size of tmp = 1
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
 ---------------------
-test 58:	assign2: 
+test 61:	assign2: 
 			size of tmp = 1
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
 ---------------------
-test 59:	insert1: 
+test 62:	insert1: 
 			size of tmp = 1
 			return value: a
 			return value: a
@@ -338,17 +365,17 @@ test 59:	insert1:
 			a | a | a | a | 
 			size of tmp = 4
 ---------------------
-test 60:	insert2: 
+test 63:	insert2: 
 			size of tmp = 1
 			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 16
 ---------------------
-test 61:	insert3: 
+test 64:	insert3: 
 			size of tmp = 1
 			a | a | a | a | 
 			size of tmp = 4
 ---------------------
-test 62:	erase1: 
+test 65:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -362,7 +389,7 @@ test 62:	erase1:
 			a | 
 			size of tmp = 1
 ---------------------
-test 63:	erase2: 
+test 66:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -370,10 +397,10 @@ test 63:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 64:	clear: 
+test 67:	clear: 
 			size before clear: 1 | size after clear: 0new elem pushed after clear: a
 ---------------------
-test 65:	operator==/!=: 
+test 68:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -383,7 +410,7 @@ test 65:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 66:	operator</>/<=/>=: 
+test 69:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -411,59 +438,68 @@ test 66:	operator</>/<=/>=:
 		VECTOR TYPE: char
 
 ---------------------
-test 67:	operator[]: 
+test 70:	operator[]: 
 			a 
 ---------------------
-test 68:	size: 
+test 71:	size: 
 			1
 ---------------------
-test 69:	capacity: 
+test 72:	capacity: 
 			1
 ---------------------
-test 70:	empty: 
+test 73:	empty: 
 			0
 ---------------------
-test 71:	iterators: 
-			a 
-			testing operator[] and operator+/-: a a 
-		reverse iterators: 
-			a 
-			testing operator[] and operator+/-: a a 
+test 74:	iterators: 
+			operator++: a | 
+			operator+=: a | 
+			operator+: a | 
+			operator-=: a | 
+			operator-: a | 
+			operator[]: a | 
 ---------------------
-test 72:	at: 
+test 75:	reverse iterators: 
+			operator++: a | 
+			operator+=: a | 
+			operator+: a | 
+			operator-=: a | 
+			operator-: a | 
+			operator[]: a | 
+---------------------
+test 76:	at: 
 			a vector
 ---------------------
-test 73:	front: 
+test 77:	front: 
 			a
 ---------------------
-test 74:	back: 
+test 78:	back: 
 			a
 ---------------------
-test 75:	push_back: 
+test 79:	push_back: 
 			new elem = a
 ---------------------
-test 76:	pop_back: 
+test 80:	pop_back: 
 			new elem = a
 ---------------------
-test 77:	swap member and non member: 
+test 81:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 78:	resize: 
+test 82:	resize: 
 			size of tmp = 1
 			new elem = a			size of tmp after resize = 3
 ---------------------
-test 79:	assign1: 
+test 83:	assign1: 
 			size of tmp = 1
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
 ---------------------
-test 80:	assign2: 
+test 84:	assign2: 
 			size of tmp = 1
 			new elem = a			size after assign = 3and content is:
 			a | a | a | 
 ---------------------
-test 81:	insert1: 
+test 85:	insert1: 
 			size of tmp = 1
 			return value: a
 			return value: a
@@ -471,17 +507,17 @@ test 81:	insert1:
 			a | a | a | a | 
 			size of tmp = 4
 ---------------------
-test 82:	insert2: 
+test 86:	insert2: 
 			size of tmp = 1
 			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 16
 ---------------------
-test 83:	insert3: 
+test 87:	insert3: 
 			size of tmp = 1
 			a | a | a | a | 
 			size of tmp = 4
 ---------------------
-test 84:	erase1: 
+test 88:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -495,7 +531,7 @@ test 84:	erase1:
 			a | 
 			size of tmp = 1
 ---------------------
-test 85:	erase2: 
+test 89:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -503,10 +539,10 @@ test 85:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 86:	clear: 
+test 90:	clear: 
 			size before clear: 1 | size after clear: 0new elem pushed after clear: a
 ---------------------
-test 87:	operator==/!=: 
+test 91:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -516,7 +552,7 @@ test 87:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 88:	operator</>/<=/>=: 
+test 92:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -544,59 +580,68 @@ test 88:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 89:	operator[]: 
+test 93:	operator[]: 
 			100 100 100 100 100 
 ---------------------
-test 90:	size: 
+test 94:	size: 
 			5
 ---------------------
-test 91:	capacity: 
+test 95:	capacity: 
 			5
 ---------------------
-test 92:	empty: 
+test 96:	empty: 
 			0
 ---------------------
-test 93:	iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
-		reverse iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
+test 97:	iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 94:	at: 
+test 98:	reverse iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
+---------------------
+test 99:	at: 
 			100 100 100 100 100 vector
 ---------------------
-test 95:	front: 
+test 100:	front: 
 			100
 ---------------------
-test 96:	back: 
+test 101:	back: 
 			100
 ---------------------
-test 97:	push_back: 
+test 102:	push_back: 
 			new elem = 100
 ---------------------
-test 98:	pop_back: 
+test 103:	pop_back: 
 			new elem = 100
 ---------------------
-test 99:	swap member and non member: 
+test 104:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 100:	resize: 
+test 105:	resize: 
 			size of tmp = 5
 			new elem = 100			size of tmp after resize = 3
 ---------------------
-test 101:	assign1: 
+test 106:	assign1: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 102:	assign2: 
+test 107:	assign2: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 103:	insert1: 
+test 108:	insert1: 
 			size of tmp = 5
 			return value: 100
 			return value: 100
@@ -604,17 +649,17 @@ test 103:	insert1:
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
-test 104:	insert2: 
+test 109:	insert2: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 105:	insert3: 
+test 110:	insert3: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 106:	erase1: 
+test 111:	erase1: 
 			size of tmp = 5
 			size of tmp = 0
 			size of tmp = 5
@@ -628,7 +673,7 @@ test 106:	erase1:
 			100 | 
 			size of tmp = 1
 ---------------------
-test 107:	erase2: 
+test 112:	erase2: 
 			size of tmp = 5
 			new elem after erase: 100
 			size of tmp = 4
@@ -639,10 +684,10 @@ test 107:	erase2:
 			100 | 
 			size of tmp = 4
 ---------------------
-test 108:	clear: 
+test 113:	clear: 
 			size before clear: 5 | size after clear: 0new elem pushed after clear: 100
 ---------------------
-test 109:	operator==/!=: 
+test 114:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -652,7 +697,7 @@ test 109:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 110:	operator</>/<=/>=: 
+test 115:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -680,87 +725,98 @@ test 110:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 111:	operator[]: 
+test 116:	operator[]: 
 			
 ---------------------
-test 112:	size: 
+test 117:	size: 
 			0
 ---------------------
-test 113:	capacity: 
+test 118:	capacity: 
 			0
 ---------------------
-test 114:	empty: 
+test 119:	empty: 
 			1
 ---------------------
-test 115:	iterators: 
-			
-		reverse iterators: 
-			
+test 120:	iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
 ---------------------
-test 116:	at: 
+test 121:	reverse iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
+---------------------
+test 122:	at: 
 			vector
 ---------------------
-test 117:	front: 
+test 123:	front: 
 			
 ---------------------
-test 118:	back: 
+test 124:	back: 
 			
 ---------------------
-test 119:	push_back: 
+test 125:	push_back: 
 			new elem = 0
 ---------------------
-test 120:	pop_back: 
+test 126:	pop_back: 
 			
 ---------------------
-test 121:	swap member and non member: 
+test 127:	swap member and non member: 
 			size of tmp = 1 and size of tmp2 = 0
 			size of tmp = 0 and size of tmp2 = 1			size of tmp = 1 and size of tmp2 = 0
 ---------------------
-test 122:	resize: 
+test 128:	resize: 
 			size of tmp = 0
 			new elem = 0			size of tmp after resize = 3
 ---------------------
-test 123:	assign1: 
+test 129:	assign1: 
 			size of tmp = 0
 			new elem = 0			size after assign = 3and content is:
 			
 ---------------------
-test 124:	assign2: 
+test 130:	assign2: 
 			size of tmp = 0
 			new elem = 0			size after assign = 3and content is:
 			0 | 0 | 0 | 
 ---------------------
-test 125:	insert1: 
+test 131:	insert1: 
 			size of tmp = 0
 			return value: 0
 			return value: 0
 			0 | 0 | 
 			size of tmp = 2
 ---------------------
-test 126:	insert2: 
+test 132:	insert2: 
 			size of tmp = 0
 			0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
 			size of tmp = 10
 ---------------------
-test 127:	insert3: 
+test 133:	insert3: 
 			size of tmp = 0
 			
 			size of tmp = 0
 ---------------------
-test 128:	erase1: 
+test 134:	erase1: 
 			size of tmp = 0
 			size of tmp = 0
 			size of tmp = 0
 			
 			size of tmp = 0
 ---------------------
-test 129:	erase2: 
+test 135:	erase2: 
 			
 ---------------------
-test 130:	clear: 
+test 136:	clear: 
 			size before clear: 0 | size after clear: 0new elem pushed after clear: 0
 ---------------------
-test 131:	operator==/!=: 
+test 137:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -770,7 +826,7 @@ test 131:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 132:	operator</>/<=/>=: 
+test 138:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -798,59 +854,68 @@ test 132:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 133:	operator[]: 
+test 139:	operator[]: 
 			89123891 
 ---------------------
-test 134:	size: 
+test 140:	size: 
 			1
 ---------------------
-test 135:	capacity: 
+test 141:	capacity: 
 			1
 ---------------------
-test 136:	empty: 
+test 142:	empty: 
 			0
 ---------------------
-test 137:	iterators: 
-			89123891 
-			testing operator[] and operator+/-: 89123891 89123891 
-		reverse iterators: 
-			89123891 
-			testing operator[] and operator+/-: 89123891 89123891 
+test 143:	iterators: 
+			operator++: 89123891 | 
+			operator+=: 89123891 | 
+			operator+: 89123891 | 
+			operator-=: 89123891 | 
+			operator-: 89123891 | 
+			operator[]: 89123891 | 
 ---------------------
-test 138:	at: 
+test 144:	reverse iterators: 
+			operator++: 89123891 | 
+			operator+=: 89123891 | 
+			operator+: 89123891 | 
+			operator-=: 89123891 | 
+			operator-: 89123891 | 
+			operator[]: 89123891 | 
+---------------------
+test 145:	at: 
 			89123891 vector
 ---------------------
-test 139:	front: 
+test 146:	front: 
 			89123891
 ---------------------
-test 140:	back: 
+test 147:	back: 
 			89123891
 ---------------------
-test 141:	push_back: 
+test 148:	push_back: 
 			new elem = 89123891
 ---------------------
-test 142:	pop_back: 
+test 149:	pop_back: 
 			new elem = 89123891
 ---------------------
-test 143:	swap member and non member: 
+test 150:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 144:	resize: 
+test 151:	resize: 
 			size of tmp = 1
 			new elem = 89123891			size of tmp after resize = 3
 ---------------------
-test 145:	assign1: 
+test 152:	assign1: 
 			size of tmp = 1
 			new elem = 89123891			size after assign = 3and content is:
 			89123891 | 89123891 | 89123891 | 
 ---------------------
-test 146:	assign2: 
+test 153:	assign2: 
 			size of tmp = 1
 			new elem = 89123891			size after assign = 3and content is:
 			89123891 | 89123891 | 89123891 | 
 ---------------------
-test 147:	insert1: 
+test 154:	insert1: 
 			size of tmp = 1
 			return value: 89123891
 			return value: 89123891
@@ -858,17 +923,17 @@ test 147:	insert1:
 			89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 4
 ---------------------
-test 148:	insert2: 
+test 155:	insert2: 
 			size of tmp = 1
 			89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 16
 ---------------------
-test 149:	insert3: 
+test 156:	insert3: 
 			size of tmp = 1
 			89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 4
 ---------------------
-test 150:	erase1: 
+test 157:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -882,7 +947,7 @@ test 150:	erase1:
 			89123891 | 
 			size of tmp = 1
 ---------------------
-test 151:	erase2: 
+test 158:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -890,10 +955,10 @@ test 151:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 152:	clear: 
+test 159:	clear: 
 			size before clear: 1 | size after clear: 0new elem pushed after clear: 89123891
 ---------------------
-test 153:	operator==/!=: 
+test 160:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -903,7 +968,7 @@ test 153:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 154:	operator</>/<=/>=: 
+test 161:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -931,59 +996,68 @@ test 154:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 155:	operator[]: 
+test 162:	operator[]: 
 			100 100 100 100 100 
 ---------------------
-test 156:	size: 
+test 163:	size: 
 			5
 ---------------------
-test 157:	capacity: 
+test 164:	capacity: 
 			5
 ---------------------
-test 158:	empty: 
+test 165:	empty: 
 			0
 ---------------------
-test 159:	iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
-		reverse iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
+test 166:	iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 160:	at: 
+test 167:	reverse iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
+---------------------
+test 168:	at: 
 			100 100 100 100 100 vector
 ---------------------
-test 161:	front: 
+test 169:	front: 
 			100
 ---------------------
-test 162:	back: 
+test 170:	back: 
 			100
 ---------------------
-test 163:	push_back: 
+test 171:	push_back: 
 			new elem = 100
 ---------------------
-test 164:	pop_back: 
+test 172:	pop_back: 
 			new elem = 100
 ---------------------
-test 165:	swap member and non member: 
+test 173:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 166:	resize: 
+test 174:	resize: 
 			size of tmp = 5
 			new elem = 100			size of tmp after resize = 3
 ---------------------
-test 167:	assign1: 
+test 175:	assign1: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 168:	assign2: 
+test 176:	assign2: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 169:	insert1: 
+test 177:	insert1: 
 			size of tmp = 5
 			return value: 100
 			return value: 100
@@ -991,17 +1065,17 @@ test 169:	insert1:
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
-test 170:	insert2: 
+test 178:	insert2: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 171:	insert3: 
+test 179:	insert3: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 172:	erase1: 
+test 180:	erase1: 
 			size of tmp = 5
 			size of tmp = 0
 			size of tmp = 5
@@ -1015,7 +1089,7 @@ test 172:	erase1:
 			100 | 
 			size of tmp = 1
 ---------------------
-test 173:	erase2: 
+test 181:	erase2: 
 			size of tmp = 5
 			new elem after erase: 100
 			size of tmp = 4
@@ -1026,10 +1100,10 @@ test 173:	erase2:
 			100 | 
 			size of tmp = 4
 ---------------------
-test 174:	clear: 
+test 182:	clear: 
 			size before clear: 5 | size after clear: 0new elem pushed after clear: 100
 ---------------------
-test 175:	operator==/!=: 
+test 183:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1039,7 +1113,7 @@ test 175:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 176:	operator</>/<=/>=: 
+test 184:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1067,59 +1141,68 @@ test 176:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 177:	operator[]: 
+test 185:	operator[]: 
 			100 100 100 100 100 
 ---------------------
-test 178:	size: 
+test 186:	size: 
 			5
 ---------------------
-test 179:	capacity: 
+test 187:	capacity: 
 			5
 ---------------------
-test 180:	empty: 
+test 188:	empty: 
 			0
 ---------------------
-test 181:	iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
-		reverse iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
+test 189:	iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 182:	at: 
+test 190:	reverse iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
+---------------------
+test 191:	at: 
 			100 100 100 100 100 vector
 ---------------------
-test 183:	front: 
+test 192:	front: 
 			100
 ---------------------
-test 184:	back: 
+test 193:	back: 
 			100
 ---------------------
-test 185:	push_back: 
+test 194:	push_back: 
 			new elem = 100
 ---------------------
-test 186:	pop_back: 
+test 195:	pop_back: 
 			new elem = 100
 ---------------------
-test 187:	swap member and non member: 
+test 196:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 188:	resize: 
+test 197:	resize: 
 			size of tmp = 5
 			new elem = 100			size of tmp after resize = 3
 ---------------------
-test 189:	assign1: 
+test 198:	assign1: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 190:	assign2: 
+test 199:	assign2: 
 			size of tmp = 5
 			new elem = 100			size after assign = 3and content is:
 			100 | 100 | 100 | 
 ---------------------
-test 191:	insert1: 
+test 200:	insert1: 
 			size of tmp = 5
 			return value: 100
 			return value: 100
@@ -1127,17 +1210,17 @@ test 191:	insert1:
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
-test 192:	insert2: 
+test 201:	insert2: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 193:	insert3: 
+test 202:	insert3: 
 			size of tmp = 5
 			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
-test 194:	erase1: 
+test 203:	erase1: 
 			size of tmp = 5
 			size of tmp = 0
 			size of tmp = 5
@@ -1151,7 +1234,7 @@ test 194:	erase1:
 			100 | 
 			size of tmp = 1
 ---------------------
-test 195:	erase2: 
+test 204:	erase2: 
 			size of tmp = 5
 			new elem after erase: 100
 			size of tmp = 4
@@ -1162,10 +1245,10 @@ test 195:	erase2:
 			100 | 
 			size of tmp = 4
 ---------------------
-test 196:	clear: 
+test 205:	clear: 
 			size before clear: 5 | size after clear: 0new elem pushed after clear: 100
 ---------------------
-test 197:	operator==/!=: 
+test 206:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1175,7 +1258,7 @@ test 197:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 198:	operator</>/<=/>=: 
+test 207:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1203,87 +1286,98 @@ test 198:	operator</>/<=/>=:
 		VECTOR TYPE: double*
 
 ---------------------
-test 199:	operator[]: 
+test 208:	operator[]: 
 			
 ---------------------
-test 200:	size: 
+test 209:	size: 
 			0
 ---------------------
-test 201:	capacity: 
+test 210:	capacity: 
 			0
 ---------------------
-test 202:	empty: 
+test 211:	empty: 
 			1
 ---------------------
-test 203:	iterators: 
-			
-		reverse iterators: 
-			
+test 212:	iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
 ---------------------
-test 204:	at: 
+test 213:	reverse iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
+---------------------
+test 214:	at: 
 			vector
 ---------------------
-test 205:	front: 
+test 215:	front: 
 			
 ---------------------
-test 206:	back: 
+test 216:	back: 
 			
 ---------------------
-test 207:	push_back: 
+test 217:	push_back: 
 			new elem = 0x0
 ---------------------
-test 208:	pop_back: 
+test 218:	pop_back: 
 			
 ---------------------
-test 209:	swap member and non member: 
+test 219:	swap member and non member: 
 			size of tmp = 1 and size of tmp2 = 0
 			size of tmp = 0 and size of tmp2 = 1			size of tmp = 1 and size of tmp2 = 0
 ---------------------
-test 210:	resize: 
+test 220:	resize: 
 			size of tmp = 0
 			new elem = 0x0			size of tmp after resize = 3
 ---------------------
-test 211:	assign1: 
+test 221:	assign1: 
 			size of tmp = 0
 			new elem = 0x0			size after assign = 3and content is:
 			
 ---------------------
-test 212:	assign2: 
+test 222:	assign2: 
 			size of tmp = 0
 			new elem = 0x0			size after assign = 3and content is:
 			0x0 | 0x0 | 0x0 | 
 ---------------------
-test 213:	insert1: 
+test 223:	insert1: 
 			size of tmp = 0
 			return value: 0x0
 			return value: 0x0
 			0x0 | 0x0 | 
 			size of tmp = 2
 ---------------------
-test 214:	insert2: 
+test 224:	insert2: 
 			size of tmp = 0
 			0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 
 			size of tmp = 10
 ---------------------
-test 215:	insert3: 
+test 225:	insert3: 
 			size of tmp = 0
 			
 			size of tmp = 0
 ---------------------
-test 216:	erase1: 
+test 226:	erase1: 
 			size of tmp = 0
 			size of tmp = 0
 			size of tmp = 0
 			
 			size of tmp = 0
 ---------------------
-test 217:	erase2: 
+test 227:	erase2: 
 			
 ---------------------
-test 218:	clear: 
+test 228:	clear: 
 			size before clear: 0 | size after clear: 0new elem pushed after clear: 0x0
 ---------------------
-test 219:	operator==/!=: 
+test 229:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1293,7 +1387,7 @@ test 219:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 220:	operator</>/<=/>=: 
+test 230:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1321,91 +1415,100 @@ test 220:	operator</>/<=/>=:
 		VECTOR TYPE: double*
 
 ---------------------
-test 221:	operator[]: 
-			0x7ffee925da80 
+test 231:	operator[]: 
+			0x7ffeea4ffa80 
 ---------------------
-test 222:	size: 
+test 232:	size: 
 			1
 ---------------------
-test 223:	capacity: 
+test 233:	capacity: 
 			1
 ---------------------
-test 224:	empty: 
+test 234:	empty: 
 			0
 ---------------------
-test 225:	iterators: 
-			0x7ffee925da80 
-			testing operator[] and operator+/-: 0x7ffee925da80 0x7ffee925da80 
-		reverse iterators: 
-			0x7ffee925da80 
-			testing operator[] and operator+/-: 0x7ffee925da80 0x7ffee925da80 
+test 235:	iterators: 
+			operator++: 0x7ffeea4ffa80 | 
+			operator+=: 0x7ffeea4ffa80 | 
+			operator+: 0x7ffeea4ffa80 | 
+			operator-=: 0x7ffeea4ffa80 | 
+			operator-: 0x7ffeea4ffa80 | 
+			operator[]: 0x7ffeea4ffa80 | 
 ---------------------
-test 226:	at: 
-			0x7ffee925da80 vector
+test 236:	reverse iterators: 
+			operator++: 0x7ffeea4ffa80 | 
+			operator+=: 0x7ffeea4ffa80 | 
+			operator+: 0x7ffeea4ffa80 | 
+			operator-=: 0x7ffeea4ffa80 | 
+			operator-: 0x7ffeea4ffa80 | 
+			operator[]: 0x7ffeea4ffa80 | 
 ---------------------
-test 227:	front: 
-			0x7ffee925da80
+test 237:	at: 
+			0x7ffeea4ffa80 vector
 ---------------------
-test 228:	back: 
-			0x7ffee925da80
+test 238:	front: 
+			0x7ffeea4ffa80
 ---------------------
-test 229:	push_back: 
-			new elem = 0x7ffee925da80
+test 239:	back: 
+			0x7ffeea4ffa80
 ---------------------
-test 230:	pop_back: 
-			new elem = 0x7ffee925da80
+test 240:	push_back: 
+			new elem = 0x7ffeea4ffa80
 ---------------------
-test 231:	swap member and non member: 
+test 241:	pop_back: 
+			new elem = 0x7ffeea4ffa80
+---------------------
+test 242:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 232:	resize: 
+test 243:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size of tmp after resize = 3
+			new elem = 0x7ffeea4ffa80			size of tmp after resize = 3
 ---------------------
-test 233:	assign1: 
+test 244:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size after assign = 3and content is:
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			new elem = 0x7ffeea4ffa80			size after assign = 3and content is:
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 ---------------------
-test 234:	assign2: 
+test 245:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size after assign = 3and content is:
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			new elem = 0x7ffeea4ffa80			size after assign = 3and content is:
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 ---------------------
-test 235:	insert1: 
+test 246:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffee925da80
-			return value: 0x7ffee925da80
-			return value: 0x7ffee925da80
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			return value: 0x7ffeea4ffa80
+			return value: 0x7ffeea4ffa80
+			return value: 0x7ffeea4ffa80
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 4
 ---------------------
-test 236:	insert2: 
+test 247:	insert2: 
 			size of tmp = 1
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 16
 ---------------------
-test 237:	insert3: 
+test 248:	insert3: 
 			size of tmp = 1
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 4
 ---------------------
-test 238:	erase1: 
+test 249:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffee925da80
+			new elem after erase: 0x7ffeea4ffa80
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 
 			size of tmp = 1
 ---------------------
-test 239:	erase2: 
+test 250:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -1413,10 +1516,10 @@ test 239:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 240:	clear: 
-			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffee925da80
+test 251:	clear: 
+			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeea4ffa80
 ---------------------
-test 241:	operator==/!=: 
+test 252:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1426,7 +1529,7 @@ test 241:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 242:	operator</>/<=/>=: 
+test 253:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1454,91 +1557,100 @@ test 242:	operator</>/<=/>=:
 		VECTOR TYPE: double*
 
 ---------------------
-test 243:	operator[]: 
-			0x7ffee925da80 
+test 254:	operator[]: 
+			0x7ffeea4ffa80 
 ---------------------
-test 244:	size: 
+test 255:	size: 
 			1
 ---------------------
-test 245:	capacity: 
+test 256:	capacity: 
 			1
 ---------------------
-test 246:	empty: 
+test 257:	empty: 
 			0
 ---------------------
-test 247:	iterators: 
-			0x7ffee925da80 
-			testing operator[] and operator+/-: 0x7ffee925da80 0x7ffee925da80 
-		reverse iterators: 
-			0x7ffee925da80 
-			testing operator[] and operator+/-: 0x7ffee925da80 0x7ffee925da80 
+test 258:	iterators: 
+			operator++: 0x7ffeea4ffa80 | 
+			operator+=: 0x7ffeea4ffa80 | 
+			operator+: 0x7ffeea4ffa80 | 
+			operator-=: 0x7ffeea4ffa80 | 
+			operator-: 0x7ffeea4ffa80 | 
+			operator[]: 0x7ffeea4ffa80 | 
 ---------------------
-test 248:	at: 
-			0x7ffee925da80 vector
+test 259:	reverse iterators: 
+			operator++: 0x7ffeea4ffa80 | 
+			operator+=: 0x7ffeea4ffa80 | 
+			operator+: 0x7ffeea4ffa80 | 
+			operator-=: 0x7ffeea4ffa80 | 
+			operator-: 0x7ffeea4ffa80 | 
+			operator[]: 0x7ffeea4ffa80 | 
 ---------------------
-test 249:	front: 
-			0x7ffee925da80
+test 260:	at: 
+			0x7ffeea4ffa80 vector
 ---------------------
-test 250:	back: 
-			0x7ffee925da80
+test 261:	front: 
+			0x7ffeea4ffa80
 ---------------------
-test 251:	push_back: 
-			new elem = 0x7ffee925da80
+test 262:	back: 
+			0x7ffeea4ffa80
 ---------------------
-test 252:	pop_back: 
-			new elem = 0x7ffee925da80
+test 263:	push_back: 
+			new elem = 0x7ffeea4ffa80
 ---------------------
-test 253:	swap member and non member: 
+test 264:	pop_back: 
+			new elem = 0x7ffeea4ffa80
+---------------------
+test 265:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 254:	resize: 
+test 266:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size of tmp after resize = 3
+			new elem = 0x7ffeea4ffa80			size of tmp after resize = 3
 ---------------------
-test 255:	assign1: 
+test 267:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size after assign = 3and content is:
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			new elem = 0x7ffeea4ffa80			size after assign = 3and content is:
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 ---------------------
-test 256:	assign2: 
+test 268:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffee925da80			size after assign = 3and content is:
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			new elem = 0x7ffeea4ffa80			size after assign = 3and content is:
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 ---------------------
-test 257:	insert1: 
+test 269:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffee925da80
-			return value: 0x7ffee925da80
-			return value: 0x7ffee925da80
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			return value: 0x7ffeea4ffa80
+			return value: 0x7ffeea4ffa80
+			return value: 0x7ffeea4ffa80
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 4
 ---------------------
-test 258:	insert2: 
+test 270:	insert2: 
 			size of tmp = 1
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 16
 ---------------------
-test 259:	insert3: 
+test 271:	insert3: 
 			size of tmp = 1
-			0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 0x7ffeea4ffa80 | 
 			size of tmp = 4
 ---------------------
-test 260:	erase1: 
+test 272:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffee925da80
+			new elem after erase: 0x7ffeea4ffa80
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee925da80 | 
+			0x7ffeea4ffa80 | 
 			size of tmp = 1
 ---------------------
-test 261:	erase2: 
+test 273:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -1546,10 +1658,10 @@ test 261:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 262:	clear: 
-			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffee925da80
+test 274:	clear: 
+			size before clear: 1 | size after clear: 0new elem pushed after clear: 0x7ffeea4ffa80
 ---------------------
-test 263:	operator==/!=: 
+test 275:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1559,7 +1671,7 @@ test 263:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 264:	operator</>/<=/>=: 
+test 276:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1587,59 +1699,68 @@ test 264:	operator</>/<=/>=:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 265:	operator[]: 
+test 277:	operator[]: 
 			salut salut salut salut salut salut 
 ---------------------
-test 266:	size: 
+test 278:	size: 
 			6
 ---------------------
-test 267:	capacity: 
+test 279:	capacity: 
 			6
 ---------------------
-test 268:	empty: 
+test 280:	empty: 
 			0
 ---------------------
-test 269:	iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
-		reverse iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
+test 281:	iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 270:	at: 
+test 282:	reverse iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
+---------------------
+test 283:	at: 
 			salut salut salut salut salut salut vector
 ---------------------
-test 271:	front: 
+test 284:	front: 
 			salut
 ---------------------
-test 272:	back: 
+test 285:	back: 
 			salut
 ---------------------
-test 273:	push_back: 
+test 286:	push_back: 
 			new elem = salut
 ---------------------
-test 274:	pop_back: 
+test 287:	pop_back: 
 			new elem = salut
 ---------------------
-test 275:	swap member and non member: 
+test 288:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 276:	resize: 
+test 289:	resize: 
 			size of tmp = 6
 			new elem = salut			size of tmp after resize = 3
 ---------------------
-test 277:	assign1: 
+test 290:	assign1: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 278:	assign2: 
+test 291:	assign2: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 279:	insert1: 
+test 292:	insert1: 
 			size of tmp = 6
 			return value: salut
 			return value: salut
@@ -1647,17 +1768,17 @@ test 279:	insert1:
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
-test 280:	insert2: 
+test 293:	insert2: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
-test 281:	insert3: 
+test 294:	insert3: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
-test 282:	erase1: 
+test 295:	erase1: 
 			size of tmp = 6
 			size of tmp = 0
 			size of tmp = 6
@@ -1671,7 +1792,7 @@ test 282:	erase1:
 			salut | 
 			size of tmp = 1
 ---------------------
-test 283:	erase2: 
+test 296:	erase2: 
 			size of tmp = 6
 			new elem after erase: salut
 			size of tmp = 5
@@ -1682,10 +1803,10 @@ test 283:	erase2:
 			salut | 
 			size of tmp = 5
 ---------------------
-test 284:	clear: 
+test 297:	clear: 
 			size before clear: 6 | size after clear: 0new elem pushed after clear: salut
 ---------------------
-test 285:	operator==/!=: 
+test 298:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1695,7 +1816,7 @@ test 285:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 286:	operator</>/<=/>=: 
+test 299:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1723,59 +1844,68 @@ test 286:	operator</>/<=/>=:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 287:	operator[]: 
+test 300:	operator[]: 
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
 ---------------------
-test 288:	size: 
+test 301:	size: 
 			6
 ---------------------
-test 289:	capacity: 
+test 302:	capacity: 
 			6
 ---------------------
-test 290:	empty: 
+test 303:	empty: 
 			0
 ---------------------
-test 291:	iterators: 
-			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj 
-			testing operator[] and operator+/-: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf jbhkfbhsj 
-		reverse iterators: 
-			jbhkfbhsj salut salut salut salut jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf 
-			testing operator[] and operator+/-: jbhkfbhsj jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf 
+test 304:	iterators: 
+			operator++: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			operator+=: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			operator+: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			operator-=: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			operator-: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			operator[]: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
 ---------------------
-test 292:	at: 
+test 305:	reverse iterators: 
+			operator++: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			operator+=: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			operator+: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			operator-=: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			operator-: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			operator[]: jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+---------------------
+test 306:	at: 
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf salut salut salut salut jbhkfbhsj vector
 ---------------------
-test 293:	front: 
+test 307:	front: 
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 ---------------------
-test 294:	back: 
+test 308:	back: 
 			jbhkfbhsj
 ---------------------
-test 295:	push_back: 
+test 309:	push_back: 
 			new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 ---------------------
-test 296:	pop_back: 
+test 310:	pop_back: 
 			new elem = jbhkfbhsj
 ---------------------
-test 297:	swap member and non member: 
+test 311:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 298:	resize: 
+test 312:	resize: 
 			size of tmp = 6
 			new elem = salut			size of tmp after resize = 3
 ---------------------
-test 299:	assign1: 
+test 313:	assign1: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | 
 ---------------------
-test 300:	assign2: 
+test 314:	assign2: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 ---------------------
-test 301:	insert1: 
+test 315:	insert1: 
 			size of tmp = 6
 			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
@@ -1783,17 +1913,17 @@ test 301:	insert1:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 9
 ---------------------
-test 302:	insert2: 
+test 316:	insert2: 
 			size of tmp = 6
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 21
 ---------------------
-test 303:	insert3: 
+test 317:	insert3: 
 			size of tmp = 6
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
 			size of tmp = 24
 ---------------------
-test 304:	erase1: 
+test 318:	erase1: 
 			size of tmp = 6
 			size of tmp = 0
 			size of tmp = 6
@@ -1807,7 +1937,7 @@ test 304:	erase1:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 1
 ---------------------
-test 305:	erase2: 
+test 319:	erase2: 
 			size of tmp = 6
 			new elem after erase: salut
 			size of tmp = 5
@@ -1818,10 +1948,10 @@ test 305:	erase2:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 5
 ---------------------
-test 306:	clear: 
+test 320:	clear: 
 			size before clear: 6 | size after clear: 0new elem pushed after clear: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 ---------------------
-test 307:	operator==/!=: 
+test 321:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1831,7 +1961,7 @@ test 307:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 308:	operator</>/<=/>=: 
+test 322:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1859,59 +1989,68 @@ test 308:	operator</>/<=/>=:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 309:	operator[]: 
+test 323:	operator[]: 
 			    
 ---------------------
-test 310:	size: 
+test 324:	size: 
 			4
 ---------------------
-test 311:	capacity: 
+test 325:	capacity: 
 			4
 ---------------------
-test 312:	empty: 
+test 326:	empty: 
 			0
 ---------------------
-test 313:	iterators: 
-			    
-			testing operator[] and operator+/-:   
-		reverse iterators: 
-			    
-			testing operator[] and operator+/-:   
+test 327:	iterators: 
+			operator++:  |  |  |  | 
+			operator+=:  |  |  |  | 
+			operator+:  |  |  |  | 
+			operator-=:  |  |  |  | 
+			operator-:  |  |  |  | 
+			operator[]:  |  |  |  | 
 ---------------------
-test 314:	at: 
+test 328:	reverse iterators: 
+			operator++:  |  |  |  | 
+			operator+=:  |  |  |  | 
+			operator+:  |  |  |  | 
+			operator-=:  |  |  |  | 
+			operator-:  |  |  |  | 
+			operator[]:  |  |  |  | 
+---------------------
+test 329:	at: 
 			    vector
 ---------------------
-test 315:	front: 
+test 330:	front: 
 			
 ---------------------
-test 316:	back: 
+test 331:	back: 
 			
 ---------------------
-test 317:	push_back: 
+test 332:	push_back: 
 			new elem = 
 ---------------------
-test 318:	pop_back: 
+test 333:	pop_back: 
 			new elem = 
 ---------------------
-test 319:	swap member and non member: 
+test 334:	swap member and non member: 
 			size of tmp = 5 and size of tmp2 = 4
 			size of tmp = 4 and size of tmp2 = 5			size of tmp = 5 and size of tmp2 = 4
 ---------------------
-test 320:	resize: 
+test 335:	resize: 
 			size of tmp = 4
 			new elem = 			size of tmp after resize = 3
 ---------------------
-test 321:	assign1: 
+test 336:	assign1: 
 			size of tmp = 4
 			new elem = 			size after assign = 3and content is:
 			 |  |  | 
 ---------------------
-test 322:	assign2: 
+test 337:	assign2: 
 			size of tmp = 4
 			new elem = 			size after assign = 3and content is:
 			 |  |  | 
 ---------------------
-test 323:	insert1: 
+test 338:	insert1: 
 			size of tmp = 4
 			return value: 
 			return value: 
@@ -1919,17 +2058,17 @@ test 323:	insert1:
 			 |  |  |  |  |  |  | 
 			size of tmp = 7
 ---------------------
-test 324:	insert2: 
+test 339:	insert2: 
 			size of tmp = 4
 			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 19
 ---------------------
-test 325:	insert3: 
+test 340:	insert3: 
 			size of tmp = 4
 			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 16
 ---------------------
-test 326:	erase1: 
+test 341:	erase1: 
 			size of tmp = 4
 			size of tmp = 0
 			size of tmp = 4
@@ -1943,7 +2082,7 @@ test 326:	erase1:
 			 | 
 			size of tmp = 1
 ---------------------
-test 327:	erase2: 
+test 342:	erase2: 
 			size of tmp = 4
 			new elem after erase: 
 			size of tmp = 3
@@ -1954,10 +2093,10 @@ test 327:	erase2:
 			 | 
 			size of tmp = 3
 ---------------------
-test 328:	clear: 
+test 343:	clear: 
 			size before clear: 4 | size after clear: 0new elem pushed after clear: 
 ---------------------
-test 329:	operator==/!=: 
+test 344:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -1967,7 +2106,7 @@ test 329:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 330:	operator</>/<=/>=: 
+test 345:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -1995,59 +2134,68 @@ test 330:	operator</>/<=/>=:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 331:	operator[]: 
+test 346:	operator[]: 
 			salut salut salut salut salut salut 
 ---------------------
-test 332:	size: 
+test 347:	size: 
 			6
 ---------------------
-test 333:	capacity: 
+test 348:	capacity: 
 			6
 ---------------------
-test 334:	empty: 
+test 349:	empty: 
 			0
 ---------------------
-test 335:	iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
-		reverse iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
+test 350:	iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 336:	at: 
+test 351:	reverse iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
+---------------------
+test 352:	at: 
 			salut salut salut salut salut salut vector
 ---------------------
-test 337:	front: 
+test 353:	front: 
 			salut
 ---------------------
-test 338:	back: 
+test 354:	back: 
 			salut
 ---------------------
-test 339:	push_back: 
+test 355:	push_back: 
 			new elem = salut
 ---------------------
-test 340:	pop_back: 
+test 356:	pop_back: 
 			new elem = salut
 ---------------------
-test 341:	swap member and non member: 
+test 357:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 342:	resize: 
+test 358:	resize: 
 			size of tmp = 6
 			new elem = salut			size of tmp after resize = 3
 ---------------------
-test 343:	assign1: 
+test 359:	assign1: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 344:	assign2: 
+test 360:	assign2: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 345:	insert1: 
+test 361:	insert1: 
 			size of tmp = 6
 			return value: salut
 			return value: salut
@@ -2055,17 +2203,17 @@ test 345:	insert1:
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
-test 346:	insert2: 
+test 362:	insert2: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
-test 347:	insert3: 
+test 363:	insert3: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
-test 348:	erase1: 
+test 364:	erase1: 
 			size of tmp = 6
 			size of tmp = 0
 			size of tmp = 6
@@ -2079,7 +2227,7 @@ test 348:	erase1:
 			salut | 
 			size of tmp = 1
 ---------------------
-test 349:	erase2: 
+test 365:	erase2: 
 			size of tmp = 6
 			new elem after erase: salut
 			size of tmp = 5
@@ -2090,10 +2238,10 @@ test 349:	erase2:
 			salut | 
 			size of tmp = 5
 ---------------------
-test 350:	clear: 
+test 366:	clear: 
 			size before clear: 6 | size after clear: 0new elem pushed after clear: salut
 ---------------------
-test 351:	operator==/!=: 
+test 367:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2103,7 +2251,7 @@ test 351:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 352:	operator</>/<=/>=: 
+test 368:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2131,59 +2279,68 @@ test 352:	operator</>/<=/>=:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 353:	operator[]: 
+test 369:	operator[]: 
 			salut salut salut salut salut salut 
 ---------------------
-test 354:	size: 
+test 370:	size: 
 			6
 ---------------------
-test 355:	capacity: 
+test 371:	capacity: 
 			6
 ---------------------
-test 356:	empty: 
+test 372:	empty: 
 			0
 ---------------------
-test 357:	iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
-		reverse iterators: 
-			salut salut salut salut salut salut 
-			testing operator[] and operator+/-: salut salut 
+test 373:	iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 358:	at: 
+test 374:	reverse iterators: 
+			operator++: salut | salut | salut | salut | salut | salut | 
+			operator+=: salut | salut | salut | salut | salut | salut | 
+			operator+: salut | salut | salut | salut | salut | salut | 
+			operator-=: salut | salut | salut | salut | salut | salut | 
+			operator-: salut | salut | salut | salut | salut | salut | 
+			operator[]: salut | salut | salut | salut | salut | salut | 
+---------------------
+test 375:	at: 
 			salut salut salut salut salut salut vector
 ---------------------
-test 359:	front: 
+test 376:	front: 
 			salut
 ---------------------
-test 360:	back: 
+test 377:	back: 
 			salut
 ---------------------
-test 361:	push_back: 
+test 378:	push_back: 
 			new elem = salut
 ---------------------
-test 362:	pop_back: 
+test 379:	pop_back: 
 			new elem = salut
 ---------------------
-test 363:	swap member and non member: 
+test 380:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 364:	resize: 
+test 381:	resize: 
 			size of tmp = 6
 			new elem = salut			size of tmp after resize = 3
 ---------------------
-test 365:	assign1: 
+test 382:	assign1: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 366:	assign2: 
+test 383:	assign2: 
 			size of tmp = 6
 			new elem = salut			size after assign = 3and content is:
 			salut | salut | salut | 
 ---------------------
-test 367:	insert1: 
+test 384:	insert1: 
 			size of tmp = 6
 			return value: salut
 			return value: salut
@@ -2191,17 +2348,17 @@ test 367:	insert1:
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
-test 368:	insert2: 
+test 385:	insert2: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
-test 369:	insert3: 
+test 386:	insert3: 
 			size of tmp = 6
 			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
-test 370:	erase1: 
+test 387:	erase1: 
 			size of tmp = 6
 			size of tmp = 0
 			size of tmp = 6
@@ -2215,7 +2372,7 @@ test 370:	erase1:
 			salut | 
 			size of tmp = 1
 ---------------------
-test 371:	erase2: 
+test 388:	erase2: 
 			size of tmp = 6
 			new elem after erase: salut
 			size of tmp = 5
@@ -2226,10 +2383,10 @@ test 371:	erase2:
 			salut | 
 			size of tmp = 5
 ---------------------
-test 372:	clear: 
+test 389:	clear: 
 			size before clear: 6 | size after clear: 0new elem pushed after clear: salut
 ---------------------
-test 373:	operator==/!=: 
+test 390:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2239,7 +2396,7 @@ test 373:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 374:	operator</>/<=/>=: 
+test 391:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2267,59 +2424,68 @@ test 374:	operator</>/<=/>=:
 		VECTOR TYPE: Class test
 
 ---------------------
-test 375:	operator[]: 
+test 392:	operator[]: 
 			Class test printing Class test printing 
 ---------------------
-test 376:	size: 
+test 393:	size: 
 			2
 ---------------------
-test 377:	capacity: 
+test 394:	capacity: 
 			2
 ---------------------
-test 378:	empty: 
+test 395:	empty: 
 			0
 ---------------------
-test 379:	iterators: 
-			Class test printing Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
-		reverse iterators: 
-			Class test printing Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
+test 396:	iterators: 
+			operator++: Class test printing | Class test printing | 
+			operator+=: Class test printing | Class test printing | 
+			operator+: Class test printing | Class test printing | 
+			operator-=: Class test printing | Class test printing | 
+			operator-: Class test printing | Class test printing | 
+			operator[]: Class test printing | Class test printing | 
 ---------------------
-test 380:	at: 
+test 397:	reverse iterators: 
+			operator++: Class test printing | Class test printing | 
+			operator+=: Class test printing | Class test printing | 
+			operator+: Class test printing | Class test printing | 
+			operator-=: Class test printing | Class test printing | 
+			operator-: Class test printing | Class test printing | 
+			operator[]: Class test printing | Class test printing | 
+---------------------
+test 398:	at: 
 			Class test printing Class test printing vector
 ---------------------
-test 381:	front: 
+test 399:	front: 
 			Class test printing
 ---------------------
-test 382:	back: 
+test 400:	back: 
 			Class test printing
 ---------------------
-test 383:	push_back: 
+test 401:	push_back: 
 			new elem = Class test printing
 ---------------------
-test 384:	pop_back: 
+test 402:	pop_back: 
 			new elem = Class test printing
 ---------------------
-test 385:	swap member and non member: 
+test 403:	swap member and non member: 
 			size of tmp = 3 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 3			size of tmp = 3 and size of tmp2 = 2
 ---------------------
-test 386:	resize: 
+test 404:	resize: 
 			size of tmp = 2
 			new elem = Class test printing			size of tmp after resize = 3
 ---------------------
-test 387:	assign1: 
+test 405:	assign1: 
 			size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 388:	assign2: 
+test 406:	assign2: 
 			size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 389:	insert1: 
+test 407:	insert1: 
 			size of tmp = 2
 			return value: Class test printing
 			return value: Class test printing
@@ -2327,17 +2493,17 @@ test 389:	insert1:
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
 ---------------------
-test 390:	insert2: 
+test 408:	insert2: 
 			size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
 ---------------------
-test 391:	insert3: 
+test 409:	insert3: 
 			size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
 ---------------------
-test 392:	erase1: 
+test 410:	erase1: 
 			size of tmp = 2
 			size of tmp = 0
 			size of tmp = 2
@@ -2351,7 +2517,7 @@ test 392:	erase1:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 393:	erase2: 
+test 411:	erase2: 
 			size of tmp = 2
 			new elem after erase: Class test printing
 			size of tmp = 1
@@ -2362,10 +2528,10 @@ test 393:	erase2:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 394:	clear: 
+test 412:	clear: 
 			size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
 ---------------------
-test 395:	operator==/!=: 
+test 413:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2375,7 +2541,7 @@ test 395:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 396:	operator</>/<=/>=: 
+test 414:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2403,59 +2569,68 @@ test 396:	operator</>/<=/>=:
 		VECTOR TYPE: Class test
 
 ---------------------
-test 397:	operator[]: 
+test 415:	operator[]: 
 			Class test printing Class test printing 
 ---------------------
-test 398:	size: 
+test 416:	size: 
 			2
 ---------------------
-test 399:	capacity: 
+test 417:	capacity: 
 			2
 ---------------------
-test 400:	empty: 
+test 418:	empty: 
 			0
 ---------------------
-test 401:	iterators: 
-			Class test printing Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
-		reverse iterators: 
-			Class test printing Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
+test 419:	iterators: 
+			operator++: Class test printing | Class test printing | 
+			operator+=: Class test printing | Class test printing | 
+			operator+: Class test printing | Class test printing | 
+			operator-=: Class test printing | Class test printing | 
+			operator-: Class test printing | Class test printing | 
+			operator[]: Class test printing | Class test printing | 
 ---------------------
-test 402:	at: 
+test 420:	reverse iterators: 
+			operator++: Class test printing | Class test printing | 
+			operator+=: Class test printing | Class test printing | 
+			operator+: Class test printing | Class test printing | 
+			operator-=: Class test printing | Class test printing | 
+			operator-: Class test printing | Class test printing | 
+			operator[]: Class test printing | Class test printing | 
+---------------------
+test 421:	at: 
 			Class test printing Class test printing vector
 ---------------------
-test 403:	front: 
+test 422:	front: 
 			Class test printing
 ---------------------
-test 404:	back: 
+test 423:	back: 
 			Class test printing
 ---------------------
-test 405:	push_back: 
+test 424:	push_back: 
 			new elem = Class test printing
 ---------------------
-test 406:	pop_back: 
+test 425:	pop_back: 
 			new elem = Class test printing
 ---------------------
-test 407:	swap member and non member: 
+test 426:	swap member and non member: 
 			size of tmp = 3 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 3			size of tmp = 3 and size of tmp2 = 2
 ---------------------
-test 408:	resize: 
+test 427:	resize: 
 			size of tmp = 2
 			new elem = Class test printing			size of tmp after resize = 3
 ---------------------
-test 409:	assign1: 
+test 428:	assign1: 
 			size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 410:	assign2: 
+test 429:	assign2: 
 			size of tmp = 2
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 411:	insert1: 
+test 430:	insert1: 
 			size of tmp = 2
 			return value: Class test printing
 			return value: Class test printing
@@ -2463,17 +2638,17 @@ test 411:	insert1:
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
 ---------------------
-test 412:	insert2: 
+test 431:	insert2: 
 			size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
 ---------------------
-test 413:	insert3: 
+test 432:	insert3: 
 			size of tmp = 2
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
 ---------------------
-test 414:	erase1: 
+test 433:	erase1: 
 			size of tmp = 2
 			size of tmp = 0
 			size of tmp = 2
@@ -2487,7 +2662,7 @@ test 414:	erase1:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 415:	erase2: 
+test 434:	erase2: 
 			size of tmp = 2
 			new elem after erase: Class test printing
 			size of tmp = 1
@@ -2498,10 +2673,10 @@ test 415:	erase2:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 416:	clear: 
+test 435:	clear: 
 			size before clear: 2 | size after clear: 0new elem pushed after clear: Class test printing
 ---------------------
-test 417:	operator==/!=: 
+test 436:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2511,7 +2686,7 @@ test 417:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 418:	operator</>/<=/>=: 
+test 437:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2539,59 +2714,68 @@ test 418:	operator</>/<=/>=:
 		VECTOR TYPE: Class test
 
 ---------------------
-test 419:	operator[]: 
+test 438:	operator[]: 
 			Class test printing 
 ---------------------
-test 420:	size: 
+test 439:	size: 
 			1
 ---------------------
-test 421:	capacity: 
+test 440:	capacity: 
 			1
 ---------------------
-test 422:	empty: 
+test 441:	empty: 
 			0
 ---------------------
-test 423:	iterators: 
-			Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
-		reverse iterators: 
-			Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
+test 442:	iterators: 
+			operator++: Class test printing | 
+			operator+=: Class test printing | 
+			operator+: Class test printing | 
+			operator-=: Class test printing | 
+			operator-: Class test printing | 
+			operator[]: Class test printing | 
 ---------------------
-test 424:	at: 
+test 443:	reverse iterators: 
+			operator++: Class test printing | 
+			operator+=: Class test printing | 
+			operator+: Class test printing | 
+			operator-=: Class test printing | 
+			operator-: Class test printing | 
+			operator[]: Class test printing | 
+---------------------
+test 444:	at: 
 			Class test printing vector
 ---------------------
-test 425:	front: 
+test 445:	front: 
 			Class test printing
 ---------------------
-test 426:	back: 
+test 446:	back: 
 			Class test printing
 ---------------------
-test 427:	push_back: 
+test 447:	push_back: 
 			new elem = Class test printing
 ---------------------
-test 428:	pop_back: 
+test 448:	pop_back: 
 			new elem = Class test printing
 ---------------------
-test 429:	swap member and non member: 
+test 449:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 430:	resize: 
+test 450:	resize: 
 			size of tmp = 1
 			new elem = Class test printing			size of tmp after resize = 3
 ---------------------
-test 431:	assign1: 
+test 451:	assign1: 
 			size of tmp = 1
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 432:	assign2: 
+test 452:	assign2: 
 			size of tmp = 1
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 433:	insert1: 
+test 453:	insert1: 
 			size of tmp = 1
 			return value: Class test printing
 			return value: Class test printing
@@ -2599,17 +2783,17 @@ test 433:	insert1:
 			Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
-test 434:	insert2: 
+test 454:	insert2: 
 			size of tmp = 1
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 16
 ---------------------
-test 435:	insert3: 
+test 455:	insert3: 
 			size of tmp = 1
 			Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
-test 436:	erase1: 
+test 456:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -2623,7 +2807,7 @@ test 436:	erase1:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 437:	erase2: 
+test 457:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -2631,10 +2815,10 @@ test 437:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 438:	clear: 
+test 458:	clear: 
 			size before clear: 1 | size after clear: 0new elem pushed after clear: Class test printing
 ---------------------
-test 439:	operator==/!=: 
+test 459:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2644,7 +2828,7 @@ test 439:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 440:	operator</>/<=/>=: 
+test 460:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2672,59 +2856,68 @@ test 440:	operator</>/<=/>=:
 		VECTOR TYPE: Class test
 
 ---------------------
-test 441:	operator[]: 
+test 461:	operator[]: 
 			Class test printing 
 ---------------------
-test 442:	size: 
+test 462:	size: 
 			1
 ---------------------
-test 443:	capacity: 
+test 463:	capacity: 
 			1
 ---------------------
-test 444:	empty: 
+test 464:	empty: 
 			0
 ---------------------
-test 445:	iterators: 
-			Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
-		reverse iterators: 
-			Class test printing 
-			testing operator[] and operator+/-: Class test printing Class test printing 
+test 465:	iterators: 
+			operator++: Class test printing | 
+			operator+=: Class test printing | 
+			operator+: Class test printing | 
+			operator-=: Class test printing | 
+			operator-: Class test printing | 
+			operator[]: Class test printing | 
 ---------------------
-test 446:	at: 
+test 466:	reverse iterators: 
+			operator++: Class test printing | 
+			operator+=: Class test printing | 
+			operator+: Class test printing | 
+			operator-=: Class test printing | 
+			operator-: Class test printing | 
+			operator[]: Class test printing | 
+---------------------
+test 467:	at: 
 			Class test printing vector
 ---------------------
-test 447:	front: 
+test 468:	front: 
 			Class test printing
 ---------------------
-test 448:	back: 
+test 469:	back: 
 			Class test printing
 ---------------------
-test 449:	push_back: 
+test 470:	push_back: 
 			new elem = Class test printing
 ---------------------
-test 450:	pop_back: 
+test 471:	pop_back: 
 			new elem = Class test printing
 ---------------------
-test 451:	swap member and non member: 
+test 472:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 452:	resize: 
+test 473:	resize: 
 			size of tmp = 1
 			new elem = Class test printing			size of tmp after resize = 3
 ---------------------
-test 453:	assign1: 
+test 474:	assign1: 
 			size of tmp = 1
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 454:	assign2: 
+test 475:	assign2: 
 			size of tmp = 1
 			new elem = Class test printing			size after assign = 3and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 455:	insert1: 
+test 476:	insert1: 
 			size of tmp = 1
 			return value: Class test printing
 			return value: Class test printing
@@ -2732,17 +2925,17 @@ test 455:	insert1:
 			Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
-test 456:	insert2: 
+test 477:	insert2: 
 			size of tmp = 1
 			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 16
 ---------------------
-test 457:	insert3: 
+test 478:	insert3: 
 			size of tmp = 1
 			Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
-test 458:	erase1: 
+test 479:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -2756,7 +2949,7 @@ test 458:	erase1:
 			Class test printing | 
 			size of tmp = 1
 ---------------------
-test 459:	erase2: 
+test 480:	erase2: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
@@ -2764,10 +2957,10 @@ test 459:	erase2:
 			size of tmp = 0
 			
 ---------------------
-test 460:	clear: 
+test 481:	clear: 
 			size before clear: 1 | size after clear: 0new elem pushed after clear: Class test printing
 ---------------------
-test 461:	operator==/!=: 
+test 482:	operator==/!=: 
 			tmp == vec (should be true): 1
 			tmp != vec (should be false): 0
 			tmp == vec (should be false): 0
@@ -2777,7 +2970,7 @@ test 461:	operator==/!=:
 			tmp == vec (should be true): 1
 			tmp2 != tmp (should be false): 0
 ---------------------
-test 462:	operator</>/<=/>=: 
+test 483:	operator</>/<=/>=: 
 			tmp < vec: 0
 			tmp > vec: 0
 			tmp <= vec: 1
@@ -2805,32 +2998,41 @@ test 462:	operator</>/<=/>=:
 		VECTOR TYPE: int
 
 ---------------------
-test 463:	operator[]: 
+test 484:	operator[]: 
 			100 100 100 100 100 
 ---------------------
-test 464:	size: 
+test 485:	size: 
 			5
 ---------------------
-test 465:	capacity: 
+test 486:	capacity: 
 			5
 ---------------------
-test 466:	empty: 
+test 487:	empty: 
 			0
 ---------------------
-test 467:	iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
-		reverse iterators: 
-			100 100 100 100 100 
-			testing operator[] and operator+/-: 100 100 
+test 488:	iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 468:	at: 
+test 489:	reverse iterators: 
+			operator++: 100 | 100 | 100 | 100 | 100 | 
+			operator+=: 100 | 100 | 100 | 100 | 100 | 
+			operator+: 100 | 100 | 100 | 100 | 100 | 
+			operator-=: 100 | 100 | 100 | 100 | 100 | 
+			operator-: 100 | 100 | 100 | 100 | 100 | 
+			operator[]: 100 | 100 | 100 | 100 | 100 | 
+---------------------
+test 490:	at: 
 			100 100 100 100 100 vector
 ---------------------
-test 469:	front: 
+test 491:	front: 
 			100
 ---------------------
-test 470:	back: 
+test 492:	back: 
 			100
 
 --------------------------------
@@ -2839,30 +3041,41 @@ test 470:	back:
 		VECTOR TYPE: int
 
 ---------------------
-test 471:	operator[]: 
+test 493:	operator[]: 
 			
 ---------------------
-test 472:	size: 
+test 494:	size: 
 			0
 ---------------------
-test 473:	capacity: 
+test 495:	capacity: 
 			0
 ---------------------
-test 474:	empty: 
+test 496:	empty: 
 			1
 ---------------------
-test 475:	iterators: 
-			
-		reverse iterators: 
-			
+test 497:	iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
 ---------------------
-test 476:	at: 
+test 498:	reverse iterators: 
+			operator++: 
+			operator+=: 
+			operator+: 
+			operator-=: 
+			operator-: 
+			operator[]: 
+---------------------
+test 499:	at: 
 			vector
 ---------------------
-test 477:	front: 
+test 500:	front: 
 			
 ---------------------
-test 478:	back: 
+test 501:	back: 
 			
 
 --------------------------------
@@ -2871,32 +3084,41 @@ test 478:	back:
 		VECTOR TYPE: char
 
 ---------------------
-test 479:	operator[]: 
+test 502:	operator[]: 
 			c c c c c c c c c c c c 
 ---------------------
-test 480:	size: 
+test 503:	size: 
 			12
 ---------------------
-test 481:	capacity: 
+test 504:	capacity: 
 			12
 ---------------------
-test 482:	empty: 
+test 505:	empty: 
 			0
 ---------------------
-test 483:	iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
-		reverse iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
+test 506:	iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 484:	at: 
+test 507:	reverse iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
+---------------------
+test 508:	at: 
 			c c c c c c c c c c c c vector
 ---------------------
-test 485:	front: 
+test 509:	front: 
 			c
 ---------------------
-test 486:	back: 
+test 510:	back: 
 			c
 
 --------------------------------
@@ -2905,32 +3127,41 @@ test 486:	back:
 		VECTOR TYPE: char
 
 ---------------------
-test 487:	operator[]: 
+test 511:	operator[]: 
 			c c c c c c c c c c c c 
 ---------------------
-test 488:	size: 
+test 512:	size: 
 			12
 ---------------------
-test 489:	capacity: 
+test 513:	capacity: 
 			12
 ---------------------
-test 490:	empty: 
+test 514:	empty: 
 			0
 ---------------------
-test 491:	iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
-		reverse iterators: 
-			c c c c c c c c c c c c 
-			testing operator[] and operator+/-: c c 
+test 515:	iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 492:	at: 
+test 516:	reverse iterators: 
+			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator+: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-=: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator-: c | c | c | c | c | c | c | c | c | c | c | c | 
+			operator[]: c | c | c | c | c | c | c | c | c | c | c | c | 
+---------------------
+test 517:	at: 
 			c c c c c c c c c c c c vector
 ---------------------
-test 493:	front: 
+test 518:	front: 
 			c
 ---------------------
-test 494:	back: 
+test 519:	back: 
 			c
 
 --------------------------------
@@ -2939,30 +3170,39 @@ test 494:	back:
 		VECTOR TYPE: std::string
 
 ---------------------
-test 495:	operator[]: 
+test 520:	operator[]: 
 			bonjour bonjour bonjour 
 ---------------------
-test 496:	size: 
+test 521:	size: 
 			3
 ---------------------
-test 497:	capacity: 
+test 522:	capacity: 
 			3
 ---------------------
-test 498:	empty: 
+test 523:	empty: 
 			0
 ---------------------
-test 499:	iterators: 
-			bonjour bonjour bonjour 
-			testing operator[] and operator+/-: bonjour bonjour 
-		reverse iterators: 
-			bonjour bonjour bonjour 
-			testing operator[] and operator+/-: bonjour bonjour 
+test 524:	iterators: 
+			operator++: bonjour | bonjour | bonjour | 
+			operator+=: bonjour | bonjour | bonjour | 
+			operator+: bonjour | bonjour | bonjour | 
+			operator-=: bonjour | bonjour | bonjour | 
+			operator-: bonjour | bonjour | bonjour | 
+			operator[]: bonjour | bonjour | bonjour | 
 ---------------------
-test 500:	at: 
+test 525:	reverse iterators: 
+			operator++: bonjour | bonjour | bonjour | 
+			operator+=: bonjour | bonjour | bonjour | 
+			operator+: bonjour | bonjour | bonjour | 
+			operator-=: bonjour | bonjour | bonjour | 
+			operator-: bonjour | bonjour | bonjour | 
+			operator[]: bonjour | bonjour | bonjour | 
+---------------------
+test 526:	at: 
 			bonjour bonjour bonjour vector
 ---------------------
-test 501:	front: 
+test 527:	front: 
 			bonjour
 ---------------------
-test 502:	back: 
+test 528:	back: 
 			bonjour

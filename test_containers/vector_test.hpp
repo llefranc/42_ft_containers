@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 11:44:37 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/22 13:44:45 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,63 @@ template <typename T>
 void	testIterators(T& vec)
 {
 	printTestNumber(0);
+	std::cout << "iterators: \n";
 	
-	std::cout << "iterators: \n\t\t\t";
+	std::cout << "\t\t\toperator++: ";
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
-		std::cout << *it << " ";
+		std::cout << *it << " | ";
 
-	if (vec.size())
-	{
-		std::cout << "\n\t\t\ttesting operator[] and operator+/-: ";
-		typename T::const_iterator it = vec.begin();
-		std::cout << it[0]	<< " ";
-		std::cout << *(it + vec.size() - 1)	<< " ";
-	}
+	std::cout << "\n\t\t\toperator+=: ";
+	for (typename T::const_iterator it = vec.begin(); it != vec.end(); it += 1)
+		std::cout << *it << " | ";
+	
+	std::cout << "\n\t\t\toperator+: ";
+	for (typename T::const_iterator it = vec.begin(); it != vec.end(); it = it + 1)
+		std::cout << *it << " | ";
 
-	std::cout << "\n\t\treverse iterators: \n\t\t\t";
-	for (typename T::const_reverse_iterator it = vec.rbegin();
-			it != vec.rend(); ++it)
-		std::cout << *it << " ";
+	std::cout << "\n\t\t\toperator-=: ";
+	for (typename T::const_iterator it = vec.end() - 1; it != vec.begin() - 1; it -= 1)
+		std::cout << *it << " | ";
 
-	if (vec.size())
-	{
-		std::cout << "\n\t\t\ttesting operator[] and operator+/-: ";
-		typename T::const_reverse_iterator it = vec.rbegin();
-		std::cout << it[0]	<< " ";
-		std::cout << *(it + vec.size() - 1)	<< " ";
-	}
+	std::cout << "\n\t\t\toperator-: ";
+	for (typename T::const_iterator it = vec.end() - 1; it != vec.begin() - 1; it = it - 1)
+		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator[]: ";
+	for (ft::pair<size_t, typename T::const_iterator> i(0, vec.begin()); i.first < vec.size(); ++i.first)
+		std::cout << i.second[i.first] << " | ";
 }
 
+template <typename T>
+void	testReverseIterators(T& vec)
+{
+	printTestNumber(0);
+	std::cout << "reverse iterators: \n";
+	
+	std::cout << "\t\t\toperator++: ";
+	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); ++it)
+		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator+=: ";
+	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); it += 1)
+		std::cout << *it << " | ";
+	
+	std::cout << "\n\t\t\toperator+: ";
+	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); it = it + 1)
+		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator-=: ";
+	for (typename T::const_reverse_iterator it = vec.rend() - 1; it != vec.rbegin() - 1; it -= 1)
+		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator-: ";
+	for (typename T::const_reverse_iterator it = vec.rend() - 1; it != vec.rbegin() - 1; it = it - 1)
+		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator[]: ";
+	for (ft::pair<size_t, typename T::const_reverse_iterator> i(0, vec.rbegin()); i.first < vec.size(); ++i.first)
+		std::cout << i.second[i.first] << " | ";
+}
 template <typename T>
 void	testAt(T& vec)
 {
@@ -575,6 +605,7 @@ void	executeAllVecTests(T& vec, int testNb)
 	testCapacity(vec);
 	testEmpty(vec);
 	testIterators(vec);
+	testReverseIterators(vec);
 	testAt(vec);
 	testFront(vec);
 	testBack(vec);
@@ -610,6 +641,7 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	testCapacity(vec);
 	testEmpty(vec);
 	testIterators(vec);
+	testReverseIterators(vec);
 	testAt(vec);
 	testFront(vec);
 	testBack(vec);
