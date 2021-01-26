@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 17:27:13 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 20:16:09 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/26 20:22:23 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include "../../containers/list.hpp"
 
 // Needed for testing
-#include "stl_like.hpp"
+#include "../../templates/stl_like.hpp"
 #include "print_type.hpp"
 #include "Bob_test.hpp"
 

@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 20:02:59 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/26 23:22:18 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,7 +298,13 @@ namespace ft
 					position = insert(position, val);
 			}
 			
-			// range (3)	
+			/**
+			*	Inserts all elements between first and last, and increases the vector' size.
+			*
+			*	@param position	Elements will be inserted just before this position.
+			*	@param first	An iterator pointing to the range's beginning (will be include).
+			*	@param last		An iterator pointing to the range's end (will not be include).
+			*/	
 			template <class InputIterator>
 			void insert (iterator position, InputIterator first, InputIterator last,
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
@@ -309,7 +315,10 @@ namespace ft
 					position = insert(position, *it.first);
 			}
 
-			// 	iterator erase (iterator position);
+			// iterator erase (iterator position)
+			// {
+			// 	if 
+			// }
 			// iterator erase (iterator first, iterator last);
 
 			// iterator erase (iterator position);
