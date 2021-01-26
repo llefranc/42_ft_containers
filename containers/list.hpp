@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 16:41:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:32:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <memory>
 
 #include "../iterators/list_iterator.hpp"
+#include "../iterators/rev_list_iterator.hpp"
 
 namespace ft
 {
@@ -26,7 +27,7 @@ namespace ft
 
 			struct Node
 			{
-				T		data;
+				T		content;
 				Node*	prev;
 				Node*	next;
 			};			
@@ -49,26 +50,24 @@ namespace ft
 			typedef typename ft::list_iterator<T, Node, false>		iterator;
 			typedef typename ft::list_iterator<T, Node, true>		const_iterator;
 
-			// typedef typename ft::rev_list_iterator<T, false>	reverse_iterator;
-			// typedef typename ft::rev_list_iterator<T, true>	const_reverse_iterator;
+			typedef typename ft::rev_list_iterator<T, Node, false>	reverse_iterator;
+			typedef typename ft::rev_list_iterator<T, Node, true>	const_reverse_iterator;
 
 			/* ------------------------------------------------------------- */
 			/* ------------------------ COPLIEN FORM ----------------------- */
 
 			// default (1)	
 			explicit list (const allocator_type& alloc = allocator_type()) :
-					_size(0)
+					_size(0), _allocT(alloc)
 			{
-				(void)alloc;
 				newEndNode();
 			}
 			
 			// fill (2)	
 			explicit list (size_type n, const value_type& val = value_type(),
 			                const allocator_type& alloc = allocator_type()) :
-					_size(0)
+					_size(0), _allocT(alloc)
 			{
-				(void)alloc;
 				newEndNode();
 
 				while (_size < n)
@@ -79,9 +78,8 @@ namespace ft
 			template <class InputIterator>
 			list (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0) :
-					_size(0)
+					_size(0), _allocT(alloc)
 			{
-				(void)alloc;
 				newEndNode();
 
 				for (; first != last; ++first)
@@ -90,7 +88,7 @@ namespace ft
 			
 			// copy (4)	
 			list (const list& x) :
-					_size(x._size)
+					_size(0), _allocT(x._allocT), _allocNode(x._allocNode)
 			{
 				newEndNode();
 
@@ -98,51 +96,142 @@ namespace ft
 					push_back(*it);
 			}
 
-			// ~list()
-			// {
-			// 	while (_size-- > 0)
+			~list()
+			{
+				while (_size > 0)
+					pop_back();
+				// delete _endList; VERSION SANS ALLOC
+				_allocNode.deallocate(_endList, 1);
+			}
 
-			// }
+			// copy (1)
+			list& operator= (const list& x)
+			{
+				list copy(x);
+				this->swap(copy);
 
-			//copy (1)	list& operator= (const list& x);
+				return *this;
+			}
 
-			iterator begin()		{ return !_size ? iterator(_endList) : iterator(_endList->next); }
+			iterator begin()				{ return !_size ? iterator(_endList) : iterator(_endList->next); }
 			const_iterator begin() const	{ return !_size ? iterator(_endList) : iterator(_endList->next); }
 
-			iterator end()			{ return iterator(_endList); }
+			iterator end()					{ return iterator(_endList); }
 			const_iterator end() const		{ return const_iterator(_endList); }
 
-			// reverse_iterator rbegin();
-			// const_reverse_iterator rbegin() const;
+			reverse_iterator rbegin()				{ return !_size ? reverse_iterator(_endList) : reverse_iterator(_endList->prev); }
+			const_reverse_iterator rbegin() const	{ return !_size ? const_reverse_iterator(_endList) :
+														const_reverse_iterator(_endList->prev); }
 
-			//  reverse_iterator rend();
-			// const_reverse_iterator rend() const;
+			reverse_iterator rend()					{ return reverse_iterator(_endList); }
+			const_reverse_iterator rend() const		{ return const_reverse_iterator(_endList); }
 
-			// bool empty() const;
+			bool empty() const						{ return _size == 0; }
 
-			//size_type size() const;
-			// size_type max_size() const;
+			size_type size() const			{ return _size; }
+			
+			/**
+			*	@return		The max possible size to be allocated.
+			*/
+			size_type		max_size() const
+			{
+				if (sizeof(value_type) == 1)
+					return static_cast<size_type>(pow(2.0, 64.0) / 2.0) - 1;
+				return static_cast<size_type>(pow(2.0, 64.0) / static_cast<double>(sizeof(value_type))) - 1;
+			}
 
-			// reference front();
-			// const_reference front() const;
+			reference front()				{ return _endList->next->content; }
+			const_reference front() const 	{ return _endList->next->content; }
 
-			// reference back();
-			// const_reference back() const;
+			reference back()				{ return _endList->prev->content; }
+			const_reference back() const	{ return _endList->prev->content; }
 
 			// range (1)	
-			// template <class InputIterator>
-			//   void assign (InputIterator first, InputIterator last);
-			// fill (2)	
-			// void assign (size_type n, const value_type& val);
+			template <class InputIterator>
+			void assign (InputIterator first, InputIterator last)
+			{
+				size_type i = 0;
+				for (ft::pair<int, iterator> it(0, begin()); first != last; ++it, ++i, ++it.first, ++first)
+				{
+					// If list is to small, creating new Nodes
+					if (i >= _size)
+						push_back(*first);
+						
+					// If element already exist, just replacing his content
+					else
+					{
+						_allocT.destroy(&it.second->content);
+						_allocT.construct(&it.second->content, *first);
+					}
+				}
+				
+				// Destroying remaining Nodes if list is taller than assignment size
+				while (_size > i)
+					pop_back();
+			}
 
-			// void push_front (const value_type& val);
+			/**
+			*	Assigns new contents to the list, replacing its current content, 
+			*	and modifying its size accordingly.
+			*	
+			*	@param n	Number of new elements constructed.
+			*	@param val	Each new elements will be copy constructed from val.
+			*/	
+			void assign (size_type n, const value_type& val)
+			{
+				size_type i = 0;
+				for (iterator it = begin(); i < n; ++it, ++i)
+				{
+					// If list is to small, creating new Nodes
+					if (i >= _size)
+						push_back(val);
+						
+					// If element already exist, just replacing his content
+					else
+					{
+						_allocT.destroy(&it->content);
+						_allocT.construct(&it->content, val);
+					}
+				}
+				
+				// Destroying remaining Nodes if list is taller than assignment size
+				while (_size > i)
+					pop_back();
+			}
 
-			// void pop_front();
+			void push_front (const value_type& val)
+			{
+				// Node* tmp = new Node; VERSION SANS ALLOC
+				// tmp->content = val;
+				Node* tmp = createNode(val);
+
+				tmp->prev = _endList;
+				tmp->next = _endList->next;
+				_endList->next->prev = tmp;
+				_endList->next = tmp;
+				
+				++_size;
+			}
+
+			void pop_front()
+			{
+				if (!_size)
+					return ;
+				
+				Node* tmp = _endList->next;
+				_endList->next->next->prev = _endList;
+				_endList->next = _endList->next->next;
+
+				// delete tmp; VERSION SANS ALLOC
+				deleteNode(tmp);
+				--_size;
+			}
 
 			void push_back (const value_type& val)
 			{
-				Node* tmp = new Node;
-				tmp->data = val;
+				// Node* tmp = new Node; VERSION SANS ALLOC
+				// tmp->content = val;
+				Node* tmp = createNode(val);
 
 				tmp->prev = _endList->prev;
 				tmp->next = _endList;
@@ -152,7 +241,19 @@ namespace ft
 				++_size;
 			}
 	
-			// void pop_back();
+			void pop_back()
+			{
+				if (!_size)
+					return ;
+				
+				Node* tmp = _endList->prev;
+				_endList->prev->prev->next = _endList;
+				_endList->prev = _endList->prev->prev;
+
+				// delete tmp;  VERSION SANS ALLOC
+				deleteNode(tmp);
+				--_size;
+			}
 
 
 			// single element (1)	
@@ -169,10 +270,27 @@ namespace ft
 			// iterator erase (iterator position);
 			// iterator erase (iterator first, iterator last);
 
-			// void swap (list& x);
+			void swap (list& x)
+			{
+				swap(_size, x._size);
+				swap(_endList, x._endList);
+			}
 
-			// void resize (size_type n, value_type val = value_type());
-			// void clear();
+			void resize (size_type n, value_type val = value_type())
+			{
+				while (n > _size)
+					push_back(val);
+				while (n < _size)
+					pop_back();
+			}
+
+			void clear()
+			{
+				while (_size)
+					pop_back();
+			}
+
+			
 			// entire list (1)	
 			// void splice (iterator position, list& x);
 			// single element (2)	
@@ -202,41 +320,117 @@ namespace ft
 			// template <class Compare>
 			//   void sort (Compare comp);
 
-			//   void reverse();
+			/**
+			*	Reverse the list. Each node from the beginning will be inserted from the
+			*	end of the list one in front of the other.
+			*/
+			void reverse()
+			{
+				if (_size > 1)
+				{
+					Node* insertBefore = _endList;
+					Node* tmp;
+
+					while (_endList->next != insertBefore)
+					{
+						// First Node that will be move before Node insertBefore
+						tmp = _endList->next;
+
+						// Linking _endList and Node "_endList + 2"
+						_endList->next = tmp->next;
+						tmp->next->prev = _endList;
+
+						// Moving first Node between Node insertBefore
+						// and Node "insertBefore - 1"
+						tmp->next = insertBefore;
+						tmp->prev = insertBefore->prev;
+						tmp->prev->next = tmp;
+						tmp->next->prev = tmp;
+
+						// Node insertBefore is now pointing to the Node we moved 
+						insertBefore = tmp;
+					}
+				}
+			}
 
 			//   (1)	
-			// template <class T, class Alloc>
-			//   bool operator== (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator== (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 			// (2)	
-			// template <class T, class Alloc>
-			//   bool operator!= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator!= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 			// (3)	
-			// template <class T, class Alloc>
-			//   bool operator<  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator<  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 			// (4)	
-			// template <class T, class Alloc>
-			//   bool operator<= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator<= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 			// (5)	
-			// template <class T, class Alloc>
-			//   bool operator>  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator>  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 			// (6)	
-			// template <class T, class Alloc>
-			//   bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			//   friend bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
 
-			//   template <class T, class Alloc>
-			//   void swap (list<T,Alloc>& x, list<T,Alloc>& y);
+			friend void swap (list& x, list& y)	{ x.swap(y); }
 
 		private:
 
 			Node*		_endList;
 			size_type	_size;
+			Alloc		_allocT;
+			std::allocator<Node>	_allocNode;
+
+			/* ------------------------------------------------------------- */
+			/* ------------------ PRIVATE MEMBER FUNCTIONS ----------------- */
 			
+			/**
+			*	Create a new endNode. Data isn't constructed.
+			*/
 			void newEndNode()
 			{
-				_endList = new Node;
+				// _endList = new Node;			VERSION SANS ALLOCATOR
+				// _endList->next = _endList;
+				// _endList->prev = _endList;			
+
+				_endList = _allocNode.allocate(1);
 				_endList->next = _endList;
 				_endList->prev = _endList;			
 			}
+
+			/**
+			*	Destroy Node's content and then deallocate the Node.
+			*
+			*	@param toDelete	The Node to destroy and deallocate.
+			*/
+			void deleteNode(Node *toDelete)
+			{
+				_allocT.destroy(&toDelete->content);
+				_allocNode.deallocate(toDelete, 1);
+			}
+
+			/**
+			*	Allocate a new Node and copy construct his content from val.
+			*
+			*	@param val	The content to copy construct.
+			*	@return		The Node newly created.
+			*/
+			Node* createNode(const value_type& val = value_type())
+			{
+				Node *newNode = _allocNode.allocate(1);
+				_allocT.construct(&newNode->content, val);
+				
+				return newNode;
+			}
+
+			/**
+			*	Swaps two variables.
+			*
+			*	@param a		Will be swap with b.
+			*	@param b		Will be swap with a.
+			*/
+			template <typename U>
+			void swap(U& a, U&b)
+			{
+				U tmp = a;
+				a = b;
+				b = tmp;
+			}
+
 	}; // class list
 	
 } // namespace ft

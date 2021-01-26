@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:32:08 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 14:28:21 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 14:02:51 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,25 @@
 
 class Bob;
 
+/**
+*	Prints the type of the template parameter.
+*/
 template <typename T>
-void print_type() {}
+inline void print_type() {} // Inline keywork to avoid duplicate symbol error
 
 template <>
-void print_type<int>() { std::cout << "int\n"; }
+inline void print_type<int>() { std::cout << "int\n"; }
 
 template <>
-void print_type<char>() { std::cout << "char\n"; }
+inline void print_type<char>() { std::cout << "char\n"; }
 
 template <>
-void print_type<Bob>() { std::cout << "Class test\n"; }
+inline void print_type<Bob>() { std::cout << "Class test\n"; }
 
 template <>
-void print_type<double*>() { std::cout << "double*\n"; }
+inline void print_type<double*>() { std::cout << "double*\n"; }
 
 template <>
-void print_type<std::string>() { std::cout << "std::string\n"; }
+inline void print_type<std::string>() { std::cout << "std::string\n"; }
 
 #endif

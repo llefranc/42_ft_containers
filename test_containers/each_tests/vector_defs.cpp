@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_all_vectors.cpp                               :+:      :+:    :+:   */
+/*   vector_defs.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:03:59 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 15:06:48 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 15:36:51 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tester.hpp"
+#include "../includes/tester.hpp"
+#include "vector_tests.hpp"
 
 int		testAllVectors()
 {
@@ -33,6 +34,9 @@ int		testAllVectors()
 			vector<char> v2(1,'a');
 			vector<char> v3;
 			v3 = v2;
+			vector<char> v4;
+			for (char c = 'a'; c < 'f'; ++c)
+				v4.push_back(c);
 
 			vector<int> v10(5, 100);
 			vector<int> v11(0);
@@ -40,6 +44,9 @@ int		testAllVectors()
 			vector<int> v13(v10.begin(), v10.end());
 			vector<int> v14;
 			v14 = v13;
+			vector<int> v15;
+			for (int i = 0; i < 4; ++i)
+				v15.push_back(i);
 
 			vector<double*> v20;
 			vector<double*> v21(1, &nb_test_ptr);
@@ -75,12 +82,14 @@ int		testAllVectors()
 			executeAllVecTests(v1, ++testNb);
 			executeAllVecTests(v2, ++testNb);
 			executeAllVecTests(v3, ++testNb);
+			executeAllVecTests(v4, ++testNb);
 
 			executeAllVecTests(v10, ++testNb);
 			executeAllVecTests(v11, ++testNb);
 			executeAllVecTests(v12, ++testNb);
 			executeAllVecTests(v13, ++testNb);
 			executeAllVecTests(v14, ++testNb);
+			executeAllVecTests(v15, ++testNb);
 
 			executeAllVecTests(v20, ++testNb);
 			executeAllVecTests(v21, ++testNb);
@@ -119,6 +128,9 @@ int		testAllVectors()
 			vector<char> v2(1,'a');
 			vector<char> v3;
 			v3 = v2;
+			vector<char> v4;
+			for (char c = 'a'; c < 'f'; ++c)
+				v4.push_back(c);
 
 			vector<int> v10(5, 100);
 			vector<int> v11(0);
@@ -126,6 +138,9 @@ int		testAllVectors()
 			vector<int> v13(v10.begin(), v10.end());
 			vector<int> v14;
 			v14 = v13;
+			vector<int> v15;
+			for (int i = 0; i < 4; ++i)
+				v15.push_back(i);
 
 			vector<double*> v20;
 			vector<double*> v21(1, &nb_test_ptr);
@@ -161,12 +176,14 @@ int		testAllVectors()
 			executeAllVecTests(v1, ++testNb);
 			executeAllVecTests(v2, ++testNb);
 			executeAllVecTests(v3, ++testNb);
+			executeAllVecTests(v4, ++testNb);
 
 			executeAllVecTests(v10, ++testNb);
 			executeAllVecTests(v11, ++testNb);
 			executeAllVecTests(v12, ++testNb);
 			executeAllVecTests(v13, ++testNb);
 			executeAllVecTests(v14, ++testNb);
+			executeAllVecTests(v15, ++testNb);
 
 			executeAllVecTests(v20, ++testNb);
 			executeAllVecTests(v21, ++testNb);

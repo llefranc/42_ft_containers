@@ -6,14 +6,14 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 16:30:13 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 14:55:26 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "containers/vector.hpp"
 #include "containers/list.hpp"
 #include "templates/stl_like.hpp"
-#include "test_containers/Bob_test.hpp"
+#include "test_containers/includes/Bob_test.hpp"
 
 #include <iostream>
 #include <string>
@@ -23,24 +23,18 @@
 
 int main()
 {
-	
-	// Bob bob;
+	std::vector<int> v;
+	std::vector<char> v1;
+	std::vector<std::string> v2;
 
-	
-	std::cout << "\nTEST FT\n";
-	const ft::list<int> lis(3, 4);
+	std::list<int> l;
+	std::list<char> l1;
+	std::list<std::string> l2;
 
-	for (ft::list<int>::const_iterator it = lis.begin(); it != lis.end(); ++it)
-		std::cout << *it << " | ";
-	std::cout << "\n";
-
-
-
-	// std::cout << "\nTEST STD\n";
-	// std::list<int> ls(1, bob);
-
-	// std::cout <<bob << "\n";
-	// std::cout << "\nend main\n";
+	std::cout << v.max_size() /8 << "\t| " << v1.max_size() << "\t| " << v2.max_size()/2 << " \n";
+	std::cout << l.max_size() << "\t| " << l1.max_size() << "\t| " << l2.max_size() << " \n";
 
 	return (0);
 }
+
+

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 15:53:27 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:29:16 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 namespace ft
 {
 
-	// template<typename T, bool B>
-	// class rev_list_iterator;
+	template<typename T, typename Node, bool B>
+	class rev_list_iterator;
 	
 	template<typename T, typename Node, bool B>
 	class list_iterator
@@ -44,7 +44,6 @@ namespace ft
 
 			list_iterator(nonConstPointer node = 0) : _node(node) {}
 			list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonCoinstPointer(); }
-			// list_iterator(const rev_list_iterator<T, false>& copy) { _node = copy.getNonCoinstPointer(); }
 			~list_iterator() {}
 
 			nonConstPointer	getNonCoinstPointer() const		{ return _node; }
@@ -61,8 +60,8 @@ namespace ft
 
 			// INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
 
-			reference operator*()			{ return (_node->data); }
-			pointer operator->() const		{ return (_node); }
+			reference operator*()			{ return (_node->content); }
+			nonConstPointer operator->() const		{ return (_node); }
 
 			list_iterator& operator++()			{ _node = _node->next; return (*this); }
 			list_iterator operator++(int)		{ list_iterator res(*this); ++(*this); return (res); };

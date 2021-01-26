@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 11:33:48 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:28:43 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,7 +379,7 @@ namespace ft
 			/* ------------------------- MODIFIERS ------------------------- */
 			
 			/**
-			*	Assigns new contents to the vector, replacing its current contents, 
+			*	Assigns new contents to the vector, replacing its current content, 
 			*	and modifying its size accordingly. The new contents are elements constructed 
 			*	from each of the elements in the range between first and last iterators.
 			*	
@@ -401,7 +401,7 @@ namespace ft
 			}
 			
 			/**
-			*	Assigns new contents to the vector, replacing its current contents, 
+			*	Assigns new contents to the vector, replacing its current content, 
 			*	and modifying its size accordingly.
 			*	
 			*	@param n	Number of new elements constructed.
@@ -427,7 +427,7 @@ namespace ft
 			void push_back (const value_type& val)
 			{
 				if (_size + 1 > _capacity)
-					reallocateVec(!_capacity ? _capacity + 1 : _capacity * 2);
+					reallocateVec(!_capacity ? 1 : _capacity * 2);
 				_alloc.construct(&_vector[_size++], val);
 			}
 

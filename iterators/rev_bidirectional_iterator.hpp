@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 15:46:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:30:02 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ namespace ft
 			pointer operator->() const		{ return (_val); }
 
 			rev_bidirec_iterator& operator++()		{ --_val; return (*this); }
-			rev_bidirec_iterator operator++(int)		{ rev_bidirec_iterator res(*this); --(*this); return (res); };
+			rev_bidirec_iterator operator++(int)		{ rev_bidirec_iterator res(*this); ++(*this); return (res); };
 			rev_bidirec_iterator& operator--()		{ ++_val; return (*this); }
-			rev_bidirec_iterator operator--(int)		{ rev_bidirec_iterator res(*this); ++(*this); return (res); };
+			rev_bidirec_iterator operator--(int)		{ rev_bidirec_iterator res(*this); --(*this); return (res); };
 			
 			bool operator==(const rev_bidirec_iterator& it) const	{ return (it._val == _val); }
 			bool operator!=(const rev_bidirec_iterator& it) const	{ return (it._val != _val); }

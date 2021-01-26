@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_test.hpp                                    :+:      :+:    :+:   */
+/*   vector_tests.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 15:14:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:10:56 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_TEST_HPP
-#define VECTOR_TEST_HPP
+#ifndef VECTOR_TESTS_HPP
+#define VECTOR_TESTS_HPP
 
-#include "tester.hpp"
-#include "print_type.hpp"
-
-void	printTestNumber(int *nb);
+#include "../includes/tester.hpp"
 
 template <typename T>
 void	testOperatorBracelet(T& vec)
@@ -65,9 +62,22 @@ void	testIterators(T& vec)
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); it++)
 		std::cout << *it << " | ";
 
-	std::cout << "\t\t\t++operator: ";
+	std::cout << "\n\t\t\t++operator: ";
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << " | ";
+
+	if (vec.size())
+	{
+		std::cout << "\n\t\t\toperator--: ";
+		for (typename T::const_iterator it = vec.end(); it != vec.begin() - 1; it--)
+			if (it != vec.end())
+				std::cout << *it << " | ";
+
+		std::cout << "\n\t\t\t--operator: ";
+		for (typename T::const_iterator it = vec.end(); it != vec.begin() - 1; --it)
+			if (it != vec.end())
+				std::cout << *it << " | ";
+	}
 
 	std::cout << "\n\t\t\toperator+=: ";
 	for (typename T::const_iterator it = vec.begin(); it != vec.end(); it += 1)
@@ -96,9 +106,26 @@ void	testReverseIterators(T& vec)
 	printTestNumber(0);
 	std::cout << "reverse iterators: \n";
 	
-	std::cout << "\t\t\toperator++: ";
+	std::cout << "\t\t\t++operator: ";
 	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); ++it)
 		std::cout << *it << " | ";
+
+	std::cout << "\n\t\t\toperator++: ";
+	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); it++)
+		std::cout << *it << " | ";	
+
+	if (vec.size())
+	{
+		std::cout << "\n\t\t\toperator--: ";
+		for (typename T::const_reverse_iterator it = vec.rend(); it != vec.rbegin() - 1; it--)
+			if (it != vec.rend())
+				std::cout << *it << " | ";
+
+		std::cout << "\n\t\t\t--operator: ";
+		for (typename T::const_reverse_iterator it = vec.rend(); it != vec.rbegin() - 1; --it)
+			if (it != vec.rend())
+				std::cout << *it << " | ";
+	}
 
 	std::cout << "\n\t\t\toperator+=: ";
 	for (typename T::const_reverse_iterator it = vec.rbegin(); it != vec.rend(); it += 1)
@@ -180,8 +207,13 @@ void	testPushBack(T& vec)
 	if (vec.size())
 		*x = vec[0];
 
-	vec.push_back(*x);
-	std::cout << "new elem = " << vec.back();
+	T tmp = vec;
+	tmp.push_back(*x);
+	std::cout << "new elem = " << tmp.back();
+
+	std::cout << "\n\t\t\tnew tmp: ";
+	for (typename T::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
 
 	delete x;
 }
@@ -194,9 +226,14 @@ void	testPopBack(T& vec)
 	
 	if (vec.size())
 	{
-		vec.pop_back();
-		if (vec.size()) // To prevent overflow
-			std::cout << "new elem = " << vec.back();
+		T tmp = vec;
+		tmp.pop_back();
+		if (tmp.size()) // To prevent overflow
+			std::cout << "new elem = " << tmp.back();
+
+		std::cout << "\n\t\t\tnew tmp: ";
+		for (typename T::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
+			std::cout << *it << " | ";
 	}
 }
 
@@ -209,7 +246,7 @@ void	testClear(T& vec)
 	T tmp = vec;
 	std::cout << "size before clear: " << tmp.size() << " | ";
 	tmp.clear();
-	std::cout << "size after clear: " << tmp.size();
+	std::cout << "\n\t\t\tsize after clear: " << tmp.size();
 
 	// Allows to value initialize (case size is 0, we can't assign vec[0])
 	typename T::value_type* x = new typename T::value_type ();
@@ -217,7 +254,9 @@ void	testClear(T& vec)
 		*x = vec[0];
 
 	tmp.push_back(*x);
-	std::cout << "new elem pushed after clear: " << tmp.back();
+	std::cout << "\n\t\t\tnew vector: ";
+	for (typename T::const_iterator it = vec.begin(); it != vec.end(); ++it)
+		std::cout << *it << " | ";
 
 	delete x;
 }
@@ -240,7 +279,7 @@ void	testSwap(T& vec)
 	
 	std::cout << "size of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size() << "\n";
 	tmp2.swap(tmp);
-	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size();
+	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size() << "\n";
 
 	swap(tmp2, tmp);
 	std::cout << "\t\t\tsize of tmp = " << tmp.size() << " and size of tmp2 = " << tmp2.size();
@@ -264,11 +303,14 @@ void	testResize(T& vec)
 
 	tmp.resize(3, *x);
 	std::cout << "\t\t\tnew elem = " << tmp.back();
-	std::cout << "\t\t\tsize of tmp after resize = " << tmp.size();
+	std::cout << "\n\t\t\tsize of tmp after resize = " << tmp.size();
 	
 	delete x;
 }
 
+/**
+*	Test assign with iterators' range.
+*/
 template <typename T>
 void	testAssign1(T& vec)
 {
@@ -288,11 +330,10 @@ void	testAssign1(T& vec)
 
 	T tmp2 = vec;
 	tmp2.assign(tmp.begin(), tmp.end());
-	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
 
-	if (vec.size())
-		for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
-			std::cout << *it << " | ";
+	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
+		std::cout << *it << " | ";
 
 	delete x;
 }
@@ -600,8 +641,6 @@ void	executeAllVecTests(T& vec, int testNb)
 	std::cout << "\t\tVECTOR TYPE: ";
 	print_type<typename T::value_type>();
 	
-	(void)vec;
-
 	// Tests for non-const vectors
 	testOperatorBracelet(vec);
 	testSize(vec);
@@ -632,7 +671,7 @@ template <typename T>
 void	executeAllVecTests(T& vec, int testNb, bool isConst)
 {
 	std::cout << "\n\n--------------------------------\n";
-	std::cout << "------\tTESTING VECTOR " << testNb << " ------\n";
+	std::cout << "------\tTESTING CONST VECTOR " << testNb << " ------\n";
 	std::cout << "--------------------------------\n";
 	
 	std::cout << "\t\tVECTOR TYPE: ";
@@ -648,9 +687,8 @@ void	executeAllVecTests(T& vec, int testNb, bool isConst)
 	testAt(vec);
 	testFront(vec);
 	testBack(vec);
-	
-	if (!isConst)
-		return ;
+
+	(void)isConst;
 }
 
 #endif
