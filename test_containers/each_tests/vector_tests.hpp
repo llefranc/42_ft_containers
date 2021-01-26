@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_tests.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:10:56 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 19:48:03 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,7 +330,7 @@ void	testAssign1(T& vec)
 
 	T tmp2 = vec;
 	tmp2.assign(tmp.begin(), tmp.end());
-	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << " and content is:\n\t\t\t";
 
 	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
 		std::cout << *it << " | ";
@@ -357,7 +357,7 @@ void	testAssign2(T& vec)
 
 	T tmp2 = vec;
 	tmp2.assign(tmp.size(), tmp.front());
-	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << " and content is:\n\t\t\t";
 
 	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
 		std::cout << *it << " | ";
@@ -365,6 +365,9 @@ void	testAssign2(T& vec)
 	delete x;
 }
 
+/**
+*	Inserts one element.
+*/
 template <typename T>
 void	testInsert1(T& vec)
 {
@@ -384,7 +387,7 @@ void	testInsert1(T& vec)
 	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.begin(), *x) << "\n";
 	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.end(), *x) << "\n";
 	
-	std::cout << "\t\t\t";
+	std::cout << "\t\t\tnew vector: ";
 	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
 		std::cout << *it << " | ";
 	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
@@ -392,6 +395,9 @@ void	testInsert1(T& vec)
 	delete x;
 }
 
+/**
+*	Inserts n elements.
+*/
 template <typename T>
 void	testInsert2(T& vec)
 {
@@ -411,7 +417,7 @@ void	testInsert2(T& vec)
 	tmp.insert(tmp.begin(), 5, *x);
 	tmp.insert(tmp.end(), 5, *x);
 	
-	std::cout << "\t\t\t";
+	std::cout << "\t\t\tnew vector: ";
 	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
 		std::cout << *it << " | ";
 	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
@@ -419,6 +425,9 @@ void	testInsert2(T& vec)
 	delete x;
 }
 
+/**
+*	Inserts an iterators' range of elements.
+*/
 template <typename T>
 void	testInsert3(T& vec)
 {
@@ -434,7 +443,7 @@ void	testInsert3(T& vec)
 	tmp.insert(tmp.end(), vec.begin(), vec.end());
 	tmp.insert(tmp.end(), vec.begin(), vec.begin());
 	
-	std::cout << "\t\t\t";
+	std::cout << "\t\t\tnew vector: ";
 	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
 		std::cout << *it << " | ";
 	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();

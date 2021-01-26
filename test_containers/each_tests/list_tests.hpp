@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_tests.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 16:31:55 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:17:10 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 19:48:48 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,39 @@ void	testReverse(T& lis)
 	std::cout << "\n\t\t\tsize of tmp after resize = " << tmp.size();
 }
 
+/**
+*	Test assign with iterators' range.
+*/
+template <typename T>
+void	testAssign1(T& lis)
+{
+	printTestNumber(0);
+	std::cout << "assign1: \n\t\t\t";
+
+	T tmp = lis;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign lis.front())
+	typename T::value_type* x = new typename T::value_type ();
+	if (lis.size())
+		*x = lis.front();
+
+	tmp.resize(3, *x);
+	std::cout << "\t\t\tnew elem = " << tmp.back();
+
+	T tmp2 = lis;
+	tmp2.assign(tmp.begin(), tmp.end());
+	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << " and content is:\n\t\t\t";
+
+	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
+		std::cout << *it << " | ";
+
+	delete x;
+}
+
+/**
+*	Inserts n elements.
+*/
 template <typename T>
 void	testAssign2(T& lis)
 {
@@ -308,13 +341,95 @@ void	testAssign2(T& lis)
 
 	T tmp2 = lis;
 	tmp2.assign(tmp.size(), tmp.front());
-	std::cout << "\t\t\tsize after assign = " << tmp2.size() << "and content is:\n\t\t\t";
+	std::cout << "\n\t\t\tsize after assign = " << tmp2.size() << " and content is:\n\t\t\t";
 
 	for (typename T::iterator it = tmp2.begin(); it != tmp2.end(); ++it)
 		std::cout << *it << " | ";
 		
 	delete x;
 }
+
+/**
+*	Inserts one element.
+*/
+template <typename T>
+void	testInsert1(T& lis)
+{
+	printTestNumber(0);
+	std::cout << "insert1: \n\t\t\t";
+
+	T tmp = lis;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign lis.front())
+	typename T::value_type* x = new typename T::value_type ();
+	if (lis.size())
+	{
+		*x = lis.front();
+		std::cout << "\t\t\treturn value: " << *tmp.insert(++tmp.begin(), *x) << "\n";
+	}
+	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.begin(), *x) << "\n";
+	std::cout << "\t\t\treturn value: " << *tmp.insert(tmp.end(), *x) << "\n";
+	
+	std::cout << "\t\t\tnew list: ";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+
+	delete x;
+}
+
+template <typename T>
+void	testInsert2(T& lis)
+{
+	printTestNumber(0);
+	std::cout << "insert2: \n\t\t\t";
+
+	T tmp = lis;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	// Allows to value initialize (case size is 0, we can't assign lis.front())
+	typename T::value_type* x = new typename T::value_type ();
+	if (lis.size())
+	{
+		*x = lis.front();
+		tmp.insert(++tmp.begin(), 5, *x);
+	}
+	tmp.insert(tmp.begin(), 5, *x);
+	tmp.insert(tmp.end(), 5, *x);
+	
+	std::cout << "\t\t\tnew list: ";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+
+	delete x;
+}
+
+/**
+*	Inserts an iterators' range of elements.
+*/
+template <typename T>
+void	testInsert3(T& lis)
+{
+	printTestNumber(0);
+	std::cout << "insert3: \n\t\t\t";
+
+	T tmp = lis;
+	std::cout << "size of tmp = " << tmp.size() << "\n";
+
+	tmp.insert(tmp.begin(), lis.begin(), lis.end());
+	if (tmp.size())
+		tmp.insert(++tmp.begin(), lis.begin(), lis.end());
+	tmp.insert(tmp.end(), lis.begin(), lis.end());
+	tmp.insert(tmp.end(), lis.begin(), lis.begin());
+	
+	std::cout << "\t\t\tnew list: ";
+	for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		std::cout << *it << " | ";
+	std::cout << "\n\t\t\tsize of tmp = " << tmp.size();
+}
+
 
 template <typename T>
 void	executeAllListTests(T& lis, int testNb)
@@ -341,7 +456,11 @@ void	executeAllListTests(T& lis, int testNb)
 	testClear(lis);
 	testResize(lis);
 	testReverse(lis);
+	testAssign1(lis);
 	testAssign2(lis);
+	testInsert1(lis);
+	testInsert2(lis);
+	testInsert3(lis);
 }
 
 template <typename T>

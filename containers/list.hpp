@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:32:32 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 20:02:59 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,12 +146,19 @@ namespace ft
 			reference back()				{ return _endList->prev->content; }
 			const_reference back() const	{ return _endList->prev->content; }
 
-			// range (1)	
+			/**
+			*	Assigns new contents to the list, replacing its current content, 
+			*	and modifying its size accordingly.The new contents are elements constructed 
+			*	from each of the elements in the range between first and last iterators.
+			*	
+			*	@param n	Number of new elements constructed.
+			*	@param val	Each new elements will be copy constructed from val.
+			*/	
 			template <class InputIterator>
 			void assign (InputIterator first, InputIterator last)
 			{
 				size_type i = 0;
-				for (ft::pair<int, iterator> it(0, begin()); first != last; ++it, ++i, ++it.first, ++first)
+				for (iterator it = begin(); first != last; ++it, ++i, ++first)
 				{
 					// If list is to small, creating new Nodes
 					if (i >= _size)
@@ -160,8 +167,8 @@ namespace ft
 					// If element already exist, just replacing his content
 					else
 					{
-						_allocT.destroy(&it.second->content);
-						_allocT.construct(&it.second->content, *first);
+						_allocT.destroy(&it->content);
+						_allocT.construct(&it->content, *first);
 					}
 				}
 				
@@ -255,14 +262,52 @@ namespace ft
 				--_size;
 			}
 
-
-			// single element (1)	
-			// iterator insert (iterator position, const value_type& val);
-			// fill (2)	
-			//     void insert (iterator position, size_type n, const value_type& val);
+			/**
+			*	Inserts 1 element with a value of val at a position, and increases the list' size.
+			*
+			*	@param position	The element will be inserted just before this position.
+			*	@param val		Value of the element inserted.
+			*	@return			An iterator on the newly element inserted.
+			*/
+			iterator insert (iterator position, const value_type& val)
+			{
+				Node* newNode = createNode(val);
+				
+				// Linking new Node between position and position -1
+				newNode->prev = position->prev;
+				newNode->next = position->prev->next;
+				
+				// Linking position and position -1 to new element
+				newNode->prev->next = newNode;
+				newNode->next->prev = newNode;
+				
+				++_size;
+				return iterator(--position);
+			}
+			
+			/**
+			*	Inserts n elements with a value of val at a position, and increases the list' size.
+			*
+			*	@param position	Elements will be inserted just before this position.
+			*	@param n		Number of elements to be inserted.
+			*	@param val		Value of the elements inserted.
+			*/
+			void insert (iterator position, size_type n, const value_type& val)
+			{
+				while (n-- > 0)
+					position = insert(position, val);
+			}
+			
 			// range (3)	
-			// template <class InputIterator>
-			//     void insert (iterator position, InputIterator first, InputIterator last);
+			template <class InputIterator>
+			void insert (iterator position, InputIterator first, InputIterator last,
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
+			{
+				// Inserting in reverse order
+				for (ft::pair<reverse_iterator, reverse_iterator> it(last, first);
+						it.first != it.second; ++it.first)
+					position = insert(position, *it.first);
+			}
 
 			// 	iterator erase (iterator position);
 			// iterator erase (iterator first, iterator last);

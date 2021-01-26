@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:28:43 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/26 20:01:47 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -442,7 +442,7 @@ namespace ft
 			}
 			
 			/**
-			*	Inserts 1 elements with a value of val at a position, and increases the vector' size.
+			*	Inserts 1 element with a value of val at a position, and increases the vector' size.
 			*	A reallocation will occured only if vector's capacity isn't enough.
 			*
 			*	@param position	The element will be inserted just before this position. All elements

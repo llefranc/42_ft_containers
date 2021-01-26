@@ -69,10 +69,35 @@ test 14:	reverse:
 			new list: c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp after resize = 12
 ---------------------
-test 15:	assign2: 
+test 15:	assign1: 
 			size of tmp = 12
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
 			c | c | c | 
+---------------------
+test 16:	assign2: 
+			size of tmp = 12
+			new elem = c
+			size after assign = 3 and content is:
+			c | c | c | 
+---------------------
+test 17:	insert1: 
+			size of tmp = 12
+			return value: c
+			return value: c
+			return value: c
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 15
+---------------------
+test 18:	insert2: 
+			size of tmp = 12
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 27
+---------------------
+test 19:	insert3: 
+			size of tmp = 12
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 48
 
 --------------------------------
 ------	TESTING LIST 2 ------
@@ -80,73 +105,98 @@ test 15:	assign2:
 		LIST TYPE: char
 
 ---------------------
-test 16:	size: 
+test 20:	size: 
 			12
 ---------------------
-test 17:	iterators: 
+test 21:	iterators: 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 18:	reverse iterators: 
+test 22:	reverse iterators: 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 19:	front: 
+test 23:	front: 
 			c
 ---------------------
-test 20:	back: 
+test 24:	back: 
 			c
 ---------------------
-test 21:	push_back: 
+test 25:	push_back: 
 			new elem = c
 			new tmp: c | c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 22:	pop_back: 
+test 26:	pop_back: 
 			new elem = c
 			new tmp: c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 23:	swap member and non member: 
+test 27:	swap member and non member: 
 			size of tmp = 13 and size of tmp2 = 12
 			size of tmp = 12 and size of tmp2 = 13
 			size of tmp = 13 and size of tmp2 = 12
 ---------------------
-test 24:	empty: 
+test 28:	empty: 
 			0
 ---------------------
-test 25:	push_front: 
+test 29:	push_front: 
 			new elem = c
 			new tmp: c | c | c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 26:	pop_front: 
+test 30:	pop_front: 
 			new elem = c
 			new tmp: c | c | c | c | c | c | c | c | c | c | c | 
 ---------------------
-test 27:	clear: 
+test 31:	clear: 
 			size before clear: 12 | 
 			size after clear: 0
 			new tmp: c | 
 ---------------------
-test 28:	resize: 
+test 32:	resize: 
 			size of tmp = 12
 
 			new tmp: c | c | c | 
 			size of tmp after resize = 3
 ---------------------
-test 29:	reverse: 
+test 33:	reverse: 
 			size of tmp = 12
 
 			tmp before: c | c | c | c | c | c | c | c | c | c | c | c | 
 			new list: c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp after resize = 12
 ---------------------
-test 30:	assign2: 
+test 34:	assign1: 
 			size of tmp = 12
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
 			c | c | c | 
+---------------------
+test 35:	assign2: 
+			size of tmp = 12
+			new elem = c
+			size after assign = 3 and content is:
+			c | c | c | 
+---------------------
+test 36:	insert1: 
+			size of tmp = 12
+			return value: c
+			return value: c
+			return value: c
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 15
+---------------------
+test 37:	insert2: 
+			size of tmp = 12
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 27
+---------------------
+test 38:	insert3: 
+			size of tmp = 12
+			new list: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			size of tmp = 48
 
 --------------------------------
 ------	TESTING LIST 3 ------
@@ -154,73 +204,98 @@ test 30:	assign2:
 		LIST TYPE: char
 
 ---------------------
-test 31:	size: 
+test 39:	size: 
 			1
 ---------------------
-test 32:	iterators: 
+test 40:	iterators: 
 			operator++: a | 
 			++operator: a | 
 			operator--: 
 			--operator: 
 ---------------------
-test 33:	reverse iterators: 
+test 41:	reverse iterators: 
 			++operator: a | 
 			operator++: a | 
 			operator--: 
 			--operator: 
 ---------------------
-test 34:	front: 
+test 42:	front: 
 			a
 ---------------------
-test 35:	back: 
+test 43:	back: 
 			a
 ---------------------
-test 36:	push_back: 
+test 44:	push_back: 
 			new elem = a
 			new tmp: a | a | 
 ---------------------
-test 37:	pop_back: 
+test 45:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 38:	swap member and non member: 
+test 46:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 39:	empty: 
+test 47:	empty: 
 			0
 ---------------------
-test 40:	push_front: 
+test 48:	push_front: 
 			new elem = a
 			new tmp: a | a | 
 ---------------------
-test 41:	pop_front: 
+test 49:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 42:	clear: 
+test 50:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
 			new tmp: a | 
 ---------------------
-test 43:	resize: 
+test 51:	resize: 
 			size of tmp = 1
 
 			new tmp: a | a | a | 
 			size of tmp after resize = 3
 ---------------------
-test 44:	reverse: 
+test 52:	reverse: 
 			size of tmp = 1
 
 			tmp before: a | 
 			new list: a | 
 			size of tmp after resize = 1
 ---------------------
-test 45:	assign2: 
+test 53:	assign1: 
 			size of tmp = 1
-			new elem = a			size after assign = 3and content is:
+			new elem = a
+			size after assign = 3 and content is:
 			a | a | a | 
+---------------------
+test 54:	assign2: 
+			size of tmp = 1
+			new elem = a
+			size after assign = 3 and content is:
+			a | a | a | 
+---------------------
+test 55:	insert1: 
+			size of tmp = 1
+			return value: a
+			return value: a
+			return value: a
+			new list: a | a | a | a | 
+			size of tmp = 4
+---------------------
+test 56:	insert2: 
+			size of tmp = 1
+			new list: a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
+			size of tmp = 16
+---------------------
+test 57:	insert3: 
+			size of tmp = 1
+			new list: a | a | a | a | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 4 ------
@@ -228,73 +303,98 @@ test 45:	assign2:
 		LIST TYPE: char
 
 ---------------------
-test 46:	size: 
+test 58:	size: 
 			1
 ---------------------
-test 47:	iterators: 
+test 59:	iterators: 
 			operator++: a | 
 			++operator: a | 
 			operator--: 
 			--operator: 
 ---------------------
-test 48:	reverse iterators: 
+test 60:	reverse iterators: 
 			++operator: a | 
 			operator++: a | 
 			operator--: 
 			--operator: 
 ---------------------
-test 49:	front: 
+test 61:	front: 
 			a
 ---------------------
-test 50:	back: 
+test 62:	back: 
 			a
 ---------------------
-test 51:	push_back: 
+test 63:	push_back: 
 			new elem = a
 			new tmp: a | a | 
 ---------------------
-test 52:	pop_back: 
+test 64:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 53:	swap member and non member: 
+test 65:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 54:	empty: 
+test 66:	empty: 
 			0
 ---------------------
-test 55:	push_front: 
+test 67:	push_front: 
 			new elem = a
 			new tmp: a | a | 
 ---------------------
-test 56:	pop_front: 
+test 68:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 57:	clear: 
+test 69:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
 			new tmp: a | 
 ---------------------
-test 58:	resize: 
+test 70:	resize: 
 			size of tmp = 1
 
 			new tmp: a | a | a | 
 			size of tmp after resize = 3
 ---------------------
-test 59:	reverse: 
+test 71:	reverse: 
 			size of tmp = 1
 
 			tmp before: a | 
 			new list: a | 
 			size of tmp after resize = 1
 ---------------------
-test 60:	assign2: 
+test 72:	assign1: 
 			size of tmp = 1
-			new elem = a			size after assign = 3and content is:
+			new elem = a
+			size after assign = 3 and content is:
 			a | a | a | 
+---------------------
+test 73:	assign2: 
+			size of tmp = 1
+			new elem = a
+			size after assign = 3 and content is:
+			a | a | a | 
+---------------------
+test 74:	insert1: 
+			size of tmp = 1
+			return value: a
+			return value: a
+			return value: a
+			new list: a | a | a | a | 
+			size of tmp = 4
+---------------------
+test 75:	insert2: 
+			size of tmp = 1
+			new list: a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
+			size of tmp = 16
+---------------------
+test 76:	insert3: 
+			size of tmp = 1
+			new list: a | a | a | a | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 5 ------
@@ -302,73 +402,98 @@ test 60:	assign2:
 		LIST TYPE: char
 
 ---------------------
-test 61:	size: 
+test 77:	size: 
 			5
 ---------------------
-test 62:	iterators: 
+test 78:	iterators: 
 			operator++: a | b | c | d | e | 
 			++operator: a | b | c | d | e | 
 			operator--: 
 			--operator: 
 ---------------------
-test 63:	reverse iterators: 
+test 79:	reverse iterators: 
 			++operator: e | d | c | b | a | 
 			operator++: e | d | c | b | a | 
 			operator--: 
 			--operator: 
 ---------------------
-test 64:	front: 
+test 80:	front: 
 			a
 ---------------------
-test 65:	back: 
+test 81:	back: 
 			e
 ---------------------
-test 66:	push_back: 
+test 82:	push_back: 
 			new elem = a
 			new tmp: a | b | c | d | e | a | 
 ---------------------
-test 67:	pop_back: 
+test 83:	pop_back: 
 			new elem = d
 			new tmp: a | b | c | d | 
 ---------------------
-test 68:	swap member and non member: 
+test 84:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 69:	empty: 
+test 85:	empty: 
 			0
 ---------------------
-test 70:	push_front: 
+test 86:	push_front: 
 			new elem = a
 			new tmp: a | a | b | c | d | e | 
 ---------------------
-test 71:	pop_front: 
+test 87:	pop_front: 
 			new elem = b
 			new tmp: b | c | d | e | 
 ---------------------
-test 72:	clear: 
+test 88:	clear: 
 			size before clear: 5 | 
 			size after clear: 0
 			new tmp: a | 
 ---------------------
-test 73:	resize: 
+test 89:	resize: 
 			size of tmp = 5
 
 			new tmp: a | b | c | 
 			size of tmp after resize = 3
 ---------------------
-test 74:	reverse: 
+test 90:	reverse: 
 			size of tmp = 5
 
 			tmp before: a | b | c | d | e | 
 			new list: e | d | c | b | a | 
 			size of tmp after resize = 5
 ---------------------
-test 75:	assign2: 
+test 91:	assign1: 
 			size of tmp = 5
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
+			a | b | c | 
+---------------------
+test 92:	assign2: 
+			size of tmp = 5
+			new elem = c
+			size after assign = 3 and content is:
 			a | a | a | 
+---------------------
+test 93:	insert1: 
+			size of tmp = 5
+			return value: a
+			return value: a
+			return value: a
+			new list: a | a | a | b | c | d | e | a | 
+			size of tmp = 8
+---------------------
+test 94:	insert2: 
+			size of tmp = 5
+			new list: a | a | a | a | a | a | a | a | a | a | a | b | c | d | e | a | a | a | a | a | 
+			size of tmp = 20
+---------------------
+test 95:	insert3: 
+			size of tmp = 5
+			new list: a | a | b | c | d | e | b | c | d | e | a | b | c | d | e | a | b | c | d | e | 
+			size of tmp = 20
 
 --------------------------------
 ------	TESTING LIST 6 ------
@@ -376,73 +501,98 @@ test 75:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 76:	size: 
+test 96:	size: 
 			5
 ---------------------
-test 77:	iterators: 
+test 97:	iterators: 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 78:	reverse iterators: 
+test 98:	reverse iterators: 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 79:	front: 
+test 99:	front: 
 			100
 ---------------------
-test 80:	back: 
+test 100:	back: 
 			100
 ---------------------
-test 81:	push_back: 
+test 101:	push_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 82:	pop_back: 
+test 102:	pop_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 83:	swap member and non member: 
+test 103:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 84:	empty: 
+test 104:	empty: 
 			0
 ---------------------
-test 85:	push_front: 
+test 105:	push_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 86:	pop_front: 
+test 106:	pop_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 87:	clear: 
+test 107:	clear: 
 			size before clear: 5 | 
 			size after clear: 0
 			new tmp: 100 | 
 ---------------------
-test 88:	resize: 
+test 108:	resize: 
 			size of tmp = 5
 
 			new tmp: 100 | 100 | 100 | 
 			size of tmp after resize = 3
 ---------------------
-test 89:	reverse: 
+test 109:	reverse: 
 			size of tmp = 5
 
 			tmp before: 100 | 100 | 100 | 100 | 100 | 
 			new list: 100 | 100 | 100 | 100 | 100 | 
 			size of tmp after resize = 5
 ---------------------
-test 90:	assign2: 
+test 110:	assign1: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
+---------------------
+test 111:	assign2: 
+			size of tmp = 5
+			new elem = 100
+			size after assign = 3 and content is:
+			100 | 100 | 100 | 
+---------------------
+test 112:	insert1: 
+			size of tmp = 5
+			return value: 100
+			return value: 100
+			return value: 100
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 8
+---------------------
+test 113:	insert2: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
+---------------------
+test 114:	insert3: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
 
 --------------------------------
 ------	TESTING LIST 7 ------
@@ -450,67 +600,91 @@ test 90:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 91:	size: 
+test 115:	size: 
 			0
 ---------------------
-test 92:	iterators: 
+test 116:	iterators: 
 			operator++: 
 			++operator: 
 ---------------------
-test 93:	reverse iterators: 
+test 117:	reverse iterators: 
 			++operator: 
 			operator++: 
 ---------------------
-test 94:	front: 
+test 118:	front: 
 			
 ---------------------
-test 95:	back: 
+test 119:	back: 
 			
 ---------------------
-test 96:	push_back: 
+test 120:	push_back: 
 			new elem = 0
 			new tmp: 0 | 
 ---------------------
-test 97:	pop_back: 
+test 121:	pop_back: 
 			
 ---------------------
-test 98:	swap member and non member: 
+test 122:	swap member and non member: 
 			size of tmp = 1 and size of tmp2 = 0
 			size of tmp = 0 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 0
 ---------------------
-test 99:	empty: 
+test 123:	empty: 
 			1
 ---------------------
-test 100:	push_front: 
+test 124:	push_front: 
 			new elem = 0
 			new tmp: 0 | 
 ---------------------
-test 101:	pop_front: 
+test 125:	pop_front: 
 			
 ---------------------
-test 102:	clear: 
+test 126:	clear: 
 			size before clear: 0 | 
 			size after clear: 0
 			new tmp: 0 | 
 ---------------------
-test 103:	resize: 
+test 127:	resize: 
 			size of tmp = 0
 
 			new tmp: 0 | 0 | 0 | 
 			size of tmp after resize = 3
 ---------------------
-test 104:	reverse: 
+test 128:	reverse: 
 			size of tmp = 0
 
 			tmp before: 
 			new list: 
 			size of tmp after resize = 0
 ---------------------
-test 105:	assign2: 
+test 129:	assign1: 
 			size of tmp = 0
-			new elem = 0			size after assign = 3and content is:
+			new elem = 0
+			size after assign = 3 and content is:
 			0 | 0 | 0 | 
+---------------------
+test 130:	assign2: 
+			size of tmp = 0
+			new elem = 0
+			size after assign = 3 and content is:
+			0 | 0 | 0 | 
+---------------------
+test 131:	insert1: 
+			size of tmp = 0
+			return value: 0
+			return value: 0
+			new list: 0 | 0 | 
+			size of tmp = 2
+---------------------
+test 132:	insert2: 
+			size of tmp = 0
+			new list: 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
+			size of tmp = 10
+---------------------
+test 133:	insert3: 
+			size of tmp = 0
+			new list: 
+			size of tmp = 0
 
 --------------------------------
 ------	TESTING LIST 8 ------
@@ -518,73 +692,98 @@ test 105:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 106:	size: 
+test 134:	size: 
 			1
 ---------------------
-test 107:	iterators: 
+test 135:	iterators: 
 			operator++: 89123891 | 
 			++operator: 89123891 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 108:	reverse iterators: 
+test 136:	reverse iterators: 
 			++operator: 89123891 | 
 			operator++: 89123891 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 109:	front: 
+test 137:	front: 
 			89123891
 ---------------------
-test 110:	back: 
+test 138:	back: 
 			89123891
 ---------------------
-test 111:	push_back: 
+test 139:	push_back: 
 			new elem = 89123891
 			new tmp: 89123891 | 89123891 | 
 ---------------------
-test 112:	pop_back: 
+test 140:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 113:	swap member and non member: 
+test 141:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 114:	empty: 
+test 142:	empty: 
 			0
 ---------------------
-test 115:	push_front: 
+test 143:	push_front: 
 			new elem = 89123891
 			new tmp: 89123891 | 89123891 | 
 ---------------------
-test 116:	pop_front: 
+test 144:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 117:	clear: 
+test 145:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
 			new tmp: 89123891 | 
 ---------------------
-test 118:	resize: 
+test 146:	resize: 
 			size of tmp = 1
 
 			new tmp: 89123891 | 89123891 | 89123891 | 
 			size of tmp after resize = 3
 ---------------------
-test 119:	reverse: 
+test 147:	reverse: 
 			size of tmp = 1
 
 			tmp before: 89123891 | 
 			new list: 89123891 | 
 			size of tmp after resize = 1
 ---------------------
-test 120:	assign2: 
+test 148:	assign1: 
 			size of tmp = 1
-			new elem = 89123891			size after assign = 3and content is:
+			new elem = 89123891
+			size after assign = 3 and content is:
 			89123891 | 89123891 | 89123891 | 
+---------------------
+test 149:	assign2: 
+			size of tmp = 1
+			new elem = 89123891
+			size after assign = 3 and content is:
+			89123891 | 89123891 | 89123891 | 
+---------------------
+test 150:	insert1: 
+			size of tmp = 1
+			return value: 89123891
+			return value: 89123891
+			return value: 89123891
+			new list: 89123891 | 89123891 | 89123891 | 89123891 | 
+			size of tmp = 4
+---------------------
+test 151:	insert2: 
+			size of tmp = 1
+			new list: 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
+			size of tmp = 16
+---------------------
+test 152:	insert3: 
+			size of tmp = 1
+			new list: 89123891 | 89123891 | 89123891 | 89123891 | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 9 ------
@@ -592,73 +791,98 @@ test 120:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 121:	size: 
+test 153:	size: 
 			5
 ---------------------
-test 122:	iterators: 
+test 154:	iterators: 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 123:	reverse iterators: 
+test 155:	reverse iterators: 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 124:	front: 
+test 156:	front: 
 			100
 ---------------------
-test 125:	back: 
+test 157:	back: 
 			100
 ---------------------
-test 126:	push_back: 
+test 158:	push_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 127:	pop_back: 
+test 159:	pop_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 128:	swap member and non member: 
+test 160:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 129:	empty: 
+test 161:	empty: 
 			0
 ---------------------
-test 130:	push_front: 
+test 162:	push_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 131:	pop_front: 
+test 163:	pop_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 132:	clear: 
+test 164:	clear: 
 			size before clear: 5 | 
 			size after clear: 0
 			new tmp: 100 | 
 ---------------------
-test 133:	resize: 
+test 165:	resize: 
 			size of tmp = 5
 
 			new tmp: 100 | 100 | 100 | 
 			size of tmp after resize = 3
 ---------------------
-test 134:	reverse: 
+test 166:	reverse: 
 			size of tmp = 5
 
 			tmp before: 100 | 100 | 100 | 100 | 100 | 
 			new list: 100 | 100 | 100 | 100 | 100 | 
 			size of tmp after resize = 5
 ---------------------
-test 135:	assign2: 
+test 167:	assign1: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
+---------------------
+test 168:	assign2: 
+			size of tmp = 5
+			new elem = 100
+			size after assign = 3 and content is:
+			100 | 100 | 100 | 
+---------------------
+test 169:	insert1: 
+			size of tmp = 5
+			return value: 100
+			return value: 100
+			return value: 100
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 8
+---------------------
+test 170:	insert2: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
+---------------------
+test 171:	insert3: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
 
 --------------------------------
 ------	TESTING LIST 10 ------
@@ -666,73 +890,98 @@ test 135:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 136:	size: 
+test 172:	size: 
 			5
 ---------------------
-test 137:	iterators: 
+test 173:	iterators: 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 138:	reverse iterators: 
+test 174:	reverse iterators: 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 139:	front: 
+test 175:	front: 
 			100
 ---------------------
-test 140:	back: 
+test 176:	back: 
 			100
 ---------------------
-test 141:	push_back: 
+test 177:	push_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 142:	pop_back: 
+test 178:	pop_back: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 143:	swap member and non member: 
+test 179:	swap member and non member: 
 			size of tmp = 6 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 5
 ---------------------
-test 144:	empty: 
+test 180:	empty: 
 			0
 ---------------------
-test 145:	push_front: 
+test 181:	push_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 100 | 100 | 
 ---------------------
-test 146:	pop_front: 
+test 182:	pop_front: 
 			new elem = 100
 			new tmp: 100 | 100 | 100 | 100 | 
 ---------------------
-test 147:	clear: 
+test 183:	clear: 
 			size before clear: 5 | 
 			size after clear: 0
 			new tmp: 100 | 
 ---------------------
-test 148:	resize: 
+test 184:	resize: 
 			size of tmp = 5
 
 			new tmp: 100 | 100 | 100 | 
 			size of tmp after resize = 3
 ---------------------
-test 149:	reverse: 
+test 185:	reverse: 
 			size of tmp = 5
 
 			tmp before: 100 | 100 | 100 | 100 | 100 | 
 			new list: 100 | 100 | 100 | 100 | 100 | 
 			size of tmp after resize = 5
 ---------------------
-test 150:	assign2: 
+test 186:	assign1: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
+---------------------
+test 187:	assign2: 
+			size of tmp = 5
+			new elem = 100
+			size after assign = 3 and content is:
+			100 | 100 | 100 | 
+---------------------
+test 188:	insert1: 
+			size of tmp = 5
+			return value: 100
+			return value: 100
+			return value: 100
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 8
+---------------------
+test 189:	insert2: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
+---------------------
+test 190:	insert3: 
+			size of tmp = 5
+			new list: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			size of tmp = 20
 
 --------------------------------
 ------	TESTING LIST 11 ------
@@ -740,73 +989,98 @@ test 150:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 151:	size: 
+test 191:	size: 
 			4
 ---------------------
-test 152:	iterators: 
+test 192:	iterators: 
 			operator++: 0 | 1 | 2 | 3 | 
 			++operator: 0 | 1 | 2 | 3 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 153:	reverse iterators: 
+test 193:	reverse iterators: 
 			++operator: 3 | 2 | 1 | 0 | 
 			operator++: 3 | 2 | 1 | 0 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 154:	front: 
+test 194:	front: 
 			0
 ---------------------
-test 155:	back: 
+test 195:	back: 
 			3
 ---------------------
-test 156:	push_back: 
+test 196:	push_back: 
 			new elem = 0
 			new tmp: 0 | 1 | 2 | 3 | 0 | 
 ---------------------
-test 157:	pop_back: 
+test 197:	pop_back: 
 			new elem = 2
 			new tmp: 0 | 1 | 2 | 
 ---------------------
-test 158:	swap member and non member: 
+test 198:	swap member and non member: 
 			size of tmp = 5 and size of tmp2 = 4
 			size of tmp = 4 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 4
 ---------------------
-test 159:	empty: 
+test 199:	empty: 
 			0
 ---------------------
-test 160:	push_front: 
+test 200:	push_front: 
 			new elem = 0
 			new tmp: 0 | 0 | 1 | 2 | 3 | 
 ---------------------
-test 161:	pop_front: 
+test 201:	pop_front: 
 			new elem = 1
 			new tmp: 1 | 2 | 3 | 
 ---------------------
-test 162:	clear: 
+test 202:	clear: 
 			size before clear: 4 | 
 			size after clear: 0
 			new tmp: 0 | 
 ---------------------
-test 163:	resize: 
+test 203:	resize: 
 			size of tmp = 4
 
 			new tmp: 0 | 1 | 2 | 
 			size of tmp after resize = 3
 ---------------------
-test 164:	reverse: 
+test 204:	reverse: 
 			size of tmp = 4
 
 			tmp before: 0 | 1 | 2 | 3 | 
 			new list: 3 | 2 | 1 | 0 | 
 			size of tmp after resize = 4
 ---------------------
-test 165:	assign2: 
+test 205:	assign1: 
 			size of tmp = 4
-			new elem = 2			size after assign = 3and content is:
+			new elem = 2
+			size after assign = 3 and content is:
+			0 | 1 | 2 | 
+---------------------
+test 206:	assign2: 
+			size of tmp = 4
+			new elem = 2
+			size after assign = 3 and content is:
 			0 | 0 | 0 | 
+---------------------
+test 207:	insert1: 
+			size of tmp = 4
+			return value: 0
+			return value: 0
+			return value: 0
+			new list: 0 | 0 | 0 | 1 | 2 | 3 | 0 | 
+			size of tmp = 7
+---------------------
+test 208:	insert2: 
+			size of tmp = 4
+			new list: 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 3 | 0 | 0 | 0 | 0 | 0 | 
+			size of tmp = 19
+---------------------
+test 209:	insert3: 
+			size of tmp = 4
+			new list: 0 | 0 | 1 | 2 | 3 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 
+			size of tmp = 16
 
 --------------------------------
 ------	TESTING LIST 12 ------
@@ -814,67 +1088,91 @@ test 165:	assign2:
 		LIST TYPE: double*
 
 ---------------------
-test 166:	size: 
+test 210:	size: 
 			0
 ---------------------
-test 167:	iterators: 
+test 211:	iterators: 
 			operator++: 
 			++operator: 
 ---------------------
-test 168:	reverse iterators: 
+test 212:	reverse iterators: 
 			++operator: 
 			operator++: 
 ---------------------
-test 169:	front: 
+test 213:	front: 
 			
 ---------------------
-test 170:	back: 
+test 214:	back: 
 			
 ---------------------
-test 171:	push_back: 
+test 215:	push_back: 
 			new elem = 0x0
 			new tmp: 0x0 | 
 ---------------------
-test 172:	pop_back: 
+test 216:	pop_back: 
 			
 ---------------------
-test 173:	swap member and non member: 
+test 217:	swap member and non member: 
 			size of tmp = 1 and size of tmp2 = 0
 			size of tmp = 0 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 0
 ---------------------
-test 174:	empty: 
+test 218:	empty: 
 			1
 ---------------------
-test 175:	push_front: 
+test 219:	push_front: 
 			new elem = 0x0
 			new tmp: 0x0 | 
 ---------------------
-test 176:	pop_front: 
+test 220:	pop_front: 
 			
 ---------------------
-test 177:	clear: 
+test 221:	clear: 
 			size before clear: 0 | 
 			size after clear: 0
 			new tmp: 0x0 | 
 ---------------------
-test 178:	resize: 
+test 222:	resize: 
 			size of tmp = 0
 
 			new tmp: 0x0 | 0x0 | 0x0 | 
 			size of tmp after resize = 3
 ---------------------
-test 179:	reverse: 
+test 223:	reverse: 
 			size of tmp = 0
 
 			tmp before: 
 			new list: 
 			size of tmp after resize = 0
 ---------------------
-test 180:	assign2: 
+test 224:	assign1: 
 			size of tmp = 0
-			new elem = 0x0			size after assign = 3and content is:
+			new elem = 0x0
+			size after assign = 3 and content is:
 			0x0 | 0x0 | 0x0 | 
+---------------------
+test 225:	assign2: 
+			size of tmp = 0
+			new elem = 0x0
+			size after assign = 3 and content is:
+			0x0 | 0x0 | 0x0 | 
+---------------------
+test 226:	insert1: 
+			size of tmp = 0
+			return value: 0x0
+			return value: 0x0
+			new list: 0x0 | 0x0 | 
+			size of tmp = 2
+---------------------
+test 227:	insert2: 
+			size of tmp = 0
+			new list: 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 
+			size of tmp = 10
+---------------------
+test 228:	insert3: 
+			size of tmp = 0
+			new list: 
+			size of tmp = 0
 
 --------------------------------
 ------	TESTING LIST 13 ------
@@ -882,73 +1180,98 @@ test 180:	assign2:
 		LIST TYPE: double*
 
 ---------------------
-test 181:	size: 
+test 229:	size: 
 			1
 ---------------------
-test 182:	iterators: 
-			operator++: 0x7ffee8f118c0 | 
-			++operator: 0x7ffee8f118c0 | 
+test 230:	iterators: 
+			operator++: 0x7ffee85cd9a0 | 
+			++operator: 0x7ffee85cd9a0 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 183:	reverse iterators: 
-			++operator: 0x7ffee8f118c0 | 
-			operator++: 0x7ffee8f118c0 | 
+test 231:	reverse iterators: 
+			++operator: 0x7ffee85cd9a0 | 
+			operator++: 0x7ffee85cd9a0 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 184:	front: 
-			0x7ffee8f118c0
+test 232:	front: 
+			0x7ffee85cd9a0
 ---------------------
-test 185:	back: 
-			0x7ffee8f118c0
+test 233:	back: 
+			0x7ffee85cd9a0
 ---------------------
-test 186:	push_back: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+test 234:	push_back: 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
-test 187:	pop_back: 
+test 235:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 188:	swap member and non member: 
+test 236:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 189:	empty: 
+test 237:	empty: 
 			0
 ---------------------
-test 190:	push_front: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+test 238:	push_front: 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
-test 191:	pop_front: 
+test 239:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 192:	clear: 
+test 240:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
-			new tmp: 0x7ffee8f118c0 | 
+			new tmp: 0x7ffee85cd9a0 | 
 ---------------------
-test 193:	resize: 
+test 241:	resize: 
 			size of tmp = 1
 
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp after resize = 3
 ---------------------
-test 194:	reverse: 
+test 242:	reverse: 
 			size of tmp = 1
 
-			tmp before: 0x7ffee8f118c0 | 
-			new list: 0x7ffee8f118c0 | 
+			tmp before: 0x7ffee85cd9a0 | 
+			new list: 0x7ffee85cd9a0 | 
 			size of tmp after resize = 1
 ---------------------
-test 195:	assign2: 
+test 243:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+---------------------
+test 244:	assign2: 
+			size of tmp = 1
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+---------------------
+test 245:	insert1: 
+			size of tmp = 1
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 4
+---------------------
+test 246:	insert2: 
+			size of tmp = 1
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 16
+---------------------
+test 247:	insert3: 
+			size of tmp = 1
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 14 ------
@@ -956,73 +1279,98 @@ test 195:	assign2:
 		LIST TYPE: double*
 
 ---------------------
-test 196:	size: 
+test 248:	size: 
 			1
 ---------------------
-test 197:	iterators: 
-			operator++: 0x7ffee8f118c0 | 
-			++operator: 0x7ffee8f118c0 | 
+test 249:	iterators: 
+			operator++: 0x7ffee85cd9a0 | 
+			++operator: 0x7ffee85cd9a0 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 198:	reverse iterators: 
-			++operator: 0x7ffee8f118c0 | 
-			operator++: 0x7ffee8f118c0 | 
+test 250:	reverse iterators: 
+			++operator: 0x7ffee85cd9a0 | 
+			operator++: 0x7ffee85cd9a0 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 199:	front: 
-			0x7ffee8f118c0
+test 251:	front: 
+			0x7ffee85cd9a0
 ---------------------
-test 200:	back: 
-			0x7ffee8f118c0
+test 252:	back: 
+			0x7ffee85cd9a0
 ---------------------
-test 201:	push_back: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+test 253:	push_back: 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
-test 202:	pop_back: 
+test 254:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 203:	swap member and non member: 
+test 255:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 204:	empty: 
+test 256:	empty: 
 			0
 ---------------------
-test 205:	push_front: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+test 257:	push_front: 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
-test 206:	pop_front: 
+test 258:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 207:	clear: 
+test 259:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
-			new tmp: 0x7ffee8f118c0 | 
+			new tmp: 0x7ffee85cd9a0 | 
 ---------------------
-test 208:	resize: 
+test 260:	resize: 
 			size of tmp = 1
 
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp after resize = 3
 ---------------------
-test 209:	reverse: 
+test 261:	reverse: 
 			size of tmp = 1
 
-			tmp before: 0x7ffee8f118c0 | 
-			new list: 0x7ffee8f118c0 | 
+			tmp before: 0x7ffee85cd9a0 | 
+			new list: 0x7ffee85cd9a0 | 
 			size of tmp after resize = 1
 ---------------------
-test 210:	assign2: 
+test 262:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+---------------------
+test 263:	assign2: 
+			size of tmp = 1
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+---------------------
+test 264:	insert1: 
+			size of tmp = 1
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 4
+---------------------
+test 265:	insert2: 
+			size of tmp = 1
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 16
+---------------------
+test 266:	insert3: 
+			size of tmp = 1
+			new list: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 15 ------
@@ -1030,73 +1378,98 @@ test 210:	assign2:
 		LIST TYPE: std::string
 
 ---------------------
-test 211:	size: 
+test 267:	size: 
 			6
 ---------------------
-test 212:	iterators: 
+test 268:	iterators: 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 213:	reverse iterators: 
+test 269:	reverse iterators: 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 214:	front: 
+test 270:	front: 
 			salut
 ---------------------
-test 215:	back: 
+test 271:	back: 
 			salut
 ---------------------
-test 216:	push_back: 
+test 272:	push_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 217:	pop_back: 
+test 273:	pop_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 218:	swap member and non member: 
+test 274:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7
 			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 219:	empty: 
+test 275:	empty: 
 			0
 ---------------------
-test 220:	push_front: 
+test 276:	push_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 221:	pop_front: 
+test 277:	pop_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 222:	clear: 
+test 278:	clear: 
 			size before clear: 6 | 
 			size after clear: 0
 			new tmp: salut | 
 ---------------------
-test 223:	resize: 
+test 279:	resize: 
 			size of tmp = 6
 
 			new tmp: salut | salut | salut | 
 			size of tmp after resize = 3
 ---------------------
-test 224:	reverse: 
+test 280:	reverse: 
 			size of tmp = 6
 
 			tmp before: salut | salut | salut | salut | salut | salut | 
 			new list: salut | salut | salut | salut | salut | salut | 
 			size of tmp after resize = 6
 ---------------------
-test 225:	assign2: 
+test 281:	assign1: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
+---------------------
+test 282:	assign2: 
+			size of tmp = 6
+			new elem = salut
+			size after assign = 3 and content is:
+			salut | salut | salut | 
+---------------------
+test 283:	insert1: 
+			size of tmp = 6
+			return value: salut
+			return value: salut
+			return value: salut
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 9
+---------------------
+test 284:	insert2: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 21
+---------------------
+test 285:	insert3: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 24
 
 --------------------------------
 ------	TESTING LIST 16 ------
@@ -1104,73 +1477,98 @@ test 225:	assign2:
 		LIST TYPE: std::string
 
 ---------------------
-test 226:	size: 
+test 286:	size: 
 			6
 ---------------------
-test 227:	iterators: 
+test 287:	iterators: 
 			operator++: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
 			++operator: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 228:	reverse iterators: 
+test 288:	reverse iterators: 
 			++operator: jbhkfbhsj3123t1672313f123125635 | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			operator++: jbhkfbhsj3123t1672313f123125635 | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			operator--: 
 			--operator: 
 ---------------------
-test 229:	front: 
+test 289:	front: 
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 ---------------------
-test 230:	back: 
+test 290:	back: 
 			jbhkfbhsj3123t1672313f123125635
 ---------------------
-test 231:	push_back: 
+test 291:	push_back: 
 			new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			new tmp: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 ---------------------
-test 232:	pop_back: 
+test 292:	pop_back: 
 			new elem = salut
 			new tmp: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | 
 ---------------------
-test 233:	swap member and non member: 
+test 293:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7
 			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 234:	empty: 
+test 294:	empty: 
 			0
 ---------------------
-test 235:	push_front: 
+test 295:	push_front: 
 			new elem = jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			new tmp: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
 ---------------------
-test 236:	pop_front: 
+test 296:	pop_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
 ---------------------
-test 237:	clear: 
+test 297:	clear: 
 			size before clear: 6 | 
 			size after clear: 0
 			new tmp: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 ---------------------
-test 238:	resize: 
+test 298:	resize: 
 			size of tmp = 6
 
 			new tmp: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | 
 			size of tmp after resize = 3
 ---------------------
-test 239:	reverse: 
+test 299:	reverse: 
 			size of tmp = 6
 
 			tmp before: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
 			new list: jbhkfbhsj3123t1672313f123125635 | salut | salut | salut | salut | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp after resize = 6
 ---------------------
-test 240:	assign2: 
+test 300:	assign1: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
+			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | 
+---------------------
+test 301:	assign2: 
+			size of tmp = 6
+			new elem = salut
+			size after assign = 3 and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+---------------------
+test 302:	insert1: 
+			size of tmp = 6
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
+			new list: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			size of tmp = 9
+---------------------
+test 303:	insert2: 
+			size of tmp = 6
+			new list: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			size of tmp = 21
+---------------------
+test 304:	insert3: 
+			size of tmp = 6
+			new list: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj3123t1672313f123125635 | 
+			size of tmp = 24
 
 --------------------------------
 ------	TESTING LIST 17 ------
@@ -1178,73 +1576,98 @@ test 240:	assign2:
 		LIST TYPE: std::string
 
 ---------------------
-test 241:	size: 
+test 305:	size: 
 			4
 ---------------------
-test 242:	iterators: 
+test 306:	iterators: 
 			operator++:  |  |  |  | 
 			++operator:  |  |  |  | 
 			operator--: 
 			--operator: 
 ---------------------
-test 243:	reverse iterators: 
+test 307:	reverse iterators: 
 			++operator:  |  |  |  | 
 			operator++:  |  |  |  | 
 			operator--: 
 			--operator: 
 ---------------------
-test 244:	front: 
+test 308:	front: 
 			
 ---------------------
-test 245:	back: 
+test 309:	back: 
 			
 ---------------------
-test 246:	push_back: 
+test 310:	push_back: 
 			new elem = 
 			new tmp:  |  |  |  |  | 
 ---------------------
-test 247:	pop_back: 
+test 311:	pop_back: 
 			new elem = 
 			new tmp:  |  |  | 
 ---------------------
-test 248:	swap member and non member: 
+test 312:	swap member and non member: 
 			size of tmp = 5 and size of tmp2 = 4
 			size of tmp = 4 and size of tmp2 = 5
 			size of tmp = 5 and size of tmp2 = 4
 ---------------------
-test 249:	empty: 
+test 313:	empty: 
 			0
 ---------------------
-test 250:	push_front: 
+test 314:	push_front: 
 			new elem = 
 			new tmp:  |  |  |  |  | 
 ---------------------
-test 251:	pop_front: 
+test 315:	pop_front: 
 			new elem = 
 			new tmp:  |  |  | 
 ---------------------
-test 252:	clear: 
+test 316:	clear: 
 			size before clear: 4 | 
 			size after clear: 0
 			new tmp:  | 
 ---------------------
-test 253:	resize: 
+test 317:	resize: 
 			size of tmp = 4
 
 			new tmp:  |  |  | 
 			size of tmp after resize = 3
 ---------------------
-test 254:	reverse: 
+test 318:	reverse: 
 			size of tmp = 4
 
 			tmp before:  |  |  |  | 
 			new list:  |  |  |  | 
 			size of tmp after resize = 4
 ---------------------
-test 255:	assign2: 
+test 319:	assign1: 
 			size of tmp = 4
-			new elem = 			size after assign = 3and content is:
+			new elem = 
+			size after assign = 3 and content is:
 			 |  |  | 
+---------------------
+test 320:	assign2: 
+			size of tmp = 4
+			new elem = 
+			size after assign = 3 and content is:
+			 |  |  | 
+---------------------
+test 321:	insert1: 
+			size of tmp = 4
+			return value: 
+			return value: 
+			return value: 
+			new list:  |  |  |  |  |  |  | 
+			size of tmp = 7
+---------------------
+test 322:	insert2: 
+			size of tmp = 4
+			new list:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+			size of tmp = 19
+---------------------
+test 323:	insert3: 
+			size of tmp = 4
+			new list:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+			size of tmp = 16
 
 --------------------------------
 ------	TESTING LIST 18 ------
@@ -1252,73 +1675,98 @@ test 255:	assign2:
 		LIST TYPE: std::string
 
 ---------------------
-test 256:	size: 
+test 324:	size: 
 			6
 ---------------------
-test 257:	iterators: 
+test 325:	iterators: 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 258:	reverse iterators: 
+test 326:	reverse iterators: 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 259:	front: 
+test 327:	front: 
 			salut
 ---------------------
-test 260:	back: 
+test 328:	back: 
 			salut
 ---------------------
-test 261:	push_back: 
+test 329:	push_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 262:	pop_back: 
+test 330:	pop_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 263:	swap member and non member: 
+test 331:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7
 			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 264:	empty: 
+test 332:	empty: 
 			0
 ---------------------
-test 265:	push_front: 
+test 333:	push_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 266:	pop_front: 
+test 334:	pop_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 267:	clear: 
+test 335:	clear: 
 			size before clear: 6 | 
 			size after clear: 0
 			new tmp: salut | 
 ---------------------
-test 268:	resize: 
+test 336:	resize: 
 			size of tmp = 6
 
 			new tmp: salut | salut | salut | 
 			size of tmp after resize = 3
 ---------------------
-test 269:	reverse: 
+test 337:	reverse: 
 			size of tmp = 6
 
 			tmp before: salut | salut | salut | salut | salut | salut | 
 			new list: salut | salut | salut | salut | salut | salut | 
 			size of tmp after resize = 6
 ---------------------
-test 270:	assign2: 
+test 338:	assign1: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
+---------------------
+test 339:	assign2: 
+			size of tmp = 6
+			new elem = salut
+			size after assign = 3 and content is:
+			salut | salut | salut | 
+---------------------
+test 340:	insert1: 
+			size of tmp = 6
+			return value: salut
+			return value: salut
+			return value: salut
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 9
+---------------------
+test 341:	insert2: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 21
+---------------------
+test 342:	insert3: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 24
 
 --------------------------------
 ------	TESTING LIST 19 ------
@@ -1326,73 +1774,98 @@ test 270:	assign2:
 		LIST TYPE: std::string
 
 ---------------------
-test 271:	size: 
+test 343:	size: 
 			6
 ---------------------
-test 272:	iterators: 
+test 344:	iterators: 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 273:	reverse iterators: 
+test 345:	reverse iterators: 
 			++operator: salut | salut | salut | salut | salut | salut | 
 			operator++: salut | salut | salut | salut | salut | salut | 
 			operator--: 
 			--operator: 
 ---------------------
-test 274:	front: 
+test 346:	front: 
 			salut
 ---------------------
-test 275:	back: 
+test 347:	back: 
 			salut
 ---------------------
-test 276:	push_back: 
+test 348:	push_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 277:	pop_back: 
+test 349:	pop_back: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 278:	swap member and non member: 
+test 350:	swap member and non member: 
 			size of tmp = 7 and size of tmp2 = 6
 			size of tmp = 6 and size of tmp2 = 7
 			size of tmp = 7 and size of tmp2 = 6
 ---------------------
-test 279:	empty: 
+test 351:	empty: 
 			0
 ---------------------
-test 280:	push_front: 
+test 352:	push_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | salut | salut | 
 ---------------------
-test 281:	pop_front: 
+test 353:	pop_front: 
 			new elem = salut
 			new tmp: salut | salut | salut | salut | salut | 
 ---------------------
-test 282:	clear: 
+test 354:	clear: 
 			size before clear: 6 | 
 			size after clear: 0
 			new tmp: salut | 
 ---------------------
-test 283:	resize: 
+test 355:	resize: 
 			size of tmp = 6
 
 			new tmp: salut | salut | salut | 
 			size of tmp after resize = 3
 ---------------------
-test 284:	reverse: 
+test 356:	reverse: 
 			size of tmp = 6
 
 			tmp before: salut | salut | salut | salut | salut | salut | 
 			new list: salut | salut | salut | salut | salut | salut | 
 			size of tmp after resize = 6
 ---------------------
-test 285:	assign2: 
+test 357:	assign1: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
+---------------------
+test 358:	assign2: 
+			size of tmp = 6
+			new elem = salut
+			size after assign = 3 and content is:
+			salut | salut | salut | 
+---------------------
+test 359:	insert1: 
+			size of tmp = 6
+			return value: salut
+			return value: salut
+			return value: salut
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 9
+---------------------
+test 360:	insert2: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 21
+---------------------
+test 361:	insert3: 
+			size of tmp = 6
+			new list: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			size of tmp = 24
 
 --------------------------------
 ------	TESTING LIST 20 ------
@@ -1400,73 +1873,98 @@ test 285:	assign2:
 		LIST TYPE: Class test
 
 ---------------------
-test 286:	size: 
+test 362:	size: 
 			2
 ---------------------
-test 287:	iterators: 
+test 363:	iterators: 
 			operator++: Class test printing | Class test printing | 
 			++operator: Class test printing | Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 288:	reverse iterators: 
+test 364:	reverse iterators: 
 			++operator: Class test printing | Class test printing | 
 			operator++: Class test printing | Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 289:	front: 
+test 365:	front: 
 			Class test printing
 ---------------------
-test 290:	back: 
+test 366:	back: 
 			Class test printing
 ---------------------
-test 291:	push_back: 
+test 367:	push_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 292:	pop_back: 
+test 368:	pop_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | 
 ---------------------
-test 293:	swap member and non member: 
+test 369:	swap member and non member: 
 			size of tmp = 3 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 3
 			size of tmp = 3 and size of tmp2 = 2
 ---------------------
-test 294:	empty: 
+test 370:	empty: 
 			0
 ---------------------
-test 295:	push_front: 
+test 371:	push_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 296:	pop_front: 
+test 372:	pop_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | 
 ---------------------
-test 297:	clear: 
+test 373:	clear: 
 			size before clear: 2 | 
 			size after clear: 0
 			new tmp: Class test printing | 
 ---------------------
-test 298:	resize: 
+test 374:	resize: 
 			size of tmp = 2
 
 			new tmp: Class test printing | Class test printing | Class test printing | 
 			size of tmp after resize = 3
 ---------------------
-test 299:	reverse: 
+test 375:	reverse: 
 			size of tmp = 2
 
 			tmp before: Class test printing | Class test printing | 
 			new list: Class test printing | Class test printing | 
 			size of tmp after resize = 2
 ---------------------
-test 300:	assign2: 
+test 376:	assign1: 
 			size of tmp = 2
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 377:	assign2: 
+			size of tmp = 2
+			new elem = Class test printing
+			size after assign = 3 and content is:
+			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 378:	insert1: 
+			size of tmp = 2
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 5
+---------------------
+test 379:	insert2: 
+			size of tmp = 2
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 17
+---------------------
+test 380:	insert3: 
+			size of tmp = 2
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 8
 
 --------------------------------
 ------	TESTING LIST 21 ------
@@ -1474,73 +1972,98 @@ test 300:	assign2:
 		LIST TYPE: Class test
 
 ---------------------
-test 301:	size: 
+test 381:	size: 
 			2
 ---------------------
-test 302:	iterators: 
+test 382:	iterators: 
 			operator++: Class test printing | Class test printing | 
 			++operator: Class test printing | Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 303:	reverse iterators: 
+test 383:	reverse iterators: 
 			++operator: Class test printing | Class test printing | 
 			operator++: Class test printing | Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 304:	front: 
+test 384:	front: 
 			Class test printing
 ---------------------
-test 305:	back: 
+test 385:	back: 
 			Class test printing
 ---------------------
-test 306:	push_back: 
+test 386:	push_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 307:	pop_back: 
+test 387:	pop_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | 
 ---------------------
-test 308:	swap member and non member: 
+test 388:	swap member and non member: 
 			size of tmp = 3 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 3
 			size of tmp = 3 and size of tmp2 = 2
 ---------------------
-test 309:	empty: 
+test 389:	empty: 
 			0
 ---------------------
-test 310:	push_front: 
+test 390:	push_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | Class test printing | 
 ---------------------
-test 311:	pop_front: 
+test 391:	pop_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | 
 ---------------------
-test 312:	clear: 
+test 392:	clear: 
 			size before clear: 2 | 
 			size after clear: 0
 			new tmp: Class test printing | 
 ---------------------
-test 313:	resize: 
+test 393:	resize: 
 			size of tmp = 2
 
 			new tmp: Class test printing | Class test printing | Class test printing | 
 			size of tmp after resize = 3
 ---------------------
-test 314:	reverse: 
+test 394:	reverse: 
 			size of tmp = 2
 
 			tmp before: Class test printing | Class test printing | 
 			new list: Class test printing | Class test printing | 
 			size of tmp after resize = 2
 ---------------------
-test 315:	assign2: 
+test 395:	assign1: 
 			size of tmp = 2
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 396:	assign2: 
+			size of tmp = 2
+			new elem = Class test printing
+			size after assign = 3 and content is:
+			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 397:	insert1: 
+			size of tmp = 2
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 5
+---------------------
+test 398:	insert2: 
+			size of tmp = 2
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 17
+---------------------
+test 399:	insert3: 
+			size of tmp = 2
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 8
 
 --------------------------------
 ------	TESTING LIST 22 ------
@@ -1548,73 +2071,98 @@ test 315:	assign2:
 		LIST TYPE: Class test
 
 ---------------------
-test 316:	size: 
+test 400:	size: 
 			1
 ---------------------
-test 317:	iterators: 
+test 401:	iterators: 
 			operator++: Class test printing | 
 			++operator: Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 318:	reverse iterators: 
+test 402:	reverse iterators: 
 			++operator: Class test printing | 
 			operator++: Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 319:	front: 
+test 403:	front: 
 			Class test printing
 ---------------------
-test 320:	back: 
+test 404:	back: 
 			Class test printing
 ---------------------
-test 321:	push_back: 
+test 405:	push_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | 
 ---------------------
-test 322:	pop_back: 
+test 406:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 323:	swap member and non member: 
+test 407:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 324:	empty: 
+test 408:	empty: 
 			0
 ---------------------
-test 325:	push_front: 
+test 409:	push_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | 
 ---------------------
-test 326:	pop_front: 
+test 410:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 327:	clear: 
+test 411:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
 			new tmp: Class test printing | 
 ---------------------
-test 328:	resize: 
+test 412:	resize: 
 			size of tmp = 1
 
 			new tmp: Class test printing | Class test printing | Class test printing | 
 			size of tmp after resize = 3
 ---------------------
-test 329:	reverse: 
+test 413:	reverse: 
 			size of tmp = 1
 
 			tmp before: Class test printing | 
 			new list: Class test printing | 
 			size of tmp after resize = 1
 ---------------------
-test 330:	assign2: 
+test 414:	assign1: 
 			size of tmp = 1
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 415:	assign2: 
+			size of tmp = 1
+			new elem = Class test printing
+			size after assign = 3 and content is:
+			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 416:	insert1: 
+			size of tmp = 1
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 4
+---------------------
+test 417:	insert2: 
+			size of tmp = 1
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 16
+---------------------
+test 418:	insert3: 
+			size of tmp = 1
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING LIST 23 ------
@@ -1622,73 +2170,98 @@ test 330:	assign2:
 		LIST TYPE: Class test
 
 ---------------------
-test 331:	size: 
+test 419:	size: 
 			1
 ---------------------
-test 332:	iterators: 
+test 420:	iterators: 
 			operator++: Class test printing | 
 			++operator: Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 333:	reverse iterators: 
+test 421:	reverse iterators: 
 			++operator: Class test printing | 
 			operator++: Class test printing | 
 			operator--: 
 			--operator: 
 ---------------------
-test 334:	front: 
+test 422:	front: 
 			Class test printing
 ---------------------
-test 335:	back: 
+test 423:	back: 
 			Class test printing
 ---------------------
-test 336:	push_back: 
+test 424:	push_back: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | 
 ---------------------
-test 337:	pop_back: 
+test 425:	pop_back: 
 			
 			new tmp: 
 ---------------------
-test 338:	swap member and non member: 
+test 426:	swap member and non member: 
 			size of tmp = 2 and size of tmp2 = 1
 			size of tmp = 1 and size of tmp2 = 2
 			size of tmp = 2 and size of tmp2 = 1
 ---------------------
-test 339:	empty: 
+test 427:	empty: 
 			0
 ---------------------
-test 340:	push_front: 
+test 428:	push_front: 
 			new elem = Class test printing
 			new tmp: Class test printing | Class test printing | 
 ---------------------
-test 341:	pop_front: 
+test 429:	pop_front: 
 			
 			new tmp: 
 ---------------------
-test 342:	clear: 
+test 430:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
 			new tmp: Class test printing | 
 ---------------------
-test 343:	resize: 
+test 431:	resize: 
 			size of tmp = 1
 
 			new tmp: Class test printing | Class test printing | Class test printing | 
 			size of tmp after resize = 3
 ---------------------
-test 344:	reverse: 
+test 432:	reverse: 
 			size of tmp = 1
 
 			tmp before: Class test printing | 
 			new list: Class test printing | 
 			size of tmp after resize = 1
 ---------------------
-test 345:	assign2: 
+test 433:	assign1: 
 			size of tmp = 1
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 434:	assign2: 
+			size of tmp = 1
+			new elem = Class test printing
+			size after assign = 3 and content is:
+			Class test printing | Class test printing | Class test printing | 
+---------------------
+test 435:	insert1: 
+			size of tmp = 1
+			return value: Class test printing
+			return value: Class test printing
+			return value: Class test printing
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 4
+---------------------
+test 436:	insert2: 
+			size of tmp = 1
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 16
+---------------------
+test 437:	insert3: 
+			size of tmp = 1
+			new list: Class test printing | Class test printing | Class test printing | Class test printing | 
+			size of tmp = 4
 
 --------------------------------
 ------	TESTING CONST LIST 24 ------
@@ -1696,28 +2269,28 @@ test 345:	assign2:
 		LIST TYPE: int
 
 ---------------------
-test 346:	size: 
+test 438:	size: 
 			5
 ---------------------
-test 347:	iterators: 
+test 439:	iterators: 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 348:	reverse iterators: 
+test 440:	reverse iterators: 
 			++operator: 100 | 100 | 100 | 100 | 100 | 
 			operator++: 100 | 100 | 100 | 100 | 100 | 
 			operator--: 
 			--operator: 
 ---------------------
-test 349:	front: 
+test 441:	front: 
 			100
 ---------------------
-test 350:	back: 
+test 442:	back: 
 			100
 ---------------------
-test 351:	empty: 
+test 443:	empty: 
 			0
 
 --------------------------------
@@ -1726,24 +2299,24 @@ test 351:	empty:
 		LIST TYPE: int
 
 ---------------------
-test 352:	size: 
+test 444:	size: 
 			0
 ---------------------
-test 353:	iterators: 
+test 445:	iterators: 
 			operator++: 
 			++operator: 
 ---------------------
-test 354:	reverse iterators: 
+test 446:	reverse iterators: 
 			++operator: 
 			operator++: 
 ---------------------
-test 355:	front: 
+test 447:	front: 
 			
 ---------------------
-test 356:	back: 
+test 448:	back: 
 			
 ---------------------
-test 357:	empty: 
+test 449:	empty: 
 			1
 
 --------------------------------
@@ -1752,28 +2325,28 @@ test 357:	empty:
 		LIST TYPE: char
 
 ---------------------
-test 358:	size: 
+test 450:	size: 
 			12
 ---------------------
-test 359:	iterators: 
+test 451:	iterators: 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 360:	reverse iterators: 
+test 452:	reverse iterators: 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 361:	front: 
+test 453:	front: 
 			c
 ---------------------
-test 362:	back: 
+test 454:	back: 
 			c
 ---------------------
-test 363:	empty: 
+test 455:	empty: 
 			0
 
 --------------------------------
@@ -1782,28 +2355,28 @@ test 363:	empty:
 		LIST TYPE: char
 
 ---------------------
-test 364:	size: 
+test 456:	size: 
 			12
 ---------------------
-test 365:	iterators: 
+test 457:	iterators: 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 366:	reverse iterators: 
+test 458:	reverse iterators: 
 			++operator: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator++: c | c | c | c | c | c | c | c | c | c | c | c | 
 			operator--: 
 			--operator: 
 ---------------------
-test 367:	front: 
+test 459:	front: 
 			c
 ---------------------
-test 368:	back: 
+test 460:	back: 
 			c
 ---------------------
-test 369:	empty: 
+test 461:	empty: 
 			0
 
 --------------------------------
@@ -1812,26 +2385,26 @@ test 369:	empty:
 		LIST TYPE: std::string
 
 ---------------------
-test 370:	size: 
+test 462:	size: 
 			3
 ---------------------
-test 371:	iterators: 
+test 463:	iterators: 
 			operator++: bonjour | bonjour | bonjour | 
 			++operator: bonjour | bonjour | bonjour | 
 			operator--: 
 			--operator: 
 ---------------------
-test 372:	reverse iterators: 
+test 464:	reverse iterators: 
 			++operator: bonjour | bonjour | bonjour | 
 			operator++: bonjour | bonjour | bonjour | 
 			operator--: 
 			--operator: 
 ---------------------
-test 373:	front: 
+test 465:	front: 
 			bonjour
 ---------------------
-test 374:	back: 
+test 466:	back: 
 			bonjour
 ---------------------
-test 375:	empty: 
+test 467:	empty: 
 			0

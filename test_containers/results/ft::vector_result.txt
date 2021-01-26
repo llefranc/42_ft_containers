@@ -70,12 +70,13 @@ test 13:	resize:
 test 14:	assign1: 
 			size of tmp = 12
 			new elem = c
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			c | c | c | 
 ---------------------
 test 15:	assign2: 
 			size of tmp = 12
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
 			c | c | c | 
 ---------------------
 test 16:	insert1: 
@@ -83,17 +84,17 @@ test 16:	insert1:
 			return value: c
 			return value: c
 			return value: c
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 15
 ---------------------
 test 17:	insert2: 
 			size of tmp = 12
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 27
 ---------------------
 test 18:	insert3: 
 			size of tmp = 12
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 48
 ---------------------
 test 19:	erase1: 
@@ -228,12 +229,13 @@ test 36:	resize:
 test 37:	assign1: 
 			size of tmp = 12
 			new elem = c
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			c | c | c | 
 ---------------------
 test 38:	assign2: 
 			size of tmp = 12
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
 			c | c | c | 
 ---------------------
 test 39:	insert1: 
@@ -241,17 +243,17 @@ test 39:	insert1:
 			return value: c
 			return value: c
 			return value: c
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 15
 ---------------------
 test 40:	insert2: 
 			size of tmp = 12
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 27
 ---------------------
 test 41:	insert3: 
 			size of tmp = 12
-			c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
+			new vector: c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | 
 			size of tmp = 48
 ---------------------
 test 42:	erase1: 
@@ -386,12 +388,13 @@ test 59:	resize:
 test 60:	assign1: 
 			size of tmp = 1
 			new elem = a
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			a | a | a | 
 ---------------------
 test 61:	assign2: 
 			size of tmp = 1
-			new elem = a			size after assign = 3and content is:
+			new elem = a
+			size after assign = 3 and content is:
 			a | a | a | 
 ---------------------
 test 62:	insert1: 
@@ -399,17 +402,17 @@ test 62:	insert1:
 			return value: a
 			return value: a
 			return value: a
-			a | a | a | a | 
+			new vector: a | a | a | a | 
 			size of tmp = 4
 ---------------------
 test 63:	insert2: 
 			size of tmp = 1
-			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
+			new vector: a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 16
 ---------------------
 test 64:	insert3: 
 			size of tmp = 1
-			a | a | a | a | 
+			new vector: a | a | a | a | 
 			size of tmp = 4
 ---------------------
 test 65:	erase1: 
@@ -541,12 +544,13 @@ test 82:	resize:
 test 83:	assign1: 
 			size of tmp = 1
 			new elem = a
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			a | a | a | 
 ---------------------
 test 84:	assign2: 
 			size of tmp = 1
-			new elem = a			size after assign = 3and content is:
+			new elem = a
+			size after assign = 3 and content is:
 			a | a | a | 
 ---------------------
 test 85:	insert1: 
@@ -554,17 +558,17 @@ test 85:	insert1:
 			return value: a
 			return value: a
 			return value: a
-			a | a | a | a | 
+			new vector: a | a | a | a | 
 			size of tmp = 4
 ---------------------
 test 86:	insert2: 
 			size of tmp = 1
-			a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
+			new vector: a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | a | 
 			size of tmp = 16
 ---------------------
 test 87:	insert3: 
 			size of tmp = 1
-			a | a | a | a | 
+			new vector: a | a | a | a | 
 			size of tmp = 4
 ---------------------
 test 88:	erase1: 
@@ -696,12 +700,13 @@ test 105:	resize:
 test 106:	assign1: 
 			size of tmp = 5
 			new elem = c
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			a | b | c | 
 ---------------------
 test 107:	assign2: 
 			size of tmp = 5
-			new elem = c			size after assign = 3and content is:
+			new elem = c
+			size after assign = 3 and content is:
 			a | a | a | 
 ---------------------
 test 108:	insert1: 
@@ -709,17 +714,17 @@ test 108:	insert1:
 			return value: a
 			return value: a
 			return value: a
-			a | a | a | b | c | d | e | a | 
+			new vector: a | a | a | b | c | d | e | a | 
 			size of tmp = 8
 ---------------------
 test 109:	insert2: 
 			size of tmp = 5
-			a | a | a | a | a | a | a | a | a | a | a | b | c | d | e | a | a | a | a | a | 
+			new vector: a | a | a | a | a | a | a | a | a | a | a | b | c | d | e | a | a | a | a | a | 
 			size of tmp = 20
 ---------------------
 test 110:	insert3: 
 			size of tmp = 5
-			a | a | b | c | d | e | b | c | d | e | a | b | c | d | e | a | b | c | d | e | 
+			new vector: a | a | b | c | d | e | b | c | d | e | a | b | c | d | e | a | b | c | d | e | 
 			size of tmp = 20
 ---------------------
 test 111:	erase1: 
@@ -854,12 +859,13 @@ test 128:	resize:
 test 129:	assign1: 
 			size of tmp = 5
 			new elem = 100
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 130:	assign2: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 131:	insert1: 
@@ -867,17 +873,17 @@ test 131:	insert1:
 			return value: 100
 			return value: 100
 			return value: 100
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
 test 132:	insert2: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 133:	insert3: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 134:	erase1: 
@@ -1007,29 +1013,30 @@ test 151:	resize:
 test 152:	assign1: 
 			size of tmp = 0
 			new elem = 0
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			0 | 0 | 0 | 
 ---------------------
 test 153:	assign2: 
 			size of tmp = 0
-			new elem = 0			size after assign = 3and content is:
+			new elem = 0
+			size after assign = 3 and content is:
 			0 | 0 | 0 | 
 ---------------------
 test 154:	insert1: 
 			size of tmp = 0
 			return value: 0
 			return value: 0
-			0 | 0 | 
+			new vector: 0 | 0 | 
 			size of tmp = 2
 ---------------------
 test 155:	insert2: 
 			size of tmp = 0
-			0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
+			new vector: 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
 			size of tmp = 10
 ---------------------
 test 156:	insert3: 
 			size of tmp = 0
-			
+			new vector: 
 			size of tmp = 0
 ---------------------
 test 157:	erase1: 
@@ -1149,12 +1156,13 @@ test 174:	resize:
 test 175:	assign1: 
 			size of tmp = 1
 			new elem = 89123891
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			89123891 | 89123891 | 89123891 | 
 ---------------------
 test 176:	assign2: 
 			size of tmp = 1
-			new elem = 89123891			size after assign = 3and content is:
+			new elem = 89123891
+			size after assign = 3 and content is:
 			89123891 | 89123891 | 89123891 | 
 ---------------------
 test 177:	insert1: 
@@ -1162,17 +1170,17 @@ test 177:	insert1:
 			return value: 89123891
 			return value: 89123891
 			return value: 89123891
-			89123891 | 89123891 | 89123891 | 89123891 | 
+			new vector: 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 4
 ---------------------
 test 178:	insert2: 
 			size of tmp = 1
-			89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
+			new vector: 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 16
 ---------------------
 test 179:	insert3: 
 			size of tmp = 1
-			89123891 | 89123891 | 89123891 | 89123891 | 
+			new vector: 89123891 | 89123891 | 89123891 | 89123891 | 
 			size of tmp = 4
 ---------------------
 test 180:	erase1: 
@@ -1304,12 +1312,13 @@ test 197:	resize:
 test 198:	assign1: 
 			size of tmp = 5
 			new elem = 100
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 199:	assign2: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 200:	insert1: 
@@ -1317,17 +1326,17 @@ test 200:	insert1:
 			return value: 100
 			return value: 100
 			return value: 100
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
 test 201:	insert2: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 202:	insert3: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 203:	erase1: 
@@ -1462,12 +1471,13 @@ test 220:	resize:
 test 221:	assign1: 
 			size of tmp = 5
 			new elem = 100
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 222:	assign2: 
 			size of tmp = 5
-			new elem = 100			size after assign = 3and content is:
+			new elem = 100
+			size after assign = 3 and content is:
 			100 | 100 | 100 | 
 ---------------------
 test 223:	insert1: 
@@ -1475,17 +1485,17 @@ test 223:	insert1:
 			return value: 100
 			return value: 100
 			return value: 100
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 8
 ---------------------
 test 224:	insert2: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 225:	insert3: 
 			size of tmp = 5
-			100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
+			new vector: 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 
 			size of tmp = 20
 ---------------------
 test 226:	erase1: 
@@ -1620,12 +1630,13 @@ test 243:	resize:
 test 244:	assign1: 
 			size of tmp = 4
 			new elem = 2
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			0 | 1 | 2 | 
 ---------------------
 test 245:	assign2: 
 			size of tmp = 4
-			new elem = 2			size after assign = 3and content is:
+			new elem = 2
+			size after assign = 3 and content is:
 			0 | 0 | 0 | 
 ---------------------
 test 246:	insert1: 
@@ -1633,17 +1644,17 @@ test 246:	insert1:
 			return value: 0
 			return value: 0
 			return value: 0
-			0 | 0 | 0 | 1 | 2 | 3 | 0 | 
+			new vector: 0 | 0 | 0 | 1 | 2 | 3 | 0 | 
 			size of tmp = 7
 ---------------------
 test 247:	insert2: 
 			size of tmp = 4
-			0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 3 | 0 | 0 | 0 | 0 | 0 | 
+			new vector: 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 2 | 3 | 0 | 0 | 0 | 0 | 0 | 
 			size of tmp = 19
 ---------------------
 test 248:	insert3: 
 			size of tmp = 4
-			0 | 0 | 1 | 2 | 3 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 
+			new vector: 0 | 0 | 1 | 2 | 3 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 0 | 1 | 2 | 3 | 
 			size of tmp = 16
 ---------------------
 test 249:	erase1: 
@@ -1773,29 +1784,30 @@ test 266:	resize:
 test 267:	assign1: 
 			size of tmp = 0
 			new elem = 0x0
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			0x0 | 0x0 | 0x0 | 
 ---------------------
 test 268:	assign2: 
 			size of tmp = 0
-			new elem = 0x0			size after assign = 3and content is:
+			new elem = 0x0
+			size after assign = 3 and content is:
 			0x0 | 0x0 | 0x0 | 
 ---------------------
 test 269:	insert1: 
 			size of tmp = 0
 			return value: 0x0
 			return value: 0x0
-			0x0 | 0x0 | 
+			new vector: 0x0 | 0x0 | 
 			size of tmp = 2
 ---------------------
 test 270:	insert2: 
 			size of tmp = 0
-			0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 
+			new vector: 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 0x0 | 
 			size of tmp = 10
 ---------------------
 test 271:	insert3: 
 			size of tmp = 0
-			
+			new vector: 
 			size of tmp = 0
 ---------------------
 test 272:	erase1: 
@@ -1852,7 +1864,7 @@ test 276:	operator</>/<=/>=:
 
 ---------------------
 test 277:	operator[]: 
-			0x7ffee8f118c0 
+			0x7ffee85cd9a0 
 ---------------------
 test 278:	size: 
 			1
@@ -1864,39 +1876,39 @@ test 280:	empty:
 			0
 ---------------------
 test 281:	iterators: 
-			operator++: 0x7ffee8f118c0 | 
-			++operator: 0x7ffee8f118c0 | 
-			operator--: 0x7ffee8f118c0 | 
-			--operator: 0x7ffee8f118c0 | 
-			operator+=: 0x7ffee8f118c0 | 
-			operator+: 0x7ffee8f118c0 | 
-			operator-=: 0x7ffee8f118c0 | 
-			operator-: 0x7ffee8f118c0 | 
-			operator[]: 0x7ffee8f118c0 | 
+			operator++: 0x7ffee85cd9a0 | 
+			++operator: 0x7ffee85cd9a0 | 
+			operator--: 0x7ffee85cd9a0 | 
+			--operator: 0x7ffee85cd9a0 | 
+			operator+=: 0x7ffee85cd9a0 | 
+			operator+: 0x7ffee85cd9a0 | 
+			operator-=: 0x7ffee85cd9a0 | 
+			operator-: 0x7ffee85cd9a0 | 
+			operator[]: 0x7ffee85cd9a0 | 
 ---------------------
 test 282:	reverse iterators: 
-			++operator: 0x7ffee8f118c0 | 
-			operator++: 0x7ffee8f118c0 | 
-			operator--: 0x7ffee8f118c0 | 
-			--operator: 0x7ffee8f118c0 | 
-			operator+=: 0x7ffee8f118c0 | 
-			operator+: 0x7ffee8f118c0 | 
-			operator-=: 0x7ffee8f118c0 | 
-			operator-: 0x7ffee8f118c0 | 
-			operator[]: 0x7ffee8f118c0 | 
+			++operator: 0x7ffee85cd9a0 | 
+			operator++: 0x7ffee85cd9a0 | 
+			operator--: 0x7ffee85cd9a0 | 
+			--operator: 0x7ffee85cd9a0 | 
+			operator+=: 0x7ffee85cd9a0 | 
+			operator+: 0x7ffee85cd9a0 | 
+			operator-=: 0x7ffee85cd9a0 | 
+			operator-: 0x7ffee85cd9a0 | 
+			operator[]: 0x7ffee85cd9a0 | 
 ---------------------
 test 283:	at: 
-			0x7ffee8f118c0 vector
+			0x7ffee85cd9a0 vector
 ---------------------
 test 284:	front: 
-			0x7ffee8f118c0
+			0x7ffee85cd9a0
 ---------------------
 test 285:	back: 
-			0x7ffee8f118c0
+			0x7ffee85cd9a0
 ---------------------
 test 286:	push_back: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 287:	pop_back: 
 			
@@ -1909,50 +1921,51 @@ test 288:	swap member and non member:
 ---------------------
 test 289:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0
+			new elem = 0x7ffee85cd9a0
 			size of tmp after resize = 3
 ---------------------
 test 290:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0
-			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 291:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 292:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffee8f118c0
-			return value: 0x7ffee8f118c0
-			return value: 0x7ffee8f118c0
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 4
 ---------------------
 test 293:	insert2: 
 			size of tmp = 1
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 16
 ---------------------
 test 294:	insert3: 
 			size of tmp = 1
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 4
 ---------------------
 test 295:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee8f118c0 | 
+			0x7ffee85cd9a0 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffee8f118c0
+			new elem after erase: 0x7ffee85cd9a0
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee8f118c0 | 
+			0x7ffee85cd9a0 | 
 			size of tmp = 1
 ---------------------
 test 296:	erase2: 
@@ -1966,7 +1979,7 @@ test 296:	erase2:
 test 297:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
-			new vector: 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 
 ---------------------
 test 298:	operator==/!=: 
 			tmp == vec (should be true): 1
@@ -2007,7 +2020,7 @@ test 299:	operator</>/<=/>=:
 
 ---------------------
 test 300:	operator[]: 
-			0x7ffee8f118c0 
+			0x7ffee85cd9a0 
 ---------------------
 test 301:	size: 
 			1
@@ -2019,39 +2032,39 @@ test 303:	empty:
 			0
 ---------------------
 test 304:	iterators: 
-			operator++: 0x7ffee8f118c0 | 
-			++operator: 0x7ffee8f118c0 | 
-			operator--: 0x7ffee8f118c0 | 
-			--operator: 0x7ffee8f118c0 | 
-			operator+=: 0x7ffee8f118c0 | 
-			operator+: 0x7ffee8f118c0 | 
-			operator-=: 0x7ffee8f118c0 | 
-			operator-: 0x7ffee8f118c0 | 
-			operator[]: 0x7ffee8f118c0 | 
+			operator++: 0x7ffee85cd9a0 | 
+			++operator: 0x7ffee85cd9a0 | 
+			operator--: 0x7ffee85cd9a0 | 
+			--operator: 0x7ffee85cd9a0 | 
+			operator+=: 0x7ffee85cd9a0 | 
+			operator+: 0x7ffee85cd9a0 | 
+			operator-=: 0x7ffee85cd9a0 | 
+			operator-: 0x7ffee85cd9a0 | 
+			operator[]: 0x7ffee85cd9a0 | 
 ---------------------
 test 305:	reverse iterators: 
-			++operator: 0x7ffee8f118c0 | 
-			operator++: 0x7ffee8f118c0 | 
-			operator--: 0x7ffee8f118c0 | 
-			--operator: 0x7ffee8f118c0 | 
-			operator+=: 0x7ffee8f118c0 | 
-			operator+: 0x7ffee8f118c0 | 
-			operator-=: 0x7ffee8f118c0 | 
-			operator-: 0x7ffee8f118c0 | 
-			operator[]: 0x7ffee8f118c0 | 
+			++operator: 0x7ffee85cd9a0 | 
+			operator++: 0x7ffee85cd9a0 | 
+			operator--: 0x7ffee85cd9a0 | 
+			--operator: 0x7ffee85cd9a0 | 
+			operator+=: 0x7ffee85cd9a0 | 
+			operator+: 0x7ffee85cd9a0 | 
+			operator-=: 0x7ffee85cd9a0 | 
+			operator-: 0x7ffee85cd9a0 | 
+			operator[]: 0x7ffee85cd9a0 | 
 ---------------------
 test 306:	at: 
-			0x7ffee8f118c0 vector
+			0x7ffee85cd9a0 vector
 ---------------------
 test 307:	front: 
-			0x7ffee8f118c0
+			0x7ffee85cd9a0
 ---------------------
 test 308:	back: 
-			0x7ffee8f118c0
+			0x7ffee85cd9a0
 ---------------------
 test 309:	push_back: 
-			new elem = 0x7ffee8f118c0
-			new tmp: 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			new tmp: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 310:	pop_back: 
 			
@@ -2064,50 +2077,51 @@ test 311:	swap member and non member:
 ---------------------
 test 312:	resize: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0
+			new elem = 0x7ffee85cd9a0
 			size of tmp after resize = 3
 ---------------------
 test 313:	assign1: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0
-			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 314:	assign2: 
 			size of tmp = 1
-			new elem = 0x7ffee8f118c0			size after assign = 3and content is:
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new elem = 0x7ffee85cd9a0
+			size after assign = 3 and content is:
+			0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 ---------------------
 test 315:	insert1: 
 			size of tmp = 1
-			return value: 0x7ffee8f118c0
-			return value: 0x7ffee8f118c0
-			return value: 0x7ffee8f118c0
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			return value: 0x7ffee85cd9a0
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 4
 ---------------------
 test 316:	insert2: 
 			size of tmp = 1
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 16
 ---------------------
 test 317:	insert3: 
 			size of tmp = 1
-			0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 0x7ffee85cd9a0 | 
 			size of tmp = 4
 ---------------------
 test 318:	erase1: 
 			size of tmp = 1
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee8f118c0 | 
+			0x7ffee85cd9a0 | 
 			size of tmp = 1
-			new elem after erase: 0x7ffee8f118c0
+			new elem after erase: 0x7ffee85cd9a0
 			size of tmp = 1
 			
 			size of tmp = 0
 			size of tmp = 1
-			0x7ffee8f118c0 | 
+			0x7ffee85cd9a0 | 
 			size of tmp = 1
 ---------------------
 test 319:	erase2: 
@@ -2121,7 +2135,7 @@ test 319:	erase2:
 test 320:	clear: 
 			size before clear: 1 | 
 			size after clear: 0
-			new vector: 0x7ffee8f118c0 | 
+			new vector: 0x7ffee85cd9a0 | 
 ---------------------
 test 321:	operator==/!=: 
 			tmp == vec (should be true): 1
@@ -2225,12 +2239,13 @@ test 335:	resize:
 test 336:	assign1: 
 			size of tmp = 6
 			new elem = salut
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 337:	assign2: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 338:	insert1: 
@@ -2238,17 +2253,17 @@ test 338:	insert1:
 			return value: salut
 			return value: salut
 			return value: salut
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
 test 339:	insert2: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
 test 340:	insert3: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
 test 341:	erase1: 
@@ -2383,12 +2398,13 @@ test 358:	resize:
 test 359:	assign1: 
 			size of tmp = 6
 			new elem = salut
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | 
 ---------------------
 test 360:	assign2: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 ---------------------
 test 361:	insert1: 
@@ -2396,17 +2412,17 @@ test 361:	insert1:
 			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
 			return value: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf
-			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			new vector: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 9
 ---------------------
 test 362:	insert2: 
 			size of tmp = 6
-			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
+			new vector: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | 
 			size of tmp = 21
 ---------------------
 test 363:	insert3: 
 			size of tmp = 6
-			jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
+			new vector: jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | jbhkfbhsjdhfbhsdkjfbjksdbkhfsdf | salut | salut | salut | salut | jbhkfbhsj | 
 			size of tmp = 24
 ---------------------
 test 364:	erase1: 
@@ -2541,12 +2557,13 @@ test 381:	resize:
 test 382:	assign1: 
 			size of tmp = 4
 			new elem = 
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			 |  |  | 
 ---------------------
 test 383:	assign2: 
 			size of tmp = 4
-			new elem = 			size after assign = 3and content is:
+			new elem = 
+			size after assign = 3 and content is:
 			 |  |  | 
 ---------------------
 test 384:	insert1: 
@@ -2554,17 +2571,17 @@ test 384:	insert1:
 			return value: 
 			return value: 
 			return value: 
-			 |  |  |  |  |  |  | 
+			new vector:  |  |  |  |  |  |  | 
 			size of tmp = 7
 ---------------------
 test 385:	insert2: 
 			size of tmp = 4
-			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+			new vector:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 19
 ---------------------
 test 386:	insert3: 
 			size of tmp = 4
-			 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+			new vector:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
 			size of tmp = 16
 ---------------------
 test 387:	erase1: 
@@ -2699,12 +2716,13 @@ test 404:	resize:
 test 405:	assign1: 
 			size of tmp = 6
 			new elem = salut
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 406:	assign2: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 407:	insert1: 
@@ -2712,17 +2730,17 @@ test 407:	insert1:
 			return value: salut
 			return value: salut
 			return value: salut
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
 test 408:	insert2: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
 test 409:	insert3: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
 test 410:	erase1: 
@@ -2857,12 +2875,13 @@ test 427:	resize:
 test 428:	assign1: 
 			size of tmp = 6
 			new elem = salut
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 429:	assign2: 
 			size of tmp = 6
-			new elem = salut			size after assign = 3and content is:
+			new elem = salut
+			size after assign = 3 and content is:
 			salut | salut | salut | 
 ---------------------
 test 430:	insert1: 
@@ -2870,17 +2889,17 @@ test 430:	insert1:
 			return value: salut
 			return value: salut
 			return value: salut
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 9
 ---------------------
 test 431:	insert2: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 21
 ---------------------
 test 432:	insert3: 
 			size of tmp = 6
-			salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
+			new vector: salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | salut | 
 			size of tmp = 24
 ---------------------
 test 433:	erase1: 
@@ -3015,12 +3034,13 @@ test 450:	resize:
 test 451:	assign1: 
 			size of tmp = 2
 			new elem = Class test printing
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 452:	assign2: 
 			size of tmp = 2
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 453:	insert1: 
@@ -3028,17 +3048,17 @@ test 453:	insert1:
 			return value: Class test printing
 			return value: Class test printing
 			return value: Class test printing
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
 ---------------------
 test 454:	insert2: 
 			size of tmp = 2
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
 ---------------------
 test 455:	insert3: 
 			size of tmp = 2
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
 ---------------------
 test 456:	erase1: 
@@ -3173,12 +3193,13 @@ test 473:	resize:
 test 474:	assign1: 
 			size of tmp = 2
 			new elem = Class test printing
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 475:	assign2: 
 			size of tmp = 2
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 476:	insert1: 
@@ -3186,17 +3207,17 @@ test 476:	insert1:
 			return value: Class test printing
 			return value: Class test printing
 			return value: Class test printing
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 5
 ---------------------
 test 477:	insert2: 
 			size of tmp = 2
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 17
 ---------------------
 test 478:	insert3: 
 			size of tmp = 2
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 8
 ---------------------
 test 479:	erase1: 
@@ -3331,12 +3352,13 @@ test 496:	resize:
 test 497:	assign1: 
 			size of tmp = 1
 			new elem = Class test printing
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 498:	assign2: 
 			size of tmp = 1
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 499:	insert1: 
@@ -3344,17 +3366,17 @@ test 499:	insert1:
 			return value: Class test printing
 			return value: Class test printing
 			return value: Class test printing
-			Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
 test 500:	insert2: 
 			size of tmp = 1
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 16
 ---------------------
 test 501:	insert3: 
 			size of tmp = 1
-			Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
 test 502:	erase1: 
@@ -3486,12 +3508,13 @@ test 519:	resize:
 test 520:	assign1: 
 			size of tmp = 1
 			new elem = Class test printing
-			size after assign = 3and content is:
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 521:	assign2: 
 			size of tmp = 1
-			new elem = Class test printing			size after assign = 3and content is:
+			new elem = Class test printing
+			size after assign = 3 and content is:
 			Class test printing | Class test printing | Class test printing | 
 ---------------------
 test 522:	insert1: 
@@ -3499,17 +3522,17 @@ test 522:	insert1:
 			return value: Class test printing
 			return value: Class test printing
 			return value: Class test printing
-			Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
 test 523:	insert2: 
 			size of tmp = 1
-			Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 16
 ---------------------
 test 524:	insert3: 
 			size of tmp = 1
-			Class test printing | Class test printing | Class test printing | Class test printing | 
+			new vector: Class test printing | Class test printing | Class test printing | Class test printing | 
 			size of tmp = 4
 ---------------------
 test 525:	erase1: 
