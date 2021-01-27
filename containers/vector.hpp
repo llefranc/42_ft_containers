@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/27 17:10:38 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:33:05 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -560,40 +560,13 @@ namespace ft
 			*	@return			An iterator pointing to the new location of the element that follows 
 			*					the elements' range erased by the function call.
 			*/
-			// iterator erase (iterator first, iterator last)
-			// {
-			// 	if (first == end())
-			// 		return end();
-				
-			// 	// In case of a realloc, iterators will be invalited because _vector
-			// 	// points to another allocated area so we need to save the index array
-			// 	// where first is pointing to create a new iterator after the reallocation
-			// 	difference_type index = first - begin();
-				
-			// 	// If there is elements after the iterators range, we need to move them at first position
-			// 	if (last < end() - 1)
-			// 	{
-			// 		moveElementsToTheLeft(first, last);
-			// 		_size -= static_cast<size_type>(last - first);
-			// 	}
-			// 	else
-			// 	{
-			// 		size_type newSize = _size - static_cast<size_type>(last - first);
-			// 		while (_size != newSize)
-			// 			pop_back();
-			// 	}
-
-			// 	std::cout << "size = " << _size << "\n";
-			// 	reallocateVec(_size);
-			// 	return iterator(&_vector[index]);
-			// }
 
 			//     f     l
 			//  1  2  3  4  5  6
 			iterator erase (iterator first, iterator last)
 			{
 				if (first == end() || first == last)
-					return last;
+					return first;
 				
 				// In case of a realloc, iterators will be invalited because _vector
 				// points to another allocated area so we need to save the index array
@@ -601,7 +574,7 @@ namespace ft
 				difference_type index = first - begin();
 				
 				// If there is elements after the iterators range, we need to move them at first position
-				if (last < end() - 1)
+				if (last < end())
 				{
 					moveElementsToTheLeft(first, last);
 					_size -= static_cast<size_type>(last - first);
@@ -612,9 +585,7 @@ namespace ft
 					while (_size != newSize)
 						pop_back();
 				}
-
-				// std::cout << "size = " << _size << "\n";
-				reallocateVec(_size);
+				
 				return iterator(&_vector[index]);
 			}
 
@@ -784,12 +755,11 @@ namespace ft
 			*/
 			void moveElementsToTheLeft(iterator first, iterator last)
 			{
-				// iterator posCopy(last);
-				
-				for (; last != end(); ++first, ++last)
+				for (; first != end(); ++first, ++last)
 				{
 					_alloc.destroy(&(*first));
-					_alloc.construct(&(*(first)), *last);
+					if (last < end())
+						_alloc.construct(&(*(first)), *last);
 				}
 			}
 			
