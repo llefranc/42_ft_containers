@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/27 18:33:05 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/27 18:48:01 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -560,9 +560,6 @@ namespace ft
 			*	@return			An iterator pointing to the new location of the element that follows 
 			*					the elements' range erased by the function call.
 			*/
-
-			//     f     l
-			//  1  2  3  4  5  6
 			iterator erase (iterator first, iterator last)
 			{
 				if (first == end() || first == last)
@@ -748,16 +745,23 @@ namespace ft
 			/**
 			*	Move to the left all elements from a certain position until the end 
 			*	of the array. Each element will be constructed/copied to his new position,
-			*	then destructed at his previous position.
+			*	and destructed at his previous position.
 			*
-			*	@param first	Iterator pointing to the range's beginning (will be include).
-			*	@param last		Iterator pointing to the range's end (will not be include).
+			*	@param first	Iterator pointing to the new range's beginning, elements will be
+			*					moved to this position.
+			*	@param last		Iterator pointing to the first element to move. Every element after
+			*					this one until the end will be moved.
 			*/
 			void moveElementsToTheLeft(iterator first, iterator last)
 			{
 				for (; first != end(); ++first, ++last)
 				{
+					// Destructing the previous element to replace it by a new one.
+					// First will destroy all the element until the end.
 					_alloc.destroy(&(*first));
+					
+					// Moving a new element to the left at first position, only if there is
+					// still element to move
 					if (last < end())
 						_alloc.construct(&(*(first)), *last);
 				}
