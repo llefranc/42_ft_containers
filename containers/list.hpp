@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/29 15:31:56 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:25:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,9 +349,9 @@ namespace ft
 
 				// Linking i in this list
 				i->prev = position->prev;
-				i->next = position.getNonCoinstPointer();
-				position->prev->next = i.getNonCoinstPointer();
-				position->prev = i.getNonCoinstPointer();
+				i->next = position.getNonConstPointer();
+				position->prev->next = i.getNonConstPointer();
+				position->prev = i.getNonConstPointer();
 				
 				--x._size;
 				++_size;
@@ -363,7 +363,7 @@ namespace ft
 				if (first == last)
 					return;
 
-				if (first->next == last.getNonCoinstPointer())
+				if (first->next == last.getNonConstPointer())
 					splice(position, x, first);
 				else
 				{
@@ -376,14 +376,14 @@ namespace ft
 					iterator lastRangeElem(last->prev);
 					
 					// Removing range from list x
-					first->prev->next = last.getNonCoinstPointer();
+					first->prev->next = last.getNonConstPointer();
 					last->prev = first->prev;
 
 					// Linking range in this list
 					first->prev = position->prev;
-					lastRangeElem->next = position.getNonCoinstPointer();
-					position->prev->next = first.getNonCoinstPointer();
-					position->prev = lastRangeElem.getNonCoinstPointer();
+					lastRangeElem->next = position.getNonConstPointer();
+					position->prev->next = first.getNonConstPointer();
+					position->prev = lastRangeElem.getNonConstPointer();
 
 					x._size -= rangeSize;
 					_size += rangeSize;
@@ -392,7 +392,7 @@ namespace ft
 
 			void remove (const value_type& val)
 			{
-				for (iterator it = end(); it->next != end().getNonCoinstPointer();)
+				for (iterator it = end(); it->next != end().getNonConstPointer();)
 				{
 					if (it->next->content == val)
 						deleteNode(it->next);
@@ -404,7 +404,7 @@ namespace ft
 			template <class Predicate>
 			void remove_if (Predicate pred)
 			{
-				for (iterator it = end(); it->next != end().getNonCoinstPointer();)
+				for (iterator it = end(); it->next != end().getNonConstPointer();)
 				{
 					if (pred(it->next->content))
 						deleteNode(it->next);
@@ -414,16 +414,65 @@ namespace ft
 			}
 
 			//   (1)	
-			// void unique();
+			void unique()
+			{
+				for (iterator it = end(); it->next != end().getNonConstPointer();)
+				{
+					if (it != end() && *it == it->next->content)
+						deleteNode(it->next);
+					else
+						++it;
+				}
+			}
+
 			// (2)	
-			// template <class BinaryPredicate>
-			//   void unique (BinaryPredicate binary_pred);
+			template <class BinaryPredicate>
+			void unique (BinaryPredicate binary_pred)
+			{
+				for (iterator it = end(); it->next->next != end().getNonConstPointer();)
+				{
+					if (binary_pred(it->next->content, it->next->next->content))
+						deleteNode(it->next->next);
+					else
+						++it;
+				}
+			}
 
 			//   (1)	
-			//   void merge (list& x);
+			void merge (list& x)
+			{
+				iterator thisIt = end();
+				for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
+				{
+					if (thisIt->next == end().getNonConstPointer() ||
+							xIt->next->content < thisIt->next->content)
+					{
+						splice(thisIt->next, x, xIt->next);
+						++thisIt;
+					}
+					else
+						++thisIt;
+				}
+			}
+			
+			A FAIRE
 			// (2)	
-			// template <class Compare>
-			//   void merge (list& x, Compare comp);
+			template <class Compare>
+			void merge (list& x, Compare comp)
+			{
+				iterator thisIt = end();
+				for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
+				{
+					if (thisIt->next == end().getNonConstPointer() ||
+							comp(xIt->next->content, thisIt->next->content))
+					{
+						splice(thisIt->next, x, xIt->next);
+						++thisIt;
+					}
+					else
+						++thisIt;
+				}
+			}
 
 			//   (1)	
 			//   void sort();

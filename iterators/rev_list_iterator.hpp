@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:29:20 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:20:50 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ namespace ft
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			rev_list_iterator(nonConstPointer node = 0) : _node(node) {}
-			rev_list_iterator(const rev_list_iterator<T, Node, false>& copy) { _node = copy.getNonCoinstPointer(); }
-			rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonCoinstPointer()->prev; } // FAIRE -1 ICI
+			rev_list_iterator(const rev_list_iterator<T, Node, false>& copy) { _node = copy.getNonConstPointer(); }
+			rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonConstPointer()->prev; }
 			~rev_list_iterator() {}
 
-			nonConstPointer	getNonCoinstPointer() const		{ return _node; }
+			nonConstPointer	getNonConstPointer() const		{ return _node; }
 
 			rev_list_iterator& operator=(const rev_list_iterator& assign)
 			{

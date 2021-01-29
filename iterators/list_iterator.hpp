@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 17:29:16 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:20:25 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ namespace ft
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			list_iterator(nonConstPointer node = 0) : _node(node) {}
-			list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonCoinstPointer(); }
+			list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonConstPointer(); }
 			~list_iterator() {}
 
-			nonConstPointer	getNonCoinstPointer() const		{ return _node; }
+			nonConstPointer	getNonConstPointer() const		{ return _node; }
 
 			list_iterator& operator=(const list_iterator& assign)
 			{

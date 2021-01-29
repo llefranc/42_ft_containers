@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 14:11:32 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:20:58 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ namespace ft
 			*	@param copy		The rev_random_iterator that will be copied.
 			*/
 			rev_random_iterator(const rev_random_iterator<T, false>& copy) :
-				rev_bidirec_iterator(copy.getNonCoinstPointer()) {}
+				rev_bidirec_iterator(copy.getNonConstPointer()) {}
 
 			/**
 			*	Convert constructor : creates a rev_random_iterator from a const / not const 
@@ -93,7 +93,7 @@ namespace ft
 			*	@param copy		The random_iterator that will be converted.
 			*/
 			explicit rev_random_iterator(const random_iterator<T, false>& copy) :
-				rev_bidirec_iterator(copy.getNonCoinstPointer() - 1) {}
+				rev_bidirec_iterator(copy.getNonConstPointer() - 1) {}
 
 			~rev_random_iterator() {}
 

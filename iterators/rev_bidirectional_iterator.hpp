@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 11:30:02 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:20:38 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ namespace ft
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
 			rev_bidirec_iterator(nonConstPointer val = 0) : _val(val) {}
-			rev_bidirec_iterator(const rev_bidirec_iterator<T, false>& copy) { _val = copy.getNonCoinstPointer(); }
-			rev_bidirec_iterator(const ft::bidirec_iterator<T, false>& copy) { _val = copy.getNonCoinstPointer(); }
+			rev_bidirec_iterator(const rev_bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
+			rev_bidirec_iterator(const ft::bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
 			~rev_bidirec_iterator() {}
 
-			nonConstPointer	getNonCoinstPointer() const		{ return _val; }
+			nonConstPointer	getNonConstPointer() const		{ return _val; }
 
 			rev_bidirec_iterator& operator=(const rev_bidirec_iterator& assign)
 			{

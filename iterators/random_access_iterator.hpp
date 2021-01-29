@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 14:11:23 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/01/29 16:20:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ namespace ft
 			*	@param copy		The iterator that will be copied.
 			*/
 			random_iterator(const random_iterator<T, false>& copy) :
-					bidirec_iterator(copy.getNonCoinstPointer()) {};
+					bidirec_iterator(copy.getNonConstPointer()) {};
 
 			~random_iterator() {}
 
