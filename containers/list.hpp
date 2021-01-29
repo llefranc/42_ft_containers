@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/26 23:22:18 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/01/29 15:31:56 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,16 +222,8 @@ namespace ft
 
 			void pop_front()
 			{
-				if (!_size)
-					return ;
-				
-				Node* tmp = _endList->next;
-				_endList->next->next->prev = _endList;
-				_endList->next = _endList->next->next;
-
-				// delete tmp; VERSION SANS ALLOC
-				deleteNode(tmp);
-				--_size;
+				if (_size)
+					deleteNode(_endList->next);
 			}
 
 			void push_back (const value_type& val)
@@ -250,16 +242,8 @@ namespace ft
 	
 			void pop_back()
 			{
-				if (!_size)
-					return ;
-				
-				Node* tmp = _endList->prev;
-				_endList->prev->prev->next = _endList;
-				_endList->prev = _endList->prev->prev;
-
-				// delete tmp;  VERSION SANS ALLOC
-				deleteNode(tmp);
-				--_size;
+				if (_size)
+					deleteNode(_endList->prev);
 			}
 
 			/**
@@ -315,14 +299,18 @@ namespace ft
 					position = insert(position, *it.first);
 			}
 
-			// iterator erase (iterator position)
-			// {
-			// 	if 
-			// }
-			// iterator erase (iterator first, iterator last);
+			iterator erase (iterator position)
+			{
+				// Using iterator's Node constructor for creating last
+				return erase(position, position->next);
+			}
 
-			// iterator erase (iterator position);
-			// iterator erase (iterator first, iterator last);
+			iterator erase (iterator first, iterator last)
+			{
+				for (; first != last;)
+					deleteNode((++first)->prev);
+				return last;
+			}
 
 			void swap (list& x)
 			{
@@ -343,18 +331,87 @@ namespace ft
 				while (_size)
 					pop_back();
 			}
-
 			
 			// entire list (1)	
-			// void splice (iterator position, list& x);
-			// single element (2)	
-			// void splice (iterator position, list& x, iterator i);
-			// element range (3)	
-			// void splice (iterator position, list& x, iterator first, iterator last);
-			// void remove (const value_type& val);
+			void splice (iterator position, list& x)
+			{
+				while (x.size())
+					splice(position, x, x.begin());
+			}
 
-			// template <class Predicate>
-			//   void remove_if (Predicate pred);
+
+			// single element (2)	
+			void splice (iterator position, list& x, iterator i)
+			{
+				// Linking previous and next node in x together
+				i->next->prev = i->prev;
+				i->prev->next = i->next;
+
+				// Linking i in this list
+				i->prev = position->prev;
+				i->next = position.getNonCoinstPointer();
+				position->prev->next = i.getNonCoinstPointer();
+				position->prev = i.getNonCoinstPointer();
+				
+				--x._size;
+				++_size;
+			}
+
+			// element range (3)	
+			void splice (iterator position, list& x, iterator first, iterator last)
+			{
+				if (first == last)
+					return;
+
+				if (first->next == last.getNonCoinstPointer())
+					splice(position, x, first);
+				else
+				{
+					// Counting range' size
+					size_type rangeSize = 0;
+					for (iterator tmp(first); tmp != last; ++tmp)
+						++rangeSize;
+					
+					// Saving last range's elem
+					iterator lastRangeElem(last->prev);
+					
+					// Removing range from list x
+					first->prev->next = last.getNonCoinstPointer();
+					last->prev = first->prev;
+
+					// Linking range in this list
+					first->prev = position->prev;
+					lastRangeElem->next = position.getNonCoinstPointer();
+					position->prev->next = first.getNonCoinstPointer();
+					position->prev = lastRangeElem.getNonCoinstPointer();
+
+					x._size -= rangeSize;
+					_size += rangeSize;
+				}
+			}
+
+			void remove (const value_type& val)
+			{
+				for (iterator it = end(); it->next != end().getNonCoinstPointer();)
+				{
+					if (it->next->content == val)
+						deleteNode(it->next);
+					else
+						++it;
+				}
+			}
+
+			template <class Predicate>
+			void remove_if (Predicate pred)
+			{
+				for (iterator it = end(); it->next != end().getNonCoinstPointer();)
+				{
+					if (pred(it->next->content))
+						deleteNode(it->next);
+					else
+						++it;
+				}
+			}
 
 			//   (1)	
 			// void unique();
@@ -453,8 +510,15 @@ namespace ft
 			*/
 			void deleteNode(Node *toDelete)
 			{
+				// Linking previous and next element together
+				toDelete->prev->next = toDelete->next;
+				toDelete->next->prev = toDelete->prev;
+
+				// delete toDelete;			VERSION SANS ALLOCATOR
 				_allocT.destroy(&toDelete->content);
 				_allocNode.deallocate(toDelete, 1);
+
+				--_size;
 			}
 
 			/**
