@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/29 17:25:03 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/01 16:58:07 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,15 +438,19 @@ namespace ft
 				}
 			}
 
-			//   (1)	
 			void merge (list& x)
 			{
 				iterator thisIt = end();
+
+				// Starting from the end, until all elements in x are removed and only
+				// end element remained, pointing to itself
 				for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
 				{
+					// If we reached end of this list or if comp is true
 					if (thisIt->next == end().getNonConstPointer() ||
 							xIt->next->content < thisIt->next->content)
 					{
+						// Splicing new element and iterator in this list will be pointing on it
 						splice(thisIt->next, x, xIt->next);
 						++thisIt;
 					}
@@ -455,17 +459,20 @@ namespace ft
 				}
 			}
 			
-			A FAIRE
-			// (2)	
 			template <class Compare>
 			void merge (list& x, Compare comp)
 			{
 				iterator thisIt = end();
+				
+				// Starting from the end, until all elements in x are removed and only
+				// end element remained, pointing to itself
 				for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
 				{
+					// If we reached end of this list or if comp is true
 					if (thisIt->next == end().getNonConstPointer() ||
 							comp(xIt->next->content, thisIt->next->content))
 					{
+						// Splicing new element and iterator in this list will be pointing on it
 						splice(thisIt->next, x, xIt->next);
 						++thisIt;
 					}
@@ -475,7 +482,25 @@ namespace ft
 			}
 
 			//   (1)	
-			//   void sort();
+			void sort()
+			{
+				for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
+				{
+					iterator tmp(it);
+					for (iterator min = it; min != end();)
+					{
+						++min;
+						if (*min < *tmp)
+							tmp = min;
+					}
+					if (*tmp != *it)
+					{
+						// iterator *prevElem = it->prev;
+						swap2Nodes(tmp.getNonConstPointer(), it.getNonConstPointer());
+						it = tmp;
+					}
+				}
+			}
 			// (2)	
 			// template <class Compare>
 			//   void sort (Compare comp);
@@ -582,6 +607,53 @@ namespace ft
 				_allocT.construct(&newNode->content, val);
 				
 				return newNode;
+			}
+
+		// 2		   <<<-  ->>>>
+		// 1	 <<<- ->>>  
+		// 	0     1     2      3
+
+		
+		// 2		   <<<-  ->>>>
+		// 1	 <<<- ->>>  
+		// t	 <<<- ->>>  
+		// 	0     1     2      3
+
+		//  0     2     1      3
+
+			/**
+			*	Swap two nodes by exchanging their previous and next Node*.
+			*
+			*	@param a		Will be swap with b.
+			*	@param b		Will be swap with a.
+			*/
+			void swap2Nodes(Node *a, Node *b)
+			{
+				// If a and b are neighbor nodes but b is before a,
+				// reversing them so a is always before b
+				if (a->prev == b)
+					swap(a, b);
+
+				Node *aPrev = a->prev;
+				Node *aNext = a->next;
+				
+				// Case a and b aren't neighbor nodes
+				if (a->next != b)
+				{
+					a->prev = b->prev;
+					a->next = b->next;
+					b->prev = aPrev;
+					b->next = aNext;
+				}
+				
+				// Case a and b are neighbor nodes
+				else
+				{
+					a->prev = aNext;
+					a->next = b->next;
+					b->prev = aPrev;
+					b->next = a;
+				}
 			}
 
 			/**

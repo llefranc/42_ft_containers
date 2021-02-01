@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/29 16:49:16 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/01 16:57:41 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,14 @@
 int main()
 {
 	{
-		std::list<int> x;
-
-		for (int i = 0; i < 10; ++i)
-			x.push_back(i);
-
 		std::list<int> x2;
 
-		// x2.push_back(20);
-		for (int i = 0; i < 20; i += 2)
+		for (int i = 20; i > 0; i -= 2)
 		{	x2.push_back(i);
 			x2.push_back(i);}
-		
-		// std::cout << "-------- STD\nx2: ";
-		// for(std::list<int>::iterator it = x2.begin(); it != x2.end(); ++it)
-		// 	std::cout << *it << " | ";
-		// std::cout << "\nsize of x2 = " << x2.size() << "\n";		
+		x2.push_back(100);
 
-		x.merge(x2);
-
-		std::cout << "\nx: ";
-		for(std::list<int>::iterator it = x.begin(); it != x.end(); ++it)
-			std::cout << *it << " | ";
-		std::cout << "\nsize of x = " << x.size() << "\n";
+		x2.sort();
 
 		std::cout << "\nx2: ";
 		for(std::list<int>::iterator it = x2.begin(); it != x2.end(); ++it)
@@ -57,30 +42,14 @@ int main()
 	}
 
 	{
-		ft::list<int> x;
-
-		for (int i = 0; i < 10; ++i)
-			x.push_back(i);
-
 		ft::list<int> x2;
 
-		x2.push_back(20);
-		for (int i = 0; i < 20; i += 2)
+		for (int i = 20; i > 0; i -= 2)
 		{	x2.push_back(i);
 			x2.push_back(i);}
-		
-		// std::cout << "-------- FT\nx2: ";
-		// for(ft::list<int>::iterator it = x2.begin(); it != x2.end(); ++it)
-		// 	std::cout << *it << " | ";
-		// std::cout << "\nsize of x2 = " << x2.size() << "\n";
+		x2.push_back(100);
 
-
-		x.merge(x2);
-
-		std::cout << "\nx: ";
-		for(ft::list<int>::iterator it = x.begin(); it != x.end(); ++it)
-			std::cout << *it << " | ";
-		std::cout << "\nsize of x = " << x.size() << "\n";
+		x2.sort();
 
 		std::cout << "\nx2: ";
 		for(ft::list<int>::iterator it = x2.begin(); it != x2.end(); ++it)
