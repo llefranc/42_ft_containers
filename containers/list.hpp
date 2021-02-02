@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/01 16:58:07 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/02 08:10:31 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -487,23 +487,44 @@ namespace ft
 				for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
 				{
 					iterator tmp(it);
-					for (iterator min = it; min != end();)
-					{
-						++min;
+					
+					// Checking if there is a value inf to it after it
+					for (iterator min(it->next); min != end(); ++min)
 						if (*min < *tmp)
 							tmp = min;
-					}
-					if (*tmp != *it)
+
+					// Swapping it and the inf node and restarting to search
+					// inf values from the node that was swapped
+					if (*tmp < *it)
 					{
-						// iterator *prevElem = it->prev;
 						swap2Nodes(tmp.getNonConstPointer(), it.getNonConstPointer());
 						it = tmp;
 					}
 				}
 			}
+			
 			// (2)	
-			// template <class Compare>
-			//   void sort (Compare comp);
+			template <class Compare>
+			void sort (Compare comp)
+			{
+				for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
+				{
+					iterator tmp(it);
+					
+					// Checking if there is a value inf to it after it
+					for (iterator min(it->next); min != end(); ++min)
+						if (comp(*min, *tmp))
+							tmp = min;
+
+					// Swapping it and the inf node and restarting to search
+					// inf values from the node that was swapped
+					if (comp(*tmp, *it))
+					{
+						swap2Nodes(tmp.getNonConstPointer(), it.getNonConstPointer());
+						it = tmp;
+					}
+				}
+			}
 
 			/**
 			*	Reverse the list. Each node from the beginning will be inserted from the
@@ -539,19 +560,39 @@ namespace ft
 			}
 
 			//   (1)	
-			//   friend bool operator== (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
-			// (2)	
-			//   friend bool operator!= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
-			// (3)	
-			//   friend bool operator<  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
-			// (4)	
-			//   friend bool operator<= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
-			// (5)	
-			//   friend bool operator>  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
-			// (6)	
-			//   friend bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs);
+			friend bool operator==(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)
+			{
+				if (lhs.size() != rhs.size())
+					return false;
 
-			friend void swap (list& x, list& y)	{ x.swap(y); }
+				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
+						it.first != lhs.end(); ++it.first, ++it.second)
+					if (*(it.first) != *(it.second))
+						return false;
+				return true;
+			}
+			
+			// (2)	
+			friend bool operator!=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) 		{ return !(lhs == rhs); }
+			
+			// (3)	
+			friend bool operator<(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)
+			{
+				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
+						it.first != lhs.end() && it.second != rhs.end(); ++it.first, ++it.second)
+					if (*(it.first) < *(it.second))
+						return true;
+				return (lhs.size() < rhs.size());
+			}
+			// (5)	
+			friend bool operator>  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return rhs < lhs; }
+			// (4)	
+			friend bool operator<=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return !(rhs < lhs); }
+			// (6)	
+			friend bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return !(lhs < rhs); }
+
+			friend void swap(list& x, list& y)	{ x.swap(y); }
+
 
 		private:
 
@@ -559,6 +600,7 @@ namespace ft
 			size_type	_size;
 			Alloc		_allocT;
 			std::allocator<Node>	_allocNode;
+
 
 			/* ------------------------------------------------------------- */
 			/* ------------------ PRIVATE MEMBER FUNCTIONS ----------------- */
@@ -609,18 +651,6 @@ namespace ft
 				return newNode;
 			}
 
-		// 2		   <<<-  ->>>>
-		// 1	 <<<- ->>>  
-		// 	0     1     2      3
-
-		
-		// 2		   <<<-  ->>>>
-		// 1	 <<<- ->>>  
-		// t	 <<<- ->>>  
-		// 	0     1     2      3
-
-		//  0     2     1      3
-
 			/**
 			*	Swap two nodes by exchanging their previous and next Node*.
 			*
@@ -634,24 +664,37 @@ namespace ft
 				if (a->prev == b)
 					swap(a, b);
 
+				// Saving elements next to a
 				Node *aPrev = a->prev;
 				Node *aNext = a->next;
 				
 				// Case a and b aren't neighbor nodes
 				if (a->next != b)
 				{
+					// Switching a to b position, between prev and next elem to b
 					a->prev = b->prev;
 					a->next = b->next;
+					b->next->prev = a;
+					b->prev->next = a;
+					
+					// Switching a to b position, between prev and next elem to a
 					b->prev = aPrev;
 					b->next = aNext;
+					aPrev->next = b;
+					aNext->prev = b;
 				}
 				
 				// Case a and b are neighbor nodes
 				else
 				{
-					a->prev = aNext;
+					// switching a to b position
+					a->prev = b;
 					a->next = b->next;
+					b->next->prev = a;
+					
+					// Switching b to a position
 					b->prev = aPrev;
+					aPrev->next = b;
 					b->next = a;
 				}
 			}

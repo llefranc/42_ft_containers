@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/27 18:48:01 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/02 07:59:01 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -680,6 +680,7 @@ namespace ft
 			*	@param y	Will be swap with x.
 			*/
 			friend void swap (vector& x, vector& y)							{ x.swap(y); }
+			
 			
 		private:	
 		
