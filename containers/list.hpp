@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 08:10:31 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/02 15:55:42 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ namespace ft
 				Node*	next;
 			};			
 		
+		
 		public:
 
 			/* ------------------------------------------------------------- */
@@ -53,17 +54,30 @@ namespace ft
 			typedef typename ft::rev_list_iterator<T, Node, false>	reverse_iterator;
 			typedef typename ft::rev_list_iterator<T, Node, true>	const_reverse_iterator;
 
+
 			/* ------------------------------------------------------------- */
 			/* ------------------------ COPLIEN FORM ----------------------- */
 
-			// default (1)	
+			/**
+			*	Default constructor, creates a list with a size of 0. Initalizes an end node
+			*	pointing to itself.
+			*
+			*	@param alloc	The template param used for the allocation.
+			*/
 			explicit list (const allocator_type& alloc = allocator_type()) :
 					_size(0), _allocT(alloc)
 			{
 				newEndNode();
 			}
 			
-			// fill (2)	
+			/**
+			*	Fill constructor, creates a list with a size of n and initializes the 
+			*	values.
+			*
+			*	@param n		The number of elements that will be created.
+			*	@param val		The value used for initialization (value initialized by default).
+			*	@param alloc	The template param used for the allocation.
+			*/
 			explicit list (size_type n, const value_type& val = value_type(),
 			                const allocator_type& alloc = allocator_type()) :
 					_size(0), _allocT(alloc)
@@ -74,7 +88,14 @@ namespace ft
 					push_back(val);
 			}
 
-			// range (3)	
+			/**
+			*	Range constructor, creates a list with a size equal to the range between two
+			*	iterators and copy the values of this range to the new elements created.
+			*
+			*	@param first	An iterator representing first element of the range.
+			*	@param last		An iterator indicating end of the range (will be excluded and not copied).
+			*	@param alloc	The template param used for the allocation.
+			*/
 			template <class InputIterator>
 			list (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0) :
@@ -86,7 +107,12 @@ namespace ft
 					push_back(*first);
 			}
 			
-			// copy (4)	
+			/**
+			*	Copy constructor, creates a list with the same size and copy/construct
+			*	all x values to the new elements allocated.
+			*	
+			*	@param x		The list that will be copied.
+			*/
 			list (const list& x) :
 					_size(0), _allocT(x._allocT), _allocNode(x._allocNode)
 			{
@@ -96,6 +122,10 @@ namespace ft
 					push_back(*it);
 			}
 
+			/**
+			*	Destructor, destroys all the list's elements and list's nodes, including
+			*	end node.
+			*/
 			~list()
 			{
 				while (_size > 0)
@@ -104,7 +134,12 @@ namespace ft
 				_allocNode.deallocate(_endList, 1);
 			}
 
-			// copy (1)
+			/**
+			*	Assigns a list to this list. Calls the copy constructor to do the
+			*	assignment(copy and swap idiom).
+			*	
+			*	@param x		The list that will be assigned.
+			*/
 			list& operator= (const list& x)
 			{
 				list copy(x);
@@ -113,21 +148,74 @@ namespace ft
 				return *this;
 			}
 
-			iterator begin()				{ return !_size ? iterator(_endList) : iterator(_endList->next); }
-			const_iterator begin() const	{ return !_size ? iterator(_endList) : iterator(_endList->next); }
 
-			iterator end()					{ return iterator(_endList); }
-			const_iterator end() const		{ return const_iterator(_endList); }
+			/* ------------------------------------------------------------- */
+			/* ------------------------- ITERATORS ------------------------- */
 
-			reverse_iterator rbegin()				{ return !_size ? reverse_iterator(_endList) : reverse_iterator(_endList->prev); }
+			/**
+			*	@return		An iterator pointing to the first node of the list.
+			*/
+			iterator begin()						{ return !_size ? iterator(_endList) :
+														iterator(_endList->next); }
+
+			/**
+			*	@return		A const_iterator pointing to the first element of the list.
+			*/
+			const_iterator begin() const			{ return !_size ? iterator(_endList) :
+														iterator(_endList->next); }
+
+			/**
+			*	@return		An iterator pointing to the list end node. Access this
+			*				iterator will result in undefined behavior.
+			*/
+			iterator end()							{ return iterator(_endList); }
+
+			/**
+			*	@return		An const_iterator pointing to the list end node. Access this
+			*				iterator will result in undefined behavior.
+			*/
+			const_iterator end() const				{ return const_iterator(_endList); }
+
+			/**
+			*	@return		A reverse_iterator pointing to the last element of the list.
+			*				This is list end node if the list is empty.
+			*/
+			reverse_iterator rbegin()				{ return !_size ? reverse_iterator(_endList) : 
+														reverse_iterator(_endList->prev); }
+			
+			/**
+			*	@return		A const_reverse_iterator pointing to the last element of the list.
+			*				This is list end node if the list is empty.
+			*/
 			const_reverse_iterator rbegin() const	{ return !_size ? const_reverse_iterator(_endList) :
 														const_reverse_iterator(_endList->prev); }
 
+			/**
+			*	@return		A reverse_iterator pointing before the first element of the list
+			*				(so pointing to list end node because this is a circular linked list).
+			*				Access this iterator will result in undefined behavior.
+			*/
 			reverse_iterator rend()					{ return reverse_iterator(_endList); }
+
+			/**
+			*	@return		A const_reverse_iterator pointing before the first element of the list
+			*				(so pointing to list end node because this is a circular linked list).
+			*				Access this iterator will result in undefined behavior.
+			*/
 			const_reverse_iterator rend() const		{ return const_reverse_iterator(_endList); }
 
-			bool empty() const						{ return _size == 0; }
 
+			/* ------------------------------------------------------------- */
+			/* -------------------------- CAPACITY ------------------------- */
+			
+			/**
+			*	@return		True if the list' size is equal to 0.
+			*/
+			bool empty() const				{ return _size == 0; }
+
+			/**
+			*	@return		The size of the list.
+			*/
 			size_type size() const			{ return _size; }
 			
 			/**
@@ -140,11 +228,41 @@ namespace ft
 				return static_cast<size_type>(pow(2.0, 64.0) / static_cast<double>(sizeof(value_type))) - 1;
 			}
 
+
+			/* ------------------------------------------------------------- */
+			/* ---------------------- ELEMENTS ACCESS ---------------------- */	
+
+			/**
+			*	Access first list's element. Undefined behavior if the list is empty.
+			*	
+			*	@return		A reference to the first list's element.
+			*/
 			reference front()				{ return _endList->next->content; }
+
+			/**
+			*	Access first list's element. Undefined behavior if the list is empty.
+			*	
+			*	@return		A const reference to the first list's element.
+			*/
 			const_reference front() const 	{ return _endList->next->content; }
 
+			/**
+			*	Access last list's element. Undefined behavior if the list is empty.
+			*	
+			*	@return		A reference to the last list's element.
+			*/
 			reference back()				{ return _endList->prev->content; }
+
+			/**
+			*	Access last list's element. Undefined behavior if the list is empty.
+			*	
+			*	@return		A const reference to the last list's element.
+			*/
 			const_reference back() const	{ return _endList->prev->content; }
+
+
+			/* ------------------------------------------------------------- */
+			/* ------------------------- MODIFIERS ------------------------- */
 
 			/**
 			*	Assigns new contents to the list, replacing its current content, 
@@ -206,6 +324,13 @@ namespace ft
 					pop_back();
 			}
 
+			/**
+			*	Adds a new element at the beginning of the list, after its current first element.
+			*	Size is increased.  If list is empty, the new element is still inserted as first 
+			*	list element.
+			*
+			*	@param val	The new element will be copy constructed from val.
+			*/
 			void push_front (const value_type& val)
 			{
 				// Node* tmp = new Node; VERSION SANS ALLOC
@@ -220,12 +345,22 @@ namespace ft
 				++_size;
 			}
 
+			/**
+			*	Removes the first element in the list, reducing the container size by one.
+			*	This destroys the removed element. Does nothing if the list is empty.
+			*/
 			void pop_front()
 			{
 				if (_size)
 					deleteNode(_endList->next);
 			}
 
+			/**
+			*	Adds a new element at the end of the list, after its current last element.
+			*	Size is increased. If list is empty, the new element becomes first list element.
+			*
+			*	@param val	The new element will be copy constructed from val.
+			*/
 			void push_back (const value_type& val)
 			{
 				// Node* tmp = new Node; VERSION SANS ALLOC
@@ -240,6 +375,10 @@ namespace ft
 				++_size;
 			}
 	
+			/**
+			*	Removes the last element in the list, reducing the container size by one.
+			*	This destroys the removed element. Does nothing if the list is empty.
+			*/
 			void pop_back()
 			{
 				if (_size)
@@ -312,12 +451,25 @@ namespace ft
 				return last;
 			}
 
+			/**
+			*	Swaps a list with the content of this one.
+			*
+			*	@param x	The list to be swapped.
+			*/
 			void swap (list& x)
 			{
 				swap(_size, x._size);
 				swap(_endList, x._endList);
 			}
 
+			/**
+			*	Resizes the list so that it contains n elements. Push_back or pop_back will occured 
+			*	depending if elements need to be added or removed.
+			*	 
+			*	@param n	The number of elements that the list will contain after beeing resized.
+			*	@param val	If new elements need to be added, they will be initialize with val
+			*				(value initialize by default).
+			*/
 			void resize (size_type n, value_type val = value_type())
 			{
 				while (n > _size)
@@ -326,21 +478,41 @@ namespace ft
 					pop_back();
 			}
 
+			/**
+			*	Removes all elements from the list (which are destroyed), leaving the 
+			*	container with a size of 0. List end node is still existing.
+			*/
 			void clear()
 			{
 				while (_size)
 					pop_back();
 			}
 			
-			// entire list (1)	
+
+			/* ------------------------------------------------------------- */
+			/* ------------------------ OPERATIONS ------------------------- */	
+			
+			/**
+			*	Transfering the entire x list at a certain position in this list. This effectively inserts 
+			*	those elements into the container and removes them from x, altering the sizes of both containers.
+			*
+			*	@param position	Position within the container where the elements of x are inserted.
+			*	@param x		A list object of the same type.
+			*/
 			void splice (iterator position, list& x)
 			{
 				while (x.size())
 					splice(position, x, x.begin());
 			}
 
-
-			// single element (2)	
+			/**
+			*	Transfering one x element at a certain position in this list. This effectively inserts 
+			*	those elements into the container and removes them from x, altering the sizes of both containers.
+			*
+			*	@param position	Position within the container where the elements of x are inserted.
+			*	@param x		A list object of the same type.
+			*	@param i		Iterator to an element in x. Only this single element is transferred.
+			*/
 			void splice (iterator position, list& x, iterator i)
 			{
 				// Linking previous and next node in x together
@@ -357,7 +529,16 @@ namespace ft
 				++_size;
 			}
 
-			// element range (3)	
+			/**
+			*	Transfering a range of x elements at a certain position in this list. This effectively 
+			*	inserts those elements into the container and removes them from x, altering the 
+			*	sizes of both containers.
+			*
+			*	@param position	Position within the container where the elements of x are inserted.
+			*	@param x		A list object of the same type.
+			*	@param first	Iterator pointing to the first range's element inside x (will be transfered).
+			*	@param last		Iterator pointing to the last range's element inside x (will not be transfered).
+			*/
 			void splice (iterator position, list& x, iterator first, iterator last)
 			{
 				if (first == last)
@@ -390,6 +571,12 @@ namespace ft
 				}
 			}
 
+			/**
+			*	Removes from the container all the elements that compare equal to val. This calls the 
+			*	destructor of these objects and reduces the container size by the number of elements removed.
+			*
+			*	@param val	Value of the elements to be removed.
+			*/
 			void remove (const value_type& val)
 			{
 				for (iterator it = end(); it->next != end().getNonConstPointer();)
@@ -401,6 +588,14 @@ namespace ft
 				}
 			}
 
+			/**
+			*	Removes from the container all the elements for which Predicate pred returns true. This calls the 
+			*	destructor of these objects and reduces the container size by the number of elements removed.
+			*
+			*	@param pred	Unary predicate that takes a value of the same type as those contained 
+			*				in the list and returns true or false (when true occured for an element, 
+			*				this one will be removed).
+			*/
 			template <class Predicate>
 			void remove_if (Predicate pred)
 			{
@@ -413,7 +608,9 @@ namespace ft
 				}
 			}
 
-			//   (1)	
+			/**
+			*	Removes all but the first element from every consecutive group of equal elements in the container.
+			*/
 			void unique()
 			{
 				for (iterator it = end(); it->next != end().getNonConstPointer();)
@@ -425,7 +622,14 @@ namespace ft
 				}
 			}
 
-			// (2)	
+			/**
+			*	Removes all but the first element from every consecutive group in the container 
+			*	for which the binary predicate will return true.
+			*
+			*	@param binary_pred	Binary predicate that takes two values of the same type than those contained 
+			*						in the list and returns true to remove the element passed as first argument, 
+			*						false otherwise.
+			*/
 			template <class BinaryPredicate>
 			void unique (BinaryPredicate binary_pred)
 			{
@@ -438,8 +642,18 @@ namespace ft
 				}
 			}
 
+			/**
+			*	Merges x into the list by transferring all of its elements at their respective ordered positions 
+			*	into the container (both containers shall already be ordered). The comparison between the two
+			*	list elements is done by using operator<. This empty x list.
+			*
+			*	@param x	A list object of the same type.
+			*/
 			void merge (list& x)
 			{
+				if (&x == this)
+					return ;
+					
 				iterator thisIt = end();
 
 				// Starting from the end, until all elements in x are removed and only
@@ -459,9 +673,21 @@ namespace ft
 				}
 			}
 			
+			/**
+			*	Merges x into the list by transferring all of its elements at their respective ordered positions 
+			*	into the container (both containers shall already be ordered). The comparison between the two
+			*	list elements is done by using a binary predicate. This empty x list.
+			*
+			*	@param x	A list object of the same type.
+			*	@param comp	Binary predicate that, taking two values of the same type than those contained in the list, 
+			*				returns true if the first argument is considered to go before the second, and false otherwise.
+			*/
 			template <class Compare>
 			void merge (list& x, Compare comp)
 			{
+				if (&x == this)
+					return ;
+				
 				iterator thisIt = end();
 				
 				// Starting from the end, until all elements in x are removed and only
@@ -481,7 +707,11 @@ namespace ft
 				}
 			}
 
-			//   (1)	
+
+			/**
+			*	Sorts the elements in the list using operator<. The nodes with their content are moved, 
+			*	none element is destructed / copy constructed.
+			*/
 			void sort()
 			{
 				for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
@@ -502,8 +732,14 @@ namespace ft
 					}
 				}
 			}
-			
-			// (2)	
+
+			/**
+			*	Sorts the elements in the list using a binary predicate. The nodes with their content 
+			*	are moved, none element is destructed / copy constructed.
+			*
+			*	@param comp	Binary predicate that, taking two values of the same type than those contained in the list, 
+			*				returns true if the first argument is considered to go before the second, and false otherwise.
+			*/
 			template <class Compare>
 			void sort (Compare comp)
 			{
@@ -559,7 +795,13 @@ namespace ft
 				}
 			}
 
-			//   (1)	
+
+			/* ------------------------------------------------------------- */
+			/* --------------- NON-MEMBER FUNCTION OVERLOADS --------------- */
+
+			/**
+			*	@return		True if the 2 vectors have same size and same content.
+			*/
 			friend bool operator==(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)
 			{
 				if (lhs.size() != rhs.size())
@@ -572,10 +814,18 @@ namespace ft
 				return true;
 			}
 			
-			// (2)	
+			/**
+			*	@return		True if the 2 vectors have different size or different content.
+			*/
 			friend bool operator!=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs) 		{ return !(lhs == rhs); }
 			
-			// (3)	
+			/**
+			*	Compares the elements sequentially using operator< and stopping at the 
+			*	first occurrence.
+			*
+			*	@return		True if all lhs' elements are < to rhs' elements, or if
+			*				lhs' content == rhs' content and lhs' size < rhs' size.
+			*/
 			friend bool operator<(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)
 			{
 				for (ft::pair<const_iterator, const_iterator> it(lhs.begin(), rhs.begin());
@@ -584,22 +834,46 @@ namespace ft
 						return true;
 				return (lhs.size() < rhs.size());
 			}
-			// (5)	
+
+			/**
+			*	Uses operator< to compare the 2 vectors (rhs < lhs).
+			*
+			*	@return		True if all lhs' elements are > to all rhs' elements, or if
+			*				lhs' content == rhs' content and lhs' size > rhs' size.
+			*/
 			friend bool operator>  (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return rhs < lhs; }
-			// (4)	
+
+			/**
+			*	Uses operator< to compare the 2 vectors !(rhs < lhs).
+			*
+			*	@return		True if all lhs' elements are <= to all rhs' elements, or if
+			*				lhs' content == rhs' content and lhs' size <= rhs' size.
+			*/
 			friend bool operator<=(const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return !(rhs < lhs); }
-			// (6)	
+
+			/**
+			*	Uses operator< to compare the 2 vectors !(lhs < rhs).
+			*
+			*	@return		True if all lhs' elements are >= to all rhs' elements, or if
+			*				lhs' content == rhs' content and lhs' size >= rhs' size.
+			*/
 			friend bool operator>= (const list<T,Alloc>& lhs, const list<T,Alloc>& rhs)		{ return !(lhs < rhs); }
 
-			friend void swap(list& x, list& y)	{ x.swap(y); }
+			/**
+			*	Swaps the content of two vectors.
+			*
+			*	@param x	Will be swap with y.
+			*	@param y	Will be swap with x.
+			*/
+			friend void swap(list& x, list& y)												{ x.swap(y); }
 
 
 		private:
 
-			Node*		_endList;
-			size_type	_size;
-			Alloc		_allocT;
-			std::allocator<Node>	_allocNode;
+			Node*					_endList;		// Pointer to the neutral element of the circle linked list
+			size_type				_size;			// Number of T values inside the vector
+			Alloc					_allocT;		// Copy of allocator_type object
+			std::allocator<Node>	_allocNode;		// Node's allocator
 
 
 			/* ------------------------------------------------------------- */
@@ -700,13 +974,13 @@ namespace ft
 			}
 
 			/**
-			*	Swaps two variables.
+			*	Swaps two variables using references.
 			*
 			*	@param a		Will be swap with b.
 			*	@param b		Will be swap with a.
 			*/
 			template <typename U>
-			void swap(U& a, U&b)
+			void swap(U& a, U& b)
 			{
 				U tmp = a;
 				a = b;

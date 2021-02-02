@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 07:59:01 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/02 15:51:27 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ namespace ft
 			/**
 			*	Default constructor, creates a vector with a size of 0.
 			*
-			*	@param alloc	The template param used for the allocation
+			*	@param alloc	The template param used for the allocation.
 			*/
 			explicit vector(const allocator_type& alloc = allocator_type()) :
 					_alloc(alloc), _size(0), _capacity(0)
@@ -109,12 +109,12 @@ namespace ft
 			};
 
 			/**
-			*	Fill constructor, creates a vector with a size of n and initialized the 
+			*	Fill constructor, creates a vector with a size of n and initializes the 
 			*	values.
 			*
-			*	@param n		The number of elements that will be created
-			*	@param val		The value used for initialization (value initialized by default)
-			*	@param alloc	The template param used for the allocation
+			*	@param n		The number of elements that will be created.
+			*	@param val		The value used for initialization (value initialized by default).
+			*	@param alloc	The template param used for the allocation.
 			*/
 			explicit vector(size_type n, const value_type& val = value_type(),
 							const allocator_type& alloc = allocator_type()) :
@@ -130,9 +130,9 @@ namespace ft
 			*	Range constructor, creates a vector with a size equal to the range between two
 			*	iterators and copy the values of this range to the new elements created.
 			*
-			*	@param first	An iterator representing first element of the range
-			*	@param last		An iterator indicating end of the range (will be excluded and not copied)
-			*	@param alloc	The template param used for the allocation
+			*	@param first	An iterator representing first element of the range.
+			*	@param last		An iterator indicating end of the range (will be excluded and not copied).
+			*	@param alloc	The template param used for the allocation.
 			*/
 			template <class InputIterator>
 			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
@@ -195,12 +195,12 @@ namespace ft
 			/* ------------------------- ITERATORS ------------------------- */
 			
 			/**
-			*	@return		An iterator pointing at the first element of the vector.
+			*	@return		An iterator pointing to the first element of the vector.
 			*/
 			iterator		begin()					{ return iterator(_vector); }
 			
 			/**
-			*	@return		A const_iterator pointing at the first element of the vector.
+			*	@return		A const_iterator pointing to the first element of the vector.
 			*/
 			const_iterator	begin() const			{ return const_iterator(_vector); }
 			
@@ -217,12 +217,12 @@ namespace ft
 			const_iterator	end() const				{ return const_iterator(_vector + _size); }
 
 			/**
-			*	@return		A reverse_iterator pointing at the last element of the vector.
+			*	@return		A reverse_iterator pointing to the last element of the vector.
 			*/
 			reverse_iterator rbegin()				{ return reverse_iterator(_vector + _size - 1); }
 
 			/**
-			*	@return		A const_reverse_iterator pointing at the last element of the vector.
+			*	@return		A const_reverse_iterator pointing to the last element of the vector.
 			*/
 			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_vector + _size - 1); }
 			
@@ -246,7 +246,6 @@ namespace ft
 			*	@return		The size of the vector.
 			*/
 			size_type		size() const		{ return _size; }
-			
 			
 			/**
 			*	@return		The max possible size to be allocated.
@@ -436,7 +435,7 @@ namespace ft
 
 			/**
 			*	Removes the last element in the vector, reducing the container size by one.
-			*	This destroys the removed element.
+			*	This destroys the removed element. Does nothing if the vector is empty.
 			*/
 			void pop_back()
 			{
@@ -650,7 +649,7 @@ namespace ft
 			}
 
 			/**
-			*	Uses operator< to compare the 2 vectors (rhs < lhs)
+			*	Uses operator< to compare the 2 vectors (rhs < lhs).
 			*
 			*	@return		True if all lhs' elements are > to all rhs' elements, or if
 			*				lhs' content == rhs' content and lhs' size > rhs' size.
@@ -658,7 +657,7 @@ namespace ft
 			friend bool operator>(const vector& lhs, const vector& rhs)		{ return rhs < lhs; }
 
 			/**
-			*	Uses operator< to compare the 2 vectors !(rhs < lhs)
+			*	Uses operator< to compare the 2 vectors !(rhs < lhs).
 			*
 			*	@return		True if all lhs' elements are <= to all rhs' elements, or if
 			*				lhs' content == rhs' content and lhs' size <= rhs' size.
@@ -666,7 +665,7 @@ namespace ft
 			friend bool operator<=(const vector& lhs, const vector& rhs)	{ return !(rhs < lhs); }
 			
 			/**
-			*	Uses operator< to compare the 2 vectors !(lhs < rhs)
+			*	Uses operator< to compare the 2 vectors !(lhs < rhs).
 			*
 			*	@return		True if all lhs' elements are >= to all rhs' elements, or if
 			*				lhs' content == rhs' content and lhs' size >= rhs' size.
