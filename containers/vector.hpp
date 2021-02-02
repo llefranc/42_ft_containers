@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 15:51:27 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/02 19:01:23 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ namespace ft
 	*
 	* - Non-member function overloads:
 	* relational operators:	Relational operators for vector
-	* swap:					Exchange contents of vectors
+	* swap:					Exchange contents of two vectors
 	* ------------------------------------------------------------- *
 	*/
 	

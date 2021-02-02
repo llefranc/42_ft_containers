@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 15:55:42 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/02 19:02:27 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,57 @@
 
 namespace ft
 {
+	/**
+	* ------------------------------------------------------------- *
+	* ------------------------- FT::LIST -------------------------- *
+	*
+	* - Coplien form:			
+	* (constructor):		Construct list
+	* (destructor)			List destructor
+	* operator=				Assign content
+	*
+	* - Iterators:
+	* begin					Return iterator to beginning
+	* end					Return iterator to end
+	* rbegin				Return reverse iterator to reverse beginning
+	* rend					Return reverse iterator to reverse end
+	*
+	* - Capacity:
+	* empty					Test whether container is empty
+	* size					Return size
+	* max_size				Return maximum size
+	*
+	* - Element access:
+	* front					Access first element
+	* back					Access last element
+	*
+	* - Modifiers:
+	* assign				Assign new content to container
+	* push_front			Insert element at beginning
+	* pop_front				Delete first element
+	* push_back				Add element at the end
+	* pop_back				Delete last element
+	* insert				Insert elements
+	* erase					Erase elements
+	* swap					Swap content
+	* resize				Change size
+	* clear					Clear content
+	*
+	* - Operations:
+	* splice				Transfer elements from list to list
+	* remove				Remove elements with specific value
+	* remove_if				Remove elements fulfilling condition
+	* unique				Remove duplicate values
+	* merge					Merge sorted lists
+	* sort					Sort elements in container
+	* reverse				Reverse the order of elements
+	*
+	* - Non-member function overloads
+	* relational operators:	Relational operators for list
+	* swap:					Exchanges contents of two lists
+	* ------------------------------------------------------------- *
+	*/
+
 	template <typename T, class Alloc = std::allocator<T> >
 	class list
 	{
