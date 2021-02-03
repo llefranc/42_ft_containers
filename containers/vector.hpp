@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 11:01:48 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/03 15:04:56 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,16 +392,15 @@ namespace ft
 			void assign (InputIterator first, InputIterator last,
 						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
 			{
-				// Allocating more storage only if actual capacity isn't enough
-				if (static_cast<size_type>(last - first) > _capacity)
-					reallocateVec(static_cast<size_type>(last - first));
+				this->~vector();
+				_vector = _alloc.allocate(static_cast<size_type>(last - first));
 				
 				size_type i = 0;
 				for (; first != last; ++i, ++first)
 					_alloc.construct(&_vector[i], *first);
 				_size = i;
 			}
-			
+
 			/**
 			*	Assigns new contents to the vector, replacing its current content, 
 			*	and modifying its size accordingly.
@@ -411,14 +410,14 @@ namespace ft
 			*/	
 			void assign (size_type n, const value_type& val)
 			{
-				// Allocating more storage only if actual capacity isn't enough
-				if (n > _capacity)
-					reallocateVec(n);
-					
+				this->~vector();
+				_vector = _alloc.allocate(n);
+				
 				for (size_type i = 0; i < n; ++i)
 					_alloc.construct(&_vector[i], val);
 				_size = n;
 			}
+			
 			
 			/**
 			*	Adds a new element at the end of the vector, after its current last element.
