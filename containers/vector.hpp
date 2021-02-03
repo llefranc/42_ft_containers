@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 10:13:38 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/03 10:53:15 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ namespace ft
 			
 			typedef	T											value_type;
 			typedef	Alloc										allocator_type;
-			typedef	ptrdiff_t									difference_type;
+			typedef	long long int								difference_type;
 			typedef	size_t										size_type;
 
 			typedef	T&											reference;
