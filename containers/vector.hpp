@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 19:01:23 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/03 10:13:38 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ namespace ft
 	*
 	* - Coplien form:
 	* (constructor):		Construct vector
-	* (destructor):			Vector destructor
-	* operator=:			Assign content
+	* (destructor):			Destruct vector
+	* operator=:			Assign vector
 	*
 	* - Iterators:
 	* begin:				Return iterator to beginning
@@ -187,7 +187,7 @@ namespace ft
 			{
 				vector tmp(x);
 				swap(tmp);
-				return (*this);
+				return *this;
 			}
 
 

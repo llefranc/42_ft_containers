@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/02 19:02:27 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/03 10:13:49 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ namespace ft
 	*
 	* - Coplien form:			
 	* (constructor):		Construct list
-	* (destructor)			List destructor
-	* operator=				Assign content
+	* (destructor)			Destruct list
+	* operator=				Assign list
 	*
 	* - Iterators:
 	* begin					Return iterator to beginning
