@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/29 16:20:19 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/03 10:56:28 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ namespace ft
 
 			/* -------- ALIASES -------- */
 
-			typedef ptrdiff_t		difference_type;
-			typedef T				value_type;
-			typedef size_t			size_type;
+			typedef long int										difference_type;
+			typedef T												value_type;
+			typedef size_t											size_type;
 			
 			typedef typename chooseConst<B, T&, const T&>::type		reference;
 			typedef typename chooseConst<B, T*, const T*>::type		pointer;
