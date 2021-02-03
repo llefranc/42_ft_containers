@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:16:45 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 10:34:44 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:53:46 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,21 @@ namespace ft
 			*	Calls member function empty of the underlying container object, which returns 
 			*	true if the container is empty.
 			*/
-			bool empty() const	{ return _ctnr.empty(); }
+			bool empty() const					{ return _ctnr.empty(); }
 			
 			/**
 			*	
 			*	Calls member function size of the underlying container object, which returns 
 			*	container' size.
 			*/
-			size_type size() const	{ return _ctnr.size(); }
+			size_type size() const				{ return _ctnr.size(); }
 			
 			/**
 			*	Calls member function front of the underlying container object, which returns a 
 			*	reference to the next element in the queue. The next element is the "oldest" element 
 			*	in the queue and the same element that is popped out from the queue when queue::pop is called.
 			*/
-			value_type& front()		{ return _ctnr.front(); }
+			value_type& front()					{ return _ctnr.front(); }
 
 			/**
 			*	Calls member function front of the underlying container object, which returns a const
@@ -122,19 +122,18 @@ namespace ft
 			*	in the queue and the same element that is popped out from the queue when queue::pop is called.
 			*/
 			const value_type& front() const		{ return _ctnr.front(); }
-
 			
 			/**
 			*	Calls member function back of the underlying container object, which returns a 
 			*	reference to the newest element in the queue (latest element pushed in the queue).
 			*/
-			value_type& top()	{ return _ctnr.back(); }
+			value_type& back()					{ return _ctnr.back(); }
 
 			/**
 			*	Calls member function back of the underlying container object, which returns a const 
 			*	reference to the newest element in the queue (latest element pushed in the queue).
 			*/
-			const value_type& top() const		{ return _ctnr.back(); }
+			const value_type& back() const		{ return _ctnr.back(); }
 			
 			/**
 			*	Calls member function push_back of the underlying container object, which inserts 
