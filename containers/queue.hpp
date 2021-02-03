@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.hpp                                          :+:      :+:    :+:   */
+/*   queue.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 10:34:09 by llefranc         ###   ########.fr       */
+/*   Created: 2021/02/03 10:16:45 by llefranc          #+#    #+#             */
+/*   Updated: 2021/02/03 10:34:44 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_HPP
-#define STACK_HPP
+#ifndef QUEUE_HPP
+#define QUEUE_HPP
 
 #include <deque>
 
@@ -19,29 +19,30 @@ namespace ft
 {
 	/**
 	* ------------------------------------------------------------- *
-	* ------------------------ FT::STACK -------------------------- *
+	* ------------------------ FT::QUEUE -------------------------- *
 	*
 	* - Coplien form:
-	* (constructor):		Construct stack
-	* (destructor):			Destruct stack
+	* (constructor):		Construct queue
+	* (destructor):			Destruct queue
 	* operator=:			Assign content
 	*
 	* - Member functions:
 	* empty:				Test whether container is empty
 	* size:					Return size
-	* top:					Access next element
+	* front:				Access next element
+	* back:					Access last element
 	* push:					Insert element
-	* pop:					Remove top element
+	* pop:					Remove next element
 	*
 	* - Non-member function overloads:
-	* relational operators:	Relational operators for stack
+	* relational operators:	Relational operators for queue
 	* ------------------------------------------------------------- *
 	*/
 
 	template <class T, class Container = std::deque<T> >
-	class stack
+	class queue
 	{
-		public:
+				public:
 
 			/* ------------------------------------------------------------- */
 			/* -------------------------- ALIASES -------------------------- */
@@ -55,42 +56,41 @@ namespace ft
 			/* ------------------------ COPLIEN FORM ----------------------- */
 			
 			/**
-			*	Constructs a stack container adaptor object. It keeps internally a container object 
+			*	Constructs a queue container adaptor object. It keeps internally a container object 
 			*	as data, which is a copy of the ctnr argument passed to the constructor.
 			*
 			*	@param ctnr	The container object to store as data. If no container is pass as argument,
 			*				ctnr calls the default constructor and will be empty.
 			*/
-			explicit stack (const container_type& ctnr = container_type()) :
+			explicit queue (const container_type& ctnr = container_type()) :
 					_ctnr(ctnr) {}
 			
 			/**
-			*	Copy constructor, creates a stack with the same container object.
+			*	Copy constructor, creates a queue with the same container object.
 			*	
-			*	@param x		The stack that will be copied.
+			*	@param x		The queue that will be copied.
 			*/
-			stack(const stack& x) :
+			queue(const queue& x) :
 					_ctnr(x._ctnr) {}
 				
 			/**
 			*	This is the destructor of the container object stored as data that 
 			*	cleans all the ressources.
 			*/
-			~stack() {}
+			~queue() {}
 		
 			/**
-			*	Assigns a stack to this stack. Calls the copy constructor to do the
+			*	Assigns a queue to this queue. Calls the copy constructor to do the
 			*	assignment(copy and swap idiom).
 			*	
-			*	@param x		The stack that will be assigned.
+			*	@param x		The queue that will be assigned.
 			*/
-			stack& operator=(const stack& x)
+			queue& operator=(const queue& x)
 			{
-				stack tmp(x);
+				queue tmp(x);
 				swap(_ctnr, tmp._ctnr);
 				return *this;
 			}
-			
 
 			/* ------------------------------------------------------------- */
 			/* ----------------- MEMBER FUNCTION OVERLOADS ----------------- */
@@ -100,43 +100,56 @@ namespace ft
 			*	Calls member function empty of the underlying container object, which returns 
 			*	true if the container is empty.
 			*/
-			bool empty() const					{ return _ctnr.empty(); }
+			bool empty() const	{ return _ctnr.empty(); }
 			
 			/**
 			*	
 			*	Calls member function size of the underlying container object, which returns 
 			*	container' size.
 			*/
-			size_type size() const				{ return _ctnr.size(); }
+			size_type size() const	{ return _ctnr.size(); }
+			
+			/**
+			*	Calls member function front of the underlying container object, which returns a 
+			*	reference to the next element in the queue. The next element is the "oldest" element 
+			*	in the queue and the same element that is popped out from the queue when queue::pop is called.
+			*/
+			value_type& front()		{ return _ctnr.front(); }
+
+			/**
+			*	Calls member function front of the underlying container object, which returns a const
+			*	reference to the next element in the queue. The next element is the "oldest" element 
+			*	in the queue and the same element that is popped out from the queue when queue::pop is called.
+			*/
+			const value_type& front() const		{ return _ctnr.front(); }
+
 			
 			/**
 			*	Calls member function back of the underlying container object, which returns a 
-			*	reference to the top element in the stack. Since stacks are last-in first-out 
-			*	containers, the top element is the last element inserted into the stack.
+			*	reference to the newest element in the queue (latest element pushed in the queue).
 			*/
-			value_type& top()					{ return _ctnr.back(); }
+			value_type& top()	{ return _ctnr.back(); }
 
 			/**
-			*	Calls member function back of the underlying container object, which returns a 
-			*	const reference to the top element in the stack. Since stacks are last-in 
-			*	first-out containers, the top element is the last element inserted into the stack.
+			*	Calls member function back of the underlying container object, which returns a const 
+			*	reference to the newest element in the queue (latest element pushed in the queue).
 			*/
 			const value_type& top() const		{ return _ctnr.back(); }
 			
 			/**
 			*	Calls member function push_back of the underlying container object, which inserts 
-			*	a new element at the top of the stack. Size is increased by one.
+			*	a new element at the end of the queue. Size is increased by one.
 			*
 			*	@param val	Content of the new element will be initialized to a copy of val.
 			*/
 			void push (const value_type& val)	{ _ctnr.push_back(val); }
 			
 			/**
-			*	Calls member function pop_back of the underlying container object, which removes 
-			*	the element on top of the stack (latest element inserted), reducing his size by one.
-			*	This calls the removed element's destructor.
+			*	Calls member function pop_front of the underlying container object, which removes 
+			*	the oldest element of the queue, reducing his size by one. This calls the removed 
+			*	element's destructor.
 			*/
-			void pop()							{ _ctnr.pop_back(); }
+			void pop()							{ _ctnr.pop_front(); }
 
 
 			/* ------------------------------------------------------------- */
@@ -147,17 +160,18 @@ namespace ft
 			*	Each of these operator overloads calls the same operator on the underlying container objects.
 			*/
 
-			friend bool operator==(const stack& lhs, const stack& rhs)	{ return lhs._ctnr == rhs._ctnr; }
-			friend bool operator!=(const stack& lhs, const stack& rhs)	{ return lhs._ctnr != rhs._ctnr; }
-			friend bool operator<(const stack& lhs, const stack& rhs)	{ return lhs._ctnr < rhs._ctnr; }
-			friend bool operator<=(const stack& lhs, const stack& rhs)	{ return lhs._ctnr <= rhs._ctnr; }
-			friend bool operator>(const stack& lhs, const stack& rhs)	{ return lhs._ctnr > rhs._ctnr; }
-			friend bool operator>=(const stack& lhs, const stack& rhs)	{ return lhs._ctnr >= rhs._ctnr; }
+			friend bool operator==(const queue& lhs, const queue& rhs)	{ return lhs._ctnr == rhs._ctnr; }
+			friend bool operator!=(const queue& lhs, const queue& rhs)	{ return lhs._ctnr != rhs._ctnr; }
+			friend bool operator<(const queue& lhs, const queue& rhs)	{ return lhs._ctnr < rhs._ctnr; }
+			friend bool operator<=(const queue& lhs, const queue& rhs)	{ return lhs._ctnr <= rhs._ctnr; }
+			friend bool operator>(const queue& lhs, const queue& rhs)	{ return lhs._ctnr > rhs._ctnr; }
+			friend bool operator>=(const queue& lhs, const queue& rhs)	{ return lhs._ctnr >= rhs._ctnr; }
 
+			
 		private:
 
-			container_type	_ctnr;	// Underlying container object (either a vector, a list or a
-									// deque) where the elements are stored.
+			container_type	_ctnr;	// Underlying container object (either a list or a deque) 
+									// where the elements are stored.
 
 			/**
 			*	Swaps two variables.
@@ -173,7 +187,7 @@ namespace ft
 				b = tmp;
 			}
 
-	}; // class stack
+	}; // class queue
 	
 } // namespace ft
 
