@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
+#    By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/01/22 15:47:20 by llefranc         ###   ########.fr        #
+#    Updated: 2021/02/02 19:20:56 by lucaslefran      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS		=	-g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp 
 
-HEADER_CON	=	vector.hpp list.hpp
+HEADER_CON	=	vector.hpp list.hpp stack.hpp
 HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp
 HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp \
 				rev_bidirectional_iterator.hpp rev_random_access_iterator.hpp \
