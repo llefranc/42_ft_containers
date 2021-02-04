@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/22 13:49:36 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/04 10:46:57 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ namespace ft
 
 	template <>
 	struct is_integral<unsigned long long> { static const bool value = true; };
-	
+
 } // namespace ft
 
 #endif
