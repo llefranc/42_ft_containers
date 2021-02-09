@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 11:01:43 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/09 09:19:28 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ namespace ft
 			/* ------------------------------------------------------------- */
 			/* -------------------------- ALIASES -------------------------- */
 
-			typedef	T											value_type;
-			typedef	Alloc										allocator_type;
-			typedef	long int									difference_type;
-			typedef	size_t										size_type;
+			typedef	T												value_type;
+			typedef	Alloc											allocator_type;
+			typedef	long int										difference_type;
+			typedef	size_t											size_type;
 
-			typedef	T&											reference;
-			typedef	const T&									const_reference;
-			typedef	T*											pointer;
-			typedef	const T*									const_pointer;
+			typedef	T&												reference;
+			typedef	const T&										const_reference;
+			typedef	T*												pointer;
+			typedef	const T*										const_pointer;
 			
 			typedef typename ft::list_iterator<T, Node, false>		iterator;
 			typedef typename ft::list_iterator<T, Node, true>		const_iterator;

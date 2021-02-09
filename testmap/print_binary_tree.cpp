@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_binary_tree.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:59:31 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/08 12:52:46 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:23:26 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print_binary_tree.hpp"
+#include "binary_tree.hpp"
 
 std::string toString(int i)
 {
@@ -92,7 +92,7 @@ void printBuff(const std::string& buff, int width, int nbNodes)
 				if (*it++ != '|')
 					nb += *(it - 1);
 					
-			// Printing the node (handle numbers from 0 to 999)
+			// Printing the node (handle numbers from -99 to 999, for width(3))
 			std::cout << "[";	std::cout.width(3);		std::cout << nb << "]";
 
 			// Repositionning iterator on first space we met in while loop (or end)

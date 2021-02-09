@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   binary_tree.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 12:24:12 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/08 16:53:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:00:17 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Node* createNode(int data);
 /**
 *	Recursive function that recurses by comparing the data of each node with the new node data 
 *	and calling itself with left / right side of the node depending on the result of 
-*	the comparison, until it meets a leaf. Then inserting the element. If element is already
+*	the comparison, until it meets a leaf. Then inserting the element. If element is already 
 *	present, do nothing and return NULL.
 *
 *	@param root		First node of the tree.
@@ -143,7 +143,7 @@ int printLevel(Node *root, std::string* buff, int actualHeight, int printHeight)
 void printBuff(const std::string& buff, int width, int nbNodes);
 
 /**
-*	Prints a binary tree containing int as data, from -99 to 999 (represents a width)
+*	Prints a binary tree containing int as data, from -99 to 999 (represents a width 
 *	of 3).
 *
 *	@param root		First node of the tree.
