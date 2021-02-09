@@ -6,15 +6,13 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 11:46:03 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/09 16:05:04 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/09 17:25:11 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "binary_tree.hpp"
 
 void balanceTheTree(Node** root, Node* newNode);
-void balanceTheTreeTest(Node** root, Node* node);
-
 
 /**
 *	Compares the heights of left and right subtrees.
@@ -104,6 +102,31 @@ void rotateLeft(Node** root, Node* node)
 		*root = nodeGoingUp;
 }
 
+void balanceTheTree(Node** root, Node* node)
+{
+	while (node)
+	{
+		int balance;
+		
+		std::cout << "balance = " << balanceOfSubtrees(node) << "pour data = " << node->data << "\n";
+		if ((balance = balanceOfSubtrees(node)) < -1 && balanceOfSubtrees(node->right) < 0) // right right case
+			rotateLeft(root, node);
+		else if (balance < -1 && balanceOfSubtrees(node->right) > 0) // right left case
+		{
+			rotateRight(root, node->right);
+			rotateLeft(root, node);
+		}
+		else if (balance > 1 && balanceOfSubtrees(node->left) > 0) // left left case
+			rotateRight(root, node);
+		else if (balance > 1 && balanceOfSubtrees(node->left) < 0) // left right case
+		{
+			rotateLeft(root, node->left);
+			rotateRight(root, node);
+		}
+		node = node->parent;
+	}
+}
+
 Node* insertAndBalanceNode(Node** root, Node* insertPos, int data)
 {
 	// Case creating the tree
@@ -125,135 +148,87 @@ Node* insertAndBalanceNode(Node** root, Node* insertPos, int data)
 	insertPos->data > newNode->data ? insertPos->left = newNode : insertPos->right = newNode;
 	newNode->parent = insertPos;
 
-	// std::cout << "inserting node :" << newNode->data << ", tree before balancing:\n";
-
-	// printTree(*root, heightTree(*root, 0));
-	// std::cout << "----------------\n";
-
 	balanceTheTree(root, newNode);
 
-	// std::cout << "tree after balancing: \n";
-	// printTree(*root, heightTree(*root, 0));
-	// std::cout << "----------------\n";
-
 	return newNode;
 }
 
-void balanceTheTree(Node** root, Node* node)
+bool deleteNodeTest(Node** root, int data, bool deallocate)
 {
-	while (node)
-	{
-		int balance;
-		// std::cout << "balance of node " << node->data << " = " << balanceOfSubtrees(node) << "\n";
-		// printTree(*root, heightTree(*root, 0));
+	Node* tmp = searchNode(*root, data);
+	Node* balanceNode = 0;
 
-		
-		if ((balance = balanceOfSubtrees(node)) < -1 && node->right->right) // right right case
-		{
-			rotateLeft(root, node);
-			// std::cout << " right right case\n";
-		}
-		else if ((balance = balanceOfSubtrees(node)) < -1 && node->right->left) // right left case
-		{
-			rotateRight(root, node->right);
-			rotateLeft(root, node);
-			// std::cout << " right left case\n";
-		}
-		else if (balance > 1 && node->left->left) // left left case
-		{
-			rotateRight(root, node);
-			// std::cout << " left left case\n";
-		}
-		else if (balance > 1 && node->left->right) // left right case
-		{
-			rotateLeft(root, node->left);
-			rotateRight(root, node);
-			// std::cout << " left right case\n";
-		}
-		
-
-		node = node->parent;
-	}
-	// std::cout << "\n";	
-}
-
-void balanceTheTreeTest(Node** root, Node* node)
-{
-	while (node)
-	{
-		int balance;
-		// std::cout << "balance of node " << node->data << " = " << balanceOfSubtrees(node) << "\n";
-		// printTree(*root, heightTree(*root, 0));
-
-		
-		if ((balance = balanceOfSubtrees(node)) < -1 && balanceOfSubtrees(node->right) < 0) // right right case
-		{
-			// printTree(*root, heightTree(*root, 0));
-			rotateLeft(root, node);
-			// std::cout << " right right case\n";
-			// return;
-		}
-		else if (balance < -1 && balanceOfSubtrees(node->right) > 0) // right left case
-		{
-			rotateRight(root, node->right);
-			rotateLeft(root, node);
-			// std::cout << " right left case\n";
-			// return;
-		}
-		else if (balance > 1 && balanceOfSubtrees(node->left) > 0) // left left case
-		{
-			// std::cout << " left left case\n";
-			rotateRight(root, node);
-			// return ;
-		}
-		else if (balance > 1 && balanceOfSubtrees(node->left) < 0) // left right case
-		{
-			// std::cout << " left right case\n";
-			rotateLeft(root, node->left);
-			rotateRight(root, node);
-			// return ;
-		}
-		
-
-		node = node->parent;
-	}
-	// std::cout << "\n";	
-}
-
-
-Node* insertAndBalanceNodeTest(Node** root, Node* insertPos, int data)
-{
-	// Case creating the tree
-	if (!root)
-		return createNode(data);
-
-	// Case data already exist in the tree
-	if (insertPos->data == data)
+	// If element isn't present, nothing to delete
+	if (!tmp)
 		return 0;
+	
+	// Case the node to delete is the root
+	if (!tmp->parent)
+	{
+		// The tree will be empty
+		if (!tmp->left && !tmp->right)
+			*root = 0;
 
-	// Recursive loop until we reach a leaf
-	if (insertPos->data > data && insertPos->left)
-		return insertAndBalanceNodeTest(root, insertPos->left, data);
-	else if (insertPos->data < data && insertPos->right)
-		return insertAndBalanceNodeTest(root, insertPos->right, data);
+		// Case only one son (left or right)	
+		else if (tmp->left && !tmp->right)
+		{
+			balanceNode = tmp->left; //new
+			*root = tmp->left;
+			tmp->left->parent = 0;
+		}
+		else if (!tmp->left && tmp->right)
+		{
+			balanceNode = tmp->left; //new
+			*root = tmp->right;
+			tmp->right->parent = 0;
+		}
+		
+		// Case two sons, need to switch the data of the node to delete with the highest data
+		// in the left subtree, and to delete the node in the left subtree
+		else
+		{
+			Node* maxNode = searchMaxNode(tmp->left);
+			tmp->data = maxNode->data;
+			return deleteNode(&tmp->left, maxNode->data, 1);
+		}
+	}
 
-	// if we reach this step, we arrived to a leaf : inserting new node to his correct position
-	Node *newNode = createNode(data);
-	insertPos->data > newNode->data ? insertPos->left = newNode : insertPos->right = newNode;
-	newNode->parent = insertPos;
+	// Case the node to delete is a leaf
+	else if (!tmp->left && !tmp->right)
+	{
+		balanceNode = tmp->parent;
+		tmp->data <= tmp->parent->data ? tmp->parent->left = 0 : tmp->parent->right = 0;
+	}
+	
+	// Case only one son (left or right)
+	else if (tmp->left && !tmp->right)
+	{
+		balanceNode = tmp->left;
+		tmp->data <= tmp->parent->data ? tmp->parent->left = tmp->left : tmp->parent->right = tmp->left;
+		tmp->left->parent = tmp->parent;
+	}
+	else if (!tmp->left && tmp->right)
+	{
+		balanceNode = tmp->right;
+		tmp->data <= tmp->parent->data ? tmp->parent->left = tmp->right : tmp->parent->right = tmp->right;
+		tmp->right->parent = tmp->parent;
+	}
 
-	// std::cout << "inserting node :" << newNode->data << ", tree before balancing:\n";
+	// Case two sons, need to switch the data of the node to delete with the highest data
+	// in the left subtree, and to delete the node in the left subtree
+	else
+	{
+		Node* maxNode = searchMaxNode(tmp->left);
+		tmp->data = maxNode->data;
+		return deleteNode(&tmp->left, maxNode->data, 1);
+	}
+	
+	balanceTheTree(root, balanceNode);
+	
+	if (deallocate)
+		delete tmp;
 
-	// printTree(*root, heightTree(*root, 0));
-	// std::cout << "----------------\n";
-
-	balanceTheTreeTest(root, newNode);
-
-	// std::cout << "tree after balancing: \n";
-	// printTree(*root, heightTree(*root, 0));
-	// std::cout << "----------------\n";
-
-	return newNode;
+	return 1;	
 }
 
 
@@ -274,26 +249,20 @@ int main(int ac, char **av)
 
 	std::string a;
 
-	for (int i = 0, j = 33; i < 40 && j > -10; i += 2, j -=3)
+	for (int i = 0, j = 33; i < 20 && j > -10; i += 2, j -=3)
 	{
-		std::cout << "i = " << i << "\n";
-		// std::cin >> a;
-		
-		insertAndBalanceNodeTest(&root, root, i);
-		// printTree(root, heightTree(root, 0));
-
-
-		std::cout << "j = " << j << "\n";
-		// std::cin >> a;
-		
-		insertAndBalanceNodeTest(&root, root, j);
-		// printTree(root, heightTree(root, 0));
-
+		insertAndBalanceNode(&root, root, i);
+		insertAndBalanceNode(&root, root, j);
 	}
 	printTree(root, heightTree(root, 0));
-	// std::cout << "---------------------------------------\n";
 
-	
+	std::cout << "deleting 33\n";
+	deleteNodeTest(&root, 33, 1);
+	std::cout << "deleting 30\n";
+	deleteNodeTest(&root, 30, 1);
+	std::cout << "---------------------------------------\n";
+	printTree(root, heightTree(root, 0));
+
 	// insertAndBalanceNodeTest(&root, root, 16);
 	// // insertNode(root, 16);
 	// printTree(root, heightTree(root, 0));
@@ -302,67 +271,3 @@ int main(int ac, char **av)
 	
 	return 0;
 }
-
-// int main(int ac, char **av)
-// {
-// 	(void)av;
-// 	(void)ac;
-
-// 	Node* root;
-// 	root = createNode(18);
-
-// 	insertAndBalanceNodeTest(&root, root, 18);
-// 	insertAndBalanceNodeTest(&root, root, 21);
-// 	insertAndBalanceNodeTest(&root, root, 14);
-// 	insertAndBalanceNodeTest(&root, root, 12);
-// 	insertAndBalanceNodeTest(&root, root, 15);
-// 	insertAndBalanceNodeTest(&root, root, 16);
-	
-// 	printTree(root, heightTree(root, 0));
-
-// 	return 0;
-// }
-
-
-
-
-// i = 0
-// j = 33
-// i = 2
-// j = 30
-// i = 4
-// j = 27
-// i = 6
-// j = 24
-// i = 8
-// j = 21
-// i = 10
-// j = 18
-// i = 12
-// j = 15
-// i = 14
-// j = 12
-// i = 16
-// j = 9
-// i = 18
-// j = 6
-// i = 20
-// j = 3
-// i = 22
-// j = 0
-// i = 24
-// j = -3
-// i = 26
-// j = -6
-// i = 28
-// j = -9
-// i = 30
-// j = -12
-// i = 32
-// j = -15
-// i = 34
-// j = -18
-// i = 36
-// j = -21
-// i = 38
-// j = -24
