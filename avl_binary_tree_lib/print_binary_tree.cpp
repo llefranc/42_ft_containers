@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_binary_tree.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:59:31 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/09 10:23:26 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/10 11:11:31 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,12 @@ void printBuff(const std::string& buff, int width, int nbNodes)
 
 void printTree(Node *root, int height)
 {
+	if (!root)
+	{
+		std::cout << "The tree is empty\n";
+		return;
+	}
+	
 	// Calculating total width of last line (each node take 5 characters "[xxx]"
 	// and are separated by 2 spaces, + 2 spaces at the beginning of the line and
 	// 2 other spaces at the end)
