@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 12:24:12 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 13:08:04 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:12:00 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,22 @@
 #include <algorithm>
 #include <cmath>
 
+#include "../templates/stl_like.hpp"
+
+/**
+*	The element stocked in the AVL binary tree.
+*
+*	@param data		The data that is used for comparison between each node. There is 
+*					no duplicate of this data in the tree.
+*	@param parent	A pointer to a parent node.
+*	@param left		A pointer to the left son of this node, the data' son will be inferior 
+*					to this node' data.
+*	@param right	A pointer to the right son of this node, the data' son will be inferior 
+*					to this node' data.
+*/
 struct Node
 {
 	int		data;
-	int		balance;
 	Node*	parent;
 	Node*	left;
 	Node*	right;
@@ -50,7 +62,7 @@ Node* createNode(int data);
 Node* searchNode(Node* root, int data);
 
 /**
-*	Searches for the element whith the highest data in the tree.
+*	Searches for the element with the highest data in the tree.
 *
 *	@param root		First node of the tree.
 *	@param return	The element containing the highest data in the tree.
@@ -58,7 +70,7 @@ Node* searchNode(Node* root, int data);
 Node* searchMaxNode(Node *root);
 
 /**
-*	Searches for the element whith the lowest data in the tree.
+*	Searches for the element with the lowest data in the tree.
 *
 *	@param root		First node of the tree.
 *	@param return	The element containing the lowest data in the tree.
@@ -66,18 +78,9 @@ Node* searchMaxNode(Node *root);
 Node* searchMinNode(Node *root);
 
 /**
-*	Deletes a node which matches data.
-*
-*	@param root		First node of the tree. If he's deleted, root will no point to 
-*					the new root.
-*	@param data		The data that need to be removed from the tree.
-*	@param return	1 if an element matched data and was removed, 0 otherwise.
-*/
-
-/**
-*	Inserts data in the tree or a specific subtree data by adding a new element, and 
+*	Inserts data in the tree or a specific subtree by adding a new element, and 
 *	then equilibrates the AVL tree if necessary. If element is already present, 
-*	do nothing and return NULL.
+*	does nothing and return NULL.
 *
 *	@param root			First node of the tree.
 *	@param insertPos	The starting node for the insertion in a specific subtree (will start to look for

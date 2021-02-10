@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/04 10:46:57 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:28:41 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,15 @@ namespace ft
 			*
 			*	@param copy		The pair that will be copied.
 			*/
-			pair(const pair& copy) : first(copy.first), second(copy.second) {};
+			// pair(const pair<T1, T2>& copy) : first(copy.first), second(copy.second) {};
 			
+			/**
+			*	Copy constructor, creates a pair with the same member variables.
+			*
+			*	@param copy		The pair that will be copied.
+			*/
+			pair(const pair& copy) : first(copy.first), second(copy.second) {};
+
 			~pair() {};
 		
 			/**

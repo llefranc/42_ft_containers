@@ -1,28 +1,5 @@
 # ft_containers (@42Paris)
 
-"Templates"
-
-## About
-
-last day of the CPP piscine.
-
-- Here is the [subject][1]
-
-`This project was code for MACOS`
-
-### Building and running the project
-
-1. Download/Clone this repo
-
-        git clone https://github.com/lucaslefrancq/42_CPP_piscine.git
-
-2. `cd` into the root directory, then `cd` into CPP08 and choose the exercise. Then run `make`.
-
-        cd 42_CPP_piscine/CPP08/ex00
-        make
-
-3.  Read the subject in order to have more information about how launching a specific exercise.
-    
 ## Sources
 
 - [Difference of keywords 'typename' and 'class' in templates][2]

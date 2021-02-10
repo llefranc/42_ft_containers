@@ -6,15 +6,12 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/04 14:15:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:21:10 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BIDIRECTIONNAL_ITERATOR_HPP
 #define BIDIRECTIONNAL_ITERATOR_HPP
-
-#include <iterator>
-#include <memory>
 
 #include "../templates/type1_or_type2.hpp"
 

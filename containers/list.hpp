@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/09 09:19:28 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/10 15:56:36 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -922,7 +922,7 @@ namespace ft
 		private:
 
 			Node*					_endList;		// Pointer to the neutral element of the circle linked list
-			size_type				_size;			// Number of T values inside the vector
+			size_type				_size;			// Number of T values inside the list
 			Alloc					_allocT;		// Copy of allocator_type object
 			std::allocator<Node>	_allocNode;		// Node's allocator
 

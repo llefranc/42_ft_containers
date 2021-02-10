@@ -6,15 +6,12 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/01/29 16:20:32 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:21:15 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RANDOM_ACCESS_ITERATOR_HPP
 #define RANDOM_ACCESS_ITERATOR_HPP
-
-#include <iterator>
-#include <memory>
 
 #include "bidirectional_iterator.hpp"
 

@@ -6,15 +6,12 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 10:56:20 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:02:46 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_ITERATOR_HPP
 #define LIST_ITERATOR_HPP
-
-#include <iterator>
-#include <memory>
 
 #include "../templates/type1_or_type2.hpp"
 
@@ -58,10 +55,8 @@ namespace ft
 
 			/* -------- OPERATORS -------- */
 
-			// INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
-
 			reference operator*()			{ return (_node->content); }
-			nonConstPointer operator->() const		{ return (_node); }
+			nonConstPointer operator->() const		{ return (_node); } // checker pourquoi nonconstpointer
 
 			list_iterator& operator++()			{ _node = _node->next; return (*this); }
 			list_iterator operator++(int)		{ list_iterator res(*this); ++(*this); return (res); };
