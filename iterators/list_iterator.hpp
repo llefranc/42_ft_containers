@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 15:02:46 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/11 11:02:38 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ namespace ft
 
 			/* -------- OPERATORS -------- */
 
-			reference operator*()			{ return (_node->content); }
+			reference operator*() const			{ return (_node->content); }
 			nonConstPointer operator->() const		{ return (_node); } // checker pourquoi nonconstpointer
 
 			list_iterator& operator++()			{ _node = _node->next; return (*this); }

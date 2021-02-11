@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 14:21:23 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/11 11:03:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ namespace ft
 
 			// INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
 
-			reference operator*()			{ return (_node->content); }
+			reference operator*() const			{ return (_node->content); }
 			nonConstPointer operator->() const		{ return (_node); }
 
 			rev_list_iterator& operator++()		{ _node = _node->prev; return (*this); }

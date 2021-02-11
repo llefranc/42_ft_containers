@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 16:47:24 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 13:58:05 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:35:23 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,14 +142,12 @@ bool deleteNode(Node** root, Node* deletePos, int data, bool deallocate)
 	else if (del->left && !del->right)
 	{
 		balanceNode = del->parent;
-		// balanceNode = del->left;
 		del->data <= del->parent->data ? del->parent->left = del->left : del->parent->right = del->left;
 		del->left->parent = del->parent;
 	}
 	else if (!del->left && del->right)
 	{
 		balanceNode = del->parent;
-		// balanceNode = del->right;
 		del->data <= del->parent->data ? del->parent->left = del->right : del->parent->right = del->right;
 		del->right->parent = del->parent;
 	}

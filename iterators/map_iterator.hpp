@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 16:38:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:57:12 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ namespace ft
 			
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			map_iterator(nonConstPointer node = 0) : _node(node) {}
-			map_iterator(const map_iterator<Key, T, Compare, Node, false>& copy) { _node = copy.getNonConstPointer(); }
+			map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0) :
+				_node(node), _lastElem(lastElem) {}
+		
+			map_iterator(const map_iterator<Key, T, Compare, Node, false>& copy)
+			{
+				_node = copy.getNonConstNode();
+				_lastElem = copy.getNonConstLastElem();
+			}
+			
 			~map_iterator() {}
 
-			nonConstPointer	getNonConstPointer() const		{ return _node; }
+			nonConstPointer	getNonConstNode() const		{ return _node; }
+			nonConstPointer	getNonConstLastElem() const		{ return _lastElem; }
 
 			map_iterator& operator=(const map_iterator& assign)
 			{
@@ -49,20 +57,31 @@ namespace ft
 				return (*this);
 			}
 
-			reference operator*()			{ return (_node->content); }
+			reference operator*() const			{ return (_node->content); }
 			pointer operator->() const		{ return (&_node->content); } //pointer et pas non const pointer ? a approfondir
 
 			map_iterator& operator++()
 			{
-				// pointe sur le meme element
+				// To save base value and compare it with parents if no right son
 				nonConstPointer previousNode = _node;
 
-				// on va sur la droit, l'elem doit etre sup. Si pas d'elem a droite, on remonte les parents
-				// jusqu'a trouver un element superieur
-				while (_node->content.first >= previousNode->content.first)
+				// Special case where iterator is on lastElem : we're looping to the beginning
+				// of the tree
+				if (_node == _lastElem)
 				{
-					if (_node->right && _node->content.first > previousNode->content.first)
+					_node = _lastElem->right;
+					return (*this);
+				}
+
+				// Moving node* until we find a node with an higher value or equal value (_lastElem == end)
+				while (_node != _lastElem && _node->content.first <= previousNode->content.first)
+				{
+					// Case right son is either node with higher value or _lastElem node	
+					if (_node->right && (_node->right == _lastElem || 
+							_node->right->content.first > previousNode->content.first))
 						_node = _node->right;
+
+					// No right son so need to go up of one level and try same loop with node's parent
 					else
 						_node = _node->parent;
 				}
@@ -71,26 +90,40 @@ namespace ft
 
 			map_iterator operator++(int)
 			{
+				// Same logic than in operator++
 				map_iterator res(*this);
 
-				while (_node->content.first >= res->first)
+				if (_node == _lastElem)
 				{
-					if (_node->right && _node->content.first > res->first)
+					_node = _lastElem->right;
+					return (res);
+				}
+				while (_node != _lastElem && _node->content.first <= res->first)
+				{
+					if (_node->right && (_node->right == _lastElem || 
+							_node->right->content.first > res->first))
 						_node = _node->right;
 					else
 						_node = _node->parent;
 				}
-				return (*this);
+				return (res);
 			}
 
 			map_iterator& operator--()
 			{
-				// pointe sur le meme element
+				// Same logic than in operator++
 				nonConstPointer previousNode = _node;
 
-				while (_node->content.first <= previousNode->content.first)
+				if (_node == _lastElem)
 				{
-					if (_node->left && _node->content.first < previousNode->content.first)
+					_node = _lastElem->left;
+					return (*this);
+				}
+
+				while (_node != _lastElem && _node->content.first >= previousNode->content.first)
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_node->left->content.first < previousNode->content.first))
 						_node = _node->left;
 					else
 						_node = _node->parent;
@@ -100,16 +133,23 @@ namespace ft
 
 			map_iterator operator--(int)
 			{
+				// Same logic than in operator++
 				map_iterator res(*this);
 
-				while (_node->content.first <= res->content.first)
+				if (_node == _lastElem)
 				{
-					if (_node->left && _node->content.first < res->content.first)
+					_node = _lastElem->left;
+					return (res);
+				}
+				while (_node != _lastElem && _node->content.first >= res->first)
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_node->left->content.first < res->first))
 						_node = _node->left;
 					else
 						_node = _node->parent;
 				}
-				return (*this);
+				return (res);
 			}
 
 			bool operator==(const map_iterator& it) const	{ return (it._node == _node); }
@@ -118,6 +158,7 @@ namespace ft
 		protected:
 
 			nonConstPointer	_node;
+			nonConstPointer	_lastElem;
 	};
 } // namespace ft
 

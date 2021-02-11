@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 17:31:33 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:58:59 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ namespace ft
 			// empty (1)	
 			explicit map (const key_compare& comp = key_compare(),
 						const allocator_type& alloc = allocator_type()) :
-				_root(0), _size(0), _allocPair(alloc), _comp(comp)	{}
+				_size(0), _allocPair(alloc), _comp(comp)
+			{
+				_lastElem = createNode(ft::pair<const key_type, mapped_type>());
+				_root = _lastElem;
+			}
 
 // range (2)	
 // template <class InputIterator>
@@ -91,14 +95,9 @@ namespace ft
 			/* ------------------------------------------------------------- */
 			/* ------------------------- ITERATORS ------------------------- */
 
-			iterator begin()	{ return _root; }
+			iterator begin()	{ return iterator(_lastElem->right, _lastElem); }
 // const_iterator begin() const;
-			iterator end()
-			{
-				if (!_lastElem)
-					return _root;
-				return _lastElem->right;
-			}
+			iterator end()		{ return iterator(_lastElem, _lastElem); }
 // const_iterator end() const;
 // reverse_iterator rbegin();
 // const_reverse_iterator rbegin() const;
@@ -145,7 +144,7 @@ namespace ft
 					return ft::pair<iterator, bool>(elemIsPresent, false);
 
 				// Inserts the pair in the tree and returns an iterator to its position
-				return ft::pair<iterator, bool>(insertNode(&_root, _root, val), true);
+				return ft::pair<iterator, bool>(insertNode(_root, val), true);
 			}
 			
 			// with hint (2)	
@@ -236,9 +235,9 @@ namespace ft
 					return root;
 				
 				// Recursive loop until we find key
-				if (root->content.first > key && root->left)
+				if (root->content.first > key && root->left && root->left != _lastElem)
 					return searchNode(root->left, key);
-				else if (root->content.first < key && root->right)
+				else if (root->content.first < key && root->right && root->right != _lastElem)
 					return searchNode(root->right, key);
 
 				// If we reach this step in the first searchNode func that was called
@@ -254,7 +253,8 @@ namespace ft
 			*/
 			Node* searchMaxNode(Node *root)
 			{
-				if (root->right)
+				// Until we meet tree's right extremity and circular link _lastElem
+				if (root->right && root->right != _lastElem)
 					return searchMaxNode(root->right);
 				return root;
 			}
@@ -267,7 +267,8 @@ namespace ft
 			*/
 			Node* searchMinNode(Node *root)
 			{
-				if (root->left)
+				// Until we meet tree's left extremity and circular link _lastElem
+				if (root->left && root->left != _lastElem)
 					return searchMinNode(root->left);
 				return root;
 			}
@@ -277,44 +278,109 @@ namespace ft
 			*	then equilibrates the AVL tree if necessary. If element is already present, 
 			*	does nothing and return NULL.
 			*
-			*	@param root			First node of the tree.
 			*	@param insertPos	The starting node for the insertion in a specific subtree (will start to look for
 			*						a place for data from this node). If insertPos is root node, then it's an insertion
 			*						in the whole tree.
 			*	@param data			The pair to insert in the tree.
 			*	@param return		The element inserted in the tree. NULL if the element already exist in the tree. 
 			*/
-			Node* insertNode(Node** root, Node* insertPos, const value_type& pair)
+			Node* insertNode(Node* insertPos, const value_type& pair)
 			{
-				// Case creating the tree
-				if (!root)
-					return createNode(pair);
+				// Case creating first node of the tree
+				if (_root == _lastElem)
+				{
+					_root = createNode(pair);
+					
+					_root->left = _lastElem;
+					_root->right = _lastElem;
+					_lastElem->left = _root;
+					_lastElem->right = _root;
+
+					return _root;
+				}
 
 				// Case key already exist in the tree
 				if (insertPos->content.first == pair.first)
 					return 0;
 
-				// Recursive loop until we reach a leaf
-				if (insertPos->content.first > pair.first && insertPos->left)
-					return insertNode(root, insertPos->left, pair.first);
-				else if (insertPos->content.first < pair.first && insertPos->right)
-					return insertNode(root, insertPos->right, pair.first);
+				// Recursive loop until we reach a leaf or fake last node (_lastElem)
+				if (insertPos->content.first > pair.first && 
+						insertPos->left && insertPos->left != _lastElem)
+					return insertNode(insertPos->left, pair);
+				else if (insertPos->content.first < pair.first && 
+						insertPos->right && insertPos->right != _lastElem)
+					return insertNode(insertPos->right, pair);
 
-				// if we reach this step, we arrived to a leaf : inserting new node to his correct position
+				// If we reach this step, we arrived to a leaf or to the max node / min node 
+				// of the tree (they're both linked to _lastElem): inserting new node to his correct position
 				Node *newNode = createNode(pair);
-				insertPos->content.first > newNode->content.first ? insertPos->left = newNode : insertPos->right = newNode;
+
+				// Case we reached a left or right leaf
+				if (insertPos->content.first > newNode->content.first && !insertPos->left)
+					insertPos->left = newNode;
+				else if (insertPos->content.first < newNode->content.first && !insertPos->right)
+					insertPos->right = newNode;
+
+				// Case we reach min node or max node, inserting the node between min / max
+				// and lastElem
+				else if (insertPos->left && insertPos->content.first > newNode->content.first)
+				{
+					newNode->left = _lastElem;
+					_lastElem->right = newNode;
+					insertPos->left = newNode;
+				}
+				else if (insertPos->right && insertPos->content.first < newNode->content.first)
+				{
+					newNode->right = _lastElem;
+					_lastElem->left = newNode;
+					insertPos->right = newNode;
+				}
+					
 				newNode->parent = insertPos;
+				++_size;
 
 // A DECOMMENTER
 				// // Equilibrating the tree from newNode to root node
 				// balanceTheTree(root, newNode);
-				++_size;
 
 				return newNode;
 			}
 
+			// void unlinkLastElem()
+			// {
+			// 	_lastElem->parent->right = 0;
+			// }
+
+			// void updateLastElem(Node* newNode)
+			// {
+			// 	// If _root is pointing to _lastElem, means the last node was just deleted 
+			// 	// (so the root of the tree), and _lastElem is now the only element in the tree. 
+			// 	// It has then no parent, and it's pointing to himself.
+			// 	if (_lastElem == _root)
+			// 	{
+			// 		_lastElem->parent = 0;
+			// 		_lastElem->right = _lastElem;
+			// 		_lastElem->left = _lastElem;
+			// 	}
+
+			// 	// Case 1:	If _lastElem has no parent and _root is pointing to a node,  
+			// 	// 			means the tree was empty and his first elem was just added.
+			// 	// Case 2:	_lastElem's parent should be the max node in the tree. If newNode got an 
+			// 	// 			higher key, means max node has changed and need to update _lastElem position
+			// 	else if ((!_lastElem->parent && _root != _lastElem) || 
+			// 			_lastElem->parent->content.first < newNode->content.first)
+			// 	{
+			// 		// std::cout << "on update\n";
+			// 		newNode->right = _lastElem;
+			// 		_lastElem->parent = newNode->right;
+					
+			// 		// For being able to copy const values inside the pair
+			// 		_allocPair.destroy(&_lastElem->content);
+			// 		_allocPair.construct(&_lastElem->content, newNode->content);
+			// 	}
+			// }
+
 	};
 } // namespace ft
-
 
 #endif
