@@ -6,7 +6,7 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/02/10 14:11:49 by llefranc         ###   ########.fr        #
+#    Updated: 2021/02/12 15:21:40 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	cont.out
 CC			=	clang++
 FLAGS		=	-g -fsanitize=address -Wall -Wextra -Werror -std=c++98
 
-SRCS		=	main.cpp 
+SRCS		=	main.cpp
 
 HEADER_CON	=	vector.hpp list.hpp stack.hpp queue.hpp map.hpp
 HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp

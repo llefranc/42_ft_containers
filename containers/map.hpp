@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 16:58:59 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/13 17:31:18 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ namespace ft
 	template < class Key,                                  		 	// map::key_type
 			class T,                           	       			    // map::mapped_type
 			class Compare = std::less<Key>,							// map::key_compare
-			class Alloc = std::allocator<ft::pair<const Key,T> >    // map::allocator_type
+			class Alloc = std::allocator<ft::pair<const Key, T> >    // map::allocator_type
 	> class map
 	{
 		private:
 
 			struct Node
 			{
-				ft::pair<const Key,T>	content;
+				ft::pair<const Key, T>	content;
 				Node*					parent;
 				Node*					left;
 				Node*					right;
@@ -96,9 +96,9 @@ namespace ft
 			/* ------------------------- ITERATORS ------------------------- */
 
 			iterator begin()	{ return iterator(_lastElem->right, _lastElem); }
-// const_iterator begin() const;
+			const_iterator begin() const	{ return iterator(_lastElem->right, _lastElem); }
 			iterator end()		{ return iterator(_lastElem, _lastElem); }
-// const_iterator end() const;
+			const_iterator end() const	{ return iterator(_lastElem, _lastElem); }
 // reverse_iterator rbegin();
 // const_reverse_iterator rbegin() const;
 //  reverse_iterator rend();
@@ -154,7 +154,10 @@ namespace ft
 			// void insert (InputIterator first, InputIterator last);
 
 			// (1)	
-			// 	void erase (iterator position);
+			void erase (iterator position)
+			{
+				deleteNode(position.getNonConstNode(), position->first);
+			}
 			// (2)	
 			// size_type erase (const key_type& k);
 			// (3)	
@@ -197,8 +200,8 @@ namespace ft
 			std::allocator<Node>	_allocNode;		// Node's allocator
 
 
-			/* ------------------------------------------------------------- */
 			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* ----------- inserting / deleting inside the tree ------------ */
 
 			/**
 			*	Creates a new node and assign pair. left and right node ptr are NULL.
@@ -225,7 +228,7 @@ namespace ft
 			*	@param key		The key to search.
 			*	@param return	The element containing the key in the tree. NULL if no match occured for key.
 			*/
-			Node* searchNode(Node* root, int key)
+			Node* searchNode(Node* root, key_type key)
 			{
 				// We reached a leaf
 				if (!root)
@@ -340,46 +343,465 @@ namespace ft
 				++_size;
 
 // A DECOMMENTER
-				// // Equilibrating the tree from newNode to root node
-				// balanceTheTree(root, newNode);
+				std::cout << "\n------BEFORE BALANCE ----\n";
+				printTree(_root, heightTree(_root, 0));
+				std::cout << "-----------------\n";
+
+				// Equilibrating the tree from newNode to root node
+				balanceTheTree(&_root, newNode);
+
+				std::cout << "------AFTER BALANCE ----\n";
+				printTree(_root, heightTree(_root, 0));
+				std::cout << "-----------------\n";
 
 				return newNode;
 			}
 
-			// void unlinkLastElem()
-			// {
-			// 	_lastElem->parent->right = 0;
-			// }
+			/**
+			*	Deletes the node that matches key from the tree or a specific subtree, and then equilibrates the 
+			*	AVL tree if necessary. If element is missing, this function does nothing.
+			*
+			*	@param deletePos	The starting node for the deletion in a specific subtree (will start to look for
+			*						the key to delete from this node). If deletePos is root node, then it will looks 
+			*						for the element to delete in the whole tree.
+			*	@param key			The key to delete in the tree.
+			*	@param return		True if a deletion occured, false otherwise. 
+			*/
+			bool deleteNode(Node* deletePos, key_type key)
+			{
+				// Balance node will point to the first node impacted by the deletion (if we delete a node, 
+				// it will be the parent node; if we delete root, it will be one of his son). 
+				// We will then call balanceTheTree function to equilibrate the AVL tree
+				Node* balanceNode = 0;
+				
+				// The node to delete, looking from deletePos node until we match key
+				Node* del = searchNode(deletePos, key);
 
-			// void updateLastElem(Node* newNode)
-			// {
-			// 	// If _root is pointing to _lastElem, means the last node was just deleted 
-			// 	// (so the root of the tree), and _lastElem is now the only element in the tree. 
-			// 	// It has then no parent, and it's pointing to himself.
-			// 	if (_lastElem == _root)
-			// 	{
-			// 		_lastElem->parent = 0;
-			// 		_lastElem->right = _lastElem;
-			// 		_lastElem->left = _lastElem;
-			// 	}
+				// If element isn't present, nothing to delete
+				if (!del)
+					return false;
+				
+				// Case the node to delete is the root
+				if (!del->parent)
+				{
+					// Root is the only node in the tree, it will be empty
+					if (del->left == _lastElem && del->right == _lastElem)
+					{
+						_root = 0;
+						_lastElem->left = _lastElem;
+						_lastElem->right = _lastElem;
+					}
 
-			// 	// Case 1:	If _lastElem has no parent and _root is pointing to a node,  
-			// 	// 			means the tree was empty and his first elem was just added.
-			// 	// Case 2:	_lastElem's parent should be the max node in the tree. If newNode got an 
-			// 	// 			higher key, means max node has changed and need to update _lastElem position
-			// 	else if ((!_lastElem->parent && _root != _lastElem) || 
-			// 			_lastElem->parent->content.first < newNode->content.first)
-			// 	{
-			// 		// std::cout << "on update\n";
-			// 		newNode->right = _lastElem;
-			// 		_lastElem->parent = newNode->right;
+					// Case only one son (left or right, need to equilibrate the tree
+					// after from this son)
+					else if (del->left && del->right == _lastElem)
+					{
+						balanceNode = del->left;
+						_root = del->left;
+						del->left->parent = 0;
+						
+						// Since the tree is AVL, if _root has only one son, this son is 
+						// a leaf and has no left and right son. So the new root has to be 
+						// linked to _lastElem from left and right side, but he's already 
+						// linked to it from one side (in this case, left)
+						_lastElem->left = del->left;
+						del->left->right = _lastElem;
+					}
+					else if (del->left == _lastElem && del->right)
+					{
+						balanceNode = del->right;
+						_root = del->right;
+						del->right->parent = 0;
+
+						// Same explanation but with opposite side than just above
+						_lastElem->right = del->right;
+						del->right->left = _lastElem;
+					}
 					
-			// 		// For being able to copy const values inside the pair
-			// 		_allocPair.destroy(&_lastElem->content);
-			// 		_allocPair.construct(&_lastElem->content, newNode->content);
-			// 	}
-			// }
+					// Case two sons, need to switch the key of the node to delete with the highest key
+					// in the left subtree, and to delete the node with this highest key in the left subtree
+					else
+					{
+						Node* maxNode = searchMaxNode(del->left);
+						
+						// Need to destroy then construct for copying const variable)
+						_allocPair.destroy(&del->content);
+						_allocPair.construct(&del->content, maxNode->content);
+						
+						return deleteNode(del->left, maxNode->content.first);
+					}
+				}
 
+				// Case the node to delete is a leaf
+				else if ((!del->left || del->left == _lastElem) && (!del->right || del->right == _lastElem))
+				{
+					balanceNode = del->parent;
+					del->content.first <= del->parent->content.first ?
+							del->parent->left = 0 : del->parent->right = 0;
+					
+					// MODIFIER ICI RELINK LE LAST
+				}
+				
+				// Case only one son (left or right)
+				else if ((del->left && del->left != _lastElem) && (!del->right || del->right == _lastElem))
+				{
+					std::cout << "COUCOU, del->content = " << del->content.first << "\n";
+					
+					balanceNode = del->parent;
+					del->content.first <= del->parent->content.first ?
+							del->parent->left = del->left : del->parent->right = del->left;
+
+					// Linking differs if the son is _lastElem or not
+					del->left->parent = del->parent;
+					if (del->right == _lastElem)
+					{
+						_lastElem->left = del->left;
+						del->left->right = _lastElem;  // NE MARCHE PAS 
+					}
+				}
+				else if ((!del->left || del->left == _lastElem) && del->right && del->right != _lastElem)
+				{
+					std::cout << "del->content.first = " << del->content.first << "\n";
+					std::cout << "del->left = " << del->left << "\n";
+					std::cout << "del->right = " << del->right << "\n";
+					std::cout << "del->parent = " << del->parent << "\n";
+					std::cout << "_lastElem = " << _lastElem << "\n------------\n";
+					
+					balanceNode = del->parent;
+					del->content.first <= del->parent->content.first ?
+							del->parent->left = del->right : del->parent->right = del->right;
+					
+					// Linking differs if the son is _lastElem or not
+					del->right->parent = del->parent;
+					if (del->left == _lastElem)
+					{
+						_lastElem->right = del->right;
+						del->right->left = _lastElem;   // NE MARCHE PAS
+					}
+				}
+
+				// Case two sons, need to switch the key of the node to delete with the highest key
+				// in the left subtree, and to delete the node with this highest key in the left subtree
+				else
+				{
+					// std::cout << "del->content.first = " << del->content.first << "\n";
+					// std::cout << "del->left = " << del->left << "\n";
+					// std::cout << "del->right = " << del->right << "\n";
+					// std::cout << "del->parent = " << del->parent << "\n";
+					// std::cout << "_lastElem = " << _lastElem << "\n------------\n";
+
+					Node* maxNode = searchMaxNode(del->left);
+
+					// Need to destroy then construct for copying const variable)
+					_allocPair.destroy(&del->content);
+					_allocPair.construct(&del->content, maxNode->content);
+					
+					return deleteNode(del->left, maxNode->content.first);
+				}
+				
+				deallocateNode(del);
+
+				std::cout << "-----DEL BEFORE-----\n";
+				printTree(_root, heightTree(_root, 0));
+				std::cout << "-----------------\n";
+				
+				// Equilibrating the tree from balanceNode to root node
+				balanceTheTree(&_root, balanceNode);
+				
+				std::cout << "-----DEL AFTER-----\n";
+				printTree(_root, heightTree(_root, 0));
+				std::cout << "-----------------\n";
+
+				return true;
+			}
+
+// FAIRE COMMENTIARE
+			void deallocateNode(Node* del)
+			{
+				_allocPair.destroy(&del->content);
+				_allocNode.deallocate(del, 1);
+			}
+
+
+			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* -------------------- balancing the tree --------------------- */
+
+			/**
+			*	Compares the heights of left and right subtrees.
+			*
+			*	@param node	His left and right subtrees will be compare.
+			*	@return		Difference between left and right subtrees. Will be negative if right
+			*				subtree > left subtree.
+			*/
+			int balanceOfSubtrees(Node* node)
+			{
+				if (!node)
+					return 0;
+				return heightTree(node->left, 1) - heightTree(node->right, 1);
+			}
+
+			/**
+			*	Does a right rotation between a node and his left child. The left child will go up
+			*	and take the position of this node; and this node will become the right child of the node
+			*	going up.
+			*
+			*	@param root				First node of the tree.
+			*	@param nodeGoingDown	Rotation will occured around this node.
+			*/
+			void rotateRight(Node** root, Node* nodeGoingDown)
+			{
+				//   P (nodeGoingUp) is going up and will replace Q (nodeGoingDown)
+				//
+				//
+				//               Q                                 P              |
+				//              / \     RIGHT ROTATION            / \             |
+				//             P   C  ------------------->>>     A   Q            |
+				//            / \                                   / \           |
+				//           A   B                                 B   C          |
+
+				Node* nodeGoingUp = nodeGoingDown->left;
+				
+				// Left Q' son become right P' son
+				nodeGoingDown->left = nodeGoingUp->right;
+				
+				// Case right son is NULL to prevent segfault
+				if (nodeGoingUp->right)
+					nodeGoingUp->right->parent = nodeGoingDown;
+				
+				// rigth P' son is Q
+				nodeGoingUp->right = nodeGoingDown;
+				
+				// Parent P = Parent Q
+				nodeGoingUp->parent = nodeGoingDown->parent;
+				
+				// Determinating if Q has a parent (if not, Q is root) and if it's the case,
+				// determinating if it's left son or right son. Then updating Q's parent with
+				// his new son, P node
+				if (nodeGoingDown->parent && nodeGoingDown->parent->left == nodeGoingDown)
+					nodeGoingDown->parent->left = nodeGoingUp;
+				else if (nodeGoingDown->parent)
+					nodeGoingDown->parent->right = nodeGoingUp;
+				
+				// Parent of Q is now P
+				nodeGoingDown->parent = nodeGoingUp;
+
+				// Updating root node if the rotation occured on root
+				if (!nodeGoingUp->parent)
+					*root = nodeGoingUp;
+			}
+
+			/**
+			*	Does a left rotation between a node and his right child. The right child will go up
+			*	and take the position of this node; and this node will become the left child of the node
+			*	going up.
+			*
+			*	@param root				First node of the tree.
+			*	@param nodeGoingDown	Rotation will occured around this node.
+			*/
+			void rotateLeft(Node** root, Node* nodeGoingDown)
+			{
+				//   Q (nodeGoingUp) is going up and will replace P (nodeGoingDown)
+				//
+				//
+				//               Q                                 P              |
+				//              / \          LEFT ROTATION        / \             |
+				//             P   C    <<<-------------------   A   Q            |
+				//            / \                                   / \           |
+				//           A   B                                 B   C          |
+
+				Node* nodeGoingUp = nodeGoingDown->right;
+				
+				// Right P' son become left Q' son
+				nodeGoingDown->right = nodeGoingUp->left;
+
+				// Case Q left son is NULL to prevent segfault
+				if (nodeGoingUp->left)
+					nodeGoingUp->left->parent = nodeGoingDown;
+				
+				// Left Q' son is now P
+				nodeGoingUp->left = nodeGoingDown;
+				
+				// Parent Q = Parent P
+				nodeGoingUp->parent = nodeGoingDown->parent;
+				
+				// Determinating if P has a parent (if not, P is root) and if it's the case,
+				// determinating if it's left son or right son. Then updating P's parent with
+				// his new son, Q node
+				if (nodeGoingDown->parent && nodeGoingDown->parent->left == nodeGoingDown)
+					nodeGoingDown->parent->left = nodeGoingUp;
+				else if (nodeGoingDown->parent)
+					nodeGoingDown->parent->right = nodeGoingUp;
+
+				// Parent of P is now Q
+				nodeGoingDown->parent = nodeGoingUp;
+
+				// Updating root node if the rotation occured on root
+				if (!nodeGoingUp->parent)
+					*root = nodeGoingUp;
+			}
+
+			/**
+			*	Starts from a node in the AVL tree, and will check for this node and all the parent's node
+			*	until root if their balance (height of left and right subtree) is correct. If not, a rotation
+			*	(left or right) around the unbalanced node will occured in order to restore tree's balance.
+			*
+			*	@param root	First node of the tree.
+			*	@param node	Will check the balance's node, and will check every parent until reaching root.
+			*/
+			void balanceTheTree(Node** root, Node* node)
+			{
+				// Checking balance of subtrees every parents of this node until we 
+				// reach root node
+				while (node)
+				{
+					int balance;
+					
+					// Right right case (right subtree is deeper, and right right subtree aswell)
+					if ((balance = balanceOfSubtrees(node)) < -1 && balanceOfSubtrees(node->right) < 0)
+						rotateLeft(root, node);
+
+					// Right left case (if balance of right node == 0, no difference between right 
+					// right case and and right left case)
+					else if (balance < -1 && balanceOfSubtrees(node->right) >= 0)
+					{
+						rotateRight(root, node->right);
+						rotateLeft(root, node);
+					}
+					
+					// Left left case (opposite of right right case)
+					else if (balance > 1 && balanceOfSubtrees(node->left) > 0)
+						rotateRight(root, node);
+
+					// Left right case (opposite of right left case)
+					else if (balance > 1 && balanceOfSubtrees(node->left) <= 0)
+					{
+						rotateLeft(root, node->left);
+						rotateRight(root, node);
+					}
+					node = node->parent;
+				}
+			}
+
+
+			//------------------------------ PRINT BINARY TREE -----------------------------
+
+			std::string toString(int i)
+			{
+			std::stringstream ss;
+			ss << i;
+			return ss.str();
+			}
+
+			unsigned int countWordsInString(std::string const& str)
+			{
+				std::stringstream stream(str);
+				return std::distance(std::istream_iterator<std::string>(stream), 
+									std::istream_iterator<std::string>());
+			}
+
+			int heightTree(Node *root, int height)
+			{
+				// We reached a NULL, returning
+				if (!root || root == _lastElem)
+					return height - 1;
+
+				// Exploring left side of the actual node, then right side
+				int leftHeight = heightTree(root->left, height + 1);
+				int rightHeight = heightTree(root->right, height + 1);
+
+				return leftHeight > rightHeight ? leftHeight : rightHeight;
+			}
+
+			int printLevel(Node *root, std::string* buff, int actualHeight, int printHeight)
+			{
+				// We reached a NULL, returning
+				if (!root || root == _lastElem)
+				{
+					// If the NULL node level is inferior to the level we try to print,
+					// adding 2 ^ (printHeight - actualHeight) nodes to the buffer
+					// (represented by '|' character)
+					if (actualHeight <= printHeight)
+					{
+						for (int i = pow(2, printHeight - actualHeight); i > 0; --i)
+							*buff += "| ";
+					}
+					return actualHeight - 1;
+				}
+
+				// Adding the node to print to the buffer
+				if (actualHeight == printHeight)
+					*buff += toString(root->content.first) + " ";
+
+				// Exploring left side of the actual node, then right side
+				int leftHeight = printLevel(root->left, buff, actualHeight + 1, printHeight);
+				int rightHeight = printLevel(root->right, buff, actualHeight + 1, printHeight);
+
+				return leftHeight > rightHeight ? leftHeight : rightHeight;
+			}
+
+			void printBuff(const std::string& buff, int width, int nbNodes)
+			{
+				int nbNodesPrinted = 0;
+
+				// Calculating number of spaces that will be printed between each nodes
+				size_t nbOfSpaces = std::count(buff.begin(), buff.end(), ' ');
+				size_t widthSpace = (width - nbNodes * 5) / nbOfSpaces;
+
+				// If number of total characters that will be printed (nodes + space separators)
+				// will be inf to total width, we will add padding spaces between left and right branch
+				int paddingSpace = width - (widthSpace * nbOfSpaces + nbNodes * 5);
+
+				for (std::string::const_iterator it = buff.begin(); it != buff.end(); ++it)
+				{
+					// Delimiting nodes with equal number of spaces
+					if (*it == ' ')
+						{ std::cout.width(widthSpace);		std::cout << ""; }
+					else
+					{
+						// Creating a string with the number to print (or empty if it's a non existing node
+						// that we flagged with '|' character in printLevel func)
+						std::string nb;
+						while (it != buff.end() && *it != ' ')
+							if (*it++ != '|')
+								nb += *(it - 1);
+								
+						// Printing the node (handle numbers from -99 to 999, for width(3))
+						std::cout << "[";	std::cout.width(3);		std::cout << nb << "]";
+
+						// Repositionning iterator on first space we met in while loop (or end)
+						--it;
+
+						// If we printed half of nodes (so left branch), we add padding spaces
+						++nbNodesPrinted;
+						if (nbNodesPrinted == nbNodes / 2)
+							{ std::cout.width(paddingSpace);		std::cout << ""; }
+					}
+				}
+				std::cout << std::endl;
+			}
+
+			void printTree(Node *root, int height)
+			{
+				if (!root)
+				{
+					std::cout << "The tree is empty\n";
+					return;
+				}
+				
+				// Calculating total width of last line (each node take 5 characters "[xxx]"
+				// and are separated by 2 spaces, + 2 spaces at the beginning of the line and
+				// 2 other spaces at the end)
+				int width = pow(2, height) * 7 + 2 + 2;
+				
+				for (int i = 0; i <= height; ++i)
+				{
+					// Space at the beginning of the line to match last space that will be add
+					// after last node
+					std::string buff(" ");
+					printLevel(root, &buff, 0, i);
+					printBuff(buff, width, pow(2, i));
+				}
+			}
 	};
 } // namespace ft
 

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 14:06:21 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:15:33 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ namespace ft
 			*
 			*	@param copy		The pair that will be copied.
 			*/
-			pair(const pair& copy) : first(copy.first), second(copy.second) {};
+			template <typename U, typename V>
+			pair(const pair<U, V>& copy) : first(copy.first), second(copy.second) {};
 
 			~pair() {};
 		

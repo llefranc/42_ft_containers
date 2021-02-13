@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 16:58:13 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/13 17:28:34 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 int main()
 {
 
-	// std::map<int, char> stx;
-	// std::pair<const int, char> pad(1, 'c'); // penser a regler le probleme de la pair
-	// stx.insert(pad);
+	std::map<int, char> stx;
+	std::pair<int, char> pad(1, 'c'); // penser a regler le probleme de la pair
+	stx.insert(pad);
 
 	// std::map<int, char>::const_iterator itendx = stx.end();
 
@@ -49,30 +49,55 @@ int main()
 {
 	ft::map<int, char> x;
 
-	ft::pair<const int, char> pa1(1, 'c'); // penser a regler le probleme de la pair
-	ft::pair<const int, char> pa2(2, 'a'); // penser a regler le probleme de la pair
-	ft::pair<const int, char> pa3(0, 'p'); // penser a regler le probleme de la pair
-	ft::pair<const int, char> pa4(4, 'z'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa1(1, 'c'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa2(2, 'a'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa3(0, 'p'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa4(4, 'z'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa5(8, 'z'); // penser a regler le probleme de la pair
+	// ft::pair<int, char> pa6(-4, 'z'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa7(3, 'z'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa8(5, 'z'); // penser a regler le probleme de la pair
 	x.insert(pa1);
 	x.insert(pa2);
 	x.insert(pa3);
 	x.insert(pa4);
+	x.insert(pa5);
+	// x.insert(pa6);
+	x.insert(pa7);
+	x.insert(pa8);
 
-	for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
-		std::cout << "first = " << it->first << " and second = " << it->second << "\n";
-	std::cout << "----------------\n";
+	ft::map<int, char>::iterator it;
 	
-	for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); it++)
-		std::cout << "first = " << it->first << " and second = " << it->second << "\n";
-	std::cout << "----------------\n";
+	for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
+		std::cout << "first = " << it->first << " and second = " << it->second << " | ";
 
-	for (ft::map<int, char>::iterator it = --x.end(); it != --x.begin(); --it)
-		std::cout << "first = " << it->first << " and second = " << it->second << "\n";
-	std::cout << "----------------\n";
+	while (x.begin() != x.end())
+	{
+		it = x.begin();
+		// std::cout << "it first = " << it->first << "\n";
+		x.erase(it);
+		// for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
+		// 	std::cout << "first = " << it->first << " and second = " << it->second << " | ";
+		// std::cout << "\n----------------\n";
+	}
 
-	for (ft::map<int, char>::iterator it = --x.end(); it != --x.begin(); it--)
-		std::cout << "first = " << it->first << " and second = " << it->second << "\n";
-	std::cout << "----------------\n";
+
+
+	if (x.begin() == x.end())
+		std::cout << "true\n";
+
+	
+	// for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); it++)
+	// 	std::cout << "first = " << it->first << " and second = " << it->second << "\n";
+	// std::cout << "----------------\n";
+
+	// for (ft::map<int, char>::iterator it = --x.end(); it != --x.begin(); --it)
+	// 	std::cout << "first = " << it->first << " and second = " << it->second << "\n";
+	// std::cout << "----------------\n";
+
+	// for (ft::map<int, char>::iterator it = --x.end(); it != --x.begin(); it--)
+	// 	std::cout << "first = " << it->first << " and second = " << it->second << "\n";
+	// std::cout << "----------------\n";
 }
 
 

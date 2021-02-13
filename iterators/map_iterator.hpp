@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 16:57:12 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/13 17:01:33 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ namespace ft
 			reference operator*() const			{ return (_node->content); }
 			pointer operator->() const		{ return (&_node->content); } //pointer et pas non const pointer ? a approfondir
 
+
+// ALLER TO EN BAS A GAUCHE QUAND YA UN FDP A DROITE
 			map_iterator& operator++()
 			{
 				// To save base value and compare it with parents if no right son
