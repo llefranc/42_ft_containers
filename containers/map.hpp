@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/15 13:25:00 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:31:50 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -372,6 +372,7 @@ namespace ft
 				if (!del)
 					return false;
 				
+				/* --------------- CASE DELETING ROOT --------------- */
 				// Case the node to delete is the root
 				if (!del->parent)
 				{
@@ -423,6 +424,8 @@ namespace ft
 					}
 				}
 
+
+				/* --------------- CASE DELETING NODE --------------- */
 				// Case the node to delete is a leaf
 				else if ((!del->left || del->left == _lastElem) && (!del->right || del->right == _lastElem))
 				{
@@ -493,7 +496,11 @@ namespace ft
 				return true;
 			}
 
-// FAIRE COMMENTIARE
+			/**
+			*	Calls the destructor of node's content, and then deallocates the node.
+			*
+			*	@param del	The node to destroy / deallocate.
+			*/
 			void deallocateNode(Node* del)
 			{
 				_allocPair.destroy(&del->content);
@@ -661,7 +668,8 @@ namespace ft
 			}
 
 
-			//------------------------------ PRINT BINARY TREE -----------------------------
+			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* -------------- printing the tree for testing ---------------- */
 
 			std::string toString(int i)
 			{

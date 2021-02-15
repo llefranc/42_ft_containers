@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/03 15:04:56 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:35:58 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,8 +392,15 @@ namespace ft
 			void assign (InputIterator first, InputIterator last,
 						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
 			{
-				this->~vector();
-				_vector = _alloc.allocate(static_cast<size_type>(last - first));
+				clear();
+
+				// Reallocating only if new capacity exceeds previous
+				size_type n = static_cast<size_type>(last - first);
+				if (n > _capacity)
+				{
+					_alloc.deallocate(_vector, _capacity);
+					_vector = _alloc.allocate(n);
+				}
 				
 				size_type i = 0;
 				for (; first != last; ++i, ++first)
@@ -410,8 +417,14 @@ namespace ft
 			*/	
 			void assign (size_type n, const value_type& val)
 			{
-				this->~vector();
-				_vector = _alloc.allocate(n);
+				clear();
+
+				// Reallocating only if new capacity exceeds previous
+				if (n > _capacity)
+				{
+					_alloc.deallocate(_vector, _capacity);
+					_vector = _alloc.allocate(n);
+				}
 				
 				for (size_type i = 0; i < n; ++i)
 					_alloc.construct(&_vector[i], val);
