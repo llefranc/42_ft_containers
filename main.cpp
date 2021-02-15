@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/13 17:28:34 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 13:11:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main()
 	ft::pair<int, char> pa3(0, 'p'); // penser a regler le probleme de la pair
 	ft::pair<int, char> pa4(4, 'z'); // penser a regler le probleme de la pair
 	ft::pair<int, char> pa5(8, 'z'); // penser a regler le probleme de la pair
-	// ft::pair<int, char> pa6(-4, 'z'); // penser a regler le probleme de la pair
+	ft::pair<int, char> pa6(-4, 'z'); // penser a regler le probleme de la pair
 	ft::pair<int, char> pa7(3, 'z'); // penser a regler le probleme de la pair
 	ft::pair<int, char> pa8(5, 'z'); // penser a regler le probleme de la pair
 	x.insert(pa1);
@@ -62,31 +62,34 @@ int main()
 	x.insert(pa3);
 	x.insert(pa4);
 	x.insert(pa5);
-	// x.insert(pa6);
+	x.insert(pa6);
 	x.insert(pa7);
 	x.insert(pa8);
 
-	ft::map<int, char>::iterator it;
-	
-	for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
-		std::cout << "first = " << it->first << " and second = " << it->second << " | ";
+
+
+	ft::map<int, char>::iterator it = x.begin();
 
 	while (x.begin() != x.end())
 	{
-		it = x.begin();
-		// std::cout << "it first = " << it->first << "\n";
+		it = --x.end();
+		std::cout << "it first = " << it->first << "\n";
 		x.erase(it);
-		// for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
-		// 	std::cout << "first = " << it->first << " and second = " << it->second << " | ";
-		// std::cout << "\n----------------\n";
+		for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
+			std::cout << "[" << it->first << "][" << it->second << "] | \n";
+		std::cout << "\n----------------\n";
 	}
 
 
 
-	if (x.begin() == x.end())
-		std::cout << "true\n";
+// 	if (x.begin() == x.end())
+// 		std::cout << "true\n";
 
 	
+	// for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); ++it)
+	// 	std::cout << "first = " << it->first << " and second = " << it->second << "\n";
+	// std::cout << "----------------\n";
+
 	// for (ft::map<int, char>::iterator it = x.begin(); it != x.end(); it++)
 	// 	std::cout << "first = " << it->first << " and second = " << it->second << "\n";
 	// std::cout << "----------------\n";

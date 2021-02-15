@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/13 17:01:33 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 13:27:36 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,12 @@ namespace ft
 			}
 
 			reference operator*() const			{ return (_node->content); }
-			pointer operator->() const		{ return (&_node->content); } //pointer et pas non const pointer ? a approfondir
+			pointer operator->() const		{ return (&_node->content); }
 
-
-// ALLER TO EN BAS A GAUCHE QUAND YA UN FDP A DROITE
+			/**
+			*	Starts from a specific key inside the tree, and looks for the closest superior key 
+			*	key in the tree.
+			*/
 			map_iterator& operator++()
 			{
 				// To save base value and compare it with parents if no right son
@@ -81,7 +83,14 @@ namespace ft
 					// Case right son is either node with higher value or _lastElem node	
 					if (_node->right && (_node->right == _lastElem || 
 							_node->right->content.first > previousNode->content.first))
+					{
 						_node = _node->right;
+						
+						// Starting from the minimum key in the right subtree
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
 
 					// No right son so need to go up of one level and try same loop with node's parent
 					else
@@ -90,9 +99,13 @@ namespace ft
 				return (*this);
 			}
 
+			/**
+			*	Starts from a specific key inside the tree, and looks for the closest superior key 
+			*	key in the tree.
+			*/
 			map_iterator operator++(int)
 			{
-				// Same logic than in operator++
+				// Same logic than in ++operator
 				map_iterator res(*this);
 
 				if (_node == _lastElem)
@@ -100,20 +113,32 @@ namespace ft
 					_node = _lastElem->right;
 					return (res);
 				}
+				
 				while (_node != _lastElem && _node->content.first <= res->first)
 				{
 					if (_node->right && (_node->right == _lastElem || 
 							_node->right->content.first > res->first))
+					{
 						_node = _node->right;
+						
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMinNode(_node)))
+							_node = tmp;
+					}
 					else
 						_node = _node->parent;
 				}
+				
 				return (res);
 			}
 
+			/**
+			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
+			*	key in the tree.
+			*/
 			map_iterator& operator--()
 			{
-				// Same logic than in operator++
+				// Opposite logic than in ++operator
 				nonConstPointer previousNode = _node;
 
 				if (_node == _lastElem)
@@ -126,16 +151,27 @@ namespace ft
 				{
 					if (_node->left && (_node->left == _lastElem || 
 							_node->left->content.first < previousNode->content.first))
+					{
 						_node = _node->left;
+						
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
 					else
 						_node = _node->parent;
 				}
+
 				return (*this);
 			}
 
+			/**
+			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
+			*	key in the tree.
+			*/
 			map_iterator operator--(int)
 			{
-				// Same logic than in operator++
+				// Opposite logic than in ++operator
 				map_iterator res(*this);
 
 				if (_node == _lastElem)
@@ -143,24 +179,60 @@ namespace ft
 					_node = _lastElem->left;
 					return (res);
 				}
+				
 				while (_node != _lastElem && _node->content.first >= res->first)
 				{
 					if (_node->left && (_node->left == _lastElem || 
 							_node->left->content.first < res->first))
+					{
 						_node = _node->left;
+						
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
 					else
 						_node = _node->parent;
 				}
+				
 				return (res);
 			}
 
 			bool operator==(const map_iterator& it) const	{ return (it._node == _node); }
 			bool operator!=(const map_iterator& it) const	{ return (it._node != _node); }
 
-		protected:
+		private:
 
 			nonConstPointer	_node;
 			nonConstPointer	_lastElem;
+
+			/**
+			*	Searches for the element with the highest key in the tree.
+			*
+			*	@param root		First node of the tree.
+			*	@param return	The element containing the highest key in the tree.
+			*/
+			Node* searchMaxNode(Node *root)
+			{
+				// Until we meet tree's right extremity and circular link _lastElem
+				if (root && root != _lastElem && root->right && root->right != _lastElem)
+					return searchMaxNode(root->right);
+				return root;
+			}
+
+			/**
+			*	Searches for the element with the lowest key in the tree.
+			*
+			*	@param root		First node of the tree.
+			*	@param return	The element containing the lowest key in the tree.
+			*/
+			Node* searchMinNode(Node *root)
+			{
+				// Until we meet tree's left extremity and circular link _lastElem
+				if (root && root != _lastElem && root->left && root->left != _lastElem)
+					return searchMinNode(root->left);
+				return root;
+			}
 	};
 } // namespace ft
 

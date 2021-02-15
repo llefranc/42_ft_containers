@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/13 17:31:18 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 13:25:00 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,12 @@ namespace ft
 			{
 				// Searches in the tree if val's key is already present and returns 
 				// an iterator to the key inside the tree if it's the case
-				Node* elemIsPresent = 0;
-				if ((elemIsPresent = searchNode(_root, val.first)))
-					return ft::pair<iterator, bool>(elemIsPresent, false);
+				Node* elemIsPresent = searchNode(_root, val.first);
+				if (elemIsPresent)
+					return ft::pair<iterator, bool>(iterator(elemIsPresent, _lastElem), false);
 
 				// Inserts the pair in the tree and returns an iterator to its position
-				return ft::pair<iterator, bool>(insertNode(_root, val), true);
+				return ft::pair<iterator, bool>(iterator(insertNode(_root, val), _lastElem), true);
 			}
 			
 			// with hint (2)	
@@ -342,17 +342,8 @@ namespace ft
 				newNode->parent = insertPos;
 				++_size;
 
-// A DECOMMENTER
-				std::cout << "\n------BEFORE BALANCE ----\n";
-				printTree(_root, heightTree(_root, 0));
-				std::cout << "-----------------\n";
-
 				// Equilibrating the tree from newNode to root node
 				balanceTheTree(&_root, newNode);
-
-				std::cout << "------AFTER BALANCE ----\n";
-				printTree(_root, heightTree(_root, 0));
-				std::cout << "-----------------\n";
 
 				return newNode;
 			}
@@ -393,23 +384,23 @@ namespace ft
 					}
 
 					// Case only one son (left or right, need to equilibrate the tree
-					// after from this son)
+					// for only root)
 					else if (del->left && del->right == _lastElem)
 					{
-						balanceNode = del->left;
+						balanceNode = del->parent;
 						_root = del->left;
 						del->left->parent = 0;
 						
 						// Since the tree is AVL, if _root has only one son, this son is 
 						// a leaf and has no left and right son. So the new root has to be 
-						// linked to _lastElem from left and right side, but he's already 
-						// linked to it from one side (in this case, left)
+						// llastElem from left and right side, but he's already 
+						// linked to inked to _it from one side (in this case, left)
 						_lastElem->left = del->left;
 						del->left->right = _lastElem;
 					}
 					else if (del->left == _lastElem && del->right)
 					{
-						balanceNode = del->right;
+						balanceNode = del->parent;
 						_root = del->right;
 						del->right->parent = 0;
 
@@ -436,47 +427,49 @@ namespace ft
 				else if ((!del->left || del->left == _lastElem) && (!del->right || del->right == _lastElem))
 				{
 					balanceNode = del->parent;
+
+					// Case min node / max node, linking differs for _lastElem
+					Node* linkToParent = 0;
+					if (del->left == _lastElem || del->right == _lastElem)
+					{
+						linkToParent = _lastElem;
+						del->content.first <= del->parent->content.first ?
+							_lastElem->right = del->parent : _lastElem->left = del->parent;
+					}
+						
 					del->content.first <= del->parent->content.first ?
-							del->parent->left = 0 : del->parent->right = 0;
-					
-					// MODIFIER ICI RELINK LE LAST
+						del->parent->left = linkToParent : del->parent->right = linkToParent;
 				}
 				
-				// Case only one son (left or right)
+				// Case only one son (only left son or only right son)
 				else if ((del->left && del->left != _lastElem) && (!del->right || del->right == _lastElem))
 				{
-					std::cout << "COUCOU, del->content = " << del->content.first << "\n";
-					
 					balanceNode = del->parent;
+
 					del->content.first <= del->parent->content.first ?
 							del->parent->left = del->left : del->parent->right = del->left;
-
-					// Linking differs if the son is _lastElem or not
 					del->left->parent = del->parent;
+
+					// Case the node to delete is max node, need to relink _lastElem
 					if (del->right == _lastElem)
 					{
 						_lastElem->left = del->left;
-						del->left->right = _lastElem;  // NE MARCHE PAS 
+						del->left->right = _lastElem;
 					}
 				}
 				else if ((!del->left || del->left == _lastElem) && del->right && del->right != _lastElem)
 				{
-					std::cout << "del->content.first = " << del->content.first << "\n";
-					std::cout << "del->left = " << del->left << "\n";
-					std::cout << "del->right = " << del->right << "\n";
-					std::cout << "del->parent = " << del->parent << "\n";
-					std::cout << "_lastElem = " << _lastElem << "\n------------\n";
-					
 					balanceNode = del->parent;
+
 					del->content.first <= del->parent->content.first ?
 							del->parent->left = del->right : del->parent->right = del->right;
-					
-					// Linking differs if the son is _lastElem or not
 					del->right->parent = del->parent;
+					
+					// Case the node to delete is max node, need to relink _lastElem
 					if (del->left == _lastElem)
 					{
 						_lastElem->right = del->right;
-						del->right->left = _lastElem;   // NE MARCHE PAS
+						del->right->left = _lastElem;
 					}
 				}
 
@@ -484,12 +477,6 @@ namespace ft
 				// in the left subtree, and to delete the node with this highest key in the left subtree
 				else
 				{
-					// std::cout << "del->content.first = " << del->content.first << "\n";
-					// std::cout << "del->left = " << del->left << "\n";
-					// std::cout << "del->right = " << del->right << "\n";
-					// std::cout << "del->parent = " << del->parent << "\n";
-					// std::cout << "_lastElem = " << _lastElem << "\n------------\n";
-
 					Node* maxNode = searchMaxNode(del->left);
 
 					// Need to destroy then construct for copying const variable)
@@ -498,20 +485,11 @@ namespace ft
 					
 					return deleteNode(del->left, maxNode->content.first);
 				}
-				
-				deallocateNode(del);
 
-				std::cout << "-----DEL BEFORE-----\n";
-				printTree(_root, heightTree(_root, 0));
-				std::cout << "-----------------\n";
-				
 				// Equilibrating the tree from balanceNode to root node
 				balanceTheTree(&_root, balanceNode);
-				
-				std::cout << "-----DEL AFTER-----\n";
-				printTree(_root, heightTree(_root, 0));
-				std::cout << "-----------------\n";
 
+				deallocateNode(del);
 				return true;
 			}
 

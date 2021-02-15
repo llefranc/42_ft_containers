@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 11:03:03 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/15 10:49:09 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ namespace ft
 			bool operator==(const rev_list_iterator& it) const	{ return (it._node == _node); }
 			bool operator!=(const rev_list_iterator& it) const	{ return (it._node != _node); }
 
-			protected:
+			private:
 
 				nonConstPointer	_node;
 	};
