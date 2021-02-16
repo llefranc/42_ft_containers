@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/15 14:31:50 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/16 15:36:46 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "../avl_binary_tree_lib/binary_tree.hpp"
 
 #include "../iterators/map_iterator.hpp"
+#include "../iterators/rev_map_iterator.hpp"
 
 namespace ft
 {
@@ -62,47 +63,81 @@ namespace ft
 			typedef typename ft::map_iterator<Key, T, Compare, Node, false>		iterator;
 			typedef typename ft::map_iterator<Key, T, Compare, Node, true>		const_iterator;
 
-			// typedef typename ft::rev_map_iterator<T, Node, false>	reverse_iterator;
-			// typedef typename ft::rev_map_iterator<T, Node, true>	const_reverse_iterator;
+			typedef typename ft::rev_map_iterator<Key, T, Compare, Node, false>	reverse_iterator;
+			typedef typename ft::rev_map_iterator<Key, T, Compare, Node, true>	const_reverse_iterator;
 
 			/* ------------------------------------------------------------- */
 			/* ------------------------ COPLIEN FORM ----------------------- */
 
 			
 			// empty (1)	
-			explicit map (const key_compare& comp = key_compare(),
+			explicit map(const key_compare& comp = key_compare(),
 						const allocator_type& alloc = allocator_type()) :
 				_size(0), _allocPair(alloc), _comp(comp)
 			{
 				_lastElem = createNode(ft::pair<const key_type, mapped_type>());
 				_root = _lastElem;
+				_lastElem->left = _lastElem;
+				_lastElem->right = _lastElem;
 			}
 
-// range (2)	
-// template <class InputIterator>
-//   map (InputIterator first, InputIterator last,
-//        const key_compare& comp = key_compare(),
-//        const allocator_type& alloc = allocator_type());
-// copy (3)	
-// map (const map& x);
+			// range (2)
+			template <class InputIterator>
+			map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
+				const allocator_type& alloc = allocator_type(), 
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0) :
+				_size(0), _allocPair(alloc), _comp(comp)
+			{
+				_lastElem = createNode(ft::pair<const key_type, mapped_type>());
+				_root = _lastElem;
+				_lastElem->left = _lastElem;
+				_lastElem->right = _lastElem;
+				
+				for (; first != last; ++first)
+					insert(*first);
+			}
 
-// ~map();
-// copy (1)	
-//  map& operator= (const map& x);
+			// copy (3)	
+			map(const map& x) :
+				_size(0), _allocPair(x._allocPair), _comp(x._comp), _allocNode(x._allocNode)
+			{
+				_lastElem = createNode(ft::pair<const key_type, mapped_type>());
+				_root = _lastElem;
+				_lastElem->left = _lastElem;
+				_lastElem->right = _lastElem;
 
+				for (const_iterator it = x.begin(); it != x.end(); ++it)
+					insert(*it);
+			}
+
+			~map()
+			{
+				clear();
+				deallocateNode(_lastElem);
+			}
+
+			// copy (1)	
+			map& operator=(const map& x)
+			{
+				map tmp(x);
+				this->swap(tmp);
+				
+				return *this;
+			}
 
 
 			/* ------------------------------------------------------------- */
 			/* ------------------------- ITERATORS ------------------------- */
 
-			iterator begin()	{ return iterator(_lastElem->right, _lastElem); }
-			const_iterator begin() const	{ return iterator(_lastElem->right, _lastElem); }
-			iterator end()		{ return iterator(_lastElem, _lastElem); }
-			const_iterator end() const	{ return iterator(_lastElem, _lastElem); }
-// reverse_iterator rbegin();
-// const_reverse_iterator rbegin() const;
-//  reverse_iterator rend();
-// const_reverse_iterator rend() const;
+			iterator begin()						{ return iterator(_lastElem->right, _lastElem); }
+			const_iterator begin() const			{ return const_iterator(_lastElem->right, _lastElem); }
+			iterator end()							{ return iterator(_lastElem, _lastElem); }
+			const_iterator end() const				{ return const_iterator(_lastElem, _lastElem); }
+			reverse_iterator rbegin() 				{ return reverse_iterator(_lastElem->left, _lastElem); }
+			const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_lastElem->left, _lastElem); }
+			reverse_iterator rend() 				{ return reverse_iterator(_lastElem, _lastElem); }
+			const_reverse_iterator rend() const 	{ return const_reverse_iterator(_lastElem, _lastElem); }
+
 
 			/* ------------------------------------------------------------- */
 			/* -------------------------- CAPACITY ------------------------- */
@@ -130,7 +165,16 @@ namespace ft
 
 			/* ------------------------------------------------------------- */
 			/* ---------------------- ELEMENTS ACCESS ---------------------- */	
-			// mapped_type& operator[] (const key_type& k);
+			mapped_type& operator[](const key_type& k)
+			{
+				Node* tmp = searchNode(_root, k);
+
+				if (tmp)
+					return tmp->content.second;
+
+				value_type val = make_pair<key_type, mapped_type>(k);
+				return insertNode(_root, val)->content.second;
+			}
 
 			/* ------------------------------------------------------------- */
 			/* ------------------------- MODIFIERS ------------------------- */
@@ -144,27 +188,84 @@ namespace ft
 					return ft::pair<iterator, bool>(iterator(elemIsPresent, _lastElem), false);
 
 				// Inserts the pair in the tree and returns an iterator to its position
+				++_size;
 				return ft::pair<iterator, bool>(iterator(insertNode(_root, val), _lastElem), true);
 			}
 			
 			// with hint (2)	
-			// iterator insert (iterator position, const value_type& val);
+			iterator insert (iterator position, const value_type& val)
+			{	
+				// If position key is higher than val, we need to decrease position 
+				// until we find the closest highest key from val in the tree
+				if (position->first > val.first)
+				{
+					iterator prev(position);
+					--prev;
+					while (prev != end() && prev->first >= val.first)
+					{
+						--position;
+						--prev;
+					}
+				}
+
+				// Opposite case
+				else if (position->first < val.first)
+				{
+					iterator next(position);
+					++next;
+					while (next != end() && next->first <= val.first)
+					{
+						++position;
+						++next;
+					}
+				}
+
+				// If the value already exist, and the tree isn't empty
+				if (position != end() && val.first == position->first)
+					return position;
+
+				++_size;
+				return insertNode(position.getNonConstNode(), val);
+			}
 			// range (3)	
-			// template <class InputIterator>
-			// void insert (InputIterator first, InputIterator last);
+			template <class InputIterator>
+			void insert (InputIterator first, InputIterator last,
+						typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
+			{
+				while (first != last)
+					insert(*first++);
+			}
 
 			// (1)	
 			void erase (iterator position)
 			{
 				deleteNode(position.getNonConstNode(), position->first);
+				--_size;
 			}
 			// (2)	
 			// size_type erase (const key_type& k);
 			// (3)	
-			// 	void erase (iterator first, iterator last);
+			void erase (iterator first, iterator last)
+			{
+				while (first != last)
+				{
+					iterator tmp(first);
+					++first;
+					erase(tmp);
+				}
+			}
 
-			// 	void swap (map& x);
-			// void clear();
+			void swap (map& x)
+			{
+				swap(_root, x._root);
+				swap(_lastElem, x._lastElem);
+				swap(_size, x._size);
+				swap(_comp, x._comp);
+				swap(_allocPair, x._allocPair);
+				swap(_allocNode, x._allocNode);
+			}
+
+			void clear()		{ erase(begin(), end()); }
 
 
 			/* ------------------------------------------------------------- */
@@ -200,7 +301,31 @@ namespace ft
 			std::allocator<Node>	_allocNode;		// Node's allocator
 
 
-			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
+			/* ------------------------------------------------------------- */
+
+			/**
+			*	Swaps two variables using references.
+			*
+			*	@param a		Will be swap with b.
+			*	@param b		Will be swap with a.
+			*/
+			template <typename U>
+			void swap(U& a, U& b)
+			{
+				U tmp = a;
+				a = b;
+				b = tmp;
+			}
+
+			template <class T1,class T2>
+			pair<T1,T2> make_pair(T1 x = 0, T2 y = 0)
+			{
+				return ( pair<T1,T2>(x,y) );
+			}
+
+
+			/* ----- PRIVATE MEMBER FUNCTIONS : AVL BINARY SEARCH TREE ----- */
 			/* ----------- inserting / deleting inside the tree ------------ */
 
 			/**
@@ -222,6 +347,17 @@ namespace ft
 			}
 
 			/**
+			*	Calls the destructor of node's content, and then deallocates the node.
+			*
+			*	@param del	The node to destroy / deallocate.
+			*/
+			void deallocateNode(Node* del)
+			{
+				_allocPair.destroy(&del->content);
+				_allocNode.deallocate(del, 1);
+			}
+
+			/**
 			*	Searches key in the tree and returns the element if it finds key.
 			*
 			*	@param root		Will start to look in the tree for the element from this node.
@@ -230,8 +366,8 @@ namespace ft
 			*/
 			Node* searchNode(Node* root, key_type key)
 			{
-				// We reached a leaf
-				if (!root)
+				// We reached a leaf or tree is empty
+				if (!root || root == _lastElem)
 					return 0;
 				
 				if (root->content.first == key)
@@ -340,7 +476,6 @@ namespace ft
 				}
 					
 				newNode->parent = insertPos;
-				++_size;
 
 				// Equilibrating the tree from newNode to root node
 				balanceTheTree(&_root, newNode);
@@ -379,7 +514,7 @@ namespace ft
 					// Root is the only node in the tree, it will be empty
 					if (del->left == _lastElem && del->right == _lastElem)
 					{
-						_root = 0;
+						_root = _lastElem;
 						_lastElem->left = _lastElem;
 						_lastElem->right = _lastElem;
 					}
@@ -496,19 +631,8 @@ namespace ft
 				return true;
 			}
 
-			/**
-			*	Calls the destructor of node's content, and then deallocates the node.
-			*
-			*	@param del	The node to destroy / deallocate.
-			*/
-			void deallocateNode(Node* del)
-			{
-				_allocPair.destroy(&del->content);
-				_allocNode.deallocate(del, 1);
-			}
 
-
-			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* ----- PRIVATE MEMBER FUNCTIONS : AVL BINARY SEARCH TREE ----- */
 			/* -------------------- balancing the tree --------------------- */
 
 			/**
@@ -636,7 +760,7 @@ namespace ft
 			void balanceTheTree(Node** root, Node* node)
 			{
 				// Checking balance of subtrees every parents of this node until we 
-				// reach root node
+				// reach root node			
 				while (node)
 				{
 					int balance;
@@ -668,14 +792,14 @@ namespace ft
 			}
 
 
-			/* ------------------ AVL BINARY SEARCH TREE ------------------- */
+			/* ----- PRIVATE MEMBER FUNCTIONS : AVL BINARY SEARCH TREE ----- */
 			/* -------------- printing the tree for testing ---------------- */
 
 			std::string toString(int i)
 			{
-			std::stringstream ss;
-			ss << i;
-			return ss.str();
+				std::stringstream ss;
+				ss << i;
+				return ss.str();
 			}
 
 			unsigned int countWordsInString(std::string const& str)

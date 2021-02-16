@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/10 15:56:36 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/16 10:50:02 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -511,6 +511,8 @@ namespace ft
 			{
 				swap(_size, x._size);
 				swap(_endList, x._endList);
+				swap(_allocT, x._allocT);
+				swap(_allocNode, x._allocNode);
 			}
 
 			/**

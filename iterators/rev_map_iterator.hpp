@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_iterator.hpp                                   :+:      :+:    :+:   */
+/*   rev_map_iterator.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/15 16:27:44 by llefranc         ###   ########.fr       */
+/*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
+/*   Updated: 2021/02/15 10:49:09 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_ITERATOR
-#define MAP_ITERATOR
+#ifndef REVERSE_MAP_ITERATOR_HPP
+#define REVERSE_MAP_ITERATOR_HPP
 
 #include "../templates/type1_or_type2.hpp"
+#include "map_iterator.hpp"
 
 namespace ft
 {
 	template<class Key, class T, class Compare, typename Node, bool B>
-	class map_iterator
+	class rev_map_iterator
 	{
 		public:
 		
@@ -36,21 +37,28 @@ namespace ft
 			
 			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0) :
+			rev_map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0) :
 				_node(node), _lastElem(lastElem) {}
 		
-			map_iterator(const map_iterator<Key, T, Compare, Node, false>& copy)
+			rev_map_iterator(const rev_map_iterator<Key, T, Compare, Node, false>& copy)
 			{
 				_node = copy.getNonConstNode();
 				_lastElem = copy.getNonConstLastElem();
 			}
 			
-			~map_iterator() {}
+			rev_map_iterator(map_iterator<Key, T, Compare, Node, false> copy)
+			{
+				--copy;
+				_node = copy.getNonConstNode();
+				_lastElem = copy.getNonConstLastElem();
+			}
+
+			~rev_map_iterator() {}
 
 			nonConstPointer	getNonConstNode() const		{ return _node; }
 			nonConstPointer	getNonConstLastElem() const		{ return _lastElem; }
 
-			map_iterator& operator=(const map_iterator& assign)
+			rev_map_iterator& operator=(const rev_map_iterator& assign)
 			{
 				if (this != &assign)
 				{
@@ -64,10 +72,76 @@ namespace ft
 			pointer operator->() const		{ return (&_node->content); }
 
 			/**
+			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
+			*	key in the tree.
+			*/
+			rev_map_iterator& operator++()
+			{
+				// Opposite logic than in --operator
+				nonConstPointer previousNode = _node;
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (*this);
+				}
+
+				while (_node != _lastElem && _node->content.first >= previousNode->content.first)
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_node->left->content.first < previousNode->content.first))
+					{
+						_node = _node->left;
+						
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+
+				return (*this);
+			}
+
+			/**
+			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
+			*	key in the tree.
+			*/
+			rev_map_iterator operator++(int)
+			{
+				// Opposite logic than in --operator
+				rev_map_iterator res(*this);
+
+				if (_node == _lastElem)
+				{
+					_node = _lastElem->left;
+					return (res);
+				}
+				
+				while (_node != _lastElem && _node->content.first >= res->first)
+				{
+					if (_node->left && (_node->left == _lastElem || 
+							_node->left->content.first < res->first))
+					{
+						_node = _node->left;
+						
+						Node* tmp = 0;
+						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
+							_node = tmp;
+					}
+					else
+						_node = _node->parent;
+				}
+				
+				return (res);
+			}
+
+			/**
 			*	Starts from a specific key inside the tree, and looks for the closest superior key 
 			*	key in the tree.
 			*/
-			map_iterator& operator++()
+			rev_map_iterator& operator--()
 			{
 				// To save base value and compare it with parents if no right son
 				nonConstPointer previousNode = _node;
@@ -106,10 +180,10 @@ namespace ft
 			*	Starts from a specific key inside the tree, and looks for the closest superior key 
 			*	key in the tree.
 			*/
-			map_iterator operator++(int)
+			rev_map_iterator operator--(int)
 			{
 				// Same logic than in ++operator
-				map_iterator res(*this);
+				rev_map_iterator res(*this);
 
 				if (_node == _lastElem)
 				{
@@ -135,74 +209,8 @@ namespace ft
 				return (res);
 			}
 
-			/**
-			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
-			*	key in the tree.
-			*/
-			map_iterator& operator--()
-			{
-				// Opposite logic than in ++operator
-				nonConstPointer previousNode = _node;
-
-				if (_node == _lastElem)
-				{
-					_node = _lastElem->left;
-					return (*this);
-				}
-
-				while (_node != _lastElem && _node->content.first >= previousNode->content.first)
-				{
-					if (_node->left && (_node->left == _lastElem || 
-							_node->left->content.first < previousNode->content.first))
-					{
-						_node = _node->left;
-						
-						Node* tmp = 0;
-						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
-							_node = tmp;
-					}
-					else
-						_node = _node->parent;
-				}
-
-				return (*this);
-			}
-
-			/**
-			*	Starts from a specific key inside the tree, and looks for the closest inferior key 
-			*	key in the tree.
-			*/
-			map_iterator operator--(int)
-			{
-				// Opposite logic than in ++operator
-				map_iterator res(*this);
-
-				if (_node == _lastElem)
-				{
-					_node = _lastElem->left;
-					return (res);
-				}
-				
-				while (_node != _lastElem && _node->content.first >= res->first)
-				{
-					if (_node->left && (_node->left == _lastElem || 
-							_node->left->content.first < res->first))
-					{
-						_node = _node->left;
-						
-						Node* tmp = 0;
-						if (_node != _lastElem && (tmp = searchMaxNode(_node)))
-							_node = tmp;
-					}
-					else
-						_node = _node->parent;
-				}
-				
-				return (res);
-			}
-
-			bool operator==(const map_iterator& it) const	{ return (it._node == _node); }
-			bool operator!=(const map_iterator& it) const	{ return (it._node != _node); }
+			bool operator==(const rev_map_iterator& it) const	{ return (it._node == _node); }
+			bool operator!=(const rev_map_iterator& it) const	{ return (it._node != _node); }
 
 		private:
 
@@ -237,7 +245,6 @@ namespace ft
 				return root;
 			}
 	};
-} // namespace ft
-
+}
 
 #endif
