@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:50:15 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 14:59:22 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace ft
     template < class Key,                                           // map::key_type
             class T,                                                // map::mapped_type
             class Compare = std::less<Key>,                         // map::key_compare
-            class Alloc = std::allocator<ft::pair<const Key, T> >    // map::allocator_type
+            class Alloc = std::allocator<ft::pair<const Key, T> >   // map::allocator_type
     > class map
     {
         private:
@@ -66,9 +66,50 @@ namespace ft
             typedef typename ft::rev_map_iterator<Key, T, Compare, Node, false> reverse_iterator;
             typedef typename ft::rev_map_iterator<Key, T, Compare, Node, true>  const_reverse_iterator;
 
+
+            /* ------------------------------------------------------------- */
+            /* ---------------------- NESTED CLASSES ----------------------- */
+
+            class value_compare
+            {
+                friend class map;
+                
+                protected:
+                
+                    Compare comp;
+                    
+                    value_compare(Compare c) : comp(c) {}  // constructed with map's comparison object
+
+                public:
+                
+                    typedef bool        result_type;
+                    typedef value_type  first_argument_type;
+                    typedef value_type  second_argument_type;
+
+                    bool operator()(const value_type& x, const value_type& y) const
+                    {
+                        return comp(x.first, y.first);
+                    }
+            };
+            
+
+            /* ------------------------------------------------------------- */
+            /* ------------------------ ATTRIBUTES ------------------------- */
+            
+        private:
+
+            Node*                   _root;          // Pointer to the first element of the tree (root)
+            Node*                   _lastElem;      // Pointer to the last elem of the tree
+            size_type               _size;          // Number of T values inside the list
+            allocator_type          _allocPair;     // Copy of allocator_type object
+            key_compare             _comp;          // Copy of comp key_compare predicate
+            std::allocator<Node>    _allocNode;     // Node's allocator
+            
+            
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
-
+            
+        public:
             
             // empty (1)    
             explicit map(const key_compare& comp = key_compare(),
@@ -277,38 +318,144 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ------------------------- OBSERVERS ------------------------- */
             
-            // key_compare key_comp() const;
-            // value_compare value_comp() const;
+            key_compare key_comp() const    { return _comp; }
+
+            value_compare value_comp() const    { return value_compare(_comp); }
             
             
             /* ------------------------------------------------------------- */
             /* ------------------------ OPERATIONS ------------------------- */
 
-            // iterator find (const key_type& k);
-            // const_iterator find (const key_type& k) const;
-            // size_type count (const key_type& k) const;
-            // iterator lower_bound (const key_type& k);
-            // const_iterator lower_bound (const key_type& k) const;
+            iterator find(const key_type& k)
+            {
+                Node* tmp = searchNode(_root, k);
 
-            //  iterator upper_bound (const key_type& k);
-            // const_iterator upper_bound (const key_type& k) const;
+                if (tmp)
+                    return iterator(tmp, _lastElem);
+                
+                // Case no match
+                return end();
+            }
 
-            // pair<const_iterator,const_iterator> equal_range (const key_type& k) const;
-            // pair<iterator,iterator>             equal_range (const key_type& k);
+            const_iterator find(const key_type& k) const
+            {
+                Node* tmp = searchNode(_root, k);
 
+                if (tmp)
+                    return const_iterator(tmp, _lastElem);
+                
+                // Case no match
+                return end();
+            }
 
-        private:
+            size_type count (const key_type& k) const
+			{
+				Node* tmp = searchNode(_root, k);
+				
+				return tmp ? true: false;
+			}
 
-            Node*                   _root;          // Pointer to the first element of the tree (root)
-            Node*                   _lastElem;      // Pointer to the last elem of the tree
-            size_type               _size;          // Number of T values inside the list
-            Alloc                   _allocPair;     // Copy of allocator_type object
-            Compare                 _comp;          // Copy of comp key_compare predicate
-            std::allocator<Node>    _allocNode;     // Node's allocator
+            iterator lower_bound(const key_type& k)
+			{
+				iterator it = begin();
 
+				for (; it != end(); ++it)
+					if (!_comp(it->first, k))
+						break;
+				
+				return it;	
+			}
+			
+            const_iterator lower_bound(const key_type& k) const
+			{
+				const_iterator it = begin();
+
+				for (; it != end(); ++it)
+					if (!_comp(it->first, k))
+						break;
+				
+				return it;	
+			}
+
+			iterator upper_bound(const key_type& k)
+			{
+				iterator it = begin();
+
+				for (; it != end(); ++it)
+					if (_comp(k, it->first))
+						break;
+				
+				return it;	
+			}
+
+            const_iterator upper_bound(const key_type& k) const
+			{
+				const_iterator it = begin();
+
+				for (; it != end(); ++it)
+					if (_comp(k, it->first))
+						break;
+				
+				return it;	
+			}
+
+            pair<iterator,iterator> equal_range(const key_type& k)
+			{
+				iterator it = upper_bound(k);
+
+				if (it != begin())
+				{
+					--it;
+
+					if (_comp(it->first, k) || _comp(k, it->first))
+						++it;
+				}
+
+				iterator next(it);
+				if (it != end())
+					++next;
+				
+				return make_pair<iterator, iterator>(it, next);
+			}
+
+            pair<const_iterator,const_iterator> equal_range(const key_type& k) const
+			{
+				const_iterator it = upper_bound(k);
+
+				if (it != begin())
+				{
+					--it;
+
+					if (_comp(it->first, k) || _comp(k, it->first))
+						++it;
+				}
+
+				const_iterator next(it);
+				if (it != end())
+					++next;
+				
+				return make_pair<const_iterator, const_iterator>(it, next);
+			}
+
+            // pair<const_iterator,const_iterator> equal_range(const key_type& k) const
+			// {
+			// 	const_iterator it = upper_bound(k);
+
+			// 	if (it == begin())
+			// 		return make_pair<const_iterator, const_iterator>(it, it);	
+			// 	else
+			// 		--it;
+
+			// 	if (_comp(it->first, k) || _comp(k, it->first))
+			// 		++it;
+				
+			// 	return make_pair<const_iterator, const_iterator>(it, it);
+			// }
 
             /* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
             /* ------------------------------------------------------------- */
+            
+        private:
 
             /**
             *   Swaps two variables using references.
@@ -331,7 +478,7 @@ namespace ft
             *   @param y    Second element of the pair.
             */
             template <class T1,class T2>
-            pair<T1,T2> make_pair(T1 x, T2 y)
+            pair<T1,T2> make_pair(T1 x, T2 y) const
             {
                 return ( pair<T1,T2>(x,y) );
             }
@@ -376,13 +523,14 @@ namespace ft
             *   @param key      The key to search.
             *   @param return   The element containing the key in the tree. NULL if no match occured for key.
             */
-            Node* searchNode(Node* root, key_type key)
+            Node* searchNode(Node* root, key_type key) const
             {
                 // We reached a leaf or tree is empty
                 if (!root || root == _lastElem)
                     return 0;
                 
-                if (root->content.first == key)
+                // Case we find a match
+                if (!_comp(root->content.first, key) && !_comp(key, root->content.first))
                     return root;
                 
                 // Recursive loop until we find key
@@ -402,7 +550,7 @@ namespace ft
             *   @param root     First node of the tree.
             *   @param return   The element containing the highest key in the tree.
             */
-            Node* searchMaxNode(Node *root)
+            Node* searchMaxNode(Node *root) const
             {
                 // Until we meet tree's right extremity and circular link _lastElem
                 if (root->right && root->right != _lastElem)
@@ -416,7 +564,7 @@ namespace ft
             *   @param root     First node of the tree.
             *   @param return   The element containing the lowest key in the tree.
             */
-            Node* searchMinNode(Node *root)
+            Node* searchMinNode(Node *root) const
             {
                 // Until we meet tree's left extremity and circular link _lastElem
                 if (root->left && root->left != _lastElem)
@@ -906,6 +1054,8 @@ namespace ft
             {
                 if (!root)
                 {
+                    std::cout << "The tree is empty\n";
+                    return ;
                 }
                 
                 // Calculating total width of last line (each node take 5 characters "[xxx]"

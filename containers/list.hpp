@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:48:02 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 11:12:32 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,20 @@ namespace ft
 
 
             /* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+
+        private:
+
+            Node*                   _endList;       // Pointer to the neutral element of the circle linked list
+            size_type               _size;          // Number of T values inside the list
+            Alloc                   _allocT;        // Copy of allocator_type object
+            std::allocator<Node>    _allocNode;     // Node's allocator
+
+
+            /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
+
+        public:
 
             /**
             *   Default constructor, creates a list with a size of 0. Initalizes an end node
@@ -921,17 +934,11 @@ namespace ft
             friend void swap(list& x, list& y)                                              { x.swap(y); }
 
 
-        private:
-
-            Node*                   _endList;       // Pointer to the neutral element of the circle linked list
-            size_type               _size;          // Number of T values inside the list
-            Alloc                   _allocT;        // Copy of allocator_type object
-            std::allocator<Node>    _allocNode;     // Node's allocator
-
-
             /* ------------------------------------------------------------- */
             /* ------------------ PRIVATE MEMBER FUNCTIONS ----------------- */
             
+        private:
+
             /**
             *   Create a new endNode. Data isn't constructed.
             */

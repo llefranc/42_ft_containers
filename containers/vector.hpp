@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:48:58 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 11:13:50 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,21 @@ namespace ft
 
 
             /* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+
+        private:    
+        
+            Alloc               _alloc;         // Copy of allocator_type object
+            pointer             _vector;        // Pointer on an array of T values
+            size_type           _size;          // Number of T values inside the vector
+            size_type           _capacity;      // Capacity allocated (can be greater than size)
+
+
+            /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
 
+        public:
+        
             /**
             *   Default constructor, creates a vector with a size of 0.
             *
@@ -693,16 +706,10 @@ namespace ft
             friend void swap (vector& x, vector& y)                         { x.swap(y); }
             
             
-        private:    
-        
-            Alloc               _alloc;         // Copy of allocator_type object
-            pointer             _vector;        // Pointer on an array of T values
-            size_type           _size;          // Number of T values inside the vector
-            size_type           _capacity;      // Capacity allocated (can be greater than size)
-
-
             /* ------------------------------------------------------------- */
             /* ------------------ PRIVATE MEMBER FUNCTIONS ----------------- */
+
+        private:
 
             /**
             *   Reallocates a vector with a new capacity, and copy/construct the previous
