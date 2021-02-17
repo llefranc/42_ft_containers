@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/11 11:03:16 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 10:49:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,63 +17,63 @@
 
 namespace ft
 {
-	template<typename T, bool B>
-	class rev_bidirec_iterator;
-	
-	template<typename T, bool B>
-	class bidirec_iterator
-	{
-		public:
+    template<typename T, bool B>
+    class rev_bidirec_iterator;
+        
+    template<typename T, bool B>
+    class bidirec_iterator
+    {
+        public:
 
-			/* -------- ALIASES -------- */
+            /* -------- ALIASES -------- */
 
-			typedef long int										difference_type;
-			typedef T												value_type;
-			typedef size_t											size_type;
-			
-			typedef typename chooseConst<B, T&, const T&>::type		reference;
-			typedef typename chooseConst<B, T*, const T*>::type		pointer;
-			typedef T*												nonConstPointer;
-
-
-			/* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
-
-			bidirec_iterator(nonConstPointer val = 0) : _val(val) {}
-
-			// A COMMENTER
-			bidirec_iterator(const bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
-			bidirec_iterator(const rev_bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
-			~bidirec_iterator() {}
-
-			nonConstPointer	getNonConstPointer() const		{ return _val; }
-
-			bidirec_iterator& operator=(const bidirec_iterator& assign)
-			{
-				if (this != &assign)
-					_val = assign._val;
-				return (*this);
-			}
+            typedef long int                                        difference_type;
+            typedef T                                               value_type;
+            typedef size_t                                          size_type;
+            
+            typedef typename chooseConst<B, T&, const T&>::type     reference;
+            typedef typename chooseConst<B, T*, const T*>::type     pointer;
+            typedef T*                                              nonConstPointer;
 
 
-			/* -------- OPERATORS -------- */
+            /* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-			// INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
+            bidirec_iterator(nonConstPointer val = 0) : _val(val) {}
 
-			reference operator*() const			{ return (*_val); }
-			pointer operator->() const		{ return (_val); }
+            // A COMMENTER
+            bidirec_iterator(const bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
+            bidirec_iterator(const rev_bidirec_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
+            ~bidirec_iterator() {}
 
-			bidirec_iterator& operator++()		{ ++_val; return (*this); }
-			bidirec_iterator operator++(int)		{ bidirec_iterator res(*this); ++(*this); return (res); };
-			bidirec_iterator& operator--()		{ --_val; return (*this); }
-			bidirec_iterator operator--(int)		{ bidirec_iterator res(*this); --(*this); return (res); };
-			
-			bool operator==(const bidirec_iterator& it) const	{ return (it._val == _val); }
-			bool operator!=(const bidirec_iterator& it) const	{ return (it._val != _val); }
+            nonConstPointer getNonConstPointer() const      { return _val; }
 
-			protected:
+            bidirec_iterator& operator=(const bidirec_iterator& assign)
+            {
+                if (this != &assign)
+                    _val = assign._val;
+                return (*this);
+            }
 
-				nonConstPointer	_val;
-	};
+
+            /* -------- OPERATORS -------- */
+
+            // INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
+
+            reference operator*() const         { return (*_val); }
+            pointer operator->() const      { return (_val); }
+
+            bidirec_iterator& operator++()      { ++_val; return (*this); }
+            bidirec_iterator operator++(int)        { bidirec_iterator res(*this); ++(*this); return (res); };
+            bidirec_iterator& operator--()      { --_val; return (*this); }
+            bidirec_iterator operator--(int)        { bidirec_iterator res(*this); --(*this); return (res); };
+            
+            bool operator==(const bidirec_iterator& it) const   { return (it._val == _val); }
+            bool operator!=(const bidirec_iterator& it) const   { return (it._val != _val); }
+
+            protected:
+
+                nonConstPointer _val;
+    };
 }
 
 #endif

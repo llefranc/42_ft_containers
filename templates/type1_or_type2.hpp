@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 16:47:38 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/04 14:12:07 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 10:49:51 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 
 namespace ft
 {
-	/**
-	*	Use a boolean to typedef either type 1 or type 2.
-	*/
-	template <bool isConst, typename isFalse, typename isTrue>
-	struct chooseConst {};
+    /**
+    *   Use a boolean to typedef either type 1 or type 2.
+    */
+    template <bool isConst, typename isFalse, typename isTrue>
+    struct chooseConst {};
 
-	/**
-	*	Typedef: pointer, ref...
-	*/
-	template <typename isFalse, typename isTrue>
-	struct chooseConst<false, isFalse, isTrue>
-	{
-		typedef isFalse type;
-	};
+    /**
+    *   Typedef: pointer, ref...
+    */
+    template <typename isFalse, typename isTrue>
+    struct chooseConst<false, isFalse, isTrue>
+    {
+        typedef isFalse type;
+    };
 
-	/**
-	*	Typedef: const pointer, const ref...
-	*/
-	template <typename isFalse, typename isTrue>
-	struct chooseConst<true, isFalse, isTrue>
-	{
-		typedef isTrue type;
-	};
+    /**
+    *   Typedef: const pointer, const ref...
+    */
+    template <typename isFalse, typename isTrue>
+    struct chooseConst<true, isFalse, isTrue>
+    {
+        typedef isTrue type;
+    };
 
 } //namespace ft
 

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:47:51 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/17 10:50:15 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ namespace ft
             }
             // range (3)    
             template <class InputIterator>
-            void insert (InputIterator first, InputIterator las t,
+            void insert (InputIterator first, InputIterator last,
                         typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
             {
                 while (first != last)
