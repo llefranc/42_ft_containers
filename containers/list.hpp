@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 11:12:32 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 09:15:25 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ namespace ft
     template <typename T, class Alloc = std::allocator<T> >
     class list
     {
+			/* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+		
         private:
 
             struct Node
@@ -83,11 +86,11 @@ namespace ft
                 Node*   next;
             };          
         
-        
-        public:
-
+		
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
+
+        public:
 
             typedef T                                               value_type;
             typedef Alloc                                           allocator_type;

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 14:59:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 09:17:01 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ namespace ft
             class Alloc = std::allocator<ft::pair<const Key, T> >   // map::allocator_type
     > class map
     {
-        private:
+			/* ------------------------------------------------------------- */
+			/* ------------------------- ATTRIBUTES ------------------------ */
+
+        private:		
 
             struct Node
             {
@@ -41,10 +44,11 @@ namespace ft
                 Node*                   right;
             };
 
-        public:
 
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
+			
+        public:
 
             typedef Key                                             key_type;
             typedef Compare                                         key_compare;
@@ -206,6 +210,7 @@ namespace ft
 
             /* ------------------------------------------------------------- */
             /* ---------------------- ELEMENTS ACCESS ---------------------- */ 
+			
             mapped_type& operator[](const key_type& k)
             {
                 Node* tmp = searchNode(_root, k);
@@ -216,9 +221,11 @@ namespace ft
                 value_type val = make_pair<key_type, mapped_type>(k, mapped_type());
                 return insertNode(_root, val)->content.second;
             }
+			
 
             /* ------------------------------------------------------------- */
             /* ------------------------- MODIFIERS ------------------------- */
+
             // single element (1)   
             ft::pair<iterator,bool> insert (const value_type& val)
             {
@@ -437,20 +444,6 @@ namespace ft
 				return make_pair<const_iterator, const_iterator>(it, next);
 			}
 
-            // pair<const_iterator,const_iterator> equal_range(const key_type& k) const
-			// {
-			// 	const_iterator it = upper_bound(k);
-
-			// 	if (it == begin())
-			// 		return make_pair<const_iterator, const_iterator>(it, it);	
-			// 	else
-			// 		--it;
-
-			// 	if (_comp(it->first, k) || _comp(k, it->first))
-			// 		++it;
-				
-			// 	return make_pair<const_iterator, const_iterator>(it, it);
-			// }
 
             /* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
             /* ------------------------------------------------------------- */

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:48:52 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 09:14:51 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,29 @@ namespace ft
     template <class T, class Container = std::deque<T> >
     class stack
     {
-        public:
-
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
+
+        public:
 
             typedef T           value_type;
             typedef Container   container_type;
             typedef size_t      size_type;
             
             
+			/* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+
+		private:
+
+            container_type  _ctnr;  // Underlying container object (either a vector, a list or a
+                                    // deque) where the elements are stored.
+			
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
             
+		public:
+			
             /**
             *   Constructs a stack container adaptor object. It keeps internally a container object 
             *   as data, which is a copy of the ctnr argument passed to the constructor.
@@ -154,11 +164,12 @@ namespace ft
             friend bool operator>(const stack& lhs, const stack& rhs)   { return lhs._ctnr > rhs._ctnr; }
             friend bool operator>=(const stack& lhs, const stack& rhs)  { return lhs._ctnr >= rhs._ctnr; }
 
-        private:
 
-            container_type  _ctnr;  // Underlying container object (either a vector, a list or a
-                                    // deque) where the elements are stored.
+			/* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
+            /* ------------------------------------------------------------- */
 
+		private:
+		
             /**
             *   Swaps two variables.
             *
