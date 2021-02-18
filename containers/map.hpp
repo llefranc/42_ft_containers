@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 11:34:38 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 12:07:41 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,46 +210,46 @@ namespace ft
 			/**
             *   @return     An iterator pointing to the first node of the map (minimum value).
             */
-            iterator begin()                        { return iterator(_lastElem->right, _lastElem); }
+            iterator begin()                        { return iterator(_lastElem->right, _lastElem, _comp); }
 			
 			/**
             *   @return     A const_iterator pointing to the first node of the map (minimum value).
             */
-            const_iterator begin() const            { return const_iterator(_lastElem->right, _lastElem); }
+            const_iterator begin() const            { return const_iterator(_lastElem->right, _lastElem, _comp); }
 
 			/**
             *   @return     An iterator pointing after the last map's element, on a dummy node. 
 			*				Access this iterator will result in undefined behavior.
             */
-            iterator end()                          { return iterator(_lastElem, _lastElem); }
+            iterator end()                          { return iterator(_lastElem, _lastElem, _comp); }
 
 			/**
             *   @return     A const_iterator pointing after the last map's element, on a dummy node. 
 			*				Access this iterator will result in undefined behavior.
             */
-            const_iterator end() const              { return const_iterator(_lastElem, _lastElem); }
+            const_iterator end() const              { return const_iterator(_lastElem, _lastElem, _comp); }
 
 			/**
             *   @return     A reverse_iterator pointing to the last element of the map (maximum value).
             */
-            reverse_iterator rbegin()               { return reverse_iterator(_lastElem->left, _lastElem); }
+            reverse_iterator rbegin()               { return reverse_iterator(_lastElem->left, _lastElem, _comp); }
 
 			/**
             *   @return     A const_reverse_iterator pointing to the last element of the map (maximum value).
             */
-            const_reverse_iterator rbegin() const   { return const_reverse_iterator(_lastElem->left, _lastElem); }
+            const_reverse_iterator rbegin() const	{ return const_reverse_iterator(_lastElem->left, _lastElem, _comp); }
 
 			/**
             *   @return     A reverse_iterator pointing before the first map's element, on a dummy node.
             *               Access this iterator will result in undefined behavior.
             */
-            reverse_iterator rend()                 { return reverse_iterator(_lastElem, _lastElem); }
+            reverse_iterator rend()                 { return reverse_iterator(_lastElem, _lastElem, _comp); }
 
 			/**
             *   @return     A const_reverse_iterator pointing before the first map's element, on a dummy node.
             *               Access this iterator will result in undefined behavior.
             */
-            const_reverse_iterator rend() const     { return const_reverse_iterator(_lastElem, _lastElem); }
+            const_reverse_iterator rend() const     { return const_reverse_iterator(_lastElem, _lastElem, _comp); }
 
 
             /* ------------------------------------------------------------- */
@@ -319,11 +319,11 @@ namespace ft
                 // an iterator to the key inside the tree if it's the case
                 Node* elemIsPresent = searchNode(_root, val.first);
                 if (elemIsPresent)
-                    return ft::pair<iterator, bool>(iterator(elemIsPresent, _lastElem), false);
+                    return ft::pair<iterator, bool>(iterator(elemIsPresent, _lastElem, _comp), false);
 
                 // Inserts the pair in the tree and returns an iterator to its position
                 ++_size;
-                return ft::pair<iterator, bool>(iterator(insertNode(_root, val), _lastElem), true);
+                return ft::pair<iterator, bool>(iterator(insertNode(_root, val), _lastElem, _comp), true);
             }
             
             /**
@@ -370,7 +370,7 @@ namespace ft
                     return position;
 
                 ++_size;
-                return insertNode(position.getNonConstNode(), val);
+                return iterator(insertNode(position.getNonConstNode(), val), _lastElem, _comp);
             }
 			
 			/**
@@ -485,7 +485,7 @@ namespace ft
                 Node* tmp = searchNode(_root, k);
 
                 if (tmp)
-                    return iterator(tmp, _lastElem);
+                    return iterator(tmp, _lastElem, _comp);
                 
                 // Case no match
                 return end();
@@ -503,7 +503,7 @@ namespace ft
                 Node* tmp = searchNode(_root, k);
 
                 if (tmp)
-                    return const_iterator(tmp, _lastElem);
+                    return const_iterator(tmp, _lastElem, _comp);
                 
                 // Case no match
                 return end();

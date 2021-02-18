@@ -21,6 +21,9 @@ namespace ft
     template<class Key, class T, class Compare, typename Node, bool B>
     class rev_map_iterator
     {
+		/* ------------------------------------------------------------- */
+		/* -------------------------- ALIASES -------------------------- */
+		
         public:
         
             typedef Key                                             key_type;
@@ -35,15 +38,31 @@ namespace ft
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
             typedef Node*                                                               nonConstPointer;
             
-            /* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-            rev_map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0) :
-                _node(node), _lastElem(lastElem) {}
+			/* ------------------------------------------------------------- */
+			/* ------------------------- ATTRIBUTES ------------------------ */
+			
+		private:
+
+            nonConstPointer _node;
+            nonConstPointer _lastElem;
+			key_compare		_comp;
+		
+		
+            /* ------------------------------------------------------------- */
+            /* ------------------------ COPLIEN FORM ----------------------- */
+
+		public:
+		
+            rev_map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0,
+							const key_compare& comp = key_compare()) :
+                _node(node), _lastElem(lastElem), _comp(comp) {}
         
             rev_map_iterator(const rev_map_iterator<Key, T, Compare, Node, false>& copy)
             {
                 _node = copy.getNonConstNode();
                 _lastElem = copy.getNonConstLastElem();
+				_comp = copy.getCompare();
             }
             
             rev_map_iterator(map_iterator<Key, T, Compare, Node, false> copy)
@@ -51,12 +70,10 @@ namespace ft
                 --copy;
                 _node = copy.getNonConstNode();
                 _lastElem = copy.getNonConstLastElem();
+				_comp = copy.getCompare();
             }
 
             ~rev_map_iterator() {}
-
-            nonConstPointer getNonConstNode() const     { return _node; }
-            nonConstPointer getNonConstLastElem() const     { return _lastElem; }
 
             rev_map_iterator& operator=(const rev_map_iterator& assign)
             {
@@ -64,12 +81,22 @@ namespace ft
                 {
                     _node = assign._node;
                     _lastElem = assign._lastElem;
+					_comp = assign._comp;
                 }
                 return (*this);
             }
 
-            reference operator*() const         { return (_node->content); }
-            pointer operator->() const      { return (&_node->content); }
+
+			/* ------------------------------------------------------------- */
+            /* ------------------------ COPLIEN FORM ----------------------- */
+
+            nonConstPointer getNonConstNode() const     	{ return _node; }
+            nonConstPointer getNonConstLastElem() const     { return _lastElem; }
+			key_compare		getCompare() const				{ return _comp; }
+
+
+            reference operator*() const    					{ return (_node->content); }
+            pointer operator->() const						{ return (&_node->content); }
 
             /**
             *   Starts from a specific key inside the tree, and looks for the closest inferior key 
@@ -86,10 +113,10 @@ namespace ft
                     return (*this);
                 }
 
-                while (_node != _lastElem && _node->content.first >= previousNode->content.first)
+                while (_node != _lastElem && !_comp(_node->content.first, previousNode->content.first))
                 {
                     if (_node->left && (_node->left == _lastElem || 
-                            _node->left->content.first < previousNode->content.first))
+                            _comp(_node->left->content.first, previousNode->content.first)))
                     {
                         _node = _node->left;
                         
@@ -119,10 +146,10 @@ namespace ft
                     return (res);
                 }
                 
-                while (_node != _lastElem && _node->content.first >= res->first)
+                while (_node != _lastElem && !_comp(_node->content.first, res->first))
                 {
                     if (_node->left && (_node->left == _lastElem || 
-                            _node->left->content.first < res->first))
+                            _comp(_node->left->content.first, res->first)))
                     {
                         _node = _node->left;
                         
@@ -154,12 +181,19 @@ namespace ft
                     return (*this);
                 }
 
+				// _comp is equivalent to operator <. So:
+				//		- operator>(lhs, rhs)  <==>  _comp(rhs, lhs)
+				//		- operator<=(lhs, rhs)  <==>  !_comp(rhs, lhs)
+				//		- operator>=(lhs, rhs)  <==>  !_comp(lhs, rhs)
+
                 // Moving node* until we find a node with an higher value or equal value (_lastElem == end)
-                while (_node != _lastElem && _node->content.first <= previousNode->content.first)
+                // 								<=> _node->content.first <= previousNode->content.first)
+                while (_node != _lastElem && !_comp(previousNode->content.first, _node->content.first))
                 {
                     // Case right son is either node with higher value or _lastElem node    
                     if (_node->right && (_node->right == _lastElem || 
-                            _node->right->content.first > previousNode->content.first))
+                        // <=> _node->right->content.first > previousNode->content.first))
+                            _comp(previousNode->content.first, _node->right->content.first)))
                     {
                         _node = _node->right;
                         
@@ -191,10 +225,10 @@ namespace ft
                     return (res);
                 }
                 
-                while (_node != _lastElem && _node->content.first <= res->first)
+                while (_node != _lastElem && !_comp(res->first, _node->content.first))
                 {
                     if (_node->right && (_node->right == _lastElem || 
-                            _node->right->content.first > res->first))
+                            _comp(res->first, _node->right->content.first)))
                     {
                         _node = _node->right;
                         
@@ -212,10 +246,11 @@ namespace ft
             bool operator==(const rev_map_iterator& it) const   { return (it._node == _node); }
             bool operator!=(const rev_map_iterator& it) const   { return (it._node != _node); }
 
-        private:
 
-            nonConstPointer _node;
-            nonConstPointer _lastElem;
+			/* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
+            /* ------------------------------------------------------------- */
+			
+        private:
 
             /**
             *   Searches for the element with the highest key in the tree.
