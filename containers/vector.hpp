@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 11:13:50 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:56:01 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ namespace ft
     * ------------------------------------------------------------- *
     */
         
-    template <typename T, class Alloc = std::allocator<T> >
+    template <typename T, class Alloc = ft::allocator<T> >
     class vector
     {
         public:
@@ -359,7 +359,6 @@ namespace ft
                     throw std::out_of_range("vector");
                 return _vector[n];
             }
-            
             
             /**
             *   Access first vector's element. Undefined behavior if the vector is empty.

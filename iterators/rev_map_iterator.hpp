@@ -88,12 +88,15 @@ namespace ft
 
 
 			/* ------------------------------------------------------------- */
-            /* ------------------------ COPLIEN FORM ----------------------- */
+            /* --------------------------- GETTERS ------------------------- */
 
             nonConstPointer getNonConstNode() const     	{ return _node; }
             nonConstPointer getNonConstLastElem() const     { return _lastElem; }
 			key_compare		getCompare() const				{ return _comp; }
 
+
+			/* ------------------------------------------------------------- */
+            /* -------------------------- OPERATORS ------------------------ */
 
             reference operator*() const    					{ return (_node->content); }
             pointer operator->() const						{ return (&_node->content); }

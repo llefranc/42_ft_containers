@@ -6,14 +6,14 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:49:40 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:22:03 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef REV_RANDOM_ACCESS_ITERATOR_HPP
 #define REV_RANDOM_ACCESS_ITERATOR_HPP
 
-#include "rev_bidirectional_iterator.hpp"
+// #include "rev_randomtional_iterator.hpp"
 #include "random_access_iterator.hpp"
 #include "../templates/stl_like.hpp"
 
@@ -43,34 +43,41 @@ namespace ft
     *   @param B    Boolean to indicate if it's a const or not random iterator.
     */
     template<typename T, bool B>
-    class rev_random_iterator : public rev_bidirec_iterator<T, B>
+    class rev_random_iterator
     {
         public:
 
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
 
-            typedef typename ft::rev_bidirec_iterator<T, B>::difference_type    difference_type;
-            typedef typename ft::rev_bidirec_iterator<T, B>::value_type         value_type;
-            typedef typename ft::rev_bidirec_iterator<T, B>::size_type          size_type;
+            typedef long int                                        difference_type;
+            typedef T                                               value_type;
+            typedef size_t                                          size_type;
             
-            typedef typename ft::rev_bidirec_iterator<T, B>::reference          reference;
-            typedef typename ft::rev_bidirec_iterator<T, B>::pointer            pointer;
-            typedef typename ft::rev_bidirec_iterator<T, B>::nonConstPointer    nonConstPointer;
+            typedef typename chooseConst<B, T&, const T&>::type     reference;
+            typedef typename chooseConst<B, T*, const T*>::type     pointer;
+            typedef T*                                              nonConstPointer;
+            
+			
+			/* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
 
-            typedef typename ft::rev_bidirec_iterator<T, B>                     rev_bidirec_iterator;
-            
+		private:
+
+			nonConstPointer _val;
+
 
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
+
+		public:	
 
             /**
             *   Default constructor, creates a rev_random_iterator pointing to val.
             *
             *   @param val  A pointer to a T element. Value initialized if not provided.
             */
-            rev_random_iterator(nonConstPointer val = 0) :
-                    rev_bidirec_iterator(val) {}
+            rev_random_iterator(nonConstPointer val = 0) : _val(val) {}
 
             /**
             *   Copy constructor : creates a const rev_random_iterator pointing to the same T element.
@@ -79,8 +86,7 @@ namespace ft
             *   
             *   @param copy     The rev_random_iterator that will be copied.
             */
-            rev_random_iterator(const rev_random_iterator<T, false>& copy) :
-                rev_bidirec_iterator(copy.getNonConstPointer()) {}
+            rev_random_iterator(const rev_random_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
 
             /**
             *   Convert constructor : creates a rev_random_iterator from a const / not const 
@@ -89,8 +95,7 @@ namespace ft
             *   
             *   @param copy     The random_iterator that will be converted.
             */
-            explicit rev_random_iterator(const random_iterator<T, false>& copy) :
-                rev_bidirec_iterator(copy.getNonConstPointer() - 1) {}
+            explicit rev_random_iterator(const random_iterator<T, false>& copy) { _val = copy.getNonConstPointer() - 1; }
 
             ~rev_random_iterator() {}
 
@@ -103,13 +108,25 @@ namespace ft
             rev_random_iterator& operator=(const rev_random_iterator& assign)
             {
                 if (this != &assign)
-                    rev_bidirec_iterator::_val = assign._val;
+                    _val = assign._val;
                 return (*this);
             }
 
+			nonConstPointer getNonConstPointer() const      { return _val; }
 
             /* ------------------------------------------------------------- */
             /* --------------------- OPERATOR OVERLOADS -------------------- */
+
+			reference operator*() const         { return (*_val); }
+            pointer operator->() const      { return (_val); }
+
+            rev_random_iterator& operator++()      { --_val; return (*this); }
+            rev_random_iterator operator++(int)        { rev_random_iterator res(*this); ++(*this); return (res); };
+            rev_random_iterator& operator--()      { ++_val; return (*this); }
+            rev_random_iterator operator--(int)        { rev_random_iterator res(*this); --(*this); return (res); };
+            
+            bool operator==(const rev_random_iterator& it) const   { return (it._val == _val); }
+            bool operator!=(const rev_random_iterator& it) const   { return (it._val != _val); }
 
             bool operator<(const rev_random_iterator& it) const     { return (it._val > this->_val); }
             

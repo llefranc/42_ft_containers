@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 10:59:27 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:03:08 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ namespace ft
     * ------------------------------------------------------------- *
     */
 
-    template <typename T, class Alloc = std::allocator<T> >
+    template <typename T, class Alloc = ft::allocator<T> >
     class list
     {
 			/* ------------------------------------------------------------- */
@@ -117,7 +117,7 @@ namespace ft
             Node*                   _endList;       // Pointer to the neutral element of the circle linked list
             size_type               _size;          // Number of T values inside the list
             Alloc                   _allocT;        // Copy of allocator_type object
-            std::allocator<Node>    _allocNode;     // Node's allocator
+            ft::allocator<Node>		_allocNode;     // Node's allocator
 
 
             /* ------------------------------------------------------------- */

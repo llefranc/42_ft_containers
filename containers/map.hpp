@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 12:07:41 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:02:39 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ namespace ft
         
     template < class Key,                                           // map::key_type
             class T,                                                // map::mapped_type
-            class Compare = std::less<Key>,                         // map::key_compare
-            class Alloc = std::allocator<ft::pair<const Key, T> >   // map::allocator_type
+            class Compare = ft::less<Key>,							// map::key_compare
+            class Alloc = ft::allocator<ft::pair<const Key, T> >    // map::allocator_type
     > class map
     {
 			/* ------------------------------------------------------------- */
@@ -110,7 +110,7 @@ namespace ft
             size_type               _size;          // Number of T values inside the map
             allocator_type          _allocPair;     // Copy of allocator_type object
             key_compare             _comp;          // Copy of comp key_compare predicate
-            std::allocator<Node>    _allocNode;     // Node's allocator
+            ft::allocator<Node> 	_allocNode;     // Node's allocator
             
             
             /* ------------------------------------------------------------- */

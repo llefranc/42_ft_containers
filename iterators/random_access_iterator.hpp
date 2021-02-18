@@ -6,14 +6,15 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:49:22 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:25:12 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RANDOM_ACCESS_ITERATOR_HPP
 #define RANDOM_ACCESS_ITERATOR_HPP
 
-#include "bidirectional_iterator.hpp"
+// #include "bidirectional_iterator.hpp"
+#include "../templates/type1_or_type2.hpp"
 
 // Used in movePtr function
 #define ADD 1
@@ -45,26 +46,33 @@ namespace ft
     *   @param B    Boolean to indicate if it's a const or not random iterator.
     */
     template<typename T, bool B>
-    class random_iterator : public bidirec_iterator<T, B>
+    class random_iterator
     {
         public:
 
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
 
-            typedef typename ft::bidirec_iterator<T, B>::difference_type    difference_type;
-            typedef typename ft::bidirec_iterator<T, B>::value_type         value_type;
-            typedef typename ft::bidirec_iterator<T, B>::size_type          size_type;
+            typedef long int                                        difference_type;
+            typedef T                                               value_type;
+            typedef size_t                                          size_type;
             
-            typedef typename ft::bidirec_iterator<T, B>::reference          reference;
-            typedef typename ft::bidirec_iterator<T, B>::pointer            pointer;
-            typedef typename ft::bidirec_iterator<T, B>::nonConstPointer    nonConstPointer;
+            typedef typename chooseConst<B, T&, const T&>::type     reference;
+            typedef typename chooseConst<B, T*, const T*>::type     pointer;
+            typedef T*                                              nonConstPointer;
+            
 
-            typedef typename ft::bidirec_iterator<T, B>                     bidirec_iterator;
-            
+			/* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+
+		private:
+		
+			nonConstPointer _val;
 
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
+
+		public:
 
             /**
             *   Default constructor, creates a random_iterator pointing to val.
@@ -72,7 +80,7 @@ namespace ft
             *   @param val  A pointer to a T element. Value initialized if not provided.
             */
             random_iterator(nonConstPointer val = 0) :
-                    bidirec_iterator(val) {}
+                    _val(val) {}
                     
             /**
             *   Copy constructor : creates a const random_iterator pointing to the same T element.
@@ -81,8 +89,7 @@ namespace ft
             *   
             *   @param copy     The iterator that will be copied.
             */
-            random_iterator(const random_iterator<T, false>& copy) :
-                    bidirec_iterator(copy.getNonConstPointer()) {};
+            random_iterator(const random_iterator<T, false>& copy) { _val = copy.getNonConstPointer(); }
 
             ~random_iterator() {}
 
@@ -95,13 +102,25 @@ namespace ft
             random_iterator& operator=(const random_iterator& assign)
             {
                 if (this != &assign)
-                    bidirec_iterator::_val = assign._val;
+                    _val = assign._val;
                 return (*this);
             }
 
+			nonConstPointer getNonConstPointer() const      { return _val; }
 
             /* ------------------------------------------------------------- */
             /* --------------------- OPERATOR OVERLOADS -------------------- */
+
+			reference operator*() const         { return (*_val); }
+            pointer operator->() const      { return (_val); }
+
+            random_iterator& operator++()      { ++_val; return (*this); }
+            random_iterator operator++(int)        { random_iterator res(*this); ++(*this); return (res); };
+            random_iterator& operator--()      { --_val; return (*this); }
+            random_iterator operator--(int)        { random_iterator res(*this); --(*this); return (res); };
+            
+            bool operator==(const random_iterator& it) const   { return (it._val == _val); }
+            bool operator!=(const random_iterator& it) const   { return (it._val != _val); }
 
 
             bool operator<(const random_iterator& it) const     { return (it._val > this->_val); }

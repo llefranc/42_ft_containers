@@ -6,7 +6,7 @@
 #    By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/04 11:24:58 by llefranc          #+#    #+#              #
-#    Updated: 2021/02/17 10:49:59 by llefranc         ###   ########.fr        #
+#    Updated: 2021/02/18 14:45:58 by llefranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ SRCS		=	main.cpp
 
 HEADER_CON	=	vector.hpp list.hpp stack.hpp queue.hpp map.hpp
 HEADER_TEM	=	type1_or_type2.hpp stl_like.hpp
-HEADER_ITE	=	bidirectional_iterator.hpp random_access_iterator.hpp \
-				rev_bidirectional_iterator.hpp rev_random_access_iterator.hpp \
+HEADER_ITE	=	random_access_iterator.hpp rev_random_access_iterator.hpp \
 				list_iterator.hpp rev_list_iterator.hpp map_iterator.hpp rev_map_iterator.hpp
 
 PATH_CON	=	containers/

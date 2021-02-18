@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 12:31:39 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 12:38:17 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ namespace ft
 			key_compare		getCompare() const				{ return _comp; }
 
 
+			/* ------------------------------------------------------------- */
+            /* -------------------------- OPERATORS ------------------------ */
+			
             reference operator*() const   			      { return (_node->content); }
             pointer operator->() const    				  { return (&_node->content); }
 
