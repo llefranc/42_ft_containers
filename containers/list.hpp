@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 09:15:25 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 10:59:27 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,8 +190,8 @@ namespace ft
             }
 
             /**
-            *   Destructor, destroys all the list's elements and list's nodes, including
-            *   end node.
+            *   Destructor, destroys and deallocates all the list's elements and list's nodes, 
+			*	including end node.
             */
             ~list()
             {
@@ -492,8 +492,8 @@ namespace ft
             *   Inserts all elements between first and last, and increases the vector' size.
             *
             *   @param position Elements will be inserted just before this position.
-            *   @param first    An iterator pointing to the range's beginning (will be include).
-            *   @param last     An iterator pointing to the range's end (will not be include).
+            *   @param first    An iterator pointing to the range's beginning (will be included).
+            *   @param last     An iterator pointing to the range's end (will not be included).
             */  
             template <class InputIterator>
             void insert (iterator position, InputIterator first, InputIterator last,
@@ -505,12 +505,30 @@ namespace ft
                     position = insert(position, *it.first);
             }
 
+			/**
+			*	Removes from the list one element at a specific position. Size is decreased.
+			*
+			*	@param position	Iterator pointing to a single element to be removed from the list.
+			*	@return			An iterator pointing to the element that followed the last element 
+			*					erased by the function call. This is the container end if the operation 
+			*					erased the last element in the sequence.
+			*/
             iterator erase (iterator position)
             {
                 // Using iterator's Node constructor for creating last
                 return erase(position, position->next);
             }
 
+			/**
+			*	Removes from the list a range of elements. Size is decreased by the number of 
+			*	elements removed.
+			*
+			*   @param first    An iterator pointing to the range's beginning (will be included).
+            *   @param last     An iterator pointing to the range's end (will not be included).
+			*	@return			An iterator pointing to the element that followed the last element 
+			*					erased by the function call. This is the container end if the operation 
+			*					erased the last element in the sequence.
+			*/
             iterator erase (iterator first, iterator last)
             {
                 for (; first != last;)

@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 09:17:01 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/18 11:34:38 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,16 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ---------------------- NESTED CLASSES ----------------------- */
 
+			/**
+			*	Comparison object using map's key_compare. It can be return with the value_comp method.
+			*/
             class value_compare
             {
                 friend class map;
                 
                 protected:
                 
-                    Compare comp;
+                    key_compare	comp;
                     
                     value_compare(Compare c) : comp(c) {}  // constructed with map's comparison object
 
@@ -104,7 +107,7 @@ namespace ft
 
             Node*                   _root;          // Pointer to the first element of the tree (root)
             Node*                   _lastElem;      // Pointer to the last elem of the tree
-            size_type               _size;          // Number of T values inside the list
+            size_type               _size;          // Number of T values inside the map
             allocator_type          _allocPair;     // Copy of allocator_type object
             key_compare             _comp;          // Copy of comp key_compare predicate
             std::allocator<Node>    _allocNode;     // Node's allocator
@@ -115,7 +118,14 @@ namespace ft
             
         public:
             
-            // empty (1)    
+			
+			/**
+            *   Default constructor, creates a map with a size of 0. Initalizes a last elem node
+            *   pointing to itself.
+            *
+			*	@param comp		The template param used for sorting the map.
+            *   @param alloc    The template param used for the allocation.
+            */
             explicit map(const key_compare& comp = key_compare(),
                         const allocator_type& alloc = allocator_type()) :
                 _size(0), _allocPair(alloc), _comp(comp)
@@ -126,7 +136,16 @@ namespace ft
                 _lastElem->right = _lastElem;
             }
 
-            // range (2)
+
+			/**
+            *   Range constructor, creates a map with a size equal to the range between two
+            *   iterators and copy the values of this range to the new elements created.
+            *
+            *   @param first    An iterator representing first element of the range.
+            *   @param last     An iterator indicating end of the range (will be excluded and not copied).
+			*	@param comp		The template param used for sorting the map.
+            *   @param alloc    The template param used for the allocation.
+            */
             template <class InputIterator>
             map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(),
                 const allocator_type& alloc = allocator_type(), 
@@ -142,7 +161,12 @@ namespace ft
                     insert(*first);
             }
 
-            // copy (3) 
+			/**
+            *   Copy constructor, creates a map with the same size and copy/construct
+            *   all x values to the new elements allocated.
+            *   
+            *   @param x        The map that will be copied.
+            */
             map(const map& x) :
                 _size(0), _allocPair(x._allocPair), _comp(x._comp), _allocNode(x._allocNode)
             {
@@ -155,13 +179,22 @@ namespace ft
                     insert(*it);
             }
 
+			/**
+            *   Destructor, destroys and deallocates all the map's elements and map's nodes, 
+			*	including last elem node.
+            */
             ~map()
             {
                 clear();
                 deallocateNode(_lastElem);
             }
 
-            // copy (1) 
+            /**
+            *   Assigns a map to this map. Calls the copy constructor to do the
+            *   assignment(copy and swap idiom).
+            *   
+            *   @param x        The map that will be assigned.
+            */
             map& operator=(const map& x)
             {
                 map tmp(x);
@@ -174,13 +207,48 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ------------------------- ITERATORS ------------------------- */
 
+			/**
+            *   @return     An iterator pointing to the first node of the map (minimum value).
+            */
             iterator begin()                        { return iterator(_lastElem->right, _lastElem); }
+			
+			/**
+            *   @return     A const_iterator pointing to the first node of the map (minimum value).
+            */
             const_iterator begin() const            { return const_iterator(_lastElem->right, _lastElem); }
+
+			/**
+            *   @return     An iterator pointing after the last map's element, on a dummy node. 
+			*				Access this iterator will result in undefined behavior.
+            */
             iterator end()                          { return iterator(_lastElem, _lastElem); }
+
+			/**
+            *   @return     A const_iterator pointing after the last map's element, on a dummy node. 
+			*				Access this iterator will result in undefined behavior.
+            */
             const_iterator end() const              { return const_iterator(_lastElem, _lastElem); }
+
+			/**
+            *   @return     A reverse_iterator pointing to the last element of the map (maximum value).
+            */
             reverse_iterator rbegin()               { return reverse_iterator(_lastElem->left, _lastElem); }
+
+			/**
+            *   @return     A const_reverse_iterator pointing to the last element of the map (maximum value).
+            */
             const_reverse_iterator rbegin() const   { return const_reverse_iterator(_lastElem->left, _lastElem); }
+
+			/**
+            *   @return     A reverse_iterator pointing before the first map's element, on a dummy node.
+            *               Access this iterator will result in undefined behavior.
+            */
             reverse_iterator rend()                 { return reverse_iterator(_lastElem, _lastElem); }
+
+			/**
+            *   @return     A const_reverse_iterator pointing before the first map's element, on a dummy node.
+            *               Access this iterator will result in undefined behavior.
+            */
             const_reverse_iterator rend() const     { return const_reverse_iterator(_lastElem, _lastElem); }
 
 
@@ -188,12 +256,12 @@ namespace ft
             /* -------------------------- CAPACITY ------------------------- */
 
             /**
-            *   @return     True if the list' size is equal to 0.
+            *   @return     True if the map' size is equal to 0.
             */
             bool empty() const              { return _size == 0; }
 
             /**
-            *   @return     The size of the list.
+            *   @return     The size of the map.
             */
             size_type size() const          { return _size; }
             
@@ -211,6 +279,15 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ---------------------- ELEMENTS ACCESS ---------------------- */ 
 			
+			/**
+			*	Searches for a specific key in the tree, and if this one isn't existing,
+			*	creating it. Then returning a reference on it that allows modification.
+			*
+			*	@param k	The key so search in the tree. If this one isn't existing, it will 
+			*				be created and it's mapped value will be value-initialized.
+			*	@return		A reference to the key's mapped value in the tree (already existing,
+			*				or newly created).
+			*/
             mapped_type& operator[](const key_type& k)
             {
                 Node* tmp = searchNode(_root, k);
@@ -226,7 +303,16 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ------------------------- MODIFIERS ------------------------- */
 
-            // single element (1)   
+			/**
+			*	Inserts one element if the key didn't already exist in map. Increases 
+			*	the size by one if the element was inserted.
+			*
+			*	@param val	The pair<key, mapped value> to insert.
+			*	@return		Return a pair with an iterator pointing to the newly element 
+			*				inserted if the key wasn't existing in map, otherwise an iterator 
+			*				to the key already present; and a boolean : true if the element 
+			*				was inserted, false if already  existing.
+			*/
             ft::pair<iterator,bool> insert (const value_type& val)
             {
                 // Searches in the tree if val's key is already present and returns 
@@ -240,7 +326,18 @@ namespace ft
                 return ft::pair<iterator, bool>(iterator(insertNode(_root, val), _lastElem), true);
             }
             
-            // with hint (2)    
+            /**
+			*	Inserts one element if the key didn't already exist in map, starting from 
+			*	a certain position in the tree in order to optimize the insert process.
+			*	Increases the size by one if the element was inserted.
+			*
+			*	@param position	Hint for the position where the element can be inserted.
+			*					The function optimizes its insertion time if position points to 
+			*					the element that will precede the inserted element.
+			*	@param val		The pair<key, mapped value> to insert.
+			*	@return			An iterator pointing to the newly element inserted if the key 
+			*					wasn't existing in map, otherwise an iterator to the key already present.
+			*/
             iterator insert (iterator position, const value_type& val)
             {   
                 // If position key is higher than val, we need to decrease position 
@@ -275,7 +372,14 @@ namespace ft
                 ++_size;
                 return insertNode(position.getNonConstNode(), val);
             }
-            // range (3)    
+			
+			/**
+            *   Inserts all elements between first and last (if they're not already existing), 
+			*	and increases the map' size.
+            *
+            *   @param first    An iterator pointing to the range's beginning (will be include).
+            *   @param last     An iterator pointing to the range's end (will not be include).
+            */  
             template <class InputIterator>
             void insert (InputIterator first, InputIterator last,
                         typename ft::enable_if<!ft::is_integral<InputIterator>::value >::type* = 0)
@@ -284,13 +388,26 @@ namespace ft
                     insert(*first++);
             }
 
-            // (1)  
+			/**
+			*	Removes from the map one element at a specific position. This reduces the size 
+			*	of the container by one.
+			*
+			*	@param position	Iterator pointing to a single element to be removed from the map.
+			*/
             void erase (iterator position)
             {
                 deleteNode(position.getNonConstNode(), position->first);
                 --_size;
             }
-            // (2)  
+
+            /**
+			*	Removes from the map one element that matches a specific key. This reduces the size 
+			*	of the container by the number of elements removed (which can be only one).
+			*
+			*	@param k	The key to find in map and to remove.
+			*	@return		Number of elements erased. Since you can't have twice the same key in 
+			*				map, this is either 0 or 1.
+			*/
             size_type erase (const key_type& k)
             {
                 size_type ret = deleteNode(_root, k);
@@ -298,7 +415,13 @@ namespace ft
                 return ret;
             }
 
-            // (3)  
+            /**
+			*	Removes from the map a range of elements. Size is decreased by the number of 
+			*	elements removed.
+			*
+			*   @param first    An iterator pointing to the range's beginning (will be included).
+            *   @param last     An iterator pointing to the range's end (will not be included).
+			*/
             void erase (iterator first, iterator last)
             {
                 while (first != last)
@@ -309,6 +432,11 @@ namespace ft
                 }
             }
 
+            /**
+            *   Swaps a map with the content of this one.
+            *
+            *   @param x    The map to be swapped.
+            */
             void swap (map& x)
             {
                 swap(_root, x._root);
@@ -319,20 +447,39 @@ namespace ft
                 swap(_allocNode, x._allocNode);
             }
 
+            /**
+            *   Removes all elements from the map (which are destroyed), leaving the 
+            *   container with a size of 0. Map dummy node (end node) is still existing.
+            */
             void clear()        { erase(begin(), end()); }
 
 
             /* ------------------------------------------------------------- */
             /* ------------------------- OBSERVERS ------------------------- */
             
-            key_compare key_comp() const    { return _comp; }
+			/**
+			*	@return	A copy of the comparison object used by the container to compare keys.
+			*/
+            key_compare key_comp() const		{ return _comp; }
 
+			/**
+			*	@return	A comparison object that can be used to compare two elements to get 
+			*			whether the key of the first one goes before the second. This object 
+			*			is using a copy of the map's comparison object.
+			*/
             value_compare value_comp() const    { return value_compare(_comp); }
             
             
             /* ------------------------------------------------------------- */
             /* ------------------------ OPERATIONS ------------------------- */
 
+			/**
+			*	Searches the container for an element with a specific key.
+			*
+			*	@param k	The key to find in the container.
+			*	@return		An iterator to the element matching the key if it exists in 
+			*				map, container's end otherwise.
+			*/
             iterator find(const key_type& k)
             {
                 Node* tmp = searchNode(_root, k);
@@ -344,6 +491,13 @@ namespace ft
                 return end();
             }
 
+			/**
+			*	Searches the container for an element with a specific key.
+			*
+			*	@param k	The key to find in the container.
+			*	@return		A const_iterator to the element matching the key if it exists in 
+			*				map, container's end otherwise.
+			*/
             const_iterator find(const key_type& k) const
             {
                 Node* tmp = searchNode(_root, k);
@@ -355,6 +509,13 @@ namespace ft
                 return end();
             }
 
+			/**
+			*	Searches the container for elements with a specific key and returns the number of matches.
+			*
+			*	@param k	The key to count the number of occurences.
+			*	@return		The number of matches. Since keys can't be twice time in map, this is 
+			*				either 0 or 1.
+			*/
             size_type count (const key_type& k) const
 			{
 				Node* tmp = searchNode(_root, k);
@@ -362,6 +523,14 @@ namespace ft
 				return tmp ? true: false;
 			}
 
+			/**
+			*	Searches for the element whose key is not considered to go before k.
+			*
+			*	@param k	The key to search for.
+			*	@return		An iterator to the the first element in the container whose key 
+			*				is not considered to go before k, or map::end if all keys are 
+			*				considered to go before k.
+			*/
             iterator lower_bound(const key_type& k)
 			{
 				iterator it = begin();
@@ -373,6 +542,14 @@ namespace ft
 				return it;	
 			}
 			
+			/**
+			*	Searches for the element whose key is not considered to go before k.
+			*
+			*	@param k	The key to search for.
+			*	@return		A const_iterator to the the first element in the container whose key 
+			*				is not considered to go before k, or map::end if all keys are 
+			*				considered to go before k.
+			*/
             const_iterator lower_bound(const key_type& k) const
 			{
 				const_iterator it = begin();
@@ -384,6 +561,14 @@ namespace ft
 				return it;	
 			}
 
+			/**
+			*	Searches for the element whose key is considered to go after k.
+			*
+			*	@param k	The key to search for.
+			*	@return		An iterator to the the first element in the container whose key 
+			*				is considered to go after k, or map::end if no keys are 
+			*				considered to go after k.
+			*/
 			iterator upper_bound(const key_type& k)
 			{
 				iterator it = begin();
@@ -395,6 +580,14 @@ namespace ft
 				return it;	
 			}
 
+			/**
+			*	Searches for the element whose key is considered to go after k.
+			*
+			*	@param k	The key to search for.
+			*	@return		A const_iterator to the the first element in the container whose key 
+			*				is considered to go after k, or map::end if no keys are 
+			*				considered to go after k.
+			*/
             const_iterator upper_bound(const key_type& k) const
 			{
 				const_iterator it = begin();
@@ -406,6 +599,16 @@ namespace ft
 				return it;	
 			}
 
+			/**
+			*	Returns the bounds of a range that includes all the elements in the container 
+			*	which have a specific key. Because the elements in a map container have unique keys, 
+			*	the range returned will contain a single element at most.
+			*
+			*	@param k	The key to search in the tree.
+			*	@return		The function returns a pair of iterators, whose member pair::first is the 
+			*				lower bound of the range (the same as lower_bound), and pair::second is the 
+			*				upper bound (the same as upper_bound).
+			*/
             pair<iterator,iterator> equal_range(const key_type& k)
 			{
 				iterator it = upper_bound(k);
@@ -425,6 +628,16 @@ namespace ft
 				return make_pair<iterator, iterator>(it, next);
 			}
 
+			/**
+			*	Returns the bounds of a range that includes all the elements in the container 
+			*	which have a specific key. Because the elements in a map container have unique keys, 
+			*	the range returned will contain a single element at most.
+			*
+			*	@param k	The key to search in the tree.
+			*	@return		The function returns a pair of const_iterators, whose member pair::first 
+			*				is the lower bound of the range (the same as lower_bound), and pair::second 
+			*				is the upper bound (the same as upper_bound).
+			*/
             pair<const_iterator,const_iterator> equal_range(const key_type& k) const
 			{
 				const_iterator it = upper_bound(k);
@@ -473,7 +686,7 @@ namespace ft
             template <class T1,class T2>
             pair<T1,T2> make_pair(T1 x, T2 y) const
             {
-                return ( pair<T1,T2>(x,y) );
+                return pair<T1,T2>(x,y);
             }
 
 
@@ -507,6 +720,28 @@ namespace ft
             {
                 _allocPair.destroy(&del->content);
                 _allocNode.deallocate(del, 1);
+            }
+
+			/**
+			*   Calculates the tree's height.
+			*
+			*   @param root     The root of the tree (start with first node, then call itself with left
+			*                   and right node' sons until meeting leaf).
+			*   @param height   The heigth of the actual node. Increases this param by 1 each time 
+			*                   it's calling itself on a node' son.
+			*   @param return   The height of the tree (-1 if empty, 0 if only root node).
+			*/
+			int heightTree(Node *root, int height)
+            {
+                // We reached a NULL, returning
+                if (!root || root == _lastElem)
+                    return height - 1;
+
+                // Exploring left side of the actual node, then right side
+                int leftHeight = heightTree(root->left, height + 1);
+                int rightHeight = heightTree(root->right, height + 1);
+
+                return leftHeight > rightHeight ? leftHeight : rightHeight;
             }
 
             /**
@@ -941,128 +1176,6 @@ namespace ft
                         rotateRight(root, node);
                     }
                     node = node->parent;
-                }
-            }
-
-
-            /* ----- PRIVATE MEMBER FUNCTIONS : AVL BINARY SEARCH TREE ----- */
-            /* -------------- printing the tree for testing ---------------- */
-
-            std::string toString(int i)
-            {
-                std::stringstream ss;
-                ss << i;
-                return ss.str();
-            }
-
-            unsigned int countWordsInString(std::string const& str)
-            {
-                std::stringstream stream(str);
-                return std::distance(std::istream_iterator<std::string>(stream), 
-                                    std::istream_iterator<std::string>());
-            }
-
-            int heightTree(Node *root, int height)
-            {
-                // We reached a NULL, returning
-                if (!root || root == _lastElem)
-                    return height - 1;
-
-                // Exploring left side of the actual node, then right side
-                int leftHeight = heightTree(root->left, height + 1);
-                int rightHeight = heightTree(root->right, height + 1);
-
-                return leftHeight > rightHeight ? leftHeight : rightHeight;
-            }
-
-            int printLevel(Node *root, std::string* buff, int actualHeight, int printHeight)
-            {
-                // We reached a NULL, returning
-                if (!root || root == _lastElem)
-                {
-                    // If the NULL node level is inferior to the level we try to print,
-                    // adding 2 ^ (printHeight - actualHeight) nodes to the buffer
-                    // (represented by '|' character)
-                    if (actualHeight <= printHeight)
-                    {
-                        for (int i = pow(2, printHeight - actualHeight); i > 0; --i)
-                            *buff += "| ";
-                    }
-                    return actualHeight - 1;
-                }
-
-                // Adding the node to print to the buffer
-                if (actualHeight == printHeight)
-                    *buff += toString(root->content.first) + " ";
-
-                // Exploring left side of the actual node, then right side
-                int leftHeight = printLevel(root->left, buff, actualHeight + 1, printHeight);
-                int rightHeight = printLevel(root->right, buff, actualHeight + 1, printHeight);
-
-                return leftHeight > rightHeight ? leftHeight : rightHeight;
-            }
-
-            void printBuff(const std::string& buff, int width, int nbNodes)
-            {
-                int nbNodesPrinted = 0;
-
-                // Calculating number of spaces that will be printed between each nodes
-                size_t nbOfSpaces = std::count(buff.begin(), buff.end(), ' ');
-                size_t widthSpace = (width - nbNodes * 5) / nbOfSpaces;
-
-                // If number of total characters that will be printed (nodes + space separators)
-                // will be inf to total width, we will add padding spaces between left and right branch
-                int paddingSpace = width - (widthSpace * nbOfSpaces + nbNodes * 5);
-
-                for (std::string::const_iterator it = buff.begin(); it != buff.end(); ++it)
-                {
-                    // Delimiting nodes with equal number of spaces
-                    if (*it == ' ')
-                        { std::cout.width(widthSpace);      std::cout << ""; }
-                    else
-                    {
-                        // Creating a string with the number to print (or empty if it's a non existing node
-                        // that we flagged with '|' character in printLevel func)
-                        std::string nb;
-                        while (it != buff.end() && *it != ' ')
-                            if (*it++ != '|')
-                                nb += *(it - 1);
-                                
-                        // Printing the node (handle numbers from -99 to 999, for width(3))
-                        std::cout << "[";   std::cout.width(3);     std::cout << nb << "]";
-
-                        // Repositionning iterator on first space we met in while loop (or end)
-                        --it;
-
-                        // If we printed half of nodes (so left branch), we add padding spaces
-                        ++nbNodesPrinted;
-                        if (nbNodesPrinted == nbNodes / 2)
-                            { std::cout.width(paddingSpace);        std::cout << ""; }
-                    }
-                }
-                std::cout << std::endl;
-            }
-
-            void printTree(Node *root, int height)
-            {
-                if (!root)
-                {
-                    std::cout << "The tree is empty\n";
-                    return ;
-                }
-                
-                // Calculating total width of last line (each node take 5 characters "[xxx]"
-                // and are separated by 2 spaces, + 2 spaces at the beginning of the line and
-                // 2 other spaces at the end)
-                int width = pow(2, height) * 7 + 2 + 2;
-                
-                for (int i = 0; i <= height; ++i)
-                {
-                    // Space at the beginning of the line to match last space that will be add
-                    // after last node
-                    std::string buff(" ");
-                    printLevel(root, &buff, 0, i);
-                    printBuff(buff, width, pow(2, i));
                 }
             }
     };
