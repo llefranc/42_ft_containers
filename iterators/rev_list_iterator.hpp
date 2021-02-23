@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_list_iterator.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/17 10:49:31 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/22 17:06:03 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ namespace ft
             
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
-            typedef Node*                                           nonConstPointer;
+            typedef Node*                                           nodePtr;
 
 
             /* -------- CONSTRUCTORS / DESTRUCTOR / ASSIGNMENT -------- */
 
-            rev_list_iterator(nonConstPointer node = 0) : _node(node) {}
-            rev_list_iterator(const rev_list_iterator<T, Node, false>& copy) { _node = copy.getNonConstPointer(); }
-            rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNonConstPointer()->prev; }
+            rev_list_iterator(nodePtr node = 0) : _node(node) {}
+            rev_list_iterator(const rev_list_iterator<T, Node, false>& copy) { _node = copy.getNode(); }
+            rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNode()->prev; }
             ~rev_list_iterator() {}
 
-            nonConstPointer getNonConstPointer() const      { return _node; }
+            nodePtr getNode() const      { return _node; }
 
             rev_list_iterator& operator=(const rev_list_iterator& assign)
             {
@@ -56,7 +56,7 @@ namespace ft
             // INTPUT / OUTPUT / FORWARD / BIDIRECTIONNAL ITERATOR PART
 
             reference operator*() const         { return (_node->content); }
-            nonConstPointer operator->() const      { return (_node); }
+            nodePtr operator->() const      { return (_node); }
 
             rev_list_iterator& operator++()     { _node = _node->prev; return (*this); }
             rev_list_iterator operator++(int)       { rev_list_iterator res(*this); ++(*this); return (res); };
@@ -68,7 +68,7 @@ namespace ft
 
             private:
 
-                nonConstPointer _node;
+                nodePtr _node;
     };
 }
 

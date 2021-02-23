@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 14:56:01 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/22 11:47:34 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include <stdexcept>
 #include <cmath>
 
-#include "../iterators/random_access_iterator.hpp"
-#include "../iterators/rev_random_access_iterator.hpp"
+#include "../iterators/vector_iterator.hpp"
+#include "../iterators/rev_vector_iterator.hpp"
 #include "../templates/stl_like.hpp"
 
 #include <cstdio>
@@ -87,11 +87,11 @@ namespace ft
             typedef T*                                          pointer;
             typedef const T*                                    const_pointer;
             
-            typedef typename ft::random_iterator<T, false>      iterator;
-            typedef typename ft::random_iterator<T, true>       const_iterator;
+            typedef typename ft::vector_iterator<T, false>      iterator;
+            typedef typename ft::vector_iterator<T, true>       const_iterator;
 
-            typedef typename ft::rev_random_iterator<T, false>  reverse_iterator;
-            typedef typename ft::rev_random_iterator<T, true>   const_reverse_iterator;
+            typedef typename ft::rev_vector_iterator<T, false>  reverse_iterator;
+            typedef typename ft::rev_vector_iterator<T, true>   const_reverse_iterator;
 
 
             /* ------------------------------------------------------------- */

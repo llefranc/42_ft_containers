@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   stl_like.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 14:59:31 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/22 11:49:21 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STL_LIKE_HPP
 #define STL_LIKE_HPP
-
-#include "../iterators/random_access_iterator.hpp"
 
 namespace ft
 {
@@ -21,14 +19,14 @@ namespace ft
     * ------------------------------------------------------------- *
     * ------------------------- FT::PAIR -------------------------- *
     *
-    * Coplien form:
+    * - Coplien form:
     * (constructor):        Construct pair
     * (destructor):         Pair destructor
     * operator=:            Assign content
     *
-    * Public member variables:
-    * T1:                   First pair's member variable.
-    * T2:                   Second pair's member variable.
+    * - Public member variables:
+    * T1:                   First pair's member variable
+    * T2:                   Second pair's member variable
     * ------------------------------------------------------------- *
     */
 
@@ -91,29 +89,32 @@ namespace ft
             
             T1 first;
             T2 second;
-    };
+			
+    }; // pair
 
-	/**
-    * ------------------------------------------------------------- *
-    * ------------------------- FT::LESS -------------------------- *
-    */
-	template <class T>
-	struct less
-	{
-		typedef T		first_argument_type;
-		typedef T		second_argument_type;
-		typedef bool	result_type;
-		
-		bool operator() (const T& x, const T& y) const {return x<y;}
-	};
 
 	/**
 	* ------------------------------------------------------------- *
     * ---------------------- FT::ALLOCATOR ------------------------ *
+	* - Coplien form:
+	* (constructor)		Creates a new allocator instance
+	* (destructor)		Destructs an allocator instance
+	*
+	* - Member functions:
+	* Address			Obtains the address of an object
+	* Allocate			Allocates uninitialized storage
+	* Deallocate		Deallocates storage
+	* Construct			Constructs an object in allocated storage
+	* Destroy			Destroys an object in allocated storage
+	* ------------------------------------------------------------- *
     */
+ 
    	template <class T>
 	class allocator
 	{
+		/* ------------------------------------------------------------- */
+		/* --------------------------- ALIASES ------------------------- */
+		
 		public:
 
 			typedef T			value_type;
@@ -124,15 +125,12 @@ namespace ft
 			typedef size_t		size_type;
 			typedef long int	difference_type;
 
-		// allocator() throw() {}
-		// allocator(const allocator&) throw() {}
-		// template <class U>
-		// allocator (const allocator<U>&) throw() {}
-		// ~allocator() throw() {}
+
+		/* ------------------------------------------------------------- */
+		/* ------------------------ COPLIEN FORM ----------------------- */
 
 		allocator() throw() {};
-
-		// copy (2)	
+		
 		allocator(const allocator&) throw() {};
 
 		template <class U>
@@ -140,9 +138,27 @@ namespace ft
 
 		~allocator() throw() {};
 
-		// pointer address(reference x) const				{ return &x; }
-		// const_pointer address(const_reference x) const	{ return &x; }
 
+		/* ------------------------------------------------------------- */
+		/* ---------------------- MEMBER FUNCTIONS --------------------- */
+
+		/**
+		*	@return	The address of x object.
+		*/
+		pointer address(reference x) const				{ return &x; }
+
+		/**
+		*	@return	The address of x object.
+		*/
+		const_pointer address(const_reference x) const	{ return &x; }
+
+
+		/**
+		*	Allocates uninitialized storage.
+		*
+		*	@param n	The number of objects to allocates.
+		*	@return		A pointer to the newly allocated area.
+		*/
 		pointer allocate(size_type n)
 		{
 			pointer ret;
@@ -160,24 +176,59 @@ namespace ft
 			return ret;
 		}
 
+		/**
+		*	Deallocates storage (this doesn't call destructors for the objects present
+		*	in this storage).
+		*
+		*	@param p	The address of a previously allocated area with allocate.
+		*	@param n	The size of the area to deallocate.
+		*	@return		A pointer to the newly allocated area.
+		*/
 		void deallocate (pointer p, size_type n)
 		{
 			(void)n;
 			::operator delete(p);
 		}
 
+		/**
+		*	Constructs an object in allocated storage.
+		*
+		*	@param p	A pointer to an unintialized allocated storage.
+		*	@param v	The value to use as the copy constructor argument.
+		*/
 		void construct(pointer p, const T& v) { new((void*)p)T(v); }
 		
+		/**
+		*	Destroy an object in allocated storage.
+		*
+		*	@param p	A pointer to the object that is going to be destroyed.
+		*/
     	void destroy(pointer p) { p->~T(); }
 		
-		template <class T1, class T2>
-		friend bool operator== (const allocator<T1>&, const allocator<T2>&) throw()  { return true; }
-		template <class T1, class T2>
-		friend bool operator!= (const allocator<T1>&, const allocator<T2>&) throw() { return false; }
-	};
+	}; // allocator
 
 
-    /* --------------------------- STD::ENABLE_IF -------------------------- */
+	/**
+    * ------------------------------------------------------------- *
+    * ------------------------- FT::LESS -------------------------- *
+    */
+   
+	template <class T>
+	struct less
+	{
+		typedef T		first_argument_type;
+		typedef T		second_argument_type;
+		typedef bool	result_type;
+		
+		bool operator() (const T& x, const T& y) const {return x<y;}
+		
+	}; // less
+
+
+    /**
+	* ------------------------------------------------------------- *
+    * ---------------------- FT::ENABLE_IF ------------------------ *
+    */
 
     /**
     *   Typedef an int into type only if B is true.
@@ -190,7 +241,10 @@ namespace ft
     struct enable_if<true> { typedef int type; };
         
         
-    /* --------------------------- STD::IS_INTEGRAL -------------------------- */
+    /**
+	* ------------------------------------------------------------- *
+    * --------------------- FT::IS_INTEGRAL ----------------------- *
+    */
 
     /**
     *   Value will be true if T is an integral, false otherwise.

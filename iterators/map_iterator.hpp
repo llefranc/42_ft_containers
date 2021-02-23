@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 12:38:17 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/22 16:58:37 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ namespace ft
             
             typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
-            typedef Node*                                                               nonConstPointer;
+            typedef Node*                                                               nonConstPtr;
             
 
 			/* ------------------------------------------------------------- */
@@ -43,8 +43,8 @@ namespace ft
 			
 		private:
 
-            nonConstPointer _node;
-            nonConstPointer _lastElem;
+            nonConstPtr 	_node;
+            nonConstPtr 	_lastElem;
 			key_compare		_comp;
 			
 
@@ -53,7 +53,7 @@ namespace ft
 
 		public:
 
-            map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0, 
+            map_iterator(nonConstPtr node = 0, nonConstPtr lastElem = 0, 
 						const key_compare& comp = key_compare()) :
                 _node(node), _lastElem(lastElem), _comp(comp) {}
         
@@ -80,9 +80,9 @@ namespace ft
 			/* ------------------------------------------------------------- */
             /* -------------------------- GETTERS -------------------------- */
 
-            nonConstPointer getNonConstNode() const			{ return _node; }
-            nonConstPointer getNonConstLastElem() const     { return _lastElem; }
-			key_compare		getCompare() const				{ return _comp; }
+            nonConstPtr getNonConstNode() const			{ return _node; }
+            nonConstPtr getNonConstLastElem() const     { return _lastElem; }
+			key_compare	getCompare() const				{ return _comp; }
 
 
 			/* ------------------------------------------------------------- */
@@ -98,7 +98,7 @@ namespace ft
             map_iterator& operator++()
             {
                 // To save base value and compare it with parents if no right son
-                nonConstPointer previousNode = _node;
+                nonConstPtr previousNode = _node;
 
                 // Special case where iterator is on lastElem : we're looping to the beginning
                 // of the tree
@@ -177,7 +177,7 @@ namespace ft
             map_iterator& operator--()
             {
                 // Opposite logic than in ++operator
-                nonConstPointer previousNode = _node;
+                nonConstPtr previousNode = _node;
 
                 if (_node == _lastElem)
                 {

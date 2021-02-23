@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 11:24:20 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 14:53:41 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/22 12:27:50 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,34 @@
 #include <queue>
 #include <map>
 
+struct ok
+{
+	int a;
+	int b;
+};
+
 int main()
 {
-	ft::vector<int> v;
-	// std::vector<int> x(1, 1);
-	// std::vector<int>iterator it;
+	{
+		std::list<std::pair<int, char> > v;
+
+		v.push_back(std::pair<int, char>(1, 'c'));
+		v.push_back(std::pair<int, char>(2, 'a'));
+		// std::vector<int> x(1, 1);
+		std::list<std::pair<int, char> >::iterator it = v.begin();
+
+		std::cout << it->first;
+	}
+	
+	{
+		ft::list<ft::pair<int, char> > v;
+
+		v.push_back(ft::pair<int, char>(1, 'c'));
+		v.push_back(ft::pair<int, char>(2, 'a'));
+		// ft::vector<int> x(1, 1);
+		ft::list<ft::pair<int, char> >::iterator it = v.begin();
+
+		std::cout << it->first;
+	}
 	return (0);
 }

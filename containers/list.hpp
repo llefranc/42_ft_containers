@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 15:03:08 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/23 10:36:15 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,8 +352,8 @@ namespace ft
                     // If element already exist, just replacing his content
                     else
                     {
-                        _allocT.destroy(&it->content);
-                        _allocT.construct(&it->content, *first);
+                        _allocT.destroy(&(*it));
+                        _allocT.construct(&(*it), *first);
                     }
                 }
                 
@@ -381,8 +381,8 @@ namespace ft
                     // If element already exist, just replacing his content
                     else
                     {
-                        _allocT.destroy(&it->content);
-                        _allocT.construct(&it->content, val);
+                        _allocT.destroy(&(*it));
+                        _allocT.construct(&(*it), val);
                     }
                 }
                 
@@ -464,8 +464,8 @@ namespace ft
                 Node* newNode = createNode(val);
                 
                 // Linking new Node between position and position -1
-                newNode->prev = position->prev;
-                newNode->next = position->prev->next;
+                newNode->prev = position.getNode()->prev;
+                newNode->next = position.getNode()->prev->next;
                 
                 // Linking position and position -1 to new element
                 newNode->prev->next = newNode;
@@ -516,7 +516,7 @@ namespace ft
             iterator erase (iterator position)
             {
                 // Using iterator's Node constructor for creating last
-                return erase(position, position->next);
+                return erase(position, position.getNode()->next);
             }
 
 			/**
@@ -532,7 +532,7 @@ namespace ft
             iterator erase (iterator first, iterator last)
             {
                 for (; first != last;)
-                    deleteNode((++first)->prev);
+                    deleteNode((++first).getNode()->prev);
                 return last;
             }
 
@@ -602,15 +602,17 @@ namespace ft
             */
             void splice (iterator position, list& x, iterator i)
             {
+				Node* tmp = i.getNode();
+				
                 // Linking previous and next node in x together
-                i->next->prev = i->prev;
-                i->prev->next = i->next;
+                tmp->next->prev = tmp->prev;
+                tmp->prev->next = tmp->next;
 
                 // Linking i in this list
-                i->prev = position->prev;
-                i->next = position.getNonConstPointer();
-                position->prev->next = i.getNonConstPointer();
-                position->prev = i.getNonConstPointer();
+                tmp->prev = position.getNode()->prev;
+                tmp->next = position.getNode();
+                position.getNode()->prev->next = tmp;
+                position.getNode()->prev = tmp;
                 
                 --x._size;
                 ++_size;
@@ -631,7 +633,7 @@ namespace ft
                 if (first == last)
                     return;
 
-                if (first->next == last.getNonConstPointer())
+                if (first.getNode()->next == last.getNode())
                     splice(position, x, first);
                 else
                 {
@@ -641,17 +643,17 @@ namespace ft
                         ++rangeSize;
                     
                     // Saving last range's elem
-                    iterator lastRangeElem(last->prev);
+                    iterator lastRangeElem(last.getNode()->prev);
                     
                     // Removing range from list x
-                    first->prev->next = last.getNonConstPointer();
-                    last->prev = first->prev;
+                    first.getNode()->prev->next = last.getNode();
+                    last.getNode()->prev = first.getNode()->prev;
 
                     // Linking range in this list
-                    first->prev = position->prev;
-                    lastRangeElem->next = position.getNonConstPointer();
-                    position->prev->next = first.getNonConstPointer();
-                    position->prev = lastRangeElem.getNonConstPointer();
+                    first.getNode()->prev = position.getNode()->prev;
+                    lastRangeElem.getNode()->next = position.getNode();
+                    position.getNode()->prev->next = first.getNode();
+                    position.getNode()->prev = lastRangeElem.getNode();
 
                     x._size -= rangeSize;
                     _size += rangeSize;
@@ -666,10 +668,10 @@ namespace ft
             */
             void remove (const value_type& val)
             {
-                for (iterator it = end(); it->next != end().getNonConstPointer();)
+                for (iterator it = end(); it.getNode()->next != end().getNode();)
                 {
-                    if (it->next->content == val)
-                        deleteNode(it->next);
+                    if (it.getNode()->next->content == val)
+                        deleteNode(it.getNode()->next);
                     else
                         ++it;
                 }
@@ -686,10 +688,10 @@ namespace ft
             template <class Predicate>
             void remove_if (Predicate pred)
             {
-                for (iterator it = end(); it->next != end().getNonConstPointer();)
+                for (iterator it = end(); it.getNode()->next != end().getNode();)
                 {
-                    if (pred(it->next->content))
-                        deleteNode(it->next);
+                    if (pred(it.getNode()->next->content))
+                        deleteNode(it.getNode()->next);
                     else
                         ++it;
                 }
@@ -700,10 +702,10 @@ namespace ft
             */
             void unique()
             {
-                for (iterator it = end(); it->next != end().getNonConstPointer();)
+                for (iterator it = end(); it.getNode()->next != end().getNode();)
                 {
-                    if (it != end() && *it == it->next->content)
-                        deleteNode(it->next);
+                    if (it != end() && *it == it.getNode()->next->content)
+                        deleteNode(it.getNode()->next);
                     else
                         ++it;
                 }
@@ -720,10 +722,10 @@ namespace ft
             template <class BinaryPredicate>
             void unique (BinaryPredicate binary_pred)
             {
-                for (iterator it = end(); it->next->next != end().getNonConstPointer();)
+                for (iterator it = end(); it.getNode()->next->next != end().getNode();)
                 {
-                    if (binary_pred(it->next->content, it->next->next->content))
-                        deleteNode(it->next->next);
+                    if (binary_pred(it.getNode()->next->content, it.getNode()->next->next->content))
+                        deleteNode(it.getNode()->next->next);
                     else
                         ++it;
                 }
@@ -745,14 +747,14 @@ namespace ft
 
                 // Starting from the end, until all elements in x are removed and only
                 // end element remained, pointing to itself
-                for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
+                for (iterator xIt = x.end(); xIt.getNode()->next != x.end().getNode();)
                 {
                     // If we reached end of this list or if comp is true
-                    if (thisIt->next == end().getNonConstPointer() ||
-                            xIt->next->content < thisIt->next->content)
+                    if (thisIt.getNode()->next == end().getNode() ||
+                            xIt.getNode()->next->content < thisIt.getNode()->next->content)
                     {
                         // Splicing new element and iterator in this list will be pointing on it
-                        splice(thisIt->next, x, xIt->next);
+                        splice(thisIt.getNode()->next, x, xIt.getNode()->next);
                         ++thisIt;
                     }
                     else
@@ -779,14 +781,14 @@ namespace ft
                 
                 // Starting from the end, until all elements in x are removed and only
                 // end element remained, pointing to itself
-                for (iterator xIt = x.end(); xIt->next != x.end().getNonConstPointer();)
+                for (iterator xIt = x.end(); xIt.getNode()->next != x.end().getNode();)
                 {
                     // If we reached end of this list or if comp is true
-                    if (thisIt->next == end().getNonConstPointer() ||
-                            comp(xIt->next->content, thisIt->next->content))
+                    if (thisIt.getNode()->next == end().getNode() ||
+                            comp(xIt.getNode()->next->content, thisIt.getNode()->next->content))
                     {
                         // Splicing new element and iterator in this list will be pointing on it
-                        splice(thisIt->next, x, xIt->next);
+                        splice(thisIt.getNode()->next, x, xIt.getNode()->next);
                         ++thisIt;
                     }
                     else
@@ -801,12 +803,12 @@ namespace ft
             */
             void sort()
             {
-                for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
+                for (iterator it = begin(); it.getNode()->next != end().getNode(); ++it)
                 {
                     iterator tmp(it);
                     
                     // Checking if there is a value inf to it after it
-                    for (iterator min(it->next); min != end(); ++min)
+                    for (iterator min(it.getNode()->next); min != end(); ++min)
                         if (*min < *tmp)
                             tmp = min;
 
@@ -814,7 +816,7 @@ namespace ft
                     // inf values from the node that was swapped
                     if (*tmp < *it)
                     {
-                        swap2Nodes(tmp.getNonConstPointer(), it.getNonConstPointer());
+                        swap2Nodes(tmp.getNode(), it.getNode());
                         it = tmp;
                     }
                 }
@@ -830,12 +832,12 @@ namespace ft
             template <class Compare>
             void sort (Compare comp)
             {
-                for (iterator it = begin(); it->next != end().getNonConstPointer(); ++it)
+                for (iterator it = begin(); it.getNode()->next != end().getNode(); ++it)
                 {
                     iterator tmp(it);
                     
                     // Checking if there is a value inf to it after it
-                    for (iterator min(it->next); min != end(); ++min)
+                    for (iterator min(it.getNode()->next); min != end(); ++min)
                         if (comp(*min, *tmp))
                             tmp = min;
 
@@ -843,7 +845,7 @@ namespace ft
                     // inf values from the node that was swapped
                     if (comp(*tmp, *it))
                     {
-                        swap2Nodes(tmp.getNonConstPointer(), it.getNonConstPointer());
+                        swap2Nodes(tmp.getNode(), it.getNode());
                         it = tmp;
                     }
                 }

@@ -36,7 +36,7 @@ namespace ft
             
             typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
-            typedef Node*                                                               nonConstPointer;
+            typedef Node*                                                               nonConstPtr;
             
 
 			/* ------------------------------------------------------------- */
@@ -44,8 +44,8 @@ namespace ft
 			
 		private:
 
-            nonConstPointer _node;
-            nonConstPointer _lastElem;
+            nonConstPtr		_node;
+            nonConstPtr 	_lastElem;
 			key_compare		_comp;
 		
 		
@@ -54,7 +54,7 @@ namespace ft
 
 		public:
 		
-            rev_map_iterator(nonConstPointer node = 0, nonConstPointer lastElem = 0,
+            rev_map_iterator(nonConstPtr node = 0, nonConstPtr lastElem = 0,
 							const key_compare& comp = key_compare()) :
                 _node(node), _lastElem(lastElem), _comp(comp) {}
         
@@ -90,16 +90,16 @@ namespace ft
 			/* ------------------------------------------------------------- */
             /* --------------------------- GETTERS ------------------------- */
 
-            nonConstPointer getNonConstNode() const     	{ return _node; }
-            nonConstPointer getNonConstLastElem() const     { return _lastElem; }
-			key_compare		getCompare() const				{ return _comp; }
+            nonConstPtr getNonConstNode() const     	{ return _node; }
+            nonConstPtr getNonConstLastElem() const     { return _lastElem; }
+			key_compare	getCompare() const				{ return _comp; }
 
 
 			/* ------------------------------------------------------------- */
             /* -------------------------- OPERATORS ------------------------ */
 
-            reference operator*() const    					{ return (_node->content); }
-            pointer operator->() const						{ return (&_node->content); }
+            reference operator*() const    				{ return (_node->content); }
+            pointer operator->() const					{ return (&_node->content); }
 
             /**
             *   Starts from a specific key inside the tree, and looks for the closest inferior key 
@@ -108,7 +108,7 @@ namespace ft
             rev_map_iterator& operator++()
             {
                 // Opposite logic than in --operator
-                nonConstPointer previousNode = _node;
+                nonConstPtr previousNode = _node;
 
                 if (_node == _lastElem)
                 {
@@ -174,7 +174,7 @@ namespace ft
             rev_map_iterator& operator--()
             {
                 // To save base value and compare it with parents if no right son
-                nonConstPointer previousNode = _node;
+                nonConstPtr previousNode = _node;
 
                 // Special case where iterator is on lastElem : we're looping to the beginning
                 // of the tree
