@@ -18,7 +18,7 @@ algorithms work was necessary. Here are the specificities of the five containers
 - Map: a sorted container using an AVL binary tree to store the datas.
 
 
-- Here is the [subject][1]
+* Here is the [subject][1]
 
 `This project was code for MACOS`
 
