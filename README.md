@@ -1,7 +1,47 @@
 # ft_containers (@42Paris)
 
+"C++ containers, easy mode"
+
+![Alt text](https://github.com/lucaslefrancq/42_philosophers/blob/main/philo_example.png)
+
+## About
+
+Ft_containers is a project of the mandatory part of the cursus.
+It's only made in C++ and was about recoding some containers from the STL.
+In order to suceed, a good comprehension of how templates, iterators, containers and 
+algorithms work was necessary.
+
+- Vector : a dynamic array.
+- List : a circular linked list (with a neutral node linking beginning and end of the list).
+- Stack : a container adaptator (LIFO, last in first out).
+- Queue : a container adaptator (FIFO, first in first out).
+- Map : a sorted container using an AVL binary tree to store the datas.
+
+- Here is the [subject][1]
+
+`This project was code for MACOS`
+
+### Building and running the project
+
+1. Download/Clone this repo
+
+        git clone https://github.com/lucaslefrancq/42_philosophers.git
+2. `cd` into the root directory, then `cd` into philo_x (one, two or three) and run `make`
+
+        cd 42_philosophers/philo_one
+        make
+
+3.  run `./philo_x arg1 arg2 arg3 arg4 (arg5)` from the directory philo_x.
+    - arg1 is the number of philosopher
+    - arg2 is the time to die in ms
+    - arg3 is the time to eat in ms
+    - arg4 is the time to sleep in ms
+    - arg5 (optional) is the number of time each philosopher needs to eat to end the simulation
+
+
 ## Sources
 
+- 
 - [Difference of keywords 'typename' and 'class' in templates][2]
 - [Lvalus and rvalues][3]
 - [Dependant names in C++][4]
