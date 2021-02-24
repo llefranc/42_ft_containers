@@ -9,13 +9,14 @@
 Ft_containers is a project of the mandatory part of the cursus.
 It's only made in C++ and was about recoding some containers from the STL.
 In order to suceed, a good comprehension of how templates, iterators, containers and 
-algorithms work was necessary.
+algorithms work was necessary. Here are the specificities of the five containers:
 
-- Vector : a dynamic array.
-- List : a circular linked list (with a neutral node linking beginning and end of the list).
-- Stack : a container adaptator (LIFO, last in first out).
-- Queue : a container adaptator (FIFO, first in first out).
-- Map : a sorted container using an AVL binary tree to store the datas.
+- Vector: a dynamic array.
+- List: a circular linked list (with a neutral node linking beginning and end of the list).
+- Stack: a container adaptator (LIFO, last in first out).
+- Queue: a container adaptator (FIFO, first in first out).
+- Map: a sorted container using an AVL binary tree to store the datas.
+
 
 - Here is the [subject][1]
 
