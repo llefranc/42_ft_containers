@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:16:45 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:15:29 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:59:12 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ namespace ft
     * ------------------------------------------------------------- *
     */
 
-   /**
-    *   @param T    		Type of container's elements.
+    /**
+    *   @param T            Type of container's elements.
     *   @param Container    Container object used internally to store T elements.
     */
     template <class T, class Container = std::list<T> >
@@ -56,10 +56,10 @@ namespace ft
             typedef size_t      size_type;
             
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* ------------------------ ATTRIBUTES ------------------------- */
-			
-		private:
+            
+        private:
 
             container_type  _ctnr;  // Underlying container object (either a list or a deque) 
                                     // where the elements are stored.
@@ -67,8 +67,8 @@ namespace ft
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
             
-		public:
-		
+        public:
+        
             /**
             *   Constructs a queue container adaptor object. It keeps internally a container object 
             *   as data, which is a copy of the ctnr argument passed to the constructor.
@@ -184,7 +184,7 @@ namespace ft
             /* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
             /* ------------------------------------------------------------- */
 
-		private:
+        private:
 
             /**
             *   Swaps two variables.

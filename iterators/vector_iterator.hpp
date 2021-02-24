@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 15:54:34 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:56:25 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ namespace ft
             typedef T*                                              elemPtr;
             
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* ------------------------- ATTRIBUTES ------------------------ */
 
-		private:
-		
-			elemPtr _val;	// A pointer to an element in the vector array
+        private:
+        
+            elemPtr _val;   // A pointer to an element in the vector array
 
 
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
 
-		public:
+        public:
 
             /**
             *   Default constructor, creates a vector_iterator pointing to val.
@@ -107,41 +107,41 @@ namespace ft
             }
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* --------------------------- GETTERS ------------------------- */
 
-			/**
-			*	@return	A non constant pointer to the actual element that the iterator is 
-			*			pointing to.
-			*/
-			elemPtr getElemPtr() const      { return _val; }
+            /**
+            *   @return A non constant pointer to the actual element that the iterator is 
+            *           pointing to.
+            */
+            elemPtr getElemPtr() const      { return _val; }
 
 
             /* ------------------------------------------------------------- */
             /* --------------------- OPERATOR OVERLOADS -------------------- */
 
-			reference operator*() const         { return (*_val); }
-            pointer operator->() const			{ return (_val); }
+            reference operator*() const         { return (*_val); }
+            pointer operator->() const          { return (_val); }
 
-            vector_iterator& operator++()		{ ++_val; return (*this); }
-            vector_iterator& operator--()		{ --_val; return (*this); }
-			
-            vector_iterator operator++(int)
-			{
-				vector_iterator res(*this);
-				++(*this);
-				return (res);
-			}
-			
-            vector_iterator operator--(int)
-			{
-				vector_iterator res(*this);
-				--(*this);
-				return (res);
-			}
+            vector_iterator& operator++()       { ++_val; return (*this); }
+            vector_iterator& operator--()       { --_val; return (*this); }
             
-            bool operator==(const vector_iterator& it) const	{ return (it._val == _val); }
-            bool operator!=(const vector_iterator& it) const	{ return (it._val != _val); }
+            vector_iterator operator++(int)
+            {
+                vector_iterator res(*this);
+                ++(*this);
+                return (res);
+            }
+            
+            vector_iterator operator--(int)
+            {
+                vector_iterator res(*this);
+                --(*this);
+                return (res);
+            }
+            
+            bool operator==(const vector_iterator& it) const    { return (it._val == _val); }
+            bool operator!=(const vector_iterator& it) const    { return (it._val != _val); }
             bool operator<(const vector_iterator& it) const     { return (it._val > this->_val); }
             bool operator>(const vector_iterator& it) const     { return (it._val < this->_val); }
             bool operator<=(const vector_iterator& it) const    { return (it._val >= this->_val); }
@@ -224,35 +224,35 @@ namespace ft
             }
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* ------------------ PRIVATE MEMBER FUNCTIONS ----------------- */
 
-		private:
+        private:
 
-			/**
-			*   Moves random_acces_iterator's pointer. Adapt between addition / substraction
-			*   operation. 
-			*
-			*   @param val  The pointer to move.
-			*   @param nb   Number of time the pointer will be increased / decreased.
-			*   @param sign Indicate if it's an addition or a substraction.
-			*/
-			void movePtr(elemPtr& val, long nb, bool sign) const
-			{
-				int mov;
+            /**
+            *   Moves random_acces_iterator's pointer. Adapt between addition / substraction
+            *   operation. 
+            *
+            *   @param val  The pointer to move.
+            *   @param nb   Number of time the pointer will be increased / decreased.
+            *   @param sign Indicate if it's an addition or a substraction.
+            */
+            void movePtr(elemPtr& val, long nb, bool sign) const
+            {
+                int mov;
 
-				// If addtion, mov will be positive. If substraction, negative.
-				if (sign == ADD)
-					mov = nb > 0 ? mov = 1: mov = -1;
-				else
-					mov = nb > 0 ? mov = -1: mov = 1;
+                // If addtion, mov will be positive. If substraction, negative.
+                if (sign == ADD)
+                    mov = nb > 0 ? mov = 1: mov = -1;
+                else
+                    mov = nb > 0 ? mov = -1: mov = 1;
 
-				if (nb < 0)
-					nb *= -1;
-				for (; nb > 0; --nb)
-					val += mov;
-			}
-			
+                if (nb < 0)
+                    nb *= -1;
+                for (; nb > 0; --nb)
+                    val += mov;
+            }
+            
     }; // class vector_iterator
 
 } // namespace ft

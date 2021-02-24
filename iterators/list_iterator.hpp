@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 15:54:51 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:57:25 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ namespace ft
     template<typename T, typename Node, bool B>
     class rev_list_iterator;
         
-		
-	/**
+        
+    /**
     * ------------------------------------------------------------- *
     * -------------------- FT::LIST_ITERATOR -------------------- *
     *
@@ -35,18 +35,18 @@ namespace ft
     * non-member operators: Operators for list_iterator
     * ------------------------------------------------------------- *
     */
-		
-	/**
+        
+    /**
     *   @param T    Type of container's elements.
-	*	@param Node	The structure used as nodes in the list.
+    *   @param Node The structure used as nodes in the list.
     *   @param B    Boolean to indicate if it's an iterator / a const iterator.
     */
     template<typename T, typename Node, bool B>
     class list_iterator
     {
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
-			
+            
         public:
 
             typedef long int                                        difference_type;
@@ -56,29 +56,29 @@ namespace ft
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
             typedef Node*                                           nodePtr;
-			
-			
-			/* ------------------------------------------------------------- */
+            
+            
+            /* ------------------------------------------------------------- */
             /* ------------------------- ATTRIBUTES ------------------------ */
-			
-		private:
+            
+        private:
 
-                nodePtr _node;	// A pointer to a node in the list.
+                nodePtr _node;  // A pointer to a node in the list.
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
-			
-		public:
+            
+        public:
 
-			/**
+            /**
             *   Default constructor, creates a list_iterator pointing to a node.
             *
             *   @param node  A pointer to a node containing a T element. Value initialized if not provided.
             */
             list_iterator(nodePtr node = 0) : _node(node) {}
-			
-			/**
+            
+            /**
             *   Copy constructor : creates a const list_iterator pointing to the same node.
             *   Convert constructor : creates a list_iterator from a const list_iterator,
             *   pointing to the same node.
@@ -86,10 +86,10 @@ namespace ft
             *   @param copy     The iterator that will be copied.
             */
             list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNode(); }
-			
+            
             ~list_iterator() {}
 
-			/**
+            /**
             *   Assigns a list_iterator to this list_iterator. Both iterators will point to the
             *   same node.
             *   
@@ -103,31 +103,31 @@ namespace ft
             }
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* --------------------------- GETTERS ------------------------- */
-			
-			/**
-			*	@return	A non constant pointer to the actual node that the iterator is 
-			*			pointing to.
-			*/
-            nodePtr getNode() const      { return _node; }
-			
             
-			/* ------------------------------------------------------------- */
+            /**
+            *   @return A non constant pointer to the actual node that the iterator is 
+            *           pointing to.
+            */
+            nodePtr getNode() const      { return _node; }
+            
+            
+            /* ------------------------------------------------------------- */
             /* ---------------------- OPERATOR OVERLOADS ------------------- */
 
             reference operator*() const         { return (_node->content); }
-            pointer operator->() const			{ return (&(_node->content)); }
+            pointer operator->() const          { return (&(_node->content)); }
 
             list_iterator& operator++()         { _node = _node->next; return (*this); }
             list_iterator operator++(int)       { list_iterator res(*this); ++(*this); return (res); };
             list_iterator& operator--()         { _node = _node->prev; return (*this); }
             list_iterator operator--(int)       { list_iterator res(*this); --(*this); return (res); };
             
-			
-			/* ------------------------------------------------------------- */
+            
+            /* ------------------------------------------------------------- */
             /* --------------- NON-MEMBER OPERATOR OVERLOADS --------------- */ 
-			
+            
             bool operator==(const list_iterator& it) const  { return (it._node == _node); }
             bool operator!=(const list_iterator& it) const  { return (it._node != _node); }
 

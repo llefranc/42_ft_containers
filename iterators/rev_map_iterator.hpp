@@ -18,7 +18,7 @@
 
 namespace ft
 {
-	/**
+    /**
     * ------------------------------------------------------------- *
     * -------------------- FT::REV_MAP_ITERATOR ------------------- *
     *
@@ -32,20 +32,20 @@ namespace ft
     * non-member operators: Operators for rev_map_iterator
     * ------------------------------------------------------------- *
     */
-		
-	/**
-    *   @param Key  	Type of container's key elements.
-    *   @param T		Type of container's mapped elements.
-	*	@param Compare	The predicate used to sort the binary tree.
-	*	@param Node		The structure used as nodes in the binary tree.
-    *   @param B		Boolean to indicate if it's an iterator / a const iterator.
+        
+    /**
+    *   @param Key      Type of container's key elements.
+    *   @param T        Type of container's mapped elements.
+    *   @param Compare  The predicate used to sort the binary tree.
+    *   @param Node     The structure used as nodes in the binary tree.
+    *   @param B        Boolean to indicate if it's an iterator / a const iterator.
     */
     template<class Key, class T, class Compare, typename Node, bool B>
     class rev_map_iterator
     {
-		/* ------------------------------------------------------------- */
-		/* -------------------------- ALIASES -------------------------- */
-		
+        /* ------------------------------------------------------------- */
+        /* -------------------------- ALIASES -------------------------- */
+        
         public:
         
             typedef Key                                             key_type;
@@ -61,33 +61,33 @@ namespace ft
             typedef Node*                                                               nodePtr;
             
 
-			/* ------------------------------------------------------------- */
-			/* ------------------------- ATTRIBUTES ------------------------ */
-			
-		private:
+            /* ------------------------------------------------------------- */
+            /* ------------------------- ATTRIBUTES ------------------------ */
+            
+        private:
 
-            nodePtr			_node;		// Pointer to a binary tree's node
-            nodePtr 		_lastElem;	// Pointer to the dummy node of binary tree
-			key_compare		_comp;		// Comparison object used to sort the binary tree
-		
-		
+            nodePtr         _node;      // Pointer to a binary tree's node
+            nodePtr         _lastElem;  // Pointer to the dummy node of binary tree
+            key_compare     _comp;      // Comparison object used to sort the binary tree
+        
+        
             /* ------------------------------------------------------------- */
             /* ------------------------ COPLIEN FORM ----------------------- */
 
-		public:
-		
-			/**
+        public:
+        
+            /**
             *   Default constructor, creates a rev_map_iterator pointing to a node.
             *
-            *   @param node		A pointer to a node containing a T element. Value initialized if not provided.
-			*	@param lastElem	A pointer to the dummy node of the binary tree. Value initialized if not provided.
-			*	@param comp		The comparison object used to sort the binary tree.  Value initialized if not provided.
+            *   @param node     A pointer to a node containing a T element. Value initialized if not provided.
+            *   @param lastElem A pointer to the dummy node of the binary tree. Value initialized if not provided.
+            *   @param comp     The comparison object used to sort the binary tree.  Value initialized if not provided.
             */
             rev_map_iterator(nodePtr node = 0, nodePtr lastElem = 0,
-							const key_compare& comp = key_compare()) :
+                            const key_compare& comp = key_compare()) :
                 _node(node), _lastElem(lastElem), _comp(comp) {}
         
-			/**
+            /**
             *   Copy constructor : creates a const rev_map_iterator pointing to the same node.
             *   Convert constructor : creates a rev_map_iterator from a const rev_map_iterator,
             *   pointing to the same node.
@@ -98,10 +98,10 @@ namespace ft
             {
                 _node = copy.getNonConstNode();
                 _lastElem = copy.getNonConstLastElem();
-				_comp = copy.getCompare();
+                _comp = copy.getCompare();
             }
             
-			/**
+            /**
             *   Convert constructor : creates a rev_map_iterator from a const / not const 
             *   map_iterator, pointing to the previous T element. This is necessary so 
             *   begin() == rend(), and end == rbegin().
@@ -113,16 +113,16 @@ namespace ft
                 --copy;
                 _node = copy.getNonConstNode();
                 _lastElem = copy.getNonConstLastElem();
-				_comp = copy.getCompare();
+                _comp = copy.getCompare();
             }
 
             ~rev_map_iterator() {}
 
-			/**
+            /**
             *   Assigns a rev_map_iterator to this rev_map_iterator. Both iterators will point to the
             *   same node.
             *   
-            *   @param x	The rev_map_iterator that will be assigned.
+            *   @param x    The rev_map_iterator that will be assigned.
             */
             rev_map_iterator& operator=(const rev_map_iterator& assign)
             {
@@ -130,38 +130,38 @@ namespace ft
                 {
                     _node = assign._node;
                     _lastElem = assign._lastElem;
-					_comp = assign._comp;
+                    _comp = assign._comp;
                 }
                 return (*this);
             }
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* --------------------------- GETTERS ------------------------- */
 
-			/**
-			*	@return	A non constant pointer to the actual node that the iterator is 
-			*			pointing to.
-			*/
-            nodePtr getNonConstNode() const     	{ return _node; }
+            /**
+            *   @return A non constant pointer to the actual node that the iterator is 
+            *           pointing to.
+            */
+            nodePtr getNonConstNode() const         { return _node; }
 
-			/**
-			*	@return	A non constant pointer to the dummy node at the end of the 
-			*			binary tree.
-			*/
+            /**
+            *   @return A non constant pointer to the dummy node at the end of the 
+            *           binary tree.
+            */
             nodePtr getNonConstLastElem() const     { return _lastElem; }
 
-			/**
-			*	@return	The comparison object used to sort the binary tree.
-			*/
-			key_compare	getCompare() const			{ return _comp; }
+            /**
+            *   @return The comparison object used to sort the binary tree.
+            */
+            key_compare getCompare() const          { return _comp; }
 
 
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* -------------------------- OPERATORS ------------------------ */
 
-            reference operator*() const    			{ return (_node->content); }
-            pointer operator->() const				{ return (&_node->content); }
+            reference operator*() const             { return (_node->content); }
+            pointer operator->() const              { return (&_node->content); }
 
             /**
             *   Starts from a specific key inside the tree, and looks for the closest inferior key 
@@ -246,13 +246,13 @@ namespace ft
                     return (*this);
                 }
 
-				// _comp is equivalent to operator <. So:
-				//		- operator>(lhs, rhs)  <==>  _comp(rhs, lhs)
-				//		- operator<=(lhs, rhs)  <==>  !_comp(rhs, lhs)
-				//		- operator>=(lhs, rhs)  <==>  !_comp(lhs, rhs)
+                // _comp is equivalent to operator <. So:
+                //      - operator>(lhs, rhs)  <==>  _comp(rhs, lhs)
+                //      - operator<=(lhs, rhs)  <==>  !_comp(rhs, lhs)
+                //      - operator>=(lhs, rhs)  <==>  !_comp(lhs, rhs)
 
                 // Moving node* until we find a node with an higher value or equal value (_lastElem == end)
-                // 								<=> _node->content.first <= previousNode->content.first)
+                //                              <=> _node->content.first <= previousNode->content.first)
                 while (_node != _lastElem && !_comp(previousNode->content.first, _node->content.first))
                 {
                     // Case right son is either node with higher value or _lastElem node    
@@ -312,9 +312,9 @@ namespace ft
             bool operator!=(const rev_map_iterator& it) const   { return (it._node != _node); }
 
 
-			/* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
+            /* ----------------- PRIVATE MEMBER FUNCTIONS ------------------ */
             /* ------------------------------------------------------------- */
-			
+            
         private:
 
             /**

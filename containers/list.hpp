@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:09:22 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:59:37 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,25 @@ namespace ft
     */
 
    /**
-    *   @param T    	Type of container's elements.
+    *   @param T        Type of container's elements.
     *   @param Alloc    Object used to manage the vector' storage.
     */
     template <typename T, class Alloc = ft::allocator<T> >
     class list
     {
-			/* ------------------------------------------------------------- */
+            /* ------------------------------------------------------------- */
             /* ------------------------- ATTRIBUTES ------------------------ */
-		
+        
         private:
 
             struct Node
             {
-                T       content;		// Element of the list
-                Node*   prev;			// Pointer to previous node
-                Node*   next;			// Pointer to next node
+                T       content;        // Element of the list
+                Node*   prev;           // Pointer to previous node
+                Node*   next;           // Pointer to next node
             };          
         
-		
+        
             /* ------------------------------------------------------------- */
             /* -------------------------- ALIASES -------------------------- */
 
@@ -121,7 +121,7 @@ namespace ft
             Node*                   _endList;       // Pointer to the neutral element of the circle linked list
             size_type               _size;          // Number of T values inside the list
             Alloc                   _allocT;        // Copy of allocator_type object
-            ft::allocator<Node>		_allocNode;     // Node's allocator
+            ft::allocator<Node>     _allocNode;     // Node's allocator
 
 
             /* ------------------------------------------------------------- */
@@ -195,7 +195,7 @@ namespace ft
 
             /**
             *   Destructor, destroys and deallocates all the list's elements and list's nodes, 
-			*	including end node.
+            *   including end node.
             */
             ~list()
             {
@@ -509,30 +509,30 @@ namespace ft
                     position = insert(position, *it.first);
             }
 
-			/**
-			*	Removes from the list one element at a specific position. Size is decreased.
-			*
-			*	@param position	Iterator pointing to a single element to be removed from the list.
-			*	@return			An iterator pointing to the element that followed the last element 
-			*					erased by the function call. This is the container end if the operation 
-			*					erased the last element in the sequence.
-			*/
+            /**
+            *   Removes from the list one element at a specific position. Size is decreased.
+            *
+            *   @param position Iterator pointing to a single element to be removed from the list.
+            *   @return         An iterator pointing to the element that followed the last element 
+            *                   erased by the function call. This is the container end if the operation 
+            *                   erased the last element in the sequence.
+            */
             iterator erase (iterator position)
             {
                 // Using iterator's Node constructor for creating last
                 return erase(position, position.getNode()->next);
             }
 
-			/**
-			*	Removes from the list a range of elements. Size is decreased by the number of 
-			*	elements removed.
-			*
-			*   @param first    An iterator pointing to the range's beginning (will be included).
+            /**
+            *   Removes from the list a range of elements. Size is decreased by the number of 
+            *   elements removed.
+            *
+            *   @param first    An iterator pointing to the range's beginning (will be included).
             *   @param last     An iterator pointing to the range's end (will not be included).
-			*	@return			An iterator pointing to the element that followed the last element 
-			*					erased by the function call. This is the container end if the operation 
-			*					erased the last element in the sequence.
-			*/
+            *   @return         An iterator pointing to the element that followed the last element 
+            *                   erased by the function call. This is the container end if the operation 
+            *                   erased the last element in the sequence.
+            */
             iterator erase (iterator first, iterator last)
             {
                 for (; first != last;)
@@ -606,8 +606,8 @@ namespace ft
             */
             void splice (iterator position, list& x, iterator i)
             {
-				Node* tmp = i.getNode();
-				
+                Node* tmp = i.getNode();
+                
                 // Linking previous and next node in x together
                 tmp->next->prev = tmp->prev;
                 tmp->prev->next = tmp->next;
