@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   queue.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:16:45 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 09:13:35 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:15:29 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
-#include <deque>
+#include "list.hpp"
 
 namespace ft
 {
@@ -39,7 +39,11 @@ namespace ft
     * ------------------------------------------------------------- *
     */
 
-    template <class T, class Container = std::deque<T> >
+   /**
+    *   @param T    		Type of container's elements.
+    *   @param Container    Container object used internally to store T elements.
+    */
+    template <class T, class Container = std::list<T> >
     class queue
     {
             /* ------------------------------------------------------------- */

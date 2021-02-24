@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/23 15:33:28 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 15:54:29 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ namespace ft
 					val += mov;
 			}
 			
-    }; // rev_vector_iterator
+    }; // class rev_vector_iterator
 
 } // namespace ft
 

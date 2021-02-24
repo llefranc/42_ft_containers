@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/23 15:31:27 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 15:54:46 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,7 +329,7 @@ namespace ft
                 return root;
             }
 			
-    }; // map_iterator
+    }; // class map_iterator
 	
 } // namespace ft
 

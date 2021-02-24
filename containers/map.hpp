@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/23 15:03:41 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:12:50 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,54 @@
 
 namespace ft
 {
-        
+	/**
+    * ------------------------------------------------------------- *
+    * ------------------------- FT::MAP --------------------------- *
+    *
+    * - Coplien form:           
+	* (constructor):	Construct map
+	* (destructor):		Map destructor
+	* operator=:		Assign map
+	*
+	* - Iterators:
+	* begin:			Return iterator to beginning
+	* end:				Return iterator to end
+	* rbegin:			Return reverse iterator to reverse beginning
+	* rend:				Return reverse iterator to reverse end
+	*
+	* - Capacity:
+	* empty:			Test whether container is empty
+	* size:				Return container size
+	* max_size:			Return maximum size
+	*
+	* - Element access:
+	* operator[]:		Access element
+	*
+	* - Modifiers:
+	* insert:			Insert elements
+	* erase:			Erase elements
+	* swap:				Swap content
+	* clear:			Clear content
+	*
+	* - Observers:
+	* key_comp:			Return key comparison object
+	* value_comp:		Return value comparison object
+	*
+	* - Operations:
+	* find:				Get iterator to element
+	* count:			Count elements with a specific key
+	* lower_bound:		Return iterator to lower bound
+	* upper_bound:		Return iterator to upper bound
+	* equal_range		Get range of equal elements
+    * ------------------------------------------------------------- *
+    */
+
+	/**
+	*	@param key		Type of keys mapped to elements.
+    *   @param T    	Type of elements mapped to keys.
+	*	@param Compare	Comparison object used to sort the binary tree.
+    *   @param Alloc    Object used to manage the vector' storage.
+    */
     template < class Key, class T, class Compare = ft::less<Key>, 
 			class Alloc = ft::allocator<ft::pair<const Key, T> >
     > class map
@@ -1176,7 +1223,9 @@ namespace ft
                     node = node->parent;
                 }
             }
-    };
+			
+    };	// class map
+	
 } // namespace ft
 
 #endif

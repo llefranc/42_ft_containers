@@ -91,7 +91,7 @@ namespace ft
 			*   
 			*   @param copy	 The list_iterator that will be converted.
 			*/
-			explicit rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNode()->prev; }
+			rev_list_iterator(const list_iterator<T, Node, false>& copy) { _node = copy.getNode()->prev; }
 			
 			~rev_list_iterator() {}
 
@@ -107,7 +107,7 @@ namespace ft
 					_node = assign._node;
 				return (*this);
 			}
-
+			
 
 			/* ------------------------------------------------------------- */
 			/* --------------------------- GETTERS ------------------------- */
@@ -137,7 +137,7 @@ namespace ft
 			bool operator==(const rev_list_iterator& it) const  { return (it._node == _node); }
 			bool operator!=(const rev_list_iterator& it) const  { return (it._node != _node); }
 
-	}; // rev_list_iterator
+	}; // class rev_list_iterator
 
 } // namespace ft
 

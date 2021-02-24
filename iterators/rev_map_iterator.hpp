@@ -345,7 +345,7 @@ namespace ft
                 return root;
             }
 
-    }; // rev_map_iterator
+    }; // class rev_map_iterator
 
 } // namespace ft
 

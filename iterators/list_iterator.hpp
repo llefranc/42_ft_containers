@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/23 15:32:54 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 15:54:51 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ namespace ft
             bool operator==(const list_iterator& it) const  { return (it._node == _node); }
             bool operator!=(const list_iterator& it) const  { return (it._node != _node); }
 
-    }; // list_iterator
+    }; // class list_iterator
 
 } // namespace ft
 

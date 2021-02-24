@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/23 10:36:15 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/24 16:09:22 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,44 @@ namespace ft
     *
     * - Coplien form:           
     * (constructor):        Construct list
-    * (destructor)          Destruct list
-    * operator=             Assign list
+    * (destructor):         Destruct list
+    * operator=:            Assign list
     *
     * - Iterators:
-    * begin                 Return iterator to beginning
-    * end                   Return iterator to end
-    * rbegin                Return reverse iterator to reverse beginning
-    * rend                  Return reverse iterator to reverse end
+    * begin:                Return iterator to beginning
+    * end:                  Return iterator to end
+    * rbegin:               Return reverse iterator to reverse beginning
+    * rend:                 Return reverse iterator to reverse end
     *
     * - Capacity:
-    * empty                 Test whether container is empty
-    * size                  Return size
-    * max_size              Return maximum size
+    * empty:                Test whether container is empty
+    * size:                 Return size
+    * max_size:             Return maximum size
     *
     * - Element access:
-    * front                 Access first element
-    * back                  Access last element
+    * front:                Access first element
+    * back:                 Access last element
     *
     * - Modifiers:
-    * assign                Assign new content to container
-    * push_front            Insert element at beginning
-    * pop_front             Delete first element
-    * push_back             Add element at the end
-    * pop_back              Delete last element
-    * insert                Insert elements
-    * erase                 Erase elements
-    * swap                  Swap content
-    * resize                Change size
-    * clear                 Clear content
+    * assign:               Assign new content to container
+    * push_front:           Insert element at beginning
+    * pop_front:            Delete first element
+    * push_back:            Add element at the end
+    * pop_back:             Delete last element
+    * insert:               Insert elements
+    * erase:                Erase elements
+    * swap:                 Swap content
+    * resize:               Change size
+    * clear:                Clear content
     *
     * - Operations:
-    * splice                Transfer elements from list to list
-    * remove                Remove elements with specific value
-    * remove_if             Remove elements fulfilling condition
-    * unique                Remove duplicate values
-    * merge                 Merge sorted lists
-    * sort                  Sort elements in container
-    * reverse               Reverse the order of elements
+    * splice:               Transfer elements from list to list
+    * remove:               Remove elements with specific value
+    * remove_if:            Remove elements fulfilling condition
+    * unique:               Remove duplicate values
+    * merge:                Merge sorted lists
+    * sort:                 Sort elements in container
+    * reverse:              Reverse the order of elements
     *
     * - Non-member function overloads
     * relational operators: Relational operators for list
@@ -71,6 +71,10 @@ namespace ft
     * ------------------------------------------------------------- *
     */
 
+   /**
+    *   @param T    	Type of container's elements.
+    *   @param Alloc    Object used to manage the vector' storage.
+    */
     template <typename T, class Alloc = ft::allocator<T> >
     class list
     {
@@ -81,9 +85,9 @@ namespace ft
 
             struct Node
             {
-                T       content;
-                Node*   prev;
-                Node*   next;
+                T       content;		// Element of the list
+                Node*   prev;			// Pointer to previous node
+                Node*   next;			// Pointer to next node
             };          
         
 		
