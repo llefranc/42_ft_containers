@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:44:34 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/22 11:47:34 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/23 12:30:57 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ namespace ft
     * ------------------------------------------------------------- *
     */
         
+	/**
+    *   @param T    	Type of container's elements.
+    *   @param Alloc    Object used to manage the vector' storage.
+    */
     template <typename T, class Alloc = ft::allocator<T> >
     class vector
     {

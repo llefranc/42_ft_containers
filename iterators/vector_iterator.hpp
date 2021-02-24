@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/22 17:00:35 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/23 15:33:49 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ namespace ft
 
     /**
     *   @param T    Type of container's elements.
-    *   @param B    Boolean to indicate if it's a const or not random iterator.
+    *   @param B    Boolean to indicate if it's an iterator / a const iterator.
     */
     template<typename T, bool B>
     class vector_iterator
@@ -58,7 +58,7 @@ namespace ft
             
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
-            typedef T*                                              nonConstPtr;
+            typedef T*                                              elemPtr;
             
 
 			/* ------------------------------------------------------------- */
@@ -66,7 +66,7 @@ namespace ft
 
 		private:
 		
-			nonConstPtr _val;
+			elemPtr _val;	// A pointer to an element in the vector array
 
 
             /* ------------------------------------------------------------- */
@@ -79,7 +79,7 @@ namespace ft
             *
             *   @param val  A pointer to a T element. Value initialized if not provided.
             */
-            vector_iterator(nonConstPtr val = 0) :
+            vector_iterator(elemPtr val = 0) :
                     _val(val) {}
                     
             /**
@@ -89,7 +89,7 @@ namespace ft
             *   
             *   @param copy     The iterator that will be copied.
             */
-            vector_iterator(const vector_iterator<T, false>& copy) { _val = copy.getNonConstPtr(); }
+            vector_iterator(const vector_iterator<T, false>& copy) { _val = copy.getElemPtr(); }
 
             ~vector_iterator() {}
 
@@ -114,7 +114,7 @@ namespace ft
 			*	@return	A non constant pointer to the actual element that the iterator is 
 			*			pointing to.
 			*/
-			nonConstPtr getNonConstPtr() const      { return _val; }
+			elemPtr getElemPtr() const      { return _val; }
 
 
             /* ------------------------------------------------------------- */
@@ -237,7 +237,7 @@ namespace ft
 			*   @param nb   Number of time the pointer will be increased / decreased.
 			*   @param sign Indicate if it's an addition or a substraction.
 			*/
-			void movePtr(nonConstPtr& val, long nb, bool sign) const
+			void movePtr(elemPtr& val, long nb, bool sign) const
 			{
 				int mov;
 

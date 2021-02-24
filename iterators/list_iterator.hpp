@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/22 17:06:16 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/23 15:32:54 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ namespace ft
     * ------------------------------------------------------------- *
     */
 		
+	/**
+    *   @param T    Type of container's elements.
+	*	@param Node	The structure used as nodes in the list.
+    *   @param B    Boolean to indicate if it's an iterator / a const iterator.
+    */
     template<typename T, typename Node, bool B>
     class list_iterator
     {
@@ -52,12 +57,13 @@ namespace ft
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
             typedef Node*                                           nodePtr;
 			
+			
 			/* ------------------------------------------------------------- */
             /* ------------------------- ATTRIBUTES ------------------------ */
 			
 		private:
 
-                nodePtr _node;
+                nodePtr _node;	// A pointer to a node in the list.
 
 
 			/* ------------------------------------------------------------- */
@@ -68,7 +74,7 @@ namespace ft
 			/**
             *   Default constructor, creates a list_iterator pointing to a node.
             *
-            *   @param val  A pointer to node containing a T element. Value initialized if not provided.
+            *   @param node  A pointer to a node containing a T element. Value initialized if not provided.
             */
             list_iterator(nodePtr node = 0) : _node(node) {}
 			
@@ -84,7 +90,7 @@ namespace ft
             ~list_iterator() {}
 
 			/**
-            *   Assign a list_iterator to this list_iterator. Both iterators will point to the
+            *   Assigns a list_iterator to this list_iterator. Both iterators will point to the
             *   same node.
             *   
             *   @param x        The list_iterator that will be assigned.
@@ -108,7 +114,7 @@ namespace ft
 			
             
 			/* ------------------------------------------------------------- */
-            /* -------------------------- OPERATORS ------------------------ */
+            /* ---------------------- OPERATOR OVERLOADS ------------------- */
 
             reference operator*() const         { return (_node->content); }
             pointer operator->() const			{ return (&(_node->content)); }
@@ -118,6 +124,7 @@ namespace ft
             list_iterator& operator--()         { _node = _node->prev; return (*this); }
             list_iterator operator--(int)       { list_iterator res(*this); --(*this); return (res); };
             
+			
 			/* ------------------------------------------------------------- */
             /* --------------- NON-MEMBER OPERATOR OVERLOADS --------------- */ 
 			
@@ -125,6 +132,7 @@ namespace ft
             bool operator!=(const list_iterator& it) const  { return (it._node != _node); }
 
     }; // list_iterator
-}
+
+} // namespace ft
 
 #endif

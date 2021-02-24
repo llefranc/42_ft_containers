@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/18 15:02:39 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/02/23 15:03:41 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@
 namespace ft
 {
         
-    template < class Key,                                           // map::key_type
-            class T,                                                // map::mapped_type
-            class Compare = ft::less<Key>,							// map::key_compare
-            class Alloc = ft::allocator<ft::pair<const Key, T> >    // map::allocator_type
+    template < class Key, class T, class Compare = ft::less<Key>, 
+			class Alloc = ft::allocator<ft::pair<const Key, T> >
     > class map
     {
 			/* ------------------------------------------------------------- */
@@ -370,7 +368,7 @@ namespace ft
                     return position;
 
                 ++_size;
-                return iterator(insertNode(position.getNonConstNode(), val), _lastElem, _comp);
+                return iterator(insertNode(position.getNode(), val), _lastElem, _comp);
             }
 			
 			/**
@@ -396,7 +394,7 @@ namespace ft
 			*/
             void erase (iterator position)
             {
-                deleteNode(position.getNonConstNode(), position->first);
+                deleteNode(position.getNode(), position->first);
                 --_size;
             }
 

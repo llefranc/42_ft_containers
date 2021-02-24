@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/22 16:58:37 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/23 15:31:27 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,29 @@
 
 namespace ft
 {
-    template<class Key, class T, class Compare, typename Node, bool B>
+	/**
+    * ------------------------------------------------------------- *
+    * ---------------------- FT::MAP_ITERATOR --------------------- *
+    *
+    * - Coplien form:
+    * (constructor):        Construct map_iterator
+    * (destructor):         Map_iterator destructor
+    * operator=:            Assign content
+    *
+    * - Operators
+    * operators:            Operators for map_iterator
+    * non-member operators: Operators for map_iterator
+    * ------------------------------------------------------------- *
+    */
+		
+	/**
+    *   @param Key  	Type of container's key elements.
+    *   @param T		Type of container's mapped elements.
+	*	@param Compare	The predicate used to sort the binary tree.
+	*	@param Node		The structure used as nodes in the binary tree.
+    *   @param B		Boolean to indicate if it's an iterator / a const iterator.
+    */
+    template <class Key, class T, class Compare, typename Node, bool B>
     class map_iterator
     {
 			/* ------------------------------------------------------------- */
@@ -35,7 +57,7 @@ namespace ft
             
             typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
-            typedef Node*                                                               nonConstPtr;
+            typedef Node*                                                               nodePtr;
             
 
 			/* ------------------------------------------------------------- */
@@ -43,9 +65,9 @@ namespace ft
 			
 		private:
 
-            nonConstPtr 	_node;
-            nonConstPtr 	_lastElem;
-			key_compare		_comp;
+            nodePtr 		_node;		// Pointer to a binary tree's node
+            nodePtr 		_lastElem;	// Pointer to the dummy node of binary tree
+			key_compare		_comp;		// Comparison object used to sort the binary tree
 			
 
             /* ------------------------------------------------------------- */
@@ -53,19 +75,39 @@ namespace ft
 
 		public:
 
-            map_iterator(nonConstPtr node = 0, nonConstPtr lastElem = 0, 
+			/**
+            *   Default constructor, creates a map_iterator pointing to a node.
+            *
+            *   @param node		A pointer to a node containing a T element. Value initialized if not provided.
+			*	@param lastElem	A pointer to the dummy node of the binary tree. Value initialized if not provided.
+			*	@param comp		The comparison object used to sort the binary tree.  Value initialized if not provided.
+            */
+            map_iterator(nodePtr node = 0, nodePtr lastElem = 0, 
 						const key_compare& comp = key_compare()) :
                 _node(node), _lastElem(lastElem), _comp(comp) {}
         
+			/**
+            *   Copy constructor : creates a const map_iterator pointing to the same node.
+            *   Convert constructor : creates a map_iterator from a const map_iterator,
+            *   pointing to the same node.
+            *   
+            *   @param copy     The iterator that will be copied.
+            */
             map_iterator(const map_iterator<Key, T, Compare, Node, false>& copy)
             {
-                _node = copy.getNonConstNode();
-                _lastElem = copy.getNonConstLastElem();
+                _node = copy.getNode();
+                _lastElem = copy.getLastElem();
 				_comp = copy.getCompare();
             }
             
             ~map_iterator() {}
 
+			/**
+            *   Assigns a map_iterator to this map_iterator. Both iterators will point to the
+            *   same node.
+            *   
+            *   @param x	The map_iterator that will be assigned.
+            */
             map_iterator& operator=(const map_iterator& assign)
             {
                 if (this != &assign)
@@ -77,19 +119,33 @@ namespace ft
                 return (*this);
             }
 
+
 			/* ------------------------------------------------------------- */
             /* -------------------------- GETTERS -------------------------- */
 
-            nonConstPtr getNonConstNode() const			{ return _node; }
-            nonConstPtr getNonConstLastElem() const     { return _lastElem; }
-			key_compare	getCompare() const				{ return _comp; }
+			/**
+			*	@return	A non constant pointer to the actual node that the iterator is 
+			*			pointing to.
+			*/
+            nodePtr getNode() const				{ return _node; }
+			
+			/**
+			*	@return	A non constant pointer to the dummy node at the end of the 
+			*			binary tree.
+			*/
+            nodePtr getLastElem() const			{ return _lastElem; }
+			
+			/**
+			*	@return	The comparison object used to sort the binary tree.
+			*/
+			key_compare	getCompare() const		{ return _comp; }
 
 
 			/* ------------------------------------------------------------- */
             /* -------------------------- OPERATORS ------------------------ */
 			
-            reference operator*() const   			      { return (_node->content); }
-            pointer operator->() const    				  { return (&_node->content); }
+            reference operator*() const			{ return (_node->content); }
+            pointer operator->() const    		{ return (&_node->content); }
 
             /**
             *   Starts from a specific key inside the tree, and looks for the closest superior key 
@@ -98,7 +154,7 @@ namespace ft
             map_iterator& operator++()
             {
                 // To save base value and compare it with parents if no right son
-                nonConstPtr previousNode = _node;
+                nodePtr previousNode = _node;
 
                 // Special case where iterator is on lastElem : we're looping to the beginning
                 // of the tree
@@ -177,7 +233,7 @@ namespace ft
             map_iterator& operator--()
             {
                 // Opposite logic than in ++operator
-                nonConstPtr previousNode = _node;
+                nodePtr previousNode = _node;
 
                 if (_node == _lastElem)
                 {
@@ -272,7 +328,9 @@ namespace ft
                     return searchMinNode(root->left);
                 return root;
             }
-    };
+			
+    }; // map_iterator
+	
 } // namespace ft
 
 

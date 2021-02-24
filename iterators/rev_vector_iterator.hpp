@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/22 16:58:10 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/02/23 15:33:28 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ namespace ft
             
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
-            typedef T*                                              nonConstPtr;
+            typedef T*                                              elemPtr;
             
 			
 			/* ------------------------------------------------------------- */
@@ -63,7 +63,7 @@ namespace ft
 
 		private:
 
-			nonConstPtr _val;
+			elemPtr _val;	// A pointer to an element in the vector array
 
 
             /* ------------------------------------------------------------- */
@@ -76,7 +76,7 @@ namespace ft
             *
             *   @param val  A pointer to a T element. Value initialized if not provided.
             */
-            rev_vector_iterator(nonConstPtr val = 0) : _val(val) {}
+            rev_vector_iterator(elemPtr val = 0) : _val(val) {}
 
             /**
             *   Copy constructor : creates a const rev_vector_iterator pointing to the same T element.
@@ -85,7 +85,7 @@ namespace ft
             *   
             *   @param copy     The rev_vector_iterator that will be copied.
             */
-            rev_vector_iterator(const rev_vector_iterator<T, false>& copy) { _val = copy.getNonConstPtr(); }
+            rev_vector_iterator(const rev_vector_iterator<T, false>& copy) { _val = copy.getElemPtr(); }
 
             /**
             *   Convert constructor : creates a rev_vector_iterator from a const / not const 
@@ -94,7 +94,7 @@ namespace ft
             *   
             *   @param copy     The vector_iterator that will be converted.
             */
-            explicit rev_vector_iterator(const vector_iterator<T, false>& copy) { _val = copy.getNonConstPtr() - 1; }
+            explicit rev_vector_iterator(const vector_iterator<T, false>& copy) { _val = copy.getElemPtr() - 1; }
 
             ~rev_vector_iterator() {}
 
@@ -119,7 +119,7 @@ namespace ft
 			*	@return	A non constant pointer to the actual element that the iterator is 
 			*			pointing to.
 			*/
-			nonConstPtr getNonConstPtr() const      { return _val; }
+			elemPtr getElemPtr() const      { return _val; }
 
 
             /* ------------------------------------------------------------- */
@@ -151,7 +151,6 @@ namespace ft
             bool operator>(const rev_vector_iterator& it) const     { return (it._val < this->_val); }
             bool operator<=(const rev_vector_iterator& it) const    { return (it._val >= this->_val); }
             bool operator>=(const rev_vector_iterator& it) const    { return (it._val <= this->_val); }
-            
             
             /**
             *   Increment 1 time vector_iterator position.
@@ -246,7 +245,7 @@ namespace ft
 			*   @param nb   Number of time the pointer will be increased / decreased.
 			*   @param sign Indicate if it's an addition or a substraction.
 			*/
-			void movePtr(nonConstPtr& val, long nb, bool sign) const
+			void movePtr(elemPtr& val, long nb, bool sign) const
 			{
 				int mov;
 
