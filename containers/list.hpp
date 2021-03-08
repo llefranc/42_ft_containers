@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:59:37 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/03/08 15:11:35 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -971,10 +971,6 @@ namespace ft
             */
             void newEndNode()
             {
-                // _endList = new Node;         VERSION SANS ALLOCATOR
-                // _endList->next = _endList;
-                // _endList->prev = _endList;           
-
                 _endList = _allocNode.allocate(1);
                 _endList->next = _endList;
                 _endList->prev = _endList;          
@@ -991,7 +987,6 @@ namespace ft
                 toDelete->prev->next = toDelete->next;
                 toDelete->next->prev = toDelete->prev;
 
-                // delete toDelete;         VERSION SANS ALLOCATOR
                 _allocT.destroy(&toDelete->content);
                 _allocNode.deallocate(toDelete, 1);
 
