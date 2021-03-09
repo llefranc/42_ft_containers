@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:15:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/03/09 13:21:35 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/03/09 13:29:47 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ namespace ft
             typedef T                                               value_type;
             typedef size_t                                          size_type;
             
-			typedef std::random_access_iterator_tag                 iterator_category;
+            typedef std::random_access_iterator_tag                 iterator_category;
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
             typedef T*                                              elemPtr;

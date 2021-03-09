@@ -56,7 +56,7 @@ namespace ft
             typedef long int                                        difference_type;
             typedef size_t                                          size_type;
             
-			typedef std::bidirectional_iterator_tag                                     iterator_category;
+            typedef std::bidirectional_iterator_tag                                     iterator_category;
             typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
             typedef Node*                                                               nodePtr;
