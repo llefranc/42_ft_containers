@@ -61,7 +61,7 @@ namespace ft
 
         private:
 
-                nodePtr _node;  // A pointer to a node in the list
+            nodePtr _node;  // A pointer to a node in the list
 
 
             /* ------------------------------------------------------------- */
