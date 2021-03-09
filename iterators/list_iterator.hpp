@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_iterator.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 15:06:15 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:57:25 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/03/09 13:21:53 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ namespace ft
             typedef T                                               value_type;
             typedef size_t                                          size_type;
             
+			typedef std::bidirectional_iterator_tag                 iterator_category;
             typedef typename chooseConst<B, T&, const T&>::type     reference;
             typedef typename chooseConst<B, T*, const T*>::type     pointer;
             typedef Node*                                           nodePtr;

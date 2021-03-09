@@ -47,12 +47,13 @@ namespace ft
         public:
             
             typedef long int                                        difference_type;
-            typedef T                                              value_type;
-            typedef size_t                                        size_type;
+            typedef T                                               value_type;
+            typedef size_t                                          size_type;
             
-            typedef typename chooseConst<B, T&, const T&>::type  reference;
-            typedef typename chooseConst<B, T*, const T*>::type  pointer;
-            typedef Node*                                          nodePtr;
+			typedef std::bidirectional_iterator_tag                 iterator_category;
+            typedef typename chooseConst<B, T&, const T&>::type     reference;
+            typedef typename chooseConst<B, T*, const T*>::type     pointer;
+            typedef Node*                                           nodePtr;
 
 
             /* ------------------------------------------------------------- */

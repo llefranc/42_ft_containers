@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 14:20:22 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:57:08 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/03/09 13:21:44 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ namespace ft
             typedef long int                                        difference_type;
             typedef size_t                                          size_type;
             
+			typedef std::bidirectional_iterator_tag                                     iterator_category;
             typedef typename chooseConst<B, value_type&, const value_type&>::type       reference;
             typedef typename chooseConst<B, value_type*, const value_type*>::type       pointer;
             typedef Node*                                                               nodePtr;
