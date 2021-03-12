@@ -6,7 +6,7 @@
 /*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/03/08 15:11:35 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/03/12 10:13:15 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,6 @@ namespace ft
             {
                 while (_size > 0)
                     pop_back();
-                // delete _endList; VERSION SANS ALLOC
                 _allocNode.deallocate(_endList, 1);
             }
 
@@ -404,8 +403,6 @@ namespace ft
             */
             void push_front (const value_type& val)
             {
-                // Node* tmp = new Node; VERSION SANS ALLOC
-                // tmp->content = val;
                 Node* tmp = createNode(val);
 
                 tmp->prev = _endList;
@@ -434,8 +431,6 @@ namespace ft
             */
             void push_back (const value_type& val)
             {
-                // Node* tmp = new Node; VERSION SANS ALLOC
-                // tmp->content = val;
                 Node* tmp = createNode(val);
 
                 tmp->prev = _endList->prev;
