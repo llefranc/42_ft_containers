@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:59:28 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/04/07 19:46:16 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <memory>
 
 #include "../templates/stl_like.hpp"
-#include "../avl_binary_tree_lib/binary_tree.hpp"
 
 #include "../iterators/map_iterator.hpp"
 #include "../iterators/rev_map_iterator.hpp"
