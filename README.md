@@ -2,6 +2,8 @@
 
 "C++ containers, easy mode"
 
+> This project was code for MACOS. Here is the [subject][1].
+
 ![Alt text](https://github.com/lucaslefrancq/42_philosophers/blob/main/philo_example.png)
 
 ## About
@@ -10,18 +12,13 @@ Ft_containers is a project of the mandatory part of the cursus.
 It's only made in C++ and was about recoding some containers from the STL.
 In order to succeed, a good comprehension of how templates, iterators, containers and 
 algorithms work was necessary. Of course, STL is not allowed. That means 
-you cannot use \<iterator\> or even \<utility\>.Here are the specificities of the five containers:
+you cannot use \<iterator\> or even \<utility\>. Here are the specificities of the five containers:
 
-- Vector: a dynamic array.
-- List: a circular linked list (with a neutral node linking beginning and end of the list).
+- Vector: a dynamic array that allows insertion at the end of the container. Elements can be easily access thanks with the corresponding index, but it's not the most optimal container if a lot of insertion / deletion are needed.
+- List: a circular linked list (with a neutral node linking beginning and end of the list). Better than vector for inserting or deleting elements.
 - Stack: a container adaptator (LIFO, last in first out).
 - Queue: a container adaptator (FIFO, first in first out).
-- Map: a sorted container using an AVL binary tree to store the datas.
-
-
-* Here is the [subject][1]
-
-`This project was code for MACOS`
+- Map: a sorted container using an AVL binary tree (auto-equilibrates itself to optimize the time to find a value in the tree), in order to store the datas like in a dictionnary (a key associated to its value).
 
 
 
@@ -42,7 +39,7 @@ you cannot use \<iterator\> or even \<utility\>.Here are the specificities of th
 - [How to use the allocator][13]
 - [Difference between explicit and implicit copy constructor][14]
 
-[1]: https://github.com/lucaslefrancq/42_ft_containers/blob/main/ft_containers.en.subject.pdf
+[1]: https://github.com/llefranc/42_ft_containers/blob/main/ft_containers.en.subject.pdf
 [2]: https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates
 [3]: https://www.tutorialspoint.com/What-are-Lvalues-and-Rvalues-in-Cplusplus#:~:text=An%20lvalue%20(locator%20value)%20represents,some%20identifiable%20location%20in%20memory.
 [4]: https://stackoverflow.com/questions/1527849/how-do-you-understand-dependent-names-in-c#:~:text=A%20dependent%20name%20is%20essentially,depends%20on%20a%20template%20argument.&text=Names%20that%20depend%20on%20a,at%20the%20point%20of%20definition.
