@@ -27,7 +27,7 @@ All my containers use an allocator to manage properly their memory, iterators to
 
 ## Tester
 
-I created a tester with my friend hherin, doing several tests on the five containers. It handles over **10000 tests** for some containers !
+I created a tester with [Hélène Herin][16], doing several tests on each of the five mandatory containers. It handles over **10000 tests for some containers !**
 
 It will test all the constructors, methods and iterators, by comparating your containers with the STL containers, and making a diff if some errors occured.
 
@@ -65,3 +65,4 @@ It will test all the constructors, methods and iterators, by comparating your co
 [13]: https://stackoverflow.com/questions/59539057/c-does-it-lead-to-double-free-when-destroy-element-in-allocatorstring
 [14]: https://stackoverflow.com/questions/1051379/is-there-a-difference-between-copy-initialization-and-direct-initialization
 [15]: https://stackoverflow.com/questions/12036037/explicit-call-to-a-constructor
+[16]: https://github.com/hherin
