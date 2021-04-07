@@ -15,7 +15,6 @@ In order to succeed, a good comprehension of how **templates**, **iterators**, *
 **algorithms** work was necessary. Of course, STL is not allowed. That means 
 you cannot use \<iterator\> or even \<utility\>. 
 
-
 Here are the specificities of the five containers:
 
 - :arrow_right: **Vector:** a dynamic array that allows insertion at the end of the container. Elements can be easily access thanks with the corresponding index, but it's not the most optimal container if a lot of insertion / deletion are needed.
@@ -24,8 +23,14 @@ Here are the specificities of the five containers:
 - :arrow_right: **Queue:** a container adaptator (FIFO, first in first out).
 - :arrow_right: **Map:** a sorted container using an AVL binary tree (auto-equilibrates itself to optimize the time to find a value in the tree), in order to store the datas like in a dictionnary (a key associated to its value).
 
-
 All my containers use an allocator to manage properly their memory, iterators to access their datas, and handle the same constructors / methods than the containers from the STL in C++98.
+
+## Tester
+
+I created a tester with my friend hherin, doing several tests on the five containers. It handles over **10000 tests** for some containers !
+It will test all the constructors, methods and iterators, by comparating your containers with the STL containers, and making a diff if some errors occured.
+
+If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator
 
 ## Sources
 
