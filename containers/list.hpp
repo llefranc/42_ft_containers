@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   list.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/03/12 10:13:15 by llefranc         ###   ########.fr       */
+/*   Updated: 2021/04/07 19:18:52 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <memory>
+#include <cmath>
 
+#include "../templates/stl_like.hpp"
+#include "../templates/type1_or_type2.hpp"
 #include "../iterators/list_iterator.hpp"
 #include "../iterators/rev_list_iterator.hpp"
 

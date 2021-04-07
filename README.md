@@ -4,7 +4,7 @@
 >
 *"C++ containers, easy mode"*
 
-![Alt text](https://github.com/lucaslefrancq/42_philosophers/blob/main/philo_example.png)
+![Alt text](https://github.com/llefranc/42_containers/blob/main/containers_example.png)
 
 ## About
 

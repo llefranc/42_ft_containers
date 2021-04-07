@@ -6,7 +6,7 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:16:45 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:59:12 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/04/07 19:16:33 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ namespace ft
     *   @param T            Type of container's elements.
     *   @param Container    Container object used internally to store T elements.
     */
-    template <class T, class Container = std::list<T> >
+    template <class T, class Container = ft::list<T> >
     class queue
     {
             /* ------------------------------------------------------------- */

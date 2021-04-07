@@ -6,12 +6,15 @@
 /*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 15:20:29 by llefranc          #+#    #+#             */
-/*   Updated: 2021/02/24 16:56:19 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/04/07 19:19:25 by lucaslefran      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STL_LIKE_HPP
 #define STL_LIKE_HPP
+
+#include <exception>
+#include <iostream>
 
 namespace ft
 {
