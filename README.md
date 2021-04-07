@@ -1,8 +1,7 @@
 # ft_containers (@42Paris)
 
-"C++ containers, easy mode"
-
 > This project was code for MACOS. Here is the [subject][1].
+"C++ containers, easy mode"
 
 ![Alt text](https://github.com/lucaslefrancq/42_philosophers/blob/main/philo_example.png)
 
@@ -11,7 +10,9 @@
 Ft_containers is a project of the mandatory part of the cursus.
 It's only made in C++ and was about recoding some containers from the STL.
 In order to succeed, a good comprehension of how templates, iterators, containers and 
-algorithms work was necessary. Of course, STL is not allowed. That means 
+algorithms work was necessary. 
+
+Of course, STL is not allowed. That means 
 you cannot use \<iterator\> or even \<utility\>. Here are the specificities of the five containers:
 
 - Vector: a dynamic array that allows insertion at the end of the container. Elements can be easily access thanks with the corresponding index, but it's not the most optimal container if a lot of insertion / deletion are needed.
