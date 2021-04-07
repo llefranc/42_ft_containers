@@ -1,6 +1,7 @@
 # ft_containers (@42Paris)
 
 > This project was code for MACOS. Here is the [subject][1].
+>
 "C++ containers, easy mode"
 
 ![Alt text](https://github.com/lucaslefrancq/42_philosophers/blob/main/philo_example.png)
