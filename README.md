@@ -30,7 +30,7 @@ All my containers use an allocator to manage properly their memory, iterators to
 I created a tester with [Hélène Herin][16], doing several tests on each of the five mandatory containers. It handles over **10000 tests for some containers !**
 
 It will test all the constructors, methods and iterators, by comparating your containers with the STL containers, and making a diff if some errors occured.
-You can choose between all the tests which ones you want to execute, in the case you want to test only specific containers / methods.
+Also, you can choose between the tests which tests you want to execute, in the case you're checking specific containers / methods.
 
 :white_check_mark:  If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator 
 
