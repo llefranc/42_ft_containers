@@ -23,7 +23,7 @@ Here are the specificities of the five containers:
 - :arrow_right: **Queue:** a container adaptator (FIFO, first in first out).
 - :arrow_right: **Map:** a sorted container using an AVL binary tree (auto-equilibrates itself to optimize the time to find a value in the tree), in order to store the datas like in a dictionnary (a key associated to its value).
 
-
+All my containers use an allocator to manage properly their memory, iterators to access their datas, and handle the same constructors / methods than the containers from the STL in C++98.
 
 ## Sources
 
