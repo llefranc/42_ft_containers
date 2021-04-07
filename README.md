@@ -35,12 +35,13 @@ It will test all the constructors, methods and iterators, by comparating your co
 
 ## Sources
 
+- [Best website for learning about C++ (including C++98)][17]
 - [Difference of keywords 'typename' and 'class' in templates][2]
 - [Lvalus and rvalues][3]
 - [Dependant names in C++][4]
 - [What's explicit keyword][5]
 - [Explicit call to a constructor][15]
-- [Implemtenting iterators][6]
+- [Implementing iterators][6]
 - [Writing your own STL style container][7]
 - [Writing operator++ for iterator][8]
 - [Writing operator== for iterator][9]
@@ -66,3 +67,4 @@ It will test all the constructors, methods and iterators, by comparating your co
 [14]: https://stackoverflow.com/questions/1051379/is-there-a-difference-between-copy-initialization-and-direct-initialization
 [15]: https://stackoverflow.com/questions/12036037/explicit-call-to-a-constructor
 [16]: https://github.com/hherin
+[17]: http://www.cplusplus.com/
