@@ -27,11 +27,11 @@ All my containers use an allocator to manage properly their memory, iterators to
 
 ## Tester
 
-I created a tester with my friend hherin, doing several tests on the five containers. It handles over **10000 tests** for some containers :boom: !
+I created a tester with my friend hherin, doing several tests on the five containers. It handles over **10000 tests** for some containers !
 
 It will test all the constructors, methods and iterators, by comparating your containers with the STL containers, and making a diff if some errors occured.
 
-If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator
+If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator :white_check_mark:
 
 ## Sources
 
