@@ -11,17 +11,17 @@
 Ft_containers is a project of the mandatory part of the cursus.
 It's only made in C++ and was about recoding some containers from the STL.
 
-In order to succeed, a good comprehension of how templates, iterators, containers and 
-algorithms work was necessary. Of course, STL is not allowed. That means 
+In order to succeed, a good comprehension of how **templates**, **iterators**, **containers** and 
+**algorithms** work was necessary. Of course, STL is not allowed. That means 
 you cannot use \<iterator\> or even \<utility\>. 
 
 Here are the specificities of the five containers:
 
-- Vector: a dynamic array that allows insertion at the end of the container. Elements can be easily access thanks with the corresponding index, but it's not the most optimal container if a lot of insertion / deletion are needed.
-- List: a circular linked list (with a neutral node linking beginning and end of the list). Better than vector for inserting or deleting elements.
-- Stack: a container adaptator (LIFO, last in first out).
-- Queue: a container adaptator (FIFO, first in first out).
-- Map: a sorted container using an AVL binary tree (auto-equilibrates itself to optimize the time to find a value in the tree), in order to store the datas like in a dictionnary (a key associated to its value).
+- **Vector:** a dynamic array that allows insertion at the end of the container. Elements can be easily access thanks with the corresponding index, but it's not the most optimal container if a lot of insertion / deletion are needed.
+- **List:** a circular linked list (with a neutral node linking beginning and end of the list). Better than vector for inserting or deleting elements.
+- **Stack:** a container adaptator (LIFO, last in first out).
+- **Queue:** a container adaptator (FIFO, first in first out).
+- **Map:** a sorted container using an AVL binary tree (auto-equilibrates itself to optimize the time to find a value in the tree), in order to store the datas like in a dictionnary (a key associated to its value).
 
 
 
