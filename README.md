@@ -1,6 +1,6 @@
 # ft_containers (@42Paris)
 
-> :ballot_box_with_check: This project was code for MACOS. Here is the [subject][1].
+> This project was code for MACOS. Here is the [subject][1].
 >
 *"C++ containers, easy mode"*
 
