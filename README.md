@@ -31,7 +31,7 @@ I created a tester with my friend hherin, doing several tests on the five contai
 
 It will test all the constructors, methods and iterators, by comparating your containers with the STL containers, and making a diff if some errors occured.
 
-If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator :white_check_mark:
+:white_check_mark:  If you want to see more, go check it at this repo : https://github.com/llefranc/42_Containator 
 
 ## Sources
 
