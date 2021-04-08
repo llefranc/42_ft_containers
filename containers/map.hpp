@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucaslefrancq <lucaslefrancq@student.42    +#+  +:+       +#+        */
+/*   By: llefranc <llefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 10:38:30 by llefranc          #+#    #+#             */
-/*   Updated: 2021/04/07 19:46:16 by lucaslefran      ###   ########.fr       */
+/*   Updated: 2021/04/08 12:19:14 by llefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define MAP_HPP
 
 #include <functional>
-#include <memory>
+#include <cmath>
 
 #include "../templates/stl_like.hpp"
 
