@@ -59,7 +59,7 @@ namespace ft
             *
             *   @param copy     The pair that will be copied.
             */
-            // pair(const pair<T1, T2>& copy) : first(copy.first), second(copy.second) {};
+            pair(const pair<T1, T2>& copy) : first(copy.first), second(copy.second) {};
             
             /**
             *   Copy constructor, creates a pair with the same member variables.
